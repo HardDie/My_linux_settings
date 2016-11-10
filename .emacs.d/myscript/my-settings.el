@@ -1,0 +1,135 @@
+;; Add required path
+(add-to-list 'package-archives '("melpa0" . "http://melpa.milkbox.net/packages/") t)
+(add-to-list 'package-archives '("melpa1" . "https://melpa.org/packages/") t)
+(add-to-list 'package-archives '("melpa2" . "https://stable.melpa.org/packages/") t)
+
+;; Disable tool bar
+(menu-bar-mode -1)
+(tool-bar-mode -1)
+
+;; Tab 4 symbol
+(setq-default tab-width 4)
+(setq tab-width 4)
+(setq-default c-basic-offset 4)
+
+;; Delete full string instance
+(setq kill-whole-line t)
+
+;; Disable autosave
+(setq make-backup-files        nil);
+(setq auto-save-list-file-name nil);
+(setq auto-save-default        nil);
+
+;; Linum plugin
+(require 'linum) ;; вызвать Linum
+(line-number-mode   t) ;; показать номер строки в mode-line
+(global-linum-mode  t) ;; показывать номера строк во всех буферах
+(column-number-mode t) ;; показать номер столбца в mode-line
+(setq linum-format " %d") ;; задаем формат нумерации строк
+
+
+;; Enable sr-speedbar
+(global-set-key (kbd "<f12>") 'sr-speedbar-toggle)		;; Required sr-speedbar package
+
+;; Enable show only file buffer
+(require 'bs)
+(setq bs-configurations
+      '(("files" "*scratch*\\|*shell*" nil nil bs-visits-non-file bs-sort-buffer-interns-are-last)))
+(global-set-key (kbd "<f2>") 'bs-show)
+
+;; Enable color scheme
+(color-theme-initialize)
+(setq color-theme-is-global t)
+(color-theme-hober)
+
+
+;; Set font
+(add-to-list 'default-frame-alist '(font . "Hack-14"))
+(set-default-font "Hack-14")
+
+;; Enable CUA
+;(cua-mode t)
+;(setq cua-auto-tabify-rectangles nil) ;; Don't tabify after rectangle commands
+;(transient-mark-mode 1)               ;; No region when it is not highlighted
+;(setq cua-keep-region-after-copy t)
+
+;; Show-paren-mode settings
+(show-paren-mode t)                 ;; включить выделение выражений между {},[],()
+(setq show-paren-style 'expression) ;; выделить цветом выражения между {},[],()
+
+;; Delete selection
+(delete-selection-mode t)
+
+;; Disable GUI components
+(tooltip-mode      -1)
+(menu-bar-mode     -1) ;; отключаем графическое меню
+(tool-bar-mode     -1) ;; отключаем tool-bar
+(scroll-bar-mode   -1) ;; отключаем полосу прокрутки
+(blink-cursor-mode -1) ;; курсор не мигает
+(setq use-dialog-box     nil) ;; никаких графических диалогов и окон - все через минибуфер
+(setq redisplay-dont-pause t)  ;; лучшая отрисовка буфера
+(setq ring-bell-function 'ignore) ;; отключить звуковой сигнал
+
+;; Indent settings
+(setq-default indent-tabs-mode nil) ;; отключить возможность ставить отступы TAB'ом
+(setq-default tab-width          4) ;; ширина табуляции - 4 пробельных символа
+(setq-default c-basic-offset     4)
+(setq-default standart-indent    4) ;; стандартная ширина отступа - 4 пробельных символа
+(setq-default lisp-body-indent   4) ;; сдвигать Lisp-выражения на 4 пробельных символа
+(global-set-key (kbd "RET") 'newline-and-indent) ;; при нажатии Enter перевести каретку и сделать отступ
+(setq lisp-indent-function  'common-lisp-indent-function)
+
+;; Scrolling settings
+(setq scroll-step               1) ;; вверх-вниз по 1 строке
+(setq scroll-margin            10) ;; сдвигать буфер верх/вниз когда курсор в 10 шагах от верхней/нижней границы  
+(setq scroll-conservatively 10000)
+
+;; Display the name of the current buffer in the title bar
+(setq frame-title-format "GNU Emacs: %b")
+
+;; Inhibit startup/splash screen
+(setq inhibit-splash-screen   t)
+(setq ingibit-startup-message t) ;; экран приветствия можно вызвать комбинацией C-h C-a
+
+;; Fringe settings
+(fringe-mode '(8 . 0)) ;; органичиталь текста только слева
+(setq-default indicate-empty-lines t) ;; отсутствие строки выделить глифами рядом с полосой с номером строки
+(setq-default indicate-buffer-boundaries 'left) ;; индикация только слева
+
+;; Display file size/time in mode-line
+(setq display-time-24hr-format t) ;; 24-часовой временной формат в mode-line
+(display-time-mode             t) ;; показывать часы в mode-line
+(size-indication-mode          t) ;; размер файла в %-ах
+
+;; Line wrapping
+(setq word-wrap          t) ;; переносить по словам
+(global-visual-line-mode t)
+
+;; IDO plugin
+;(require 'ido)
+;(ido-mode                      t)
+;(icomplete-mode                t)
+;(ido-everywhere                t)
+;(setq ido-vitrual-buffers      t)
+;(setq ido-enable-flex-matching t)
+
+;; Yafolding
+(defvar yafolding-mode-map
+  (let ((map (make-sparse-keymap)))
+    (define-key map (kbd "<C-S-return>") 'yafolding-hide-parent-element)
+    (define-key map (kbd "<C-M-return>") 'yafolding-toggle-all)
+    (define-key map (kbd "<C-return>") 'yafolding-toggle-element)
+    map))
+(add-hook 'prog-mode-hook
+          (lambda () (yafolding-mode)))
+
+;; Imenu
+(require 'imenu)
+(setq imenu-auto-rescan      t) ;; автоматически обновлять список функций в буфере
+(setq imenu-use-popup-menu nil) ;; диалоги Imenu только в минибуфере
+(global-set-key (kbd "<f6>") 'imenu) ;; вызов Imenu на F6
+
+;; Save session
+(desktop-save-mode t)
+
+(provide 'my-settings)
