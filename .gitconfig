@@ -1,0 +1,7 @@
+[user]
+	email = oleg1995sysoev@yandex.ru
+	name = HardDie
+[push]
+	default = simple
+[alias]
+	llog = log --oneline --graph --decorate --all
