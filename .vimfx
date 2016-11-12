@@ -1,0 +1,9 @@
+{
+  "prevent_autofocus": true,
+  "ignore_keyboard_layout": true,
+  "mode.normal.history_back": "<a-h>",
+  "mode.normal.history_forward": "<a-l>",
+  "mode.normal.tab_select_previous": "<a-j>",
+  "mode.normal.tab_select_next": "<a-k>",
+  "mode.ignore.exit": "<escape>"
+}
