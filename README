@@ -1,0 +1,19 @@
+# How install powerline on bash, tmux and vim
+sudo apt-get install python-pip git
+
+pip install --user git+git://github.com/Lokaltog/powerline
+vim ~/.bashrc
+
+if [ -d "$HOME/.local/bin" ]; then
+    PATH="$HOME/.local/bin:$PATH"
+fi
+
+cd ~/.fonts
+wget https://github.com/Lokaltog/powerline/raw/develop/font/PowerlineSymbols.otf
+cd ~/.config/fontconfig/conf.d/
+wget https://github.com/Lokaltog/powerline/raw/develop/font/10-powerline-symbols.conf
+
+---//---//---//---//---//---
+
+# How install tmux
+git clone https://github.com/tmux/tmux.git

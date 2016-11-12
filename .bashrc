@@ -114,6 +114,16 @@ if ! shopt -oq posix; then
   fi
 fi
 
+# powerline
+if [ -d "$HOME/.local/bin" ]; then
+    export PATH="$HOME/.local/bin:$PATH"
+fi
+
+if [ -f ~/.local/lib/python2.7/site-packages/powerline/bindings/bash/powerline.sh ]; then
+    source ~/.local/lib/python2.7/site-packages/powerline/bindings/bash/powerline.sh
+fi
+# end powerline
+
 # my aliases
 alias cppcheck='/home/harddie/Projects/cppcheck/cppcheck'
 alias less='less -N'
