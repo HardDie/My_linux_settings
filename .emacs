@@ -9,7 +9,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (projectile sr-speedbar color-theme yafolding persistent-soft undo-tree))))
+    (auto-complete-c-headers auto-complete projectile sr-speedbar color-theme yafolding persistent-soft undo-tree))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -31,8 +31,4 @@
 (require 'my-keys-mode)
 (my-keys-mode-init)
 
-;; Enable color scheme
-;(color-theme-initialize)			;; Required color-theme package
-;(setq color-theme-is-global t)
-;(color-theme-hober)
 (put 'erase-buffer 'disabled nil)

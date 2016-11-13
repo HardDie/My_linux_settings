@@ -17,3 +17,6 @@ wget https://github.com/Lokaltog/powerline/raw/develop/font/10-powerline-symbols
 
 # How install tmux
 git clone https://github.com/tmux/tmux.git
+
+# How watch all include directories gcc
+gcc -xc++ -E -v -
