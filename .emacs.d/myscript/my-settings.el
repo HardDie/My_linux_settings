@@ -147,4 +147,14 @@
 (add-hook 'c++-mode-hook 'my:ac-c-header-init)
 (add-hook 'c-mode-hook 'my:ac-c-header-init)
 
+;; On semantic mode
+(semantic-mode 1)
+(defun my:add-semantic-to-autocomplete() 
+  (add-to-list 'ac-sources 'ac-source-semantic)
+)
+(add-hook 'c-mode-common-hook 'my:add-semantic-to-autocomplete)
+(global-ede-mode 1)
+;(ede-cpp-root-project "my project" :file "~/cpp_proj/main.cpp" :include-path '("/src"))
+(global-semantic-idle-scheduler-mode 1)
+
 (provide 'my-settings)
