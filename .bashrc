@@ -128,7 +128,7 @@ fi
 alias cppcheck='/home/harddie/Projects/cppcheck/cppcheck'
 alias less='less -N'
 alias emx='emacsclient -c'
-alias tmx='tmux attach || tmux new'
+alias tmux='tmux -2'
 
 export EDITOR="/usr/bin/emacsclient -c"
 export MALLOC_TRACE=/tmp/malloc_trace
