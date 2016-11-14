@@ -157,4 +157,13 @@
 ;(ede-cpp-root-project "my project" :file "~/cpp_proj/main.cpp" :include-path '("/src"))
 (global-semantic-idle-scheduler-mode 1)
 
+;; For whitespace-mode
+(setq whitespace-style '(face trailing tabs spaces lines newline empty
+                         space-mark tab-mark newline-mark))
+(setq whitespace-display-mappings
+      '((space-mark 32 [183] [46])
+        (space-mark 160 [164] [95])
+        (newline-mark 10 [182 10])
+        (tab-mark 9 [187 9] [92 9])))
+
 (provide 'my-settings)
