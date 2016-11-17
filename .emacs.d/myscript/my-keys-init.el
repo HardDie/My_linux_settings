@@ -78,7 +78,9 @@
     (add-to-list 'my-keys-list '("<f4>" bookmark-bmenu-list))
     
     (add-to-list 'my-keys-list '("C-;" comment-kill))
-    
+
+    (add-to-list 'my-keys-list '("C-n" next-history-element))
+    (add-to-list 'my-keys-list '("C-p" previous-history-element))
 )
 
 ;; Hook for search mode
