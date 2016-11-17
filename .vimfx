@@ -5,5 +5,7 @@
   "mode.normal.history_forward": "<a-l>",
   "mode.normal.tab_select_previous": "<a-j>",
   "mode.normal.tab_select_next": "<a-k>",
+  "mode.normal.tab_move_backward": "<a-J>",
+  "mode.normal.tab_move_forward": "<a-K>",
   "mode.ignore.exit": "<escape>"
 }
