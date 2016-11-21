@@ -1,7 +1,9 @@
 [user]
 	email = oleg1995sysoev@yandex.ru
 	name = HardDie
+[core]
+	editor = vim
+[alias]
+	llog = log --oneline --decorate --graph --all
 [push]
 	default = simple
-[alias]
-	llog = log --oneline --graph --decorate --all
