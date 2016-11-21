@@ -142,7 +142,7 @@
   (add-to-list 'achead:include-directories '"/usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed")
   (add-to-list 'achead:include-directories '"/usr/include/x86_64-linux-gnu")
   (add-to-list 'achead:include-directories '"/usr/include")
-  
+
 )
 (add-hook 'c++-mode-hook 'my:ac-c-header-init)
 (add-hook 'c-mode-hook 'my:ac-c-header-init)
@@ -167,3 +167,6 @@
         (tab-mark 9 [187 9] [92 9])))
 
 (provide 'my-settings)
+
+;; For working tags
+(setq projectile-tags-command "ctags-exuberant -Re -f \"%s\" %s")

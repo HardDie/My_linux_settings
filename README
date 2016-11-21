@@ -20,3 +20,9 @@ git clone https://github.com/tmux/tmux.git
 
 # How watch all include directories gcc
 gcc -xc++ -E -v -
+
+# Difference between folders
+meld
+
+# Install tags for emacs
+sudo apt-get install exuberant-ctags
