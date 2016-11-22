@@ -83,7 +83,7 @@
     (add-to-list 'my-keys-list '("C-p" previous-history-element))
 
     (add-to-list 'my-keys-list '("C-c p R" projectile-regenerate-tags))
-    (add-to-list 'my-keys-list '("C-M-." pop-tag-mark))
+    (add-to-list 'my-keys-list '("M->" pop-tag-mark))
 )
 
 ;; Hook for search mode
