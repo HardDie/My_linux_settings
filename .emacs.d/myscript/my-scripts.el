@@ -7,6 +7,7 @@
 (provide 'my-scripts)
 
 (defun reformat-region (&optional b e)
+	"Reformat region on Google style"
     (interactive "r")
     (when (not (buffer-file-name))
       (error "A buffer must be associated with a file in order to use REFORMAT-REGION."))
