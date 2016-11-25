@@ -8,9 +8,12 @@
 (tool-bar-mode -1)
 
 ;; Tab 4 symbol
+(setq-default indent-tabs-mode t)
 (setq-default tab-width 4)
-(setq tab-width 4)
 (setq-default c-basic-offset 4)
+(setq-default standart-indent    4)
+(setq-default lisp-body-indent   4)
+(setq lisp-indent-function  'common-lisp-indent-function)
 
 ;; Delete full string instance
 (setq kill-whole-line t)
