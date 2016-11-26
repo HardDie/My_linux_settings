@@ -26,3 +26,6 @@ meld
 
 # Install tags for emacs
 sudo apt-get install exuberant-ctags
+
+#Install powerline for git
+sudo pip install powerline-gitstatus
