@@ -13,9 +13,12 @@ wget https://github.com/Lokaltog/powerline/raw/develop/font/PowerlineSymbols.otf
 cd ~/.config/fontconfig/conf.d/
 wget https://github.com/Lokaltog/powerline/raw/develop/font/10-powerline-symbols.conf
 
+#Install powerline for git
+sudo pip install powerline-gitstatus
 ---//---//---//---//---//---
 
 # How install tmux
+sudo apt-get install automake autoconfig libevent-dev libncurses5-dev
 git clone https://github.com/tmux/tmux.git
 
 # How watch all include directories gcc
@@ -26,6 +29,3 @@ meld
 
 # Install tags for emacs
 sudo apt-get install exuberant-ctags
-
-#Install powerline for git
-sudo pip install powerline-gitstatus
