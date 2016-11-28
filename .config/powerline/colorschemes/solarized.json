@@ -1,8 +1,8 @@
 {
     "name": "Solarized dark",
     "groups": {
-	"information:additional":  { "fg": "solarized:base2", "bg": "solarized:base01", "attrs": [] },
-	"information:regular":     { "fg": "solarized:base3", "bg": "solarized:base01", "attrs": ["bold"] },
+	"information:additional":  { "fg": "gray9", "bg": "gray4", "attrs": [] },
+	"information:regular":     { "fg": "gray10", "bg": "gray4", "attrs": ["bold"] },
 	"information:highlighted": { "fg": "solarized:base3", "bg": "solarized:base01", "attrs": ["bold"]},
 	"information:priority":    { "fg": "solarized:base3", "bg": "solarized:yellow", "attrs": [] },
 	"warning:regular":         { "fg": "solarized:base3", "bg": "solarized:red", "attrs": [] },
