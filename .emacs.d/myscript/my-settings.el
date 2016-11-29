@@ -15,6 +15,12 @@
 (setq-default lisp-body-indent   4)
 (setq lisp-indent-function  'common-lisp-indent-function)
 
+(defun my:indent-tabs ()
+	(setq-default indent-tabs-mode t)
+)
+(add-hook 'c++-mode-hook 'my:indent-tabs)
+(add-hook 'c-mode-hook 'my:indent-tabs)
+
 ;; Delete full string instance
 (setq kill-whole-line t)
 
