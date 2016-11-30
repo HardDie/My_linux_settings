@@ -29,3 +29,6 @@ meld
 
 # Install tags for emacs
 sudo apt-get install exuberant-ctags
+---//---//---//---//---//---
+# Copy from tmux on system
+sudo apt-get install xclip
