@@ -1,6 +1,10 @@
 # ~/.bashrc: executed by bash(1) for non-login shells.
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
+# We use preexec and precmd hook functions for Bash
+# If you have anything that's using the Debug Trap or PROMPT_COMMAND 
+# change it to use preexec or precmd
+# See also https://github.com/rcaloras/bash-preexec
 
 # If not running interactively, don't do anything
 case $- in
@@ -37,7 +41,7 @@ fi
 
 # set a fancy prompt (non-color, unless we know we "want" color)
 case "$TERM" in
-    xterm-color) color_prompt=yes;;
+    xterm-color|*-256color) color_prompt=yes;;
 esac
 
 # uncomment for a colored prompt, if the terminal has the capability; turned
@@ -84,6 +88,9 @@ if [ -x /usr/bin/dircolors ]; then
     alias egrep='egrep --color=auto'
 fi
 
+# colored GCC warnings and errors
+export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
+
 # some more ls aliases
 alias ll='ls -hlF'
 alias lla='ls -halF'
@@ -115,16 +122,75 @@ if ! shopt -oq posix; then
   fi
 fi
 
+# If this is an xterm set more declarative titles 
+# "dir: last_cmd" and "actual_cmd" during execution
+# If you want to exclude a cmd from being printed see line 156
+case "$TERM" in
+xterm*|rxvt*)
+    PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\$(print_title)\a\]$PS1"
+    __el_LAST_EXECUTED_COMMAND=""
+    print_title () 
+    {
+        __el_FIRSTPART=""
+        __el_SECONDPART=""
+        if [ "$PWD" == "$HOME" ]; then
+            __el_FIRSTPART=$(gettext --domain="pantheon-files" "Home")
+        else
+            if [ "$PWD" == "/" ]; then
+                __el_FIRSTPART="/"
+            else
+                __el_FIRSTPART="${PWD##*/}"
+            fi
+        fi
+        if [[ "$__el_LAST_EXECUTED_COMMAND" == "" ]]; then
+            echo "$__el_FIRSTPART"
+            return
+        fi
+        #trim the command to the first segment and strip sudo
+        if [[ "$__el_LAST_EXECUTED_COMMAND" == sudo* ]]; then
+            __el_SECONDPART="${__el_LAST_EXECUTED_COMMAND:5}"
+            __el_SECONDPART="${__el_SECONDPART%% *}"
+        else
+            __el_SECONDPART="${__el_LAST_EXECUTED_COMMAND%% *}"
+        fi 
+        printf "%s: %s" "$__el_FIRSTPART" "$__el_SECONDPART"
+    }
+    put_title()
+    {
+        __el_LAST_EXECUTED_COMMAND="${BASH_COMMAND}"
+        printf "\033]0;%s\007" "$1"
+    }
+    
+    # Show the currently running command in the terminal title:
+    # http://www.davidpashley.com/articles/xterm-titles-with-bash.html
+    update_tab_command()
+    {
+        # catch blacklisted commands and nested escapes
+        case "$BASH_COMMAND" in 
+            *\033]0*|update_*|echo*|printf*|clear*|cd*)
+            __el_LAST_EXECUTED_COMMAND=""
+                ;;
+            *)
+            put_title "${BASH_COMMAND}"
+            ;;
+        esac
+    }
+    preexec_functions+=(update_tab_command)
+    ;;
+*)
+    ;;
+esac
+
 # powerline
 if [ -d "$HOME/.local/bin" ]; then
     export PATH="$HOME/.local/bin:$PATH"
 fi
 
 if [ -f ~/.local/lib/python2.7/site-packages/powerline/bindings/bash/powerline.sh ]; then
-	powerline-daemon -q
-	POWERLINE_BASH_CONTINUATION=1
-	POWERLINE_BASH_SELECT=1
-	source ~/.local/lib/python2.7/site-packages/powerline/bindings/bash/powerline.sh
+       powerline-daemon -q
+       POWERLINE_BASH_CONTINUATION=1
+       POWERLINE_BASH_SELECT=1
+       source ~/.local/lib/python2.7/site-packages/powerline/bindings/bash/powerline.sh
 fi
 # end powerline
 
