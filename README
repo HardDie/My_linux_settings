@@ -32,3 +32,8 @@ sudo apt-get install exuberant-ctags
 ---//---//---//---//---//---
 # Copy from tmux on system
 sudo apt-get install xclip
+
+---//---//---//---//---//---
+# Install screenfetch
+sudo apt-add-repository ppa:djcj/screenfetch
+sudo apt-get install screenfetch
