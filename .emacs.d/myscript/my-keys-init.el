@@ -84,6 +84,7 @@
 
     (add-to-list 'my-keys-list '("C-c p R" projectile-regenerate-tags))
     (add-to-list 'my-keys-list '("M->" pop-tag-mark))
+    (add-to-list 'my-keys-list '("C-q" exchange-point-and-mark))
 )
 
 ;; Hook for search mode
