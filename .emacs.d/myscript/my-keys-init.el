@@ -26,8 +26,8 @@
 	(add-to-list 'my-keys-list '("M-N" end-of-buffer))
 
 	(add-to-list 'my-keys-list '("M-2" delete-window))
-;	(add-to-list 'my-keys-list '("M-3" delete-other-windows))
 	(add-to-list 'my-keys-list '("M-3" zoom-window-zoom))
+	(add-to-list 'my-keys-list '("M-#" delete-other-windows))
 	(add-to-list 'my-keys-list '("M-4" split-window-right))
 	(add-to-list 'my-keys-list '("M-$" split-window-below))
 	(add-to-list 'my-keys-list '("M-s" other-window))
