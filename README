@@ -20,6 +20,10 @@ meld
 
 # Install tags for emacs
 sudo apt-get install exuberant-ctags
+
+# Install format for emacs
+sudo apt-get install clang-format-3.8
+sudo ln -s /usr/bin/clang-format-3.8 /usr/bin/clang-format
 ---//---//---//---//---//---
 # Copy from tmux on system
 sudo apt-get install xclip
