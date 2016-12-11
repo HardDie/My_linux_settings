@@ -7,9 +7,12 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(custom-safe-themes
+   (quote
+    ("3eb93cd9a0da0f3e86b5d932ac0e3b5f0f50de7a0b805d4eb1f67782e9eb67a4" default)))
  '(package-selected-packages
    (quote
-    (auto-complete-c-headers auto-complete projectile sr-speedbar color-theme yafolding persistent-soft undo-tree))))
+    (airline-themes powerline auto-complete-c-headers auto-complete projectile sr-speedbar color-theme yafolding persistent-soft undo-tree))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
