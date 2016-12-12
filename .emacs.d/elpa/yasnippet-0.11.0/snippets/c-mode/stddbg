@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: stddbg
+# contributor: joaotavora
+# key: stddbg
+# --
+FILE* stddbg = fopen("/dev/console", "w");	// DEBUG
+fprintf(stddbg, "dbg\t${1:MY POINT}\n");
+fclose(stddbg);		 // DEBUG

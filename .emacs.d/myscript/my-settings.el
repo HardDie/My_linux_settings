@@ -193,3 +193,10 @@
       airline-utf-glyph-branch              #xe0a0
       airline-utf-glyph-readonly            #xe0a2
       airline-utf-glyph-linenumber          #xe0a1)
+
+;; Yasnippet
+(require 'yasnippet)
+(setq yas-snippet-dirs '("~/.emacs.d/elpa/yasnippet-0.11.0/snippets"))
+(yas-reload-all)
+(add-hook 'c++-mode-hook 'yas-minor-mode)
+(add-hook 'c-mode-hook 'yas-minor-mode)
