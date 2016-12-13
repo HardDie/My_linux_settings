@@ -196,9 +196,9 @@ fi
 
 # my aliases
 alias cppcheck='/home/harddie/Projects/cppcheck/cppcheck'
-alias less='less -N'
-alias emx='emacsclient -c'
+alias less='/usr/share/vim/vim74/macros/less.sh -N'
+alias emx='emacsclient -c --socket-name=emacs'
 alias tmux='tmux -2'
 
-export EDITOR="/usr/bin/emacsclient -c"
+export EDITOR="/usr/bin/emacsclient -c --socket-name=emacs"
 export MALLOC_TRACE=/tmp/malloc_trace
