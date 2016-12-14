@@ -181,16 +181,30 @@ xterm*|rxvt*)
     ;;
 esac
 
+# platform define
+PLATFORM=$(uname -r | grep -i ARCH | wc -l) # 1 = ARCH, 0 = OTHER
+
 # powerline
 if [ -d "$HOME/.local/bin" ]; then
     export PATH="$HOME/.local/bin:$PATH"
 fi
 
-if [ -f ~/.local/lib/python2.7/site-packages/powerline/bindings/bash/powerline.sh ]; then
-       powerline-daemon -q
-       POWERLINE_BASH_CONTINUATION=1
-       POWERLINE_BASH_SELECT=1
-       source ~/.local/lib/python2.7/site-packages/powerline/bindings/bash/powerline.sh
+if [ $PLATFORM -eq 1 ]; then
+#ARCH
+    if [ -f ~/.local/lib/python3.5/site-packages/powerline/bindings/bash/powerline.sh ]; then
+        powerline-daemon -q
+        POWERLINE_BASH_CONTINUATION=1
+        POWERLINE_BASH_SELECT=1
+        source ~/.local/lib/python3.5/site-packages/powerline/bindings/bash/powerline.sh
+    fi
+else
+#UBUNTU
+    if [ -f ~/.local/lib/python2.7/site-packages/powerline/bindings/bash/powerline.sh ]; then
+        powerline-daemon -q
+        POWERLINE_BASH_CONTINUATION=1
+        POWERLINE_BASH_SELECT=1
+        source ~/.local/lib/python2.7/site-packages/powerline/bindings/bash/powerline.sh
+    fi
 fi
 # end powerline
 
