@@ -197,6 +197,7 @@ if [ $PLATFORM -eq 1 ]; then
         POWERLINE_BASH_SELECT=1
         source ~/.local/lib/python3.5/site-packages/powerline/bindings/bash/powerline.sh
     fi
+alias less='/usr/share/vim/vim80/macros/less.sh -N'
 else
 #UBUNTU
     if [ -f ~/.local/lib/python2.7/site-packages/powerline/bindings/bash/powerline.sh ]; then
@@ -205,12 +206,12 @@ else
         POWERLINE_BASH_SELECT=1
         source ~/.local/lib/python2.7/site-packages/powerline/bindings/bash/powerline.sh
     fi
+alias less='/usr/share/vim/vim74/macros/less.sh -N'
 fi
 # end powerline
 
 # my aliases
 alias cppcheck='/home/harddie/Projects/cppcheck/cppcheck'
-alias less='/usr/share/vim/vim74/macros/less.sh -N'
 alias emx='emacsclient -c --socket-name=emacs'
 alias tmux='tmux -2'
 
