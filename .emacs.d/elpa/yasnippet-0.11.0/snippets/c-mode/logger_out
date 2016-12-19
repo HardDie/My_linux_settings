@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: logger_out
+# contributor: HardDie
+# key: logger_out
+# --
+printf("wl dbg\tLeave %s (%s:%d)\n", __FUNCTION__, __FILE__, __LINE__); /* DEBUG */

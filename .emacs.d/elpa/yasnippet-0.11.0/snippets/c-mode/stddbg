@@ -1,6 +1,6 @@
 # -*- mode: snippet -*-
 # name: stddbg
-# contributor: joaotavora
+# contributor: HardDie
 # key: stddbg
 # --
 FILE* stddbg = fopen("/dev/console", "w");	// DEBUG
