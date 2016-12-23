@@ -32,3 +32,7 @@ sudo apt-get install xclip
 # Install screenfetch
 sudo apt-add-repository ppa:djcj/screenfetch
 sudo apt-get install screenfetch
+
+---//---//---//---//---//---
+# Set TTL for packages
+sudo iptables -t mangle -A POSTROUTING -o usb0 -j TTL --ttl-set 65
