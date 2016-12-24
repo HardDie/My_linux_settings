@@ -94,7 +94,7 @@ export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quo
 # some more ls aliases
 alias ll='ls -hlF'
 alias lla='ls -hAlF'
-alias lsa='ls -A'
+alias lsa='ls -AF'
 alias la='ls -A'
 alias l='ls -CF'
 
