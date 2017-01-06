@@ -49,6 +49,7 @@
 	(add-to-list 'my-keys-list '("C-r" revert-buffer))
 	(add-to-list 'my-keys-list '("C-z" undo-tree-undo))		;; Required undo-tree package
 	(add-to-list 'my-keys-list '("C-S-z" undo-tree-redo))		;; Required undo-tree package
+	(add-to-list 'my-keys-list '("M-/" undo-tree-visualize))
 
 	(add-to-list 'my-keys-list '("C-o" find-file))
 	(add-to-list 'my-keys-list '("C-s" save-buffer))
