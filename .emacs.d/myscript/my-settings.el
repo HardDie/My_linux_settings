@@ -183,6 +183,7 @@
 ;; Powerline
 (require 'airline-themes)
 (load-theme 'airline-dark)
+(setq powerline-default-separator 'slant)
 
 (setq powerline-utf-8-separator-left        #xe0b0
       powerline-utf-8-separator-right       #xe0b2
