@@ -95,7 +95,7 @@ export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quo
 alias ll='ls -hlF'
 alias lla='ls -hAlF'
 alias lsa='ls -AF'
-alias la='ls -A'
+alias la='ls -AF'
 alias l='ls -CF'
 
 # Add an "alert" alias for long running commands.  Use like so:
