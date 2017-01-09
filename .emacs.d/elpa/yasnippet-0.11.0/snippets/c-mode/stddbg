@@ -4,5 +4,5 @@
 # key: stddbg
 # --
 FILE* stddbg = fopen("/dev/console", "w");	// DEBUG
-fprintf(stddbg, "dbg\t%s\t${1:MY POINT}\n", __FUNCTION__);
+fprintf(stddbg, "dbg\t%s(%s:%d)\t${1:MY POINT}\n", strstr(__FILE__, "src/"), __FUNCTION__, __LINE__);
 fclose(stddbg);		 // DEBUG
