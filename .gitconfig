@@ -5,6 +5,6 @@
 	editor = vim
 [alias]
 	llog = log --oneline --decorate --graph --all
-	shorty = status --short --branch
+	sts = status --short --branch
 [push]
 	default = simple
