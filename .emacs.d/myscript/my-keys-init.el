@@ -43,6 +43,7 @@
 
 	(add-to-list 'my-keys-list '("C-c C-c" kill-ring-save))
 	(add-to-list 'my-keys-list '("C-v" yank))
+	(add-to-list 'my-keys-list '("C-S-v" yank-pop))
 	(add-to-list 'my-keys-list '("C-x C-x" kill-region))
 	(add-to-list 'my-keys-list '("C-a" mark-whole-buffer))
 
