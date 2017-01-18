@@ -36,3 +36,9 @@ sudo apt-get install screenfetch
 ---//---//---//---//---//---
 # Set TTL for packages
 sudo iptables -t mangle -A POSTROUTING -o usb0 -j TTL --ttl-set 65
+
+# Git check repo whitespace
+git diff --check		// Show whitespace
+git push --force-with-lease	// Push force and check for change repo
+git commit --allow-empty
+git merge --no-ff		// Always create a merge commit
