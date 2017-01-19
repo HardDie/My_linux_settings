@@ -3,6 +3,15 @@
 # contributor: HardDie
 # key: stddbg
 # --
-FILE* stddbg = fopen("/dev/console", "w");	// DEBUG
-fprintf(stddbg, "dbg\t%s(%s:%d)\t${1:MY POINT}\n", strstr(__FILE__, "src/"), __FUNCTION__, __LINE__);
-fclose(stddbg);		 // DEBUG
+#include <string.h>
+#define DPRINT(__fmt,...)												\
+	FILE* stddbg = fopen("/dev/console", "a");							\
+	if (stddbg != NULL) {												\
+		fprintf(stddbg,													\
+				"dbg\t%s(%s:%d)\t"										\
+				__fmt													\
+				"\n",													\
+				strstr(__FILE__, "src/"), __FUNCTION__, __LINE__,		\
+				##__VA_ARGS__);											\
+		fclose(stddbg);													\
+	}                           // DEBUG

@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: dprint
+# contributor: HardDie
+# key: dprint
+# --
+{DPRINT("${Debug text}");} // DEBUG
