@@ -42,3 +42,14 @@ git diff --check		// Show whitespace
 git push --force-with-lease	// Push force and check for change repo
 git commit --allow-empty
 git merge --no-ff		// Always create a merge commit
+
+# Good example C comments
+/**
+ * Copies the default config to startup.
+ * Reads the default config file/partition,
+ * stripping the headers and validating the md5sum,
+ * and writes it to the startup config.
+ * @retval 0 if successful.
+ * @retval 1 if the default config does not exist.
+ * @retval other in case of error.
+ */
