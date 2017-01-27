@@ -8,18 +8,29 @@
 (tool-bar-mode -1)
 
 ;; Tab 4 symbol
-(setq-default indent-tabs-mode t)
-(setq-default tab-width 4)
-(setq-default c-basic-offset 4)
-(setq-default standart-indent    4)
-(setq-default lisp-body-indent   4)
-(setq lisp-indent-function  'common-lisp-indent-function)
-
 (defun my:indent-tabs ()
+    (setq-default indent-tabs-mode t)
+    (setq-default tab-width 4)
+    (setq-default c-basic-offset 4)
+    (setq-default standart-indent    4)
+    (setq-default lisp-body-indent   4)
+    (setq lisp-indent-function  'common-lisp-indent-function)
 	(setq-default indent-tabs-mode t)
 )
 (add-hook 'c++-mode-hook 'my:indent-tabs)
 (add-hook 'c-mode-hook 'my:indent-tabs)
+(add-hook 'js-mode-hook 'my:indent-tabs)
+
+(defun my:indent-tabs-html ()
+    (setq-default indent-tabs-mode t)
+    (setq-default tab-width 2)
+    (setq-default c-basic-offset 2)
+    (setq-default standart-indent    2)
+    (setq-default lisp-body-indent   2)
+    (setq lisp-indent-function  'common-lisp-indent-function)
+	(setq-default indent-tabs-mode t)
+)
+(add-hook 'html-mode-hook 'my:indent-tabs-html)
 
 ;; Delete full string instance
 (setq kill-whole-line t)
