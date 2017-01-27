@@ -53,3 +53,7 @@ git merge --no-ff		// Always create a merge commit
  * @retval 1 if the default config does not exist.
  * @retval other in case of error.
  */
+
+# Site for test regular expression
+https://www.debuggex.com/
+https://regexper.com/
