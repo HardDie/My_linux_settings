@@ -20,6 +20,7 @@
 (add-hook 'c++-mode-hook 'my:indent-tabs)
 (add-hook 'c-mode-hook 'my:indent-tabs)
 (add-hook 'js-mode-hook 'my:indent-tabs)
+(add-hook 'lua-mode-hook 'my:indent-tabs)
 
 (defun my:indent-tabs-html ()
     (setq-default indent-tabs-mode t)
