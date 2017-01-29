@@ -191,11 +191,11 @@ fi
 
 if [ $PLATFORM -eq 1 ]; then
 #ARCH
-    if [ -f ~/.local/lib/python3.5/site-packages/powerline/bindings/bash/powerline.sh ]; then
+    if [ -f ~/.local/lib/python3.6/site-packages/powerline/bindings/bash/powerline.sh ]; then
         powerline-daemon -q
         POWERLINE_BASH_CONTINUATION=1
         POWERLINE_BASH_SELECT=1
-        source ~/.local/lib/python3.5/site-packages/powerline/bindings/bash/powerline.sh
+        source ~/.local/lib/python3.6/site-packages/powerline/bindings/bash/powerline.sh
     fi
 alias less='/usr/share/vim/vim80/macros/less.sh -N'
 else
