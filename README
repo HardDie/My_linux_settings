@@ -57,3 +57,6 @@ git merge --no-ff		// Always create a merge commit
 # Site for test regular expression
 https://www.debuggex.com/
 https://regexper.com/
+
+# How install java on Linux
+http://www.backtrack-linux.org/wiki/index.php/Java_Install
