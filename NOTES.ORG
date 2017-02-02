@@ -1,0 +1,30 @@
+* Difference between folders
+  meld
+* Set TTL for packages
+  sudo iptables -t mangle -A POSTROUTING -o usb0 -j TTL --ttl-set 65
+* Git check repo whitespace
+  # Show whitespace
+  git diff --check
+  # Push force and check for change repo
+  git push --force-with-lease
+  git commit --allow-empty
+  # Always create a merge commit
+  git merge --no-ff
+* Good example C comments
+/**
+ * Copies the default config to startup.
+ * Reads the default config file/partition,
+ * stripping the headers and validating the md5sum,
+ * and writes it to the startup config.
+ * @param  msg  - destanation masage
+ * @retval 0 if successful.
+ * @retval 1 if the default config does not exist.
+ * @retval other in case of error.
+ */
+* Sites for test regular expression
+  https://www.debuggex.com/
+  https://regexper.com/
+* How install java on Linux
+  http://www.backtrack-linux.org/wiki/index.php/Java_Install
+* Mount disk on rw mode from ro mode
+  mount -o remount, rw /
