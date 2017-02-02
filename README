@@ -60,3 +60,6 @@ https://regexper.com/
 
 # How install java on Linux
 http://www.backtrack-linux.org/wiki/index.php/Java_Install
+
+# Mount disk on rw mode from ro mode
+mount -o remount, rw /
