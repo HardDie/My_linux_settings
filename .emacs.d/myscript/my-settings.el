@@ -76,7 +76,7 @@
 
 ;; Show-paren-mode settings
 (show-paren-mode t)                 ;; включить выделение выражений между {},[],()
-(setq show-paren-style 'expression) ;; выделить цветом выражения между {},[],()
+(setq show-paren-style 'mixed)      ;; выделить цветом выражения между {},[],()
 
 ;; Delete selection
 (delete-selection-mode t)
