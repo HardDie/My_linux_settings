@@ -3,7 +3,7 @@
 
 ;; HotKey
 (defun my-keys-add-hotkey ()
-  
+
 	(add-to-list 'my-keys-list '("M-I" scroll-down))
 	(add-to-list 'my-keys-list '("M-K" scroll-up))
 	(add-to-list 'my-keys-list '("M-J" move-beginning-of-line))
@@ -68,33 +68,33 @@
 	(add-to-list 'my-keys-list '("M-r" kill-word))
 	(add-to-list 'my-keys-list '("M-e" backward-kill-word))
 	(add-to-list 'my-keys-list '("M-g" kill-line))
-    (add-to-list 'my-keys-list '("M-G" backward-kill-line))
+	(add-to-list 'my-keys-list '("M-G" backward-kill-line))
 
-    (add-to-list 'my-keys-list '("<C-iso-lefttab>" next-buffer))
-    (add-to-list 'my-keys-list '("C-<tab>" previous-buffer))
-    
+	(add-to-list 'my-keys-list '("<C-iso-lefttab>" next-buffer))
+	(add-to-list 'my-keys-list '("C-<tab>" previous-buffer))
+
 ;	(add-to-list 'my-keys-list '("M-C-x" eval-last-sexp))
 ;	(add-to-list 'my-keys-list '("M-<f4>" save-buffers-kill-terminal))
 
-    (add-to-list 'my-keys-list '("C-b" bookmark-set))
-    (add-to-list 'my-keys-list '("M-b" bookmark-jump))
-    (add-to-list 'my-keys-list '("<f4>" bookmark-bmenu-list))
-    
-    (add-to-list 'my-keys-list '("C-;" comment-kill))
+	(add-to-list 'my-keys-list '("C-b" bookmark-set))
+	(add-to-list 'my-keys-list '("M-b" bookmark-jump))
+	(add-to-list 'my-keys-list '("<f4>" bookmark-bmenu-list))
 
-    (add-to-list 'my-keys-list '("C-n" next-history-element))
-    (add-to-list 'my-keys-list '("C-p" previous-history-element))
+	(add-to-list 'my-keys-list '("C-;" comment-kill))
 
-    (add-to-list 'my-keys-list '("C-c p R" projectile-regenerate-tags))
-    (add-to-list 'my-keys-list '("M->" pop-tag-mark))
-    (add-to-list 'my-keys-list '("C-q" exchange-point-and-mark))
-    (add-to-list 'my-keys-list '("C-`" quoted-insert))
+	(add-to-list 'my-keys-list '("C-n" next-history-element))
+	(add-to-list 'my-keys-list '("C-p" previous-history-element))
+
+	(add-to-list 'my-keys-list '("C-c p R" projectile-regenerate-tags))
+	(add-to-list 'my-keys-list '("M->" pop-tag-mark))
+	(add-to-list 'my-keys-list '("C-q" exchange-point-and-mark))
+	(add-to-list 'my-keys-list '("C-`" quoted-insert))
 )
 
 ;; Hook for search mode
 (defun isearch-keybindings (my-key-map)
-  (define-key my-key-map (kbd "M-y") 'isearch-repeat-forward)
-  (define-key my-key-map (kbd "M-Y") 'isearch-repeat-backward))
+	(define-key my-key-map (kbd "M-y") 'isearch-repeat-forward)
+	(define-key my-key-map (kbd "M-Y") 'isearch-repeat-backward))
 (add-hook 'isearch-mode-hook (lambda () (isearch-keybindings isearch-mode-map)))
 
 (provide 'my-keys-init)
