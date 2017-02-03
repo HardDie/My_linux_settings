@@ -4,14 +4,11 @@
 # key: stddbg
 # --
 #include <string.h>
-#define DPRINT(__fmt,...)												\
-	FILE* stddbg = fopen("/dev/console", "a");							\
-	if (stddbg != NULL) {												\
-		fprintf(stddbg,													\
-				"dbg\t%s(%s:%d)\t"										\
-				__fmt													\
-				"\n",													\
-				strstr(__FILE__, "src/"), __FUNCTION__, __LINE__,		\
-				##__VA_ARGS__);											\
-		fclose(stddbg);													\
-	}                           // DEBUG
+#define DPRINT(__fmt,...)                                               \
+	FILE* stddbg = fopen("/dev/console", "a");                          \
+	if (stddbg != NULL) {                                               \
+		fprintf(stddbg, "dbg\t%s(%s:%d)\t"__fmt"\n",                    \
+		        strstr(__FILE__, "src/"), __FUNCTION__, __LINE__,       \
+		        ##__VA_ARGS__);                                         \
+		fclose(stddbg);                                                 \
+	} /* DEBUG */
