@@ -213,3 +213,7 @@
 (yas-reload-all)
 (add-hook 'c++-mode-hook 'yas-minor-mode)
 (add-hook 'c-mode-hook 'yas-minor-mode)
+
+;; Diff highlight
+(global-diff-hl-mode)
+(diff-hl-flydiff-mode 1)
