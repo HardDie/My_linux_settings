@@ -217,3 +217,6 @@
 ;; Diff highlight
 (global-diff-hl-mode)
 (diff-hl-flydiff-mode 1)
+
+;; Highlight #if 0 ... #endif
+(add-hook 'c-mode-common-hook 'my-c-mode-common-hook)
