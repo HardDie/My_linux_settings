@@ -89,6 +89,7 @@
 	(add-to-list 'my-keys-list '("M->" pop-tag-mark))
 	(add-to-list 'my-keys-list '("C-q" exchange-point-and-mark))
 	(add-to-list 'my-keys-list '("C-`" quoted-insert))
+	(add-to-list 'my-keys-list '("C-SPC" company-complete-common))
 )
 
 ;; Hook for search mode

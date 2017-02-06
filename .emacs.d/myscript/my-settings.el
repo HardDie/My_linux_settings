@@ -137,46 +137,46 @@
           (lambda () (yafolding-mode)))
 
 ;; Imenu
-(require 'imenu)
-(setq imenu-auto-rescan      t) ;; автоматически обновлять список функций в буфере
-(setq imenu-use-popup-menu nil) ;; диалоги Imenu только в минибуфере
-(global-set-key (kbd "<f6>") 'imenu) ;; вызов Imenu на F6
+;(require 'imenu)
+;(setq imenu-auto-rescan      t) ;; автоматически обновлять список функций в буфере
+;(setq imenu-use-popup-menu nil) ;; диалоги Imenu только в минибуфере
+;(global-set-key (kbd "<f6>") 'imenu) ;; вызов Imenu на F6
 
 ;; Save session
 (desktop-save-mode t)
 
 ; start auto-complete with emacs
-(require 'auto-complete)
+;(require 'auto-complete)
 ; do default config for auto-complete
-(require 'auto-complete-config)
-(ac-config-default)
+;(require 'auto-complete-config)
+;(ac-config-default)
 
 ; let's define a function which initializes auto-complete-c-headers and gets called for c/c++ hooks
-(defun my:ac-c-header-init ()
-  (require 'auto-complete-c-headers)
-  (add-to-list 'ac-sources 'ac-source-c-headers)
-  (add-to-list 'achead:include-directories '"/usr/include/c++/4.8")
-  (add-to-list 'achead:include-directories '"/usr/lib/gcc/x86_64-linux-gnu/4.8/include")
-  (add-to-list 'achead:include-directories '"/usr/include/x86_64-linux-gnu/c++/4.8")
-  (add-to-list 'achead:include-directories '"/usr/include/c++/4.8/backward")
-  (add-to-list 'achead:include-directories '"/usr/local/include")
-  (add-to-list 'achead:include-directories '"/usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed")
-  (add-to-list 'achead:include-directories '"/usr/include/x86_64-linux-gnu")
-  (add-to-list 'achead:include-directories '"/usr/include")
+;; (defun my:ac-c-header-init ()
+;;   (require 'auto-complete-c-headers)
+;;   (add-to-list 'ac-sources 'ac-source-c-headers)
+;;   (add-to-list 'achead:include-directories '"/usr/include/c++/4.8")
+;;   (add-to-list 'achead:include-directories '"/usr/lib/gcc/x86_64-linux-gnu/4.8/include")
+;;   (add-to-list 'achead:include-directories '"/usr/include/x86_64-linux-gnu/c++/4.8")
+;;   (add-to-list 'achead:include-directories '"/usr/include/c++/4.8/backward")
+;;   (add-to-list 'achead:include-directories '"/usr/local/include")
+;;   (add-to-list 'achead:include-directories '"/usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed")
+;;   (add-to-list 'achead:include-directories '"/usr/include/x86_64-linux-gnu")
+;;   (add-to-list 'achead:include-directories '"/usr/include")
 
-)
-(add-hook 'c++-mode-hook 'my:ac-c-header-init)
-(add-hook 'c-mode-hook 'my:ac-c-header-init)
+;; )
+;; (add-hook 'c++-mode-hook 'my:ac-c-header-init)
+;; (add-hook 'c-mode-hook 'my:ac-c-header-init)
 
 ;; On semantic mode
-(semantic-mode 1)
-(defun my:add-semantic-to-autocomplete() 
-  (add-to-list 'ac-sources 'ac-source-semantic)
-)
-(add-hook 'c-mode-common-hook 'my:add-semantic-to-autocomplete)
-(global-ede-mode 1)
-;(ede-cpp-root-project "my project" :file "~/cpp_proj/main.cpp" :include-path '("/src"))
-(global-semantic-idle-scheduler-mode 1)
+;; (semantic-mode 1)
+;; (defun my:add-semantic-to-autocomplete() 
+;;   (add-to-list 'ac-sources 'ac-source-semantic)
+;; )
+;; (add-hook 'c-mode-common-hook 'my:add-semantic-to-autocomplete)
+;; (global-ede-mode 1)
+;; ;(ede-cpp-root-project "my project" :file "~/cpp_proj/main.cpp" :include-path '("/src"))
+;; (global-semantic-idle-scheduler-mode 1)
 
 ;; For whitespace-mode
 (setq whitespace-style '(face trailing tabs spaces lines newline empty
@@ -190,7 +190,7 @@
 (provide 'my-settings)
 
 ;; For working tags
-(setq projectile-tags-command "ctags-exuberant -Re -f \"%s\" %s")
+;(setq projectile-tags-command "ctags-exuberant -Re -f \"%s\" %s")
 
 ;; Powerline
 (require 'airline-themes)
@@ -220,3 +220,27 @@
 
 ;; Highlight #if 0 ... #endif
 (add-hook 'c-mode-common-hook 'my-c-mode-common-hook)
+
+;; irony
+(add-hook 'c++-mode-hook 'irony-mode)
+(add-hook 'c-mode-hook 'irony-mode)
+(add-hook 'objc-mode-hook 'irony-mode)
+;; replace the `completion-at-point' and `complete-symbol' bindings in
+;; irony-mode's buffers by irony-mode's function
+(defun my-irony-mode-hook ()
+    (define-key irony-mode-map [remap completion-at-point]
+        'irony-completion-at-point-async)
+    (define-key irony-mode-map [remap complete-symbol]
+        'irony-completion-at-point-async))
+(add-hook 'irony-mode-hook 'my-irony-mode-hook)
+(add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
+
+;; company
+(add-hook 'after-init-hook 'global-company-mode)
+(setq company-idle-delay              nil
+      company-minimum-prefix-length   2
+      company-show-numbers            t
+      company-tooltip-limit           20
+      company-dabbrev-downcase        nil
+      company-backends                '((company-irony company-gtags))
+      )
