@@ -244,3 +244,6 @@
       company-dabbrev-downcase        nil
       company-backends                '((company-irony company-gtags))
       )
+
+;; smart tabs
+(smart-tabs-insinuate 'c 'javascript)
