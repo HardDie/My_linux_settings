@@ -1,4 +1,6 @@
 set rtp+=$HOME/.local/lib/python2.7/site-packages/powerline/bindings/vim/
+set incsearch
+set hlsearch
 
 " Always show statusline
 set laststatus=2
