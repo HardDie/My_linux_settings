@@ -220,5 +220,5 @@ export EDITOR="/usr/bin/emacsclient -c --socket-name=emacs"
 export MALLOC_TRACE=/tmp/malloc_trace
 
 # If not running interactively, do not do anything
-[[ $- != *i* ]] && return
-[[ -z "$TMUX" ]] && exec tmux -2
+#[[ $- != *i* ]] && return
+#[[ -z "$TMUX" ]] && exec tmux -2
