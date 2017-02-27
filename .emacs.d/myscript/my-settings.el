@@ -146,27 +146,26 @@
 (desktop-save-mode t)
 
 ; start auto-complete with emacs
-;(require 'auto-complete)
+(require 'auto-complete)
 ; do default config for auto-complete
-;(require 'auto-complete-config)
-;(ac-config-default)
+(require 'auto-complete-config)
+(ac-config-default)
 
 ; let's define a function which initializes auto-complete-c-headers and gets called for c/c++ hooks
-;; (defun my:ac-c-header-init ()
-;;   (require 'auto-complete-c-headers)
-;;   (add-to-list 'ac-sources 'ac-source-c-headers)
-;;   (add-to-list 'achead:include-directories '"/usr/include/c++/4.8")
-;;   (add-to-list 'achead:include-directories '"/usr/lib/gcc/x86_64-linux-gnu/4.8/include")
-;;   (add-to-list 'achead:include-directories '"/usr/include/x86_64-linux-gnu/c++/4.8")
-;;   (add-to-list 'achead:include-directories '"/usr/include/c++/4.8/backward")
-;;   (add-to-list 'achead:include-directories '"/usr/local/include")
-;;   (add-to-list 'achead:include-directories '"/usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed")
-;;   (add-to-list 'achead:include-directories '"/usr/include/x86_64-linux-gnu")
-;;   (add-to-list 'achead:include-directories '"/usr/include")
-
-;; )
-;; (add-hook 'c++-mode-hook 'my:ac-c-header-init)
-;; (add-hook 'c-mode-hook 'my:ac-c-header-init)
+(defun my:ac-c-header-init ()
+  (require 'auto-complete-c-headers)
+  (add-to-list 'ac-sources 'ac-source-c-headers)
+  (add-to-list 'achead:include-directories '"/usr/include/c++/4.8")
+  (add-to-list 'achead:include-directories '"/usr/lib/gcc/x86_64-linux-gnu/4.8/include")
+  (add-to-list 'achead:include-directories '"/usr/include/x86_64-linux-gnu/c++/4.8")
+  (add-to-list 'achead:include-directories '"/usr/include/c++/4.8/backward")
+  (add-to-list 'achead:include-directories '"/usr/local/include")
+  (add-to-list 'achead:include-directories '"/usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed")
+  (add-to-list 'achead:include-directories '"/usr/include/x86_64-linux-gnu")
+  (add-to-list 'achead:include-directories '"/usr/include")
+)
+(add-hook 'c++-mode-hook 'my:ac-c-header-init)
+(add-hook 'c-mode-hook 'my:ac-c-header-init)
 
 ;; On semantic mode
 ;; (semantic-mode 1)
@@ -190,7 +189,7 @@
 (provide 'my-settings)
 
 ;; For working tags
-;(setq projectile-tags-command "ctags-exuberant -Re -f \"%s\" %s")
+(setq projectile-tags-command "ctags-exuberant -Re -f \"%s\" %s")
 
 ;; Powerline
 (require 'airline-themes)
@@ -247,3 +246,6 @@
 
 ;; smart tabs
 (smart-tabs-insinuate 'c 'javascript)
+
+;; patch for projectile
+;(setq projectile-tags-command "ctags-exuberant -Re -f \"%s\" %s")
