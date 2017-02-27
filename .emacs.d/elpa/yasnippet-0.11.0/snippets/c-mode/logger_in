@@ -1,6 +1,0 @@
-# -*- mode: snippet -*-
-# name: logger_in
-# contributor: HardDie
-# key: logger_in
-# --
-printf("wl dbg\tEntering %s (%s:%d)\n", __FUNCTION__, __FILE__, __LINE__); /* DEBUG */

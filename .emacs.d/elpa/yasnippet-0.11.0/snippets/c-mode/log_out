@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: log_out
+# contributor: HardDie
+# key: log_out
+# --
+{DPRINT("Leave");} // DEBUG

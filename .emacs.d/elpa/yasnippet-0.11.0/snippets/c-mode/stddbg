@@ -4,11 +4,20 @@
 # key: stddbg
 # --
 #include <string.h>
-#define DPRINT(__fmt,...)                                               \
-	FILE* stddbg = fopen("/dev/console", "a");                          \
-	if (stddbg != NULL) {                                               \
-		fprintf(stddbg, "dbg\t%s(%s:%d)\t"__fmt"\n",                    \
-		        strstr(__FILE__, "src/"), __FUNCTION__, __LINE__,       \
-		        ##__VA_ARGS__);                                         \
-		fclose(stddbg);                                                 \
+static unsigned int __indent = 0;
+#define DPRINT(__fmt,...) \
+	FILE* stddbg = fopen("/dev/console", "a"); \
+	if (stddbg != NULL) { \
+		const char *tab = "  "; \
+		if (0 == strcmp(__fmt, "Enter")) { \
+			int i = 0; fprintf(stddbg, "dbg\t%s(%d)\t", strstr(__FILE__, "src/"), __LINE__); \
+			for (i = 0; i < __indent; i++) fprintf(stddbg, tab); \
+			fprintf(stddbg, "%s: %s()\n", __fmt, __FUNCTION__); __indent++; \
+		} else if (0 == strcmp(__fmt, "Leave") || 0 == strcmp(__fmt, "Retrn")) { \
+			int i = 0; if (__indent > 0) __indent--; \
+			fprintf(stddbg, "dbg\t%s(%d)\t", strstr(__FILE__, "src/"), __LINE__); \
+			for (i = 0; i < __indent; i++) fprintf(stddbg, tab); \
+			fprintf(stddbg, "%s: %s()\n", __fmt, __FUNCTION__); \
+		} else { fprintf(stddbg, "dbg\t%s(%s:%d)\t"__fmt"\n", strstr(__FILE__, "src/"), __FUNCTION__, __LINE__, ##__VA_ARGS__); } \
+		fclose(stddbg); \
 	} /* DEBUG */

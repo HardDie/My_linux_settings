@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: log_in
+# contributor: HardDie
+# key: log_in
+# --
+{DPRINT("Enter");} // DEBUG

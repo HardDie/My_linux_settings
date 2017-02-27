@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: log_err
+# contributor: HardDie
+# key: log_err
+# --
+{DPRINT("Retrn");} // DEBUG
