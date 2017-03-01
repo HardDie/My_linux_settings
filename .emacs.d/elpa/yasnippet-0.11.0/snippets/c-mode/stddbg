@@ -3,21 +3,24 @@
 # contributor: HardDie
 # key: stddbg
 # --
+/* DEBUG */
 #include <string.h>
 static unsigned int __indent = 0;
+#define __my_print(...) fprintf(stddbg, ##__VA_ARGS__)
+#define __get_line snprintf(__line, 21, "%d", __LINE__)
+#define __indent_print for (i = 0; i < __indent; i++) __my_print(tab)
+#define __log_print(__fmt, ...) __my_print(__fmt": %s():[%s] - %s\n", ##__VA_ARGS__, __FUNCTION__, __line, strstr(__FILE__, "src/"))
 #define DPRINT(__fmt,...) \
 	FILE* stddbg = fopen("/dev/console", "a"); \
 	if (stddbg != NULL) { \
-		const char *tab = "  "; \
+		int i = 0; const char *tab = "|  "; char __line[21]; __my_print("dbg  "); \
 		if (0 == strcmp(__fmt, "Enter")) { \
-			int i = 0; fprintf(stddbg, "dbg\t%s(%d)\t", strstr(__FILE__, "src/"), __LINE__); \
-			for (i = 0; i < __indent; i++) fprintf(stddbg, tab); \
-			fprintf(stddbg, "%s: %s()\n", __fmt, __FUNCTION__); __indent++; \
+			__get_line; __indent_print; __indent++; __log_print(__fmt); \
 		} else if (0 == strcmp(__fmt, "Leave") || 0 == strcmp(__fmt, "Retrn")) { \
-			int i = 0; if (__indent > 0) __indent--; \
-			fprintf(stddbg, "dbg\t%s(%d)\t", strstr(__FILE__, "src/"), __LINE__); \
-			for (i = 0; i < __indent; i++) fprintf(stddbg, tab); \
-			fprintf(stddbg, "%s: %s()\n", __fmt, __FUNCTION__); \
-		} else { fprintf(stddbg, "dbg\t%s(%s:%d)\t"__fmt"\n", strstr(__FILE__, "src/"), __FUNCTION__, __LINE__, ##__VA_ARGS__); } \
+			__get_line; if (__indent>0)__indent--; __indent_print; __log_print(__fmt); \
+		} else { \
+			__get_line; __indent_print; __log_print(__fmt, ##__VA_ARGS__); \
+		} \
 		fclose(stddbg); \
-	} /* DEBUG */
+	}
+/* DEBUG */
