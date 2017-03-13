@@ -28,3 +28,5 @@
   http://www.backtrack-linux.org/wiki/index.php/Java_Install
 * Mount disk on rw mode from ro mode
   mount -o remount, rw /
+* Emacs. How enable merge conflict resolve mode
+  vc-resolve-conflicts
