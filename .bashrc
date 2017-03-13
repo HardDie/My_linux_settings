@@ -197,7 +197,7 @@ if [ $PLATFORM -eq 1 ]; then
         POWERLINE_BASH_SELECT=1
         source ~/.local/lib/python3.6/site-packages/powerline/bindings/bash/powerline.sh
     fi
-alias less='/usr/share/vim/vim80/macros/less.sh -N'
+alias vless='/usr/share/vim/vim80/macros/less.sh -N'
 else
 #UBUNTU
     if [ -f ~/.local/lib/python2.7/site-packages/powerline/bindings/bash/powerline.sh ]; then
@@ -206,7 +206,7 @@ else
         POWERLINE_BASH_SELECT=1
         source ~/.local/lib/python2.7/site-packages/powerline/bindings/bash/powerline.sh
     fi
-alias less='/usr/share/vim/vim74/macros/less.sh -N'
+alias vless='/usr/share/vim/vim74/macros/less.sh -N'
 fi
 # end powerline
 
