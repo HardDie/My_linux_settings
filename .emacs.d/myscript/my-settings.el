@@ -143,7 +143,7 @@
 ;(global-set-key (kbd "<f6>") 'imenu) ;; вызов Imenu на F6
 
 ;; Save session
-(desktop-save-mode t)
+;(desktop-save-mode t)
 
 ; start auto-complete with emacs
 (require 'auto-complete)

@@ -90,6 +90,9 @@
 	(add-to-list 'my-keys-list '("C-q" exchange-point-and-mark))
 	(add-to-list 'my-keys-list '("C-`" quoted-insert))
 	(add-to-list 'my-keys-list '("C-SPC" company-complete-common))
+
+    (add-to-list 'my-keys-list '("C-c o" desktop+-load))
+    (add-to-list 'my-keys-list '("C-c s" desktop+-create))
 )
 
 ;; Hook for search mode
