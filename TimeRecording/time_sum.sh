@@ -1,6 +1,7 @@
 #!/bin/bash
 if [[ $# -lt 2 ]]; then
     echo 'Too few argument';
+    echo 'Try: '$0' [Times/1:15 0:11] [Year Month/2017 mar]'
     exit;
 fi;
 

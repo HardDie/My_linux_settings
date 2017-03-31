@@ -1,6 +1,7 @@
 #!/bin/bash
 if [[ $# -lt 2 ]]; then
     echo 'Too few argument';
+    echo 'Try: '$0' [lower_number substracted/12:06 4:20]'
     exit;
 fi;
 string1=$2;
