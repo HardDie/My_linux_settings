@@ -1,12 +1,12 @@
 #!/bin/bash
 if [[ $# -lt 2 ]]; then
     echo 'Too few argument';
-    echo 'Try: '$0' [Times/1:15 0:11] [Year Month/2017 mar]'
+    echo 'Try: '$0' [Times/1:15 0:11] [Year Month/2017 mar]';
     exit;
 fi;
 
 result_sum=0;
-FILE=~/Desktop/time.log
+FILE=~/Desktop/time.log;
 
 if [[ -z `echo $1 | grep -v :` ]]; then
     # If input time
