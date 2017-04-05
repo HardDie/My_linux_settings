@@ -21,7 +21,7 @@
 DESC="Logging on and off PC"
 NAME=time_logger
 SCRIPTNAME=/etc/init.d/$NAME
-FILE=~/Desktop/time.log
+FILE=/home/oleg/Desktop/time.log
 
 #
 # Function that starts the daemon/service
