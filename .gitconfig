@@ -6,6 +6,6 @@
 [alias]
 	llog = log --oneline --decorate --graph --all
 	sts = status --short --branch
-	glog = log --graph --abbrev-commit --decorate --all --format=format:\"%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(dim white) - %an%C(reset) - %C(bold green)(%ar)%C(bold yellow)%d%n %C(white)%s\"
+	glog = log --graph --abbrev-commit --decorate --all --format=format:\"%C(bold blue)%h%C(dim white) %C(reset)%s%n    %C(bold green)(%ar) %C(bold yellow)%d %C(dim white)%an\"
 [push]
 	default = simple
