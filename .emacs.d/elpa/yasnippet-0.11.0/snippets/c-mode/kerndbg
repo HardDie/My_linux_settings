@@ -1,0 +1,15 @@
+# -*- mode: snippet -*-
+# name: kerndbg
+# contributor: HardDie
+# key: kerndbg
+# --
+/* DEBUG */
+static unsigned int __indent = 0;
+#define __my_print(__fmt, ...) printk(KERN_INFO __fmt, ##__VA_ARGS__)
+#define __indent_print() int __iii; for (__iii = 0; __iii < __indent; __iii++) __my_print("|  ")
+#define __log_print(__fmt, ...) __my_print("dbg  "__fmt": %s():[%d]\n", ##__VA_ARGS__, __FUNCTION__, __LINE__)
+#define DPRINT(__fmt, ...)	  \
+		if ((__indent>0) && (0 == strncmp(__fmt, "Leave", 5) || 0 == strncmp(__fmt, "Retrn", 5))) { __indent--; } \
+		__indent_print(); __log_print(__fmt, ##__VA_ARGS__); \
+		if (0 == strncmp(__fmt, "Enter", 5)) { __indent++; }
+/* DEBUG */

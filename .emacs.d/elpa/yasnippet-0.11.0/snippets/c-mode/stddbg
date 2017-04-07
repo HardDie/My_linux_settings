@@ -6,21 +6,15 @@
 /* DEBUG */
 #include <string.h>
 static unsigned int __indent = 0;
-#define __my_print(...) fprintf(stddbg, ##__VA_ARGS__)
-#define __get_line snprintf(__line, 21, "%d", __LINE__)
-#define __indent_print for (i = 0; i < __indent; i++) __my_print(tab)
-#define __log_print(__fmt, ...) __my_print(__fmt": %s():[%s] - %s\n", ##__VA_ARGS__, __FUNCTION__, __line, strstr(__FILE__, "src/"))
-#define DPRINT(__fmt,...) \
-	FILE* stddbg = fopen("/dev/console", "a"); \
+#define __my_print(__fmt, ...) fprintf(stddbg, __fmt, ##__VA_ARGS__)
+#define __indent_print() int __iii; for (__iii = 0; __iii < __indent; __iii++) __my_print("|  ")
+#define __log_print(__fmt, ...) __my_print("dbg  "__fmt": %s():[%d] - %s\n", ##__VA_ARGS__, __FUNCTION__, __LINE__, __FILE__ ? __FILE__ + 35 : "NULL")
+#define DPRINT(__fmt, ...) \
+	FILE* stddbg = fopen("/dev/console", "a"); while(0){__indent=0;} \
 	if (stddbg != NULL) { \
-		int i = 0; const char *tab = "|  "; char __line[21]; __my_print("dbg  "); \
-		if (0 == strcmp(__fmt, "Enter")) { \
-			__get_line; __indent_print; __indent++; __log_print(__fmt); \
-		} else if (0 == strcmp(__fmt, "Leave") || 0 == strcmp(__fmt, "Retrn")) { \
-			__get_line; if (__indent>0)__indent--; __indent_print; __log_print(__fmt); \
-		} else { \
-			__get_line; __indent_print; __log_print(__fmt, ##__VA_ARGS__); \
-		} \
-		fclose(stddbg); \
+		if ((__indent>0) && (0 == strncmp(__fmt, "Leave", 5) || 0 == strncmp(__fmt, "Retrn", 5))) { __indent--; } \
+		__indent_print(); __log_print(__fmt, ##__VA_ARGS__); \
+		if (0 == strncmp(__fmt, "Enter", 5)) { __indent++; } \
+		fflush(stddbg); fclose(stddbg); \
 	}
 /* DEBUG */
