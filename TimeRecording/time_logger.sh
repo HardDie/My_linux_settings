@@ -30,24 +30,38 @@ FILE=/home/oleg/Desktop/time.log
 print_month() {
     echo >> $FILE;
     echo >> $FILE;
-    month="--------------------"`date +"%B"`"--------------------";
-    echo $month >> $FILE;
+    echo "         --- "`date +"%B"`" ---" >> $FILE;
+    echo >> $FILE;
 }
 
 calc_month_time() {
     result_sum=0;
+    result_hours=0;
+    result_minutes=0;
     # Uptime with hours and minutes
-    dates_for_sum=`cat $FILE | grep -A 2 "$last_year" | grep -iA 2 "$last_month" | grep "up" | awk '$3 ~/hours/' | awk '{ print $2":"$4 }'`;
+    dates_for_sum=`cat $FILE | grep -A 2 "$last_year" | grep -iA 2 "$last_month" | grep "up" | awk '$3 ~/hour/' | awk '{ print $2":"$4 }'`;
     # Add Uptime with only minutes
-    dates_for_sum=$dates_for_sum" "`cat $FILE | grep -A 2 "$last_year" | grep -iA 2 "$last_month" | grep "up" | awk '$3 ~/minutes/' | awk '{ print "00:"$2 }'`;
+    dates_for_sum=$dates_for_sum" "`cat $FILE | grep -A 2 "$last_year" | grep -iA 2 "$last_month" | grep "up" | awk '$3 ~/minute/' | awk '{ print "00:"$2 }'`;
     # Calculate all time
     if [[ ! -z $dates_for_sum ]]; then
         for i in $dates_for_sum; do
-            StartDate=$(date -u -d "$result_sum" +"%s");
-            FinalDate=$(date -u -d "$i" +"%s");
-            result_sum=$(date -u -d "0 $StartDate sec + $FinalDate sec" +"%H:%M:%S");
+            hours=$(echo $i | awk -F':' '{ print $1 }');
+            minutes=$(echo $i | awk -F':' '{ print $2 }');
+
+            if [[ -z $hours ]]; then
+                hours=0;
+            fi
+            if [[ -z $minutes ]]; then
+                minutes=0;
+            fi
+
+            result_hours=$(($result_hours + $hours));
+            result_minutes=$(($result_minutes + $minutes));
         done;
     fi;
+    result_hours=$(($result_hours + $result_minutes / 60));
+    result_minutes=$(($result_minutes % 60));
+    result_sum=$(echo "$result_hours:$result_minutes");
 }
 
 do_start()
@@ -79,6 +93,7 @@ do_stop()
     uptime -p >> $FILE;
     echo "----------------------------------------------------" >> $FILE;
 }
+
 
 case "$1" in
     start)

@@ -5,7 +5,8 @@ if [[ $# -lt 2 ]]; then
     exit;
 fi;
 
-result_sum=0;
+result_hours=0;
+result_minutes=0;
 FILE=~/Desktop/time.log;
 
 if [[ -z `echo $1 | grep -v :` ]]; then
@@ -15,15 +16,26 @@ else
     # If input year and month
     last_year=$1;
     last_month=$2;
-    source=`cat $FILE | grep -A 2 "$last_year" | grep -iA 2 "$last_month" | grep "up" | awk '$3 ~/hours/' | awk '{ print $2":"$4 }'`;
-    source=$source" "`cat $FILE | grep -A 2 "$last_year" | grep -iA 2 "$last_month" | grep "up" | awk '$3 ~/minutes/' | awk '{ print "00:"$2 }'`;
+    source=`cat $FILE | grep -A 2 "$last_year" | grep -iA 2 "$last_month" | grep "up" | awk '$3 ~/hour/' | awk '{ print $2":"$4 }'`;
+    source=$source" "`cat $FILE | grep -A 2 "$last_year" | grep -iA 2 "$last_month" | grep "up" | awk '$3 ~/minute/' | awk '{ print "00:"$2 }'`;
 fi;
 
 if [[ ! -z $source ]]; then
     for i in $source; do
-        StartDate=$(date -u -d "$result_sum" +"%s");
-        FinalDate=$(date -u -d "$i" +"%s");
-        result_sum=$(date -u -d "0 $StartDate sec + $FinalDate sec" +"%H:%M:%S");
+        hours=$(echo $i | awk -F':' '{ print $1 }');
+        minutes=$(echo $i | awk -F':' '{ print $2 }');
+
+        if [[ -z $hours ]]; then
+            hours=0;
+        fi
+        if [[ -z $minutes ]]; then
+            minutes=0;
+        fi
+
+        result_hours=$(($result_hours + $hours));
+        result_minutes=$(($result_minutes + $minutes));
     done
 fi;
-echo $result_sum;
+result_hours=$(($result_hours + $result_minutes / 60));
+result_minutes=$(($result_minutes % 60));
+echo "result time = "$result_hours":"$result_minutes;
