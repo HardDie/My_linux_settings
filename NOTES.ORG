@@ -2,6 +2,8 @@
   meld
 * Set TTL for packages
   sudo iptables -t mangle -A POSTROUTING -o usb0 -j TTL --ttl-set 65
+* Setup NAT
+  sudo iptables -t nat -A POSTROUTING -o ppp0 -j MASQUERADE
 * Git check repo whitespace
   # Show whitespace
   git diff --check
