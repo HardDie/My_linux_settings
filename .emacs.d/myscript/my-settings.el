@@ -189,7 +189,7 @@
 (provide 'my-settings)
 
 ;; For working tags
-(setq projectile-tags-command "ctags-exuberant -Re -f \"%s\" %s")
+(setq projectile-tags-command "ctags -Re -f \"%s\" %s")
 
 ;; Powerline
 (require 'airline-themes)
