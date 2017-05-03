@@ -1,16 +1,15 @@
 * How install powerline on bash, tmux and vim
   sudo apt-get install python-pip
   pip install --user git+git://github.com/Lokaltog/powerline
-  vim ~/.bashrc
 * Install powerline for git
   sudo pip install powerline-gitstatus
-* How install tmux
-  sudo apt-get install automake autoconfig libevent-dev libncurses5-dev
-  git clone https://github.com/tmux/tmux.git
 * How watch all include directories gcc
   gcc -xc++ -E -v -
 * Install tags for emacs
-  sudo apt-get install exuberant-ctags
+** UBUNTU
+   sudo apt-get install exuberant-ctags
+** ARCH
+   sudo pacman -S ctags
 * Install format for emacs
   sudo apt-get install clang-format-3.8
   sudo ln -s /usr/bin/clang-format-3.8 /usr/bin/clang-format
