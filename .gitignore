@@ -94,3 +94,4 @@ VirtualBox VMs/
 .gksu.lock
 .steam*
 .pulse-cookie
+.emacs.d/irony/*
