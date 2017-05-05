@@ -3,4 +3,5 @@
 # contributor: HardDie
 # key: log_in
 # --
-{DPRINT("Enter");} // DEBUG
+const int DFLAG = 1; // DEBUG
+{DPRINT(DFLAG, "Enter");} // DEBUG

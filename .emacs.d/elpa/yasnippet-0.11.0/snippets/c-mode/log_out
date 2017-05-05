@@ -3,4 +3,4 @@
 # contributor: HardDie
 # key: log_out
 # --
-{DPRINT("Leave");} // DEBUG
+{DPRINT(DFLAG, "Leave");} // DEBUG
