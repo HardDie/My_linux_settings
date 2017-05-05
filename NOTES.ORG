@@ -32,3 +32,17 @@
   mount -o remount, rw /
 * Emacs. How enable merge conflict resolve mode
   vc-resolve-conflicts
+* How use ip application
+** setup route
+   ip route add default via IP
+   ip route del default
+   ip route flush dev eth0
+** setup link
+   ip link set eth0 up
+** setup static ip
+   ip addr add 192.168.1.1/24 brd 192.168.1.255 dev eth0
+   ip addr flush dev eth0
+** connect to wifi
+   iwlist wlan0 scanning
+   ip link set wlan0 up
+   iwconfig wlan0 essid SSID
