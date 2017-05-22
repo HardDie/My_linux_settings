@@ -4,8 +4,14 @@
 # key: kerndbg
 # --
 /* DEBUG */
+static unsigned int __indent = 0;
 #define __my_print(__fmt, ...) printk(KERN_INFO __fmt, ##__VA_ARGS__)
-#define __log_print(__fmt, ...) __my_print("dbg  "__fmt": %s():[%d]\n", ##__VA_ARGS__, __FUNCTION__, __LINE__)
+#define __log_print(__fmt, ...) __my_print("dbg  %d)"__fmt": %s():[%d]\n", __indent,  ##__VA_ARGS__, __FUNCTION__, __LINE__)
 #define DPRINT(__flag, __fmt, ...) \
-	if (__flag) __log_print(__fmt, ##__VA_ARGS__);
+	if (__flag) { \
+		while(0){__indent=0;} \
+		if ((__indent>0) && (0 == strncmp(__fmt, "Leave", 5) || 0 == strncmp(__fmt, "Retrn", 5))) { __indent--; } \
+		__log_print(__fmt, ##__VA_ARGS__); \
+		if (0 == strncmp(__fmt, "Enter", 5)) { __indent++; } \
+	}
 /* DEBUG */
