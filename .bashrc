@@ -211,7 +211,6 @@ fi
 # end powerline
 
 # my aliases
-alias cppcheck='/home/harddie/Projects/cppcheck/cppcheck'
 alias emx='emacsclient -c --socket-name=emacs'
 alias femx='emacs --no-desktop --name=temp_emacs'
 alias tmux='tmux -2'
