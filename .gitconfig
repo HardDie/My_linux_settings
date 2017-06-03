@@ -6,6 +6,7 @@
 [alias]
 	llog = log --oneline --decorate --graph --all
 	sts = status --short --branch
-	lg = log --graph --all --pretty=format:\"%C(yellow)%h%C(auto)%d%C(reset) %s %C(bold green)(%cr) %C(bold blue)<%an>%C(reset)\"
+    lg = log --graph --all --pretty=format:\"%C(yellow)%h%C(auto)%d%C(reset) %s %C(bold blue)<%an>%C(reset)\"
+	datelog = log --graph --all --pretty=format:\"%C(yellow)%h%C(auto)%d%C(reset) %s %C(bold green)(%cr) %C(bold blue)<%an>%C(reset)\"
 [push]
 	default = simple
