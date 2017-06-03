@@ -219,5 +219,11 @@ export EDITOR=vim
 export MALLOC_TRACE=/tmp/malloc_trace
 
 # If not running interactively, do not do anything
-#[[ $- != *i* ]] && return
-#[[ -z "$TMUX" ]] && exec tmux -2
+if [[ -z $TMUX ]]; then
+    echo -n 'Start tmux? [Y/n]: ';
+    read answer;
+    if [[ $answer != "n" && $answer != "N" ]]; then
+        [[ $- != *i* ]] && return
+        [[ -z "$TMUX" ]] && exec tmux -2
+    fi
+fi
