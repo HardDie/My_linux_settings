@@ -55,3 +55,5 @@
    pptpsetup --create my_tunnel --server vpn.example.com --username alice --password poor
    pptpsetup --delete my_tunnel
    pon my_tunnel
+* How show RAM information
+  dmidecode -t memory
