@@ -1,4 +1,4 @@
-set rtp+=$HOME/.local/lib/python2.7/site-packages/powerline/bindings/vim/
+set rtp+=$HOME/.local/lib/python3.6/site-packages/powerline/bindings/vim/
 set incsearch
 set hlsearch
 
@@ -8,4 +8,4 @@ set laststatus=2
 " Use 256 colours (Use this setting only if your terminal supports 256 colours)
 set t_Co=256
 
-set syntax=on
+syntax on
