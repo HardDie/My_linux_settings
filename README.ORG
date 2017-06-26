@@ -21,3 +21,6 @@
 * Autocomplete emacs
   sudo apt-get install libclang-3.8-dev cmake
   M-x irony-install-server
+* Install zsh
+  sudo pacman -S zsh
+  yaourt oh-my-zsh-git
