@@ -101,6 +101,17 @@ alias emx='emacsclient -c --socket-name=emacs'
 alias femx='emacs --no-desktop --name=temp_emacs'
 alias tmux='tmux -2'
 
+setopt APPEND_HISTORY
+setopt HIST_IGNORE_ALL_DUPS
+setopt HIST_IGNORE_SPACE
+setopt HIST_REDUCE_BLANKS
+
+if [ -f /usr/bin/grc ]; then
+    alias gcc="grc --colour=auto gcc"
+    alias ping="grc --colour=auto ping"
+    alias traceroute="grc --colour=auto traceroute"
+fi
+
 # If not running interactively, do not do anything
 if [[ -z $TMUX ]]; then
     echo -n 'Start tmux? [Y/n]: ';
