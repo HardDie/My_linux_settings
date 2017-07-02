@@ -57,3 +57,12 @@
    pon my_tunnel
 * How show RAM information
   dmidecode -t memory
+* How remove attribute
+** Install
+   yaourt mat mutagen perl-image-exiftool
+** Check
+   mat -c <file>
+** Show metadata
+   mat -d <file>
+** Delete metadata
+   mat -b <file>
