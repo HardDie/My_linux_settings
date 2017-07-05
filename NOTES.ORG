@@ -66,3 +66,5 @@
    mat -d <file>
 ** Delete metadata
    mat -b <file>
+* How add fat and ntfs tools
+  pacman -S dosfstools ntfsprogs
