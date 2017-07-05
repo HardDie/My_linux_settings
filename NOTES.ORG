@@ -68,3 +68,12 @@
    mat -b <file>
 * How add fat and ntfs tools
   pacman -S dosfstools ntfsprogs
+* How change layout on i3
+  Create file /etc/X11/xorg.conf.d/00-keyboard.conf and write:
+  Section "InputClass"
+  	Identifier "system-keyboard"
+  	MatchIsKeyboard "on"
+  	Option "XkbLayout" "us,ru"
+  	Option "XkbVariant" ","
+  	Option "XkbOptions" "grp:caps_toggle"
+  EndSection
