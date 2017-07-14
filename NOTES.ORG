@@ -77,3 +77,5 @@
   	Option "XkbVariant" ","
   	Option "XkbOptions" "grp:caps_toggle"
   EndSection
+* ASCIIFLOW
+  http://nightly.ascii-flow.appspot.com/#Draw
