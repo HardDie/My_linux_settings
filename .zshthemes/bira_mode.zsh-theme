@@ -55,8 +55,29 @@ else
     rvm_ruby='%{$fg[red]%}‹$(rbenv version | sed -e "s/ (set.*$//")›%{$reset_color%}'
   fi
 fi
-local git_branch='$(prompt_git)'
-local time='%{$fg[red]%}(%*)%{$reset_color%}'
+source /usr/lib/zsh-git-prompt/zshrc.sh
+set_branch_color() {
+    if [ "$GIT_CHANGED" -eq "0" ] && [ "$GIT_CONFLICTS" -eq "0" ] && [ "$GIT_STAGED" -eq "0" ] && [ "$GIT_UNTRACKED" -eq "0" ]; then
+        ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg[green]%} "
+        ZSH_THEME_GIT_PROMPT_BRANCH="%{$fg[green]%}"
+    else
+        ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg_bold[cyan]%} "
+        ZSH_THEME_GIT_PROMPT_BRANCH="%{$fg_bold[cyan]%}"
+    fi
+    git_super_status
+}
+ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}"
+ZSH_THEME_GIT_PROMPT_SEPARATOR=""
+ZSH_THEME_GIT_PROMPT_STAGED="%{$fg[green]%}%{ ● %G%}"
+ZSH_THEME_GIT_PROMPT_CONFLICTS="%{$fg[red]%}%{ ✖ %G%}"
+ZSH_THEME_GIT_PROMPT_CHANGED="%{$fg[red]%}%{ ✚ %G%}"
+ZSH_THEME_GIT_PROMPT_BEHIND="%{ ↓ %G%}"
+ZSH_THEME_GIT_PROMPT_AHEAD="%{ ↑ %G%}"
+ZSH_THEME_GIT_PROMPT_UNTRACKED="%{$fg[yellow]%}%{ …%G%}"
+ZSH_THEME_GIT_PROMPT_CLEAN=""
+
+local git_branch='$(set_branch_color)'
+local time='%{$fg[white]%}(%*)%{$reset_color%}'
 
 PROMPT="╭─${user_host} ${current_dir} ${git_branch} ${time}
 ╰─%B${user_symbol}%b "

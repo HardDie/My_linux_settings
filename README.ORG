@@ -3,6 +3,7 @@
   pip install --user git+git://github.com/Lokaltog/powerline
 * Install powerline for git
   sudo pip install powerline-gitstatus
+  yaourt zsh-git-prompt
 * How watch all include directories gcc
   gcc -xc++ -E -v -
 * Install tags for emacs
