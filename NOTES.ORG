@@ -79,3 +79,5 @@
   EndSection
 * ASCIIFLOW
   http://nightly.ascii-flow.appspot.com/#Draw
+* Service for found photo
+  snradar.azurewebsites.net
