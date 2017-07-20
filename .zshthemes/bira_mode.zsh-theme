@@ -57,6 +57,7 @@ else
 fi
 source /usr/lib/zsh-git-prompt/zshrc.sh
 set_branch_color() {
+        GIT_PROMPT_EXECUTABLE="haskell"
     if [ "$GIT_CHANGED" -eq "0" ] && [ "$GIT_CONFLICTS" -eq "0" ] && [ "$GIT_STAGED" -eq "0" ] && [ "$GIT_UNTRACKED" -eq "0" ]; then
         ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg[green]%} "
         ZSH_THEME_GIT_PROMPT_BRANCH="%{$fg[green]%}"
