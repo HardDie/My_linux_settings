@@ -52,3 +52,5 @@
   http://nightly.ascii-flow.appspot.com/#Draw
 * Service for found photo
   snradar.azurewebsites.net
+* Emacs git blame
+  M-x vc-annotate
