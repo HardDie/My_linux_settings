@@ -91,8 +91,11 @@
 	(add-to-list 'my-keys-list '("C-`" quoted-insert))
 	(add-to-list 'my-keys-list '("C-SPC" company-complete-common))
 
-    (add-to-list 'my-keys-list '("C-c o" desktop+-load))
-    (add-to-list 'my-keys-list '("C-c s" desktop+-create))
+	(add-to-list 'my-keys-list '("C-c o" desktop+-load))
+	(add-to-list 'my-keys-list '("C-c s" desktop+-create))
+
+	(add-to-list 'my-keys-list '("M-m" move-to-window-line-top-bottom))
+
 )
 
 ;; Hook for search mode
