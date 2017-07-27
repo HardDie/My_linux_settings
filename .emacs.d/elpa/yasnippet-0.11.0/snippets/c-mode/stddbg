@@ -16,8 +16,8 @@ static unsigned int __indent = 0;
 			if ((__indent>0) && (0 == strncmp(__fmt, "Leave", 5) || 0 == strncmp(__fmt, "Retrn", 5))) { __indent--; } \
 			__indent_print(); __log_print(__fmt, ##__VA_ARGS__); \
 			if (0 == strncmp(__fmt, "Enter", 5)) { __indent++; } \
-			fflush(stddbg); fclose(stddbg); \
 			if (__indent == 0) __my_print("\n"); \
+			fflush(stddbg); fclose(stddbg); \
 		} \
 	}
 /* DEBUG */
