@@ -5,10 +5,11 @@
 # --
 /* DEBUG */
 #include <string.h>
+#include <unistd.h>
 static unsigned int __indent = 0;
 #define __my_print(__fmt, ...) fprintf(stddbg, __fmt, ##__VA_ARGS__)
 #define __indent_print() int __iii; for (__iii = 0; __iii < __indent; __iii++) __my_print("|  ")
-#define __log_print(__fmt, ...) __my_print("dbg  "__fmt": %s():[%d] - %s\n", ##__VA_ARGS__, __FUNCTION__, __LINE__, __FILE__ ? __FILE__ + 17 : "NULL")
+#define __log_print(__fmt, ...) __my_print("dbg  "__fmt": %s():[%d]{%d} - %s\n", ##__VA_ARGS__, __FUNCTION__, __LINE__, getpid(), __FILE__ ? __FILE__ + 17 : "NULL")
 #define DPRINT(__flag, __fmt, ...) \
 	if (__flag) { \
 		FILE* stddbg = fopen("/dev/console", "a"); while(0){__indent=0;} \
