@@ -4,9 +4,12 @@
 [core]
 	editor = vim
 [alias]
-	llog = log --graph --all --pretty=format:\"%C(yellow)%h%C(auto)%d%C(reset) %s %C(bold blue)<%an>%C(reset)\"
 	sts = status --short --branch
+
 	lg = log --graph --pretty=format:\"%C(yellow)%h%C(auto)%d%C(reset) %s %C(bold blue)<%an>%C(reset)\"
-	datelog = log --graph --all --pretty=format:\"%C(yellow)%h%C(auto)%d%C(reset) %s %C(bold green)(%cr) %C(bold blue)<%an>%C(reset)\"
+	llog = log --graph --all --pretty=format:\"%C(yellow)%h%C(auto)%d%C(reset) %s %C(bold blue)<%an>%C(reset)\"
+
+	datelg = log --graph --pretty=format:\"%C(yellow)%h%C(auto)%d%C(reset) %s %C(bold green)(%cr) %C(bold blue)<%an>%C(reset)\"
+	datellog = log --graph --all --pretty=format:\"%C(yellow)%h%C(auto)%d%C(reset) %s %C(bold green)(%cr) %C(bold blue)<%an>%C(reset)\"
 [push]
 	default = simple
