@@ -101,6 +101,8 @@ alias emx='emacsclient -c --socket-name=emacs'
 alias femx='emacs --no-desktop --name=temp_emacs'
 alias tmux='tmux -2'
 
+unsetopt sharehistory
+
 setopt APPEND_HISTORY
 setopt HIST_IGNORE_ALL_DUPS
 setopt HIST_IGNORE_SPACE
