@@ -54,3 +54,5 @@
   snradar.azurewebsites.net
 * Emacs git blame
   M-x vc-annotate
+* ARCH. remove all unused packages
+  pacman -Rsn $(pacman -Qqdt)
