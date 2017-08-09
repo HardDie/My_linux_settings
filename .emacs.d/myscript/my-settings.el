@@ -251,4 +251,4 @@
 ;(setq projectile-tags-command "ctags-exuberant -Re -f \"%s\" %s")
 
 ;transparents
-(set-frame-parameter (selected-frame) 'alpha '(90 . 50))
+(set-frame-parameter (selected-frame) 'alpha '(90 . 90))
