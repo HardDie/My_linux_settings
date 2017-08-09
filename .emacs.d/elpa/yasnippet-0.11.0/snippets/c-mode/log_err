@@ -3,4 +3,4 @@
 # contributor: HardDie
 # key: log_err
 # --
-{DPRINT(DFLAG, "Retrn");} // DEBUG
+{DPRINT(DFLAG, __MSG_ERR"");} // DEBUG

@@ -3,4 +3,4 @@
 # contributor: HardDie
 # key: log_out
 # --
-{DPRINT(DFLAG, "Leave");} // DEBUG
+{DPRINT(DFLAG, __MSG_EXT"");} // DEBUG

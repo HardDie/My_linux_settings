@@ -4,4 +4,4 @@
 # key: log_in
 # --
 const int DFLAG = 1; // DEBUG
-{DPRINT(DFLAG, "Enter");} // DEBUG
+{DPRINT(DFLAG, __MSG_ENT"");} // DEBUG

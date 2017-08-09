@@ -4,15 +4,18 @@
 # key: kerndbg
 # --
 /* DEBUG */
+#define __MSG_EXT "EXT"":"
+#define __MSG_ERR "ERR"":"
+#define __MSG_ENT "ENT"":"
 static unsigned int __indent = 0;
 #define __my_print(__fmt, ...) printk(KERN_INFO __fmt, ##__VA_ARGS__)
-#define __log_print(__fmt, ...) __my_print("dbg  %d)"__fmt": %s():[%d]\n", __indent,  ##__VA_ARGS__, __FUNCTION__, __LINE__)
+#define __log_print(__fmt, ...) __my_print("dbg  %d)"__fmt" %s():[%d]\n", __indent,  ##__VA_ARGS__, __FUNCTION__, __LINE__)
 #define DPRINT(__flag, __fmt, ...) \
 	if (__flag) { \
 		while(0){__indent=0;} \
-		if ((__indent>0) && (0 == strncmp(__fmt, "Leave", 5) || 0 == strncmp(__fmt, "Retrn", 5))) { __indent--; } \
+		if ((__indent>0) && (0 == strncmp(__fmt, __MSG_EXT, 3) || 0 == strncmp(__fmt, __MSG_ERR, 3))) { __indent--; } \
 		__log_print(__fmt, ##__VA_ARGS__); \
-		if (0 == strncmp(__fmt, "Enter", 5)) { __indent++; } \
+		if (0 == strncmp(__fmt, __MSG_ENT, 3)) { __indent++; } \
 		if (__indent == 0) printk("\n"); \
 	}
 /* DEBUG */
