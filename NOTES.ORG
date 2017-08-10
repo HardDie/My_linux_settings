@@ -56,3 +56,12 @@
   M-x vc-annotate
 * ARCH. remove all unused packages
   pacman -Rsn $(pacman -Qqdt)
+* ARCH. Connect to wifi with NetworkManager
+** Show list network devices
+   nmcli dev
+** Connect to wifi
+   nmcli dev wifi connect SSID password PASS
+   nmcli dev wifi connect SSID password PASS iface wlan0
+   nmcli dev disconnect wlan0
+** Turn off wifi
+   nmcli r wifi off/on
