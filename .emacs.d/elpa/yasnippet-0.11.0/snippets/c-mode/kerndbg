@@ -16,6 +16,6 @@ static unsigned int __indent = 0;
 		if ((__indent>0) && (0 == strncmp(__fmt, __MSG_EXT, 3) || 0 == strncmp(__fmt, __MSG_ERR, 3))) { __indent--; } \
 		__log_print(__fmt, ##__VA_ARGS__); \
 		if (0 == strncmp(__fmt, __MSG_ENT, 3)) { __indent++; } \
-		if (__indent == 0) printk("\n"); \
+		if (__indent == 0) __my_print("\n"); \
 	}}while(0)
 /* DEBUG */
