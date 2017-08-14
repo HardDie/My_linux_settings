@@ -3,4 +3,4 @@
 # contributor: HardDie
 # key: dprint
 # --
-{DPRINT(DFLAG, "${Debug text}");} // DEBUG
+DPRINT(DFLAG, "${Debug text}"); // DEBUG

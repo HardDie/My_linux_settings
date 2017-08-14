@@ -19,7 +19,7 @@ static unsigned int __indent = 0;
 #define __indent_print() int __iii; for (__iii = 0; __iii < __indent; __iii++) __my_print(__C_CYAN"|  "__C_RST)
 #define __log_print(__fmt, ...) __my_print(__fmt" "__C_YEL"%s():[%d]{%d} - %s"__C_RST"\n", ##__VA_ARGS__, __FUNCTION__, __LINE__, getpid(), __FILE__ ? __FILE__+17: "NULL")
 #define DPRINT(__flag, __fmt, ...) \
-	if (__flag) { \
+	do{if (__flag) { \
 		FILE* stddbg = fopen("/dev/console", "a"); while(0){__indent=0;} \
 		if (stddbg != NULL) { \
 			if ((__indent>0) && (strlen(__fmt)>=12) && (0 == strncmp(__fmt, __MSG_EXT, 12) || 0 == strncmp(__fmt, __MSG_ERR, 12))) { __indent--; } \
@@ -28,5 +28,5 @@ static unsigned int __indent = 0;
 			if (__indent == 0) __my_print("\n"); \
 			fflush(stddbg); fclose(stddbg); \
 		} \
-	}
+	}}while(0)
 /* DEBUG */
