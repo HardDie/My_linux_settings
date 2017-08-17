@@ -65,3 +65,8 @@
    nmcli dev disconnect wlan0
 ** Turn off wifi
    nmcli r wifi off/on
+* How setup WiFi card on promiscuous mode
+** Find your phy
+   iw phy
+** Add new interface
+   iw phy phyX interface add mon0 type monitor
