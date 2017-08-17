@@ -91,6 +91,8 @@ fi
 source $ZSH/oh-my-zsh.sh
 
 ### MY SETTINGS ###
+export EDITOR=vim
+
 alias ll='ls -hlF'
 alias lla='ls -hAlF'
 alias lsa='ls -AF'
