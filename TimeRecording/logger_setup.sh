@@ -18,31 +18,35 @@ initd_uninstall() {
 }
 
 SYSTEMD_EXEC_PATH=/usr/local/bin
+SERVICE_PATH=/usr/local/lib/systemd/system
+SERVICE_NAME=time-logger.service
+SYSTEMD_SERVICE=$SERVICE_PATH/$SERVICE_NAME
 systemd_install() {
-    SCRIPT_NAME=/etc/systemd/system/time-logger.service;
     cp time_logger.sh $SYSTEMD_EXEC_PATH
-    echo "[Unit]" > $SCRIPT_NAME
-    echo "Description=Time logger" >> $SCRIPT_NAME
-    echo "StopWhenUnneeded=true" >> $SCRIPT_NAME
 
-    echo "[Service]" >> $SCRIPT_NAME
-    echo "Type=oneshot" >> $SCRIPT_NAME
-    echo "ExecStart=$SYSTEMD_EXEC_PATH/time_logger.sh start" >> $SCRIPT_NAME
-    echo "ExecStop=$SYSTEMD_EXEC_PATH/time_logger.sh stop" >> $SCRIPT_NAME
-    echo "RemainAfterExit=yes" >> $SCRIPT_NAME
+    mkdir -p $SERVICE_PATH
 
-    echo "[Install]" >> $SCRIPT_NAME
-    echo "WantedBy=multi-user.target" >> $SCRIPT_NAME
+    echo "[Unit]" > $SYSTEMD_SERVICE
+    echo "Description=Time logger" >> $SYSTEMD_SERVICE
+    echo "StopWhenUnneeded=true" >> $SYSTEMD_SERVICE
 
-    chmod a+rwx $SCRIPT_NAME;
+    echo "[Service]" >> $SYSTEMD_SERVICE
+    echo "Type=oneshot" >> $SYSTEMD_SERVICE
+    echo "ExecStart=$SYSTEMD_EXEC_PATH/time_logger.sh start" >> $SYSTEMD_SERVICE
+    echo "ExecStop=$SYSTEMD_EXEC_PATH/time_logger.sh stop" >> $SYSTEMD_SERVICE
+    echo "RemainAfterExit=yes" >> $SYSTEMD_SERVICE
+
+    echo "[Install]" >> $SYSTEMD_SERVICE
+    echo "WantedBy=multi-user.target" >> $SYSTEMD_SERVICE
+
+    chmod 0644 $SYSTEMD_SERVICE;
     systemctl enable time-logger.service;
 }
 
 systemd_uninstall() {
-    SCRIPT_NAME=/etc/systemd/system/time-logger.service;
     rm $SYSTEMD_EXEC_PATH/time_logger.sh
     systemctl disable time-logger.service;
-    rm $SCRIPT_NAME
+    rm $SYSTEMD_SERVICE
 }
 
 if [[ !( $USER = root ) ]]; then
