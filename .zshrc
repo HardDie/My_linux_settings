@@ -97,7 +97,7 @@ alias lsa='ls -AF'
 alias la='ls -AF'
 alias l='ls -CF'
 
-alias emx='emacsclient -c --socket-name=emacs'
+alias emx='emacsclient -c -q'
 alias femx='emacs --no-desktop --name=temp_emacs'
 alias tmux='tmux -2'
 
