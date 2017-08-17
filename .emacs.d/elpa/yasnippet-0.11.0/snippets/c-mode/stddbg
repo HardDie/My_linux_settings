@@ -14,6 +14,7 @@
 #define __MSG_EXT __C_GRN"EXT"__C_RST":"
 #define __MSG_ERR __C_RED"ERR"__C_RST":"
 #define __MSG_ENT __C_GRN"ENT"__C_RST":"
+#define __MSG_S (sizeof(__MSG_ENT)-1)
 static unsigned int __indent = 0;
 #define __my_print(__fmt, ...) fprintf(stddbg, __fmt, ##__VA_ARGS__)
 #define __indent_print() int __iii; for (__iii = 0; __iii < __indent; __iii++) __my_print(__C_CYAN"|  "__C_RST)
@@ -22,9 +23,9 @@ static unsigned int __indent = 0;
 	do{if (__flag) { \
 		FILE* stddbg = fopen("/dev/console", "a"); while(0){__indent=0;} \
 		if (stddbg != NULL) { \
-			if ((__indent>0) && (strlen(__fmt)>=12) && (0 == strncmp(__fmt, __MSG_EXT, 12) || 0 == strncmp(__fmt, __MSG_ERR, 12))) { __indent--; } \
+			if ((__indent>0) && (sizeof(__fmt)>__MSG_S) && (0 == strncmp(__fmt, __MSG_EXT, __MSG_S) || 0 == strncmp(__fmt, __MSG_ERR, __MSG_S))) { __indent--; } \
 			__indent_print(); __log_print(__fmt, ##__VA_ARGS__); \
-			if ((strlen(__fmt)>=12) && 0 == strncmp(__fmt, __MSG_ENT, 12)) { __indent++; } \
+			if ((strlen(__fmt)>=12) && 0 == strncmp(__fmt, __MSG_ENT, __MSG_S)) { __indent++; } \
 			if (__indent == 0) __my_print("\n"); \
 			fflush(stddbg); fclose(stddbg); \
 		} \
