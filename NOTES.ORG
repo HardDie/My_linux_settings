@@ -70,3 +70,9 @@
    iw phy
 ** Add new interface
    iw phy phyX interface add mon0 type monitor
+   iw dev mon0 del
+** With iw
+   iw dev wlan0 set type monitor
+   iw dev wlan0 set type managed
+** Set channel for listen
+   iw dev wlan0 set channel *channel*
