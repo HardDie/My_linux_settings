@@ -15,7 +15,7 @@
 #define __MSG_S (sizeof(__MSG_ENT)-1)
 static unsigned int __indent = 0;
 #define __my_print(__fmt, ...) printk(KERN_INFO __fmt, ##__VA_ARGS__)
-#define __log_print(__fmt, ...) __my_print("dbg  %d)"__fmt" "__C_YEL"%s():[%d]"__C_RST"\n", __indent,  ##__VA_ARGS__, __FUNCTION__, __LINE__)
+#define __log_print(__fmt, ...) __my_print("dbg  %d)"__fmt" "__C_YEL"%s():[%d] - %s"__C_RST"\n", __indent,  ##__VA_ARGS__, __FUNCTION__, __LINE__, __FILE__)
 #define DPRINT(__flag, __fmt, ...) \
 	do{if (__flag) { \
 		while(0){__indent=0;} \
