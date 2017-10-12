@@ -78,3 +78,5 @@
    iw dev wlan0 set type managed
 ** Set channel for listen
    iw dev wlan0 set channel *channel*
+* Unprivileged power management
+  pacman -S polkit
