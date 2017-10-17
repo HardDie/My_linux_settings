@@ -245,7 +245,7 @@
       )
 
 ;; smart tabs
-(smart-tabs-insinuate 'c 'javascript)
+(smart-tabs-insinuate 'c 'javascript 'c++)
 
 ;; patch for projectile
 ;(setq projectile-tags-command "ctags-exuberant -Re -f \"%s\" %s")
