@@ -80,3 +80,5 @@
    iw dev wlan0 set channel *channel*
 * Unprivileged power management
   pacman -S polkit
+* Run command on every find file
+  find -name "name" -execdir command {} \;
