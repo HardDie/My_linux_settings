@@ -85,3 +85,6 @@
 * Error with start X server
   Create file /etc/X11/Xwrapper.config and write
   allowed_user=anybody
+* Objdump
+  objdump -D file
+  addr2line -e file -a 0x(addr)
