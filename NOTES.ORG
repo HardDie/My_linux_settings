@@ -88,3 +88,8 @@
 * Objdump
   objdump -D file
   addr2line -e file -a 0x(addr)
+  strip
+* Get information about interface
+  ethtool eth0
+** Setup speed interface
+   ethtool -s eth0 speed 100 autoneg off
