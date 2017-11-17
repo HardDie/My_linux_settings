@@ -110,6 +110,12 @@ setopt HIST_IGNORE_ALL_DUPS
 setopt HIST_IGNORE_SPACE
 setopt HIST_REDUCE_BLANKS
 
+# Autostart i3
+if [[ "$(tty)" == '/dev/tty1' ]]; then
+	echo "Starting i3 session..."
+	exec startx 2>/dev/null
+fi
+
 # If not running interactively, do not do anything
 if [[ -z $TMUX ]]; then
     echo -n 'Start tmux? [Y/n]: ';
