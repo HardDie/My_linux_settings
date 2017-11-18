@@ -96,3 +96,24 @@
 * Show last installed packed
   expac --timefmt='%Y-%m-%d %T' '%l\t%n' | sort
   expac -S -H M '%k\t%n' | sort -h
+* LVM
+** LVM setup
+*** Create physichal volume
+    pvcreate /dev/sda1 /dev/sda2
+*** Create volume group
+    vgcreate name_group /dev/sda1 /dev/sda2
+    vgdisplay
+*** Create logical volume
+    lvcreate -n name_volume -L size name_group
+    lvdisplay
+    lvextend -L +size /dev/name_group/name_volume
+*** Resize FS
+    resize2fs /dev/name_group/name_volume
+
+** Crypt setup
+*** Encrypt dev
+    cryptsetup luksFormat /dev/sda2
+*** Open
+    cryptsetup open /dev/sda2 name_crypt
+*** Edit /etc/default/grub
+    cryptdevice=/dev/sda2:name_crypt
