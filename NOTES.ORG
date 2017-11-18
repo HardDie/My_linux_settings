@@ -93,3 +93,6 @@
   ethtool eth0
 ** Setup speed interface
    ethtool -s eth0 speed 100 autoneg off
+* Show last installed packed
+  expac --timefmt='%Y-%m-%d %T' '%l\t%n' | sort
+  expac -S -H M '%k\t%n' | sort -h
