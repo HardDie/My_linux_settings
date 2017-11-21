@@ -252,3 +252,6 @@
 
 ;transparents
 (set-frame-parameter (selected-frame) 'alpha '(90 . 90))
+
+;; Disable auto indent
+(setq electric-indent-mode nil)
