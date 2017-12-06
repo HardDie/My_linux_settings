@@ -201,6 +201,7 @@ exec --no-startup-id compton
 exec --no-startup-id unclutter -grab
 exec --no-startup-id Telegram -startintray
 exec --no-startup-id xset -dpms # disable auto sleep
+exec --no-startup-id xxkb
 
 
 ##
