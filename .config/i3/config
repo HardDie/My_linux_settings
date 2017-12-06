@@ -187,6 +187,11 @@ bar {
 # bar toggle
 bindsym $mod+m bar mode toggle
 
+##
+# Window association
+##
+assign [class="Termite"] $wspace2
+assign [class="Emacs"]   $wspace3
 
 ##
 # Custom autostart
