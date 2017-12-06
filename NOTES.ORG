@@ -117,3 +117,18 @@
     cryptsetup open /dev/sda2 name_crypt
 *** Edit /etc/default/grub
     cryptdevice=/dev/sda2:name_crypt
+* XORG how disable auto sleep
+  xset -dpms
+
+  /etc/X11/xorg.conf
+
+Section "ServerLayout"
+          Identifier     "Layout0"
+          Screen      0  "Screen0"
+          InputDevice    "Keyboard0" "CoreKeyboard"
+          InputDevice    "Evdev Mouse" "CorePointer"
+          Option "BlankTime" "0"
+          Option "StandbyTime" "0"
+          Option "SuspendTime" "0"
+          Option "OffTime" "0"
+EndSection
