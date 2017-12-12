@@ -117,7 +117,7 @@ if [[ "$(tty)" == '/dev/tty1' ]]; then
 fi
 
 # If not running interactively, do not do anything
-if [[ -z $TMUX ]]; then
+if [[ -z $TMUX && -z $SSH_CONNECTION ]]; then
     echo -n 'Start tmux? [Y/n]: ';
     read answer;
     if [[ $answer != "n" && $answer != "N" ]]; then
