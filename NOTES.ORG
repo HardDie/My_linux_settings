@@ -132,3 +132,14 @@ Section "ServerLayout"
           Option "SuspendTime" "0"
           Option "OffTime" "0"
 EndSection
+* How manage images
+  pacman -S imagemagic
+** Conver
+   convert image.png image.jpg
+** Resize
+   convert image.png -resize 200x100 image.png
+   -resize 200x100! # Force resize
+   -resize 200 # Only height
+   -resize x200 # Only weight
+** Rotate
+   convert image.png -rotate 90 image.png
