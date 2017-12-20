@@ -192,8 +192,10 @@ bindsym $mod+m bar mode toggle
 ##
 # Window association
 ##
+assign [class="Firefox"] $wspace1
 assign [class="Termite"] $wspace2
 assign [class="Emacs"]   $wspace3
+assign [class="Qmmp"]    $wspace10
 
 ##
 # Custom autostart
