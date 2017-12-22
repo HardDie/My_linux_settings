@@ -143,3 +143,5 @@ EndSection
    -resize x200 # Only weight
 ** Rotate
    convert image.png -rotate 90 image.png
+* GIT. Find remove string
+  git log -S <string> path/to/file
