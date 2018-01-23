@@ -29,8 +29,7 @@ FILE=/home/oleg/Desktop/time.log
 
 print_month() {
     echo >> $FILE;
-    echo >> $FILE;
-    echo "         --- "`date +"%B"`" ---" >> $FILE;
+    echo "**         --- "`date +"%B"`" ---" >> $FILE;
     echo >> $FILE;
 }
 
