@@ -151,3 +151,8 @@ EndSection
   PC1 --> ( NAT ) --> WAN <-- PC2
   ssh -f -N -R PC2_PORT:PC1_IP:PC1_PORT PC2_name@PC2_IP
   example: ssh -f -N -R 2222:10.10.1.1:22 username@273.15.26.11
+* GIT. Remove remote branch
+** Remove remote branch from local repo
+  git branch -d -r origin/branch
+** Remove remote branch from remote repo
+  git push -d origin branch
