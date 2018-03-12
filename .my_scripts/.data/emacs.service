@@ -1,0 +1,15 @@
+[Unit]
+Description=Emacs Daemon
+
+[Service]
+Type=forking
+ExecStart=/usr/bin/emacs --daemon
+ExecReload=/bin/kill -HUP $MAINPID
+Restart=always
+User=oleg
+Group=users
+
+TimeoutStartSec=0
+
+[Install]
+WantedBy=multi-user.target
