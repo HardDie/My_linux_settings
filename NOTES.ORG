@@ -156,3 +156,5 @@ EndSection
   git branch -d -r origin/branch
 ** Remove remote branch from remote repo
   git push -d origin branch
+* GIT. Push local branch
+  git push origin [local_name]:[remote_name]
