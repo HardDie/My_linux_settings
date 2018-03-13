@@ -107,6 +107,10 @@
     lvcreate -n name_volume -L size name_group
     lvdisplay
     lvextend -L +size /dev/name_group/name_volume
+*** Deactivale group
+    vgchange -a n name_group
+*** Activate group
+    vgchange -a y name_group
 *** Resize FS
     resize2fs /dev/name_group/name_volume
 
@@ -158,3 +162,5 @@ EndSection
   git push -d origin branch
 * GIT. Push local branch
   git push origin [local_name]:[remote_name]
+* Sync Music between PC and phone
+  rsync -cvr --stats --progress --delete --exclude=Covers English/* Music
