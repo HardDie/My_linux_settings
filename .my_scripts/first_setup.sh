@@ -24,6 +24,9 @@ ln -sf /usr/share/zoneinfo/Asia/Novosibirsk /etc/localtime
 HOST_NAME="ICONIA"
 echo $HOST_NAME > /etc/hostname
 
+## Setup color pacman
+sed -ie 's/^#Color/Color\nILoveCandy/' /etc/locale.gen
+
 ## yaourt
 echo '[archlinuxfr]' >> /etc/pacman.conf
 echo 'SigLevel = Never' >> /etc/pacman.conf
