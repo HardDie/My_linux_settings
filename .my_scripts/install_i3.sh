@@ -68,4 +68,8 @@ PCKGS+=" numlockx"
 ## Download software
 PCKGS+=" aria2"
 
+## Show bandwidth
+PCKGS+=" bc" # Calculator
+sudo install -Dm 0755 .data/bandwidth_ /lib/i3blocks/bandwidth_
+
 yaourt -S $PCKGS
