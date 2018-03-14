@@ -20,8 +20,6 @@
 * Sites for test regular expression
   https://www.debuggex.com/
   https://regexper.com/
-* How install java on Linux
-  http://www.backtrack-linux.org/wiki/index.php/Java_Install
 * Mount disk on rw mode from ro mode
   mount -o remount, rw /
 * Emacs. How enable merge conflict resolve mode
@@ -41,15 +39,6 @@
   pacman -S dosfstools ntfsprogs
 * How add file system for flash
   pacman -S f2fs-tools
-* How change layout on i3
-  Create file /etc/X11/xorg.conf.d/00-keyboard.conf and write:
-  Section "InputClass"
-  	Identifier "system-keyboard"
-  	MatchIsKeyboard "on"
-  	Option "XkbLayout" "us,ru"
-  	Option "XkbVariant" ","
-  	Option "XkbOptions" "grp:caps_toggle"
-  EndSection
 * ASCIIFLOW
   http://nightly.ascii-flow.appspot.com/#Draw
 * Service for found photo
@@ -58,15 +47,6 @@
   M-x vc-annotate
 * ARCH. remove all unused packages
   pacman -Rsn $(pacman -Qqdt)
-* ARCH. Connect to wifi with NetworkManager
-** Show list network devices
-   nmcli dev
-** Connect to wifi
-   nmcli dev wifi connect SSID password PASS
-   nmcli dev wifi connect SSID password PASS iface wlan0
-   nmcli dev disconnect wlan0
-** Turn off wifi
-   nmcli r wifi off/on
 * How setup WiFi card on promiscuous mode
 ** Find your phy
    iw phy
@@ -82,9 +62,6 @@
   pacman -S polkit
 * Run command on every find file
   find -name "name" -execdir command {} \;
-* Error with start X server
-  Create file /etc/X11/Xwrapper.config and write
-  allowed_user=anybody
 * Objdump
   objdump -D file
   addr2line -e file -a 0x(addr)
@@ -121,23 +98,6 @@
     cryptsetup open /dev/sda2 name_crypt
 *** Edit /etc/default/grub
     cryptdevice=/dev/sda2:name_crypt
-* XORG how disable auto sleep
-  xset -dpms
-
-  /etc/X11/xorg.conf.d/10-monitor
-
-Section "Monitor"
-    Identifier "LVDS0"
-    Option "DPMS" "false"
-EndSection
-
-Section "ServerLayout"
-    Identifier "ServerLayout0"
-    Option "StandbyTime" "0"
-    Option "SuspendTime" "0"
-    Option "OffTime"     "0"
-    Option "BlankTime"   "0"
-EndSection
 * How manage images
   pacman -S imagemagic
 ** Conver
