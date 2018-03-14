@@ -47,7 +47,8 @@ exec --no-startup-id fehlstart
 # change focus
 bindsym $mod+j focus left
 bindsym $mod+k focus down
-bindsym $mod+semicolon focus right
+bindsym $mod+i focus up
+bindsym $mod+l focus right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
@@ -229,7 +230,7 @@ bindsym Ctrl+Mod1+e exec emacs
 
 # lockscreen and suspend
 set $Locker i3lock -i /home/harddie/.wallpapers/arch.png -p win -e -t
-bindsym $mod+l exec --no-startup-id $Locker
+bindsym Mod1+l exec --no-startup-id $Locker
 bindsym $mod+Shift+s exec --no-startup-id $Locker && systemctl suspend
 
 # media keys
