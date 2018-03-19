@@ -201,14 +201,14 @@ assign [class="Firefox"] $wspace1
 assign [class="Termite"] $wspace2
 assign [class="Emacs"] $wspace3
 assign [class="Thunderbird"] $wspace8
-assign [class="Psi+"] $wspace9
+assign [class="Gajim"] $wspace9
 assign [class="TelegramDesktop"] $wspace9
 assign [class="Qmmp"] $wspace10
 
 for_window [class="TelegramDesktop"] floating enable
 for_window [class="Tor Browser"] floating enable
 for_window [class="Gimp"] floating enable
-for_window [class="Psi+"] floating enable
+for_window [class="Gajim"] floating enable
 for_window [class="VirtualBox Manager"] floating enable
 for_window [class="VirtualBox Machine"] floating enable
 
@@ -220,7 +220,7 @@ exec --no-startup-id compton
 exec --no-startup-id Telegram -startintray
 exec --no-startup-id xxkb
 exec --no-startup-id thunderbird
-exec --no-startup-id psi-plus
+exec --no-startup-id gajim
 
 
 ##
