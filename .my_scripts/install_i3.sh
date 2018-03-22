@@ -72,4 +72,7 @@ PCKGS+=" aria2"
 PCKGS+=" bc" # Calculator
 sudo install -Dm 0755 .data/bandwidth_ /lib/i3blocks/bandwidth_
 
+## Starting script
+sudo install -Dm 0644 .data/.xinitrx ~/.xinitrc
+
 yaourt -S $PCKGS
