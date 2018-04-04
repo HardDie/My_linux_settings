@@ -16,6 +16,7 @@ PCKGS+=" termite"
 
 ## Font
 PCKGS+=" ttf-font-awesome"
+PCKGS+=" ttf-hack"
 
 ## Background
 PCKGS+=" nitrogen"
