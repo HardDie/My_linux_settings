@@ -102,6 +102,7 @@ alias l='ls -CF'
 alias emx='emacsclient -c -q -nw'
 alias femx='emacs --no-desktop --name=temp_emacs'
 alias tmux='tmux -2'
+alias aria2c='aria2c --summary-interval=0'
 
 unsetopt sharehistory
 
