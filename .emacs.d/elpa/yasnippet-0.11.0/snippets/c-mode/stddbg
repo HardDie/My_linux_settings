@@ -16,7 +16,7 @@
 #define __MSG_ERR __C_RED"ERR"__C_RST":"
 #define __MSG_ENT __C_GRN"ENT"__C_RST":"
 #define __MSG_S (sizeof(__MSG_ENT)-1)
-static int __indent = 0, __format = 1;
+static int __indent = 0; static int  __format = 1;
 #define __my_print(__fmt, ...) fprintf(stddbg, __fmt, ##__VA_ARGS__)
 #define __indent_print() int __iii; for (__iii = 0; __iii < __indent; __iii++) __my_print(__C_CYAN"|  "__C_RST)
 #define __log_print(__fmt, ...) __my_print(__fmt" "__C_YEL"[%s():%d]{%d} - %s"__C_RST"\n", ##__VA_ARGS__, __FUNCTION__, __LINE__, getpid(), __FILE__)
