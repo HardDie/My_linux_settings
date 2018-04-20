@@ -3,4 +3,4 @@
 # contributor: HardDie
 # key: log_err
 # --
-DPRINT(DFLAG, __MSG_ERR""); // DEBUG
+DPRINT(DFLAG,_ERR,""); // DEBUG

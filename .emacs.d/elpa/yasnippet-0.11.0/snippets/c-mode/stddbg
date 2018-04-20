@@ -2,34 +2,20 @@
 # name: stddbg
 # contributor: HardDie
 # key: stddbg
+# some information:
+# // _p -> print
+# // _i_p -> indent print
+# // _p_i -> print information
+# // 13 -> sizeof(__MSG_ENT)-1
 # --
 /* DEBUG */
-#include <string.h>
+#include <stdarg.h>
 #include <unistd.h>
-#define __C_RST  "\x1B[0m"
-#define __C_RED  "\x1B[31m"
-#define __C_GRN  "\x1B[32m"
-#define __C_YEL  "\x1B[33m"
-#define __C_MGN  "\x1B[35m"
-#define __C_CYAN "\x1B[36m"
-#define __MSG_EXT __C_MGN"EXT"__C_RST":"
-#define __MSG_ERR __C_RED"ERR"__C_RST":"
-#define __MSG_ENT __C_GRN"ENT"__C_RST":"
-#define __MSG_S (sizeof(__MSG_ENT)-1)
-static int __indent = 0; static int  __format = 1;
-#define __my_print(__fmt, ...) fprintf(stddbg, __fmt, ##__VA_ARGS__)
-#define __indent_print() int __iii; for (__iii = 0; __iii < __indent; __iii++) __my_print(__C_CYAN"|  "__C_RST)
-#define __log_print(__fmt, ...) __my_print(__fmt" "__C_YEL"[%s():%d]{%d} - %s"__C_RST"\n", ##__VA_ARGS__, __FUNCTION__, __LINE__, getpid(), __FILE__)
-#define DPRINT(__flag, __fmt, ...) \
-	do{if (__flag) { \
-		FILE* stddbg = fopen("/dev/console", "a"); while(0){__indent=0;} \
-		if (stddbg != NULL) { \
-			if ((__indent>0) && (sizeof(__fmt)>__MSG_S) && (0 == strncmp(__fmt, __MSG_EXT, __MSG_S) || 0 == strncmp(__fmt, __MSG_ERR, __MSG_S))) { __indent--; } \
-			__indent_print(); if(__format)__log_print(__fmt, ##__VA_ARGS__); \
-			else __my_print(__fmt"\n", ##__VA_ARGS__); \
-			if ((strlen(__fmt)>=12) && 0 == strncmp(__fmt, __MSG_ENT, __MSG_S)) { __indent++; } \
-			if (__indent == 0) __my_print("\n"); \
-			fflush(stddbg); fclose(stddbg); \
-		} \
-	}}while(0)
+static int _ind = 0;static int _info=1;enum{_ENT,_EXT,_ERR,_NOI,_C_OPT};static void _p(const char*ff,...);
+static void _i_p(int m){int i;if(m==_EXT||m==_ERR){if(_ind>0){_ind--;}}for(i=0;i<_ind;i++){_p((char*)_NOI,"%s|  %s","\x1B[36m","\x1B[0m");}if(m==_ENT){_ind++;}}
+static void _p(const char*ff,...){__intptr_t f=(__intptr_t)ff;FILE*F=fopen("/dev/console","a");if(F){va_list a;va_start(a,ff);if(f!=_NOI){_i_p(f);}
+  if(f==_ENT){fprintf(F,"\x1B[32mENT\x1B[0m:");}else if(f==_EXT){fprintf(F,"\x1B[35mEXT\x1B[0m:");}else if(f==_ERR){fprintf(F,"\x1B[31mERR\x1B[0m:");}
+  if(f<_C_OPT){ff=va_arg(a,char*);}if(f)vfprintf(F,ff,a);va_end(a);fflush(F);fclose(F);}}
+#define _p_i()_p((char*)_NOI," %1s[%s():%d]{%d} - %s%1s\n","\x1B[33m",__FUNCTION__,__LINE__,getpid(),__FILE__,"\x1B[0m")
+#define DPRINT(__flag,_f,...)do{if(__flag){_p((char*)_f,##__VA_ARGS__);if(_info)_p_i();else _p("\n");if(!_ind)_p("\n");}}while(0)
 /* DEBUG */
