@@ -58,8 +58,7 @@
 
 	(add-to-list 'my-keys-list '("M-a" execute-extended-command))
 
-	(add-to-list 'my-keys-list '("C-f" projectile-find-file))
-	(add-to-list 'my-keys-list '("C-S-f" projectile-grep))
+	(add-to-list 'my-keys-list '("C-f" grep-find))
 
 	(add-to-list 'my-keys-list '("C-l" goto-line))
 	(add-to-list 'my-keys-list '("M-y" isearch-forward))
@@ -72,9 +71,6 @@
 
 	(add-to-list 'my-keys-list '("<C-iso-lefttab>" next-buffer))
 	(add-to-list 'my-keys-list '("C-<tab>" previous-buffer))
-
-;	(add-to-list 'my-keys-list '("M-C-x" eval-last-sexp))
-;	(add-to-list 'my-keys-list '("M-<f4>" save-buffers-kill-terminal))
 
 	(add-to-list 'my-keys-list '("C-b" bookmark-set))
 	(add-to-list 'my-keys-list '("M-b" bookmark-jump))
