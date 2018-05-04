@@ -227,7 +227,6 @@ exec --no-startup-id xrandr --output eDP-1 --off # disable laptop screen after s
 ##
 # Custom shortcut
 ##
-bindsym Ctrl+Mod1+e exec emacs
 
 # lockscreen and suspend
 set $Locker i3lock -i /home/harddie/.wallpapers/arch.png -p win -e -t
