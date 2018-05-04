@@ -126,3 +126,5 @@
   rsync -cvr --stats --progress --delete --exclude=Covers English/* Music
 * Draw gpaphs
   pacman -S graphviz
+* Validator json
+  https://jsonlint.com/
