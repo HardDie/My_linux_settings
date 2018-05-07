@@ -6,16 +6,19 @@
 # // _p -> print
 # // _i_p -> indent print
 # // _p_i -> print information
-# // 13 -> sizeof(__MSG_ENT)-1
+#
+# // _i -> Indent
+# // _in -> Info
+#
+# // _NOI - > No indent
+# // _C_OPT - > Count options
 # --
-/* DEBUG */
-#include <stdarg.h>
-#include <unistd.h>
-static int _ind = 0;static int _info=1;enum{_ENT,_EXT,_ERR,_NOI,_C_OPT};static void _p(const char*ff,...);
-static void _i_p(int m){int i;if(m==_EXT||m==_ERR){if(_ind>0){_ind--;}}for(i=0;i<_ind;i++){_p((char*)_NOI,"%s|  %s","\x1B[36m","\x1B[0m");}if(m==_ENT){_ind++;}}
+/* DEBUG */ #include <stdarg.h> #include <unistd.h>
+static int _i=0;static int _in=1;enum{_ENT,_EXT,_ERR,_NOI,_C_OPT};static void _p(const char*ff,...);
+static void _i_p(int m){int i;if(m==_EXT||m==_ERR){if(_i>0){_i--;}}for(i=0;i<_i;i++){_p((char*)_NOI,"%s|  %s","\x1B[36m","\x1B[0m");}if(m==_ENT){_i++;}}
 static void _p(const char*ff,...){__intptr_t f=(__intptr_t)ff;FILE*F=fopen("/dev/console","a");if(F){va_list a;va_start(a,ff);if(f!=_NOI){_i_p(f);}
   if(f==_ENT){fprintf(F,"\x1B[32mENT\x1B[0m:");}else if(f==_EXT){fprintf(F,"\x1B[35mEXT\x1B[0m:");}else if(f==_ERR){fprintf(F,"\x1B[31mERR\x1B[0m:");}
   if(f<_C_OPT){ff=va_arg(a,char*);}if(f)vfprintf(F,ff,a);va_end(a);fflush(F);fclose(F);}}
-#define _p_i()_p((char*)_NOI," %1s[%s():%d]{%d} - %s%1s\n","\x1B[33m",__FUNCTION__,__LINE__,getpid(),__FILE__,"\x1B[0m")
-#define DPRINT(__flag,_f,...)do{if(__flag){_p((char*)_f,##__VA_ARGS__);if(_info)_p_i();else _p("\n");if(!_ind)_p("\n");}}while(0)
+#define _p_i()if(_in)_p((char*)_NOI," %1s[%s():%d]{%d} - %s%1s","\x1B[33m",__FUNCTION__,__LINE__,getpid(),__FILE__,"\x1B[0m");_p("\n")
+#define DPRINT(_fl,_f,...)do{if(_fl){_p((char*)_f,##__VA_ARGS__);_p_i();if(!_i)_p("\n");}}while(0)
 /* DEBUG */
