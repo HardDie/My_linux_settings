@@ -3,5 +3,4 @@
 # contributor: HardDie
 # key: log_in
 # --
-const int DFLAG = 1; // DEBUG
 DPRINT(DFLAG,_ENT,""); // DEBUG
