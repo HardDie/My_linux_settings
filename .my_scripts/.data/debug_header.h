@@ -1,24 +1,32 @@
-#ifndef _DEBUG_H_
-#define _DEBUG_H_
+#ifndef _MY_DEBUG_HEADER_
+#define _MY_DEBUG_HEADER_
 
+#include <stdio.h>
 #include <stdarg.h>
 #include <unistd.h>
+#include <time.h>
+#include <sys/time.h>
 
 /* DEBUG */
-static int _i = 0;
+#ifndef I_EXT
+int _i = 0;
+#else
+extern int _i;
+#endif
+
 static int _in = 1;
 enum {_ERR=31,_ENT=32,_EXT=35,_C_OPT};
-static const char* name(int i) {
-	switch(i) { case _ERR: return "ERR";
-	            case _ENT: return "ENT";
-	            case _EXT: return "EXT"; }
-	return "NaN";
+static const char* _n(int i) {
+	if(i==_ERR)return"ERR";
+	if(i==_EXT)return"EXT";
+	if(i==_ENT)return"ENT";
+	return"NaN";
 }
 
 //#define STDOUT
 
-static void _p(const char*ff,...) {
-	__intptr_t f=(__intptr_t)ff;
+static inline void _p(const char*ff,...) {
+	long int f=(__intptr_t)ff;
 #ifndef STDOUT
 	FILE*F=fopen("/dev/console","a");
 #else
@@ -28,7 +36,7 @@ static void _p(const char*ff,...) {
 		va_list a;
 		va_start(a,ff);
 		if(f<_C_OPT) {
-			fprintf(F,"\x1B[%ldm%s\x1B[0m:", (long int)f, name(f));
+			fprintf(F,"\x1B[%ldm%s\x1B[0m:", f, _n(f));
 			ff=va_arg(a,char*);
 		}
 		vfprintf(F,ff,a);
@@ -40,7 +48,7 @@ static void _p(const char*ff,...) {
 	}
 }
 
-static void _i_p(int m) {
+static inline void _i_p(int m) {
 	int i;
 	if(m==_EXT||m==_ERR) {
 		if(_i>0) {
@@ -55,9 +63,19 @@ static void _i_p(int m) {
 	}
 }
 
+static inline void _p_i(const char* func, int line, int pid, const char* file) {
+	if (_in) {
+		struct timeval t;
+		char time[32];
+		gettimeofday(&t, NULL);
+		strftime(time, sizeof(time), "%H:%M:%S", localtime(&t.tv_sec));
+		_p(" %1s[%s():%d]{%d}(%s) - %s%1s","\x1B[33m",func,line,pid,time,file,"\x1B[0m");
+	}
+	_p("\n");
+}
+
 #define _pwi(_f,...) do{_i_p((__intptr_t)_f);_p((char*)_f,##__VA_ARGS__);}while(0)
-#define _p_i()if(_in)_p(" %1s[%s():%d]{%d} - %s%1s","\x1B[33m",__FUNCTION__,__LINE__,getpid(),__FILE__,"\x1B[0m");_p("\n")
-#define DPRINT(_fl,_f,...)do{if(_fl){_pwi((char*)_f,##__VA_ARGS__);_p_i();if(!_i)_p("\n");}}while(0)
+#define DPRINT(_fl,_f,...)do{if(_fl){_pwi((char*)_f,##__VA_ARGS__);_p_i(__FUNCTION__, __LINE__, getpid(), __FILE__);if(!_i)_p("\n");}}while(0)
 /* DEBUG */
 
-#endif
+#endif // _MY_DEBUG_HEADER_
