@@ -27,4 +27,10 @@ PCKGS+=" libreoffice-fresh"
 ## Keepass
 PCKGS+=" keepass"
 
+## Printer
+PCKGS+=" cups"
+PCKGS+=" system-config-printer"
+PCKGS+=" brother-hl1118"
+# Start org.cups.cupsd.service
+
 yaourt -S $PCKGS
