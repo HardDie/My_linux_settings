@@ -128,3 +128,6 @@
   pacman -S graphviz
 * Validator json
   https://jsonlint.com/
+* Check system informationi
+  journalctl -b -p 3
+  systemctl --failed -all
