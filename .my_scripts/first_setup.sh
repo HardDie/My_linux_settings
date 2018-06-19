@@ -15,7 +15,7 @@ export LANG=en_US.UTF-8
 
 ## /etc/vconsole.conf
 echo KEYMAP=ru > /etc/vconsole.conf
-echo FONT=cyr-sur16 >> /etc/vconsole.conf
+echo FONT=cyr-sun16 >> /etc/vconsole.conf
 
 ## /etc/localtime
 ln -sf /usr/share/zoneinfo/Asia/Novosibirsk /etc/localtime
