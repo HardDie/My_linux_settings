@@ -3,4 +3,4 @@
 # contributor: HardDie
 # key: log_in
 # --
-DPRINT(DFLAG,_ENT,""); // DEBUG
+dtrace(D_INFO, S_TR_ENT, ""); // DEBUG

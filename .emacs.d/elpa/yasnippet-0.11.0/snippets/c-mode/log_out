@@ -3,4 +3,4 @@
 # contributor: HardDie
 # key: log_out
 # --
-DPRINT(DFLAG,_EXT,""); // DEBUG
+dtrace(D_INFO, S_TR_EXT, ""); // DEBUG

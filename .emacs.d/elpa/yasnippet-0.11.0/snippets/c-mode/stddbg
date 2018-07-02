@@ -3,5 +3,5 @@
 # contributor: HardDie
 # key: stddbg
 # --
+#define __D_INIT__
 #include "/home/debug_header.h" // DEBUG
-static const int DFLAG = 1; // DEBUG

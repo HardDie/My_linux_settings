@@ -4,25 +4,19 @@
 # key: kerndbg
 # --
 /* DEBUG */
-#define __C_RST  "\x1B[0m"
-#define __C_RED  "\x1B[31m"
-#define __C_GRN  "\x1B[32m"
-#define __C_YEL  "\x1B[33m"
-#define __C_MGN  "\x1B[35m"
-#define __C_CYAN "\x1B[36m"
-#define __MSG_EXT __C_MGN"EXT"__C_RST":"
-#define __MSG_ERR __C_RED"ERR"__C_RST":"
-#define __MSG_ENT __C_GRN"ENT"__C_RST":"
-#define __MSG_S (sizeof(__MSG_ENT)-1)
-static unsigned int __indent = 0;
-#define __my_print(__fmt, ...) printk(KERN_EMERG __fmt, ##__VA_ARGS__)
-#define __log_print(__fmt, ...) __my_print("dbg  %d)"__fmt" "__C_YEL"[%s():%d] - %s"__C_RST"\n", __indent,  ##__VA_ARGS__, __FUNCTION__, __LINE__, __FILE__)
-#define DPRINT(__flag, __fmt, ...) \
-	do{if (__flag) { \
-		while(0){__indent=0;} \
-		if ((__indent>0) && (sizeof(__fmt)>__MSG_S) && (0 == strncmp(__fmt, __MSG_EXT, __MSG_S) || 0 == strncmp(__fmt, __MSG_ERR, __MSG_S))) { __indent--; } \
-		__log_print(__fmt, ##__VA_ARGS__); \
-		if (0 == strncmp(__fmt, __MSG_ENT, sizeof(__MSG_ENT)-1)) { __indent++; } \
-		if (__indent == 0) __my_print("\n"); \
-	}}while(0)
+#define D_ARGS const char* func, int line, const char* file
+#define D_INFO __FUNCTION__, __LINE__, __FILE__
+enum{L_RAW=0,L_DEBUG=64,L_EXTRA=256,S_TR_ENT=128|1,S_TR_EXT=128|2,S_TR_ERR=128|3};
+void dtrace(D_ARGS, int opt, const char *format, ...) {
+void print_information(D_ARGS){dtrace(D_INFO,L_RAW," \x1b[33m[%s():%d] - %s\x1B[0m\n",func,line,file);}
+void print_indent(int o){static int indent=0,i;if(o==S_TR_EXT||o==S_TR_ERR){if(indent)indent--;}for(i=0;i<indent;i++){dtrace(D_INFO,L_RAW,"\x1B[36m|  \x1B[0m");}
+if(o==S_TR_ENT)indent++;
+}
+const char *get_prefix(int o) {
+if(o==S_TR_ENT)return"\x1B[32mENT\x1B[0m";if(o==S_TR_EXT)return"\x1B[35mEXT\x1B[0m";if(o==S_TR_ERR)return"\x1B[31mERR\x1B[0m";if(o==L_DEBUG)return"DEBUG: ";return"NaN";
+}
+ if (opt!=L_RAW){print_indent(opt);printk("%s",get_prefix(opt));}
+ va_list a;va_start(a,format);vprintk(format,a);va_end(a);
+ if (opt!=L_RAW){print_information(func,line,file);}
+}
 /* DEBUG */
