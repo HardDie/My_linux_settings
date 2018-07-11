@@ -131,3 +131,7 @@
 * Check system informationi
   journalctl -b -p 3
   systemctl --failed -all
+* Ubuntu package commands
+  dpkg-query -l # Print installed packages
+  dpkg-query -L packetname # Show files in packet
+  apt-cache search word # Search packets by name
