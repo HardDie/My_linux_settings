@@ -47,12 +47,12 @@ static void print_information(D_ARGS);
 static void print_indent(const int opt);
 static const char* get_prefix(const int opt);
 
-__attribute__((unused)) int  debug_enable = 1;
-__attribute__((unused)) int  debug_level = L_ALL;
-__attribute__((unused)) char debug_file[256] = "/dev/console";
+__attribute__((unused)) static int  debug_level = L_ALL;
 
 __attribute__((unused))
 void dtrace(D_ARGS, const int opt, const char* format, ...) {
+	__attribute__((unused)) static char debug_file[256] = "/dev/console";
+	__attribute__((unused)) static int  debug_enable = 1;
 
 	if (debug_file[0] == 0 || !debug_enable) {
 		return;
@@ -78,22 +78,6 @@ void dtrace(D_ARGS, const int opt, const char* format, ...) {
 	}
 	if (opt != L_RAW) { // Skip if L_RAW
 		print_information(D_PASS_ARGS);
-	}
-}
-__attribute__((unused))
-void trace_set_file(const char* file_) {
-	if (!file_) {
-		return;
-	}
-	snprintf(debug_file, sizeof(debug_file), "%s", file_);
-}
-__attribute__((unused))
-void trace_set_level(const int mode, const debug_level_t level) {
-	if (mode == 1) {
-		debug_level |= level;
-	}
-	if (mode == 0) {
-		debug_level &= ~level;
 	}
 }
 __attribute__((unused))
@@ -145,8 +129,6 @@ static inline const char* get_prefix(const int opt) {
 
 #else // __D_INIT__
 extern void dtrace(D_ARGS, const int opt, const char* format, ...);
-extern void trace_set_file(const char* file_);
-extern void trace_set_level(const int mode, const debug_level_t level);
 #endif // __D_INIT__
 
 #endif // _MY_DEBUG_HEADER_
