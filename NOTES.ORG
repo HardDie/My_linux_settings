@@ -138,3 +138,17 @@
 * How change console font
   pacman -S terminus-font
   setfont ter-v32n
+* How setup systemd boot
+  bootctl install
+  cd /boot/loader
+  vim loader.conf = {
+    default arch
+    timeout 3
+  }
+  vim entries/arch.conf = {
+    title Archlinux
+    linux /vmlinuz-linux
+    initrd /initramfs-linux.img
+    :r !blkid
+    options root=PARTUID=some_UUID rw
+  }
