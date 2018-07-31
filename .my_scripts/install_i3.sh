@@ -15,11 +15,14 @@ PCKGS+=" xorg-xrandr"
 PCKGS+=" termite"
 
 ## Font
-PCKGS+=" ttf-font-awesome"
+PCKGS+=" ttf-font-awesome-4"
 PCKGS+=" ttf-hack"
 
 ## Background
 PCKGS+=" nitrogen"
+
+## File manager
+PCKGS+=" pcmanfm"
 
 ## Program launcher
 PCKGS+=" fehlstart-git"
