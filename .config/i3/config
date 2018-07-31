@@ -221,7 +221,7 @@ for_window [class="VirtualBox Machine"] floating enable
 exec --no-startup-id nitrogen --restore
 exec --no-startup-id compton
 exec --no-startup-id Telegram -startintray
-exec --no-startup-id xxkb
+exec_always --no-startup-id killall xxkb; xxkb
 exec --no-startup-id thunderbird
 exec --no-startup-id pidgin
 exec --no-startup-id xrandr --output eDP-1 --off # disable laptop screen after start
