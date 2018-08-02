@@ -1,0 +1,11 @@
+XXkb.mainwindow.enable: yes
+XXkb.mainwindow.geometry:   20x20+0+0
+XXkb.mainwindow.border.color: black
+XXkb.mainwindow.border.width: 1
+XXkb.mainwindow.label.enable: yes 
+XXkb.mainwindow.label.text.1: en
+XXkb.mainwindow.label.text.2: ru
+XXkb.mainwindow.label.background: black
+XXkb.mainwindow.label.foreground: white
+XXkb.mainwindow.label.font: -misc-*-r-*-20-*
+XXkb.mainwindow.type: tray
