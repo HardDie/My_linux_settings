@@ -4,4 +4,4 @@
 # key: stddbg
 # --
 #define __D_INIT__
-#include "/home/debug_header.h" // DEBUG
+#include "/home/debug_header.h" /* DEBUG */
