@@ -210,7 +210,7 @@ assign [class="Thunderbird"] $wspace8
 assign [class="Gajim"] $wspace9
 assign [class="Pidgin"] $wspace9
 assign [class="TelegramDesktop"] $wspace9
-assign [class="Qmmp"] $wspace10
+for_window [class="Qmmp"] move to workspace $wspace10
 
 for_window [class="TelegramDesktop"] floating enable
 for_window [class="Tor Browser"] floating enable
