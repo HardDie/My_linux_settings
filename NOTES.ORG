@@ -152,3 +152,5 @@
     :r !blkid
     options root=PARTUID=some_UUID rw
   }
+* How upgrade ssh id_rsa
+  openssl pkcs8 -topk8 -v2 des3 -in id_rsa.old -out id_rsa
