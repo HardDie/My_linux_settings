@@ -33,6 +33,7 @@ typedef enum {
 #include <unistd.h>
 #include <time.h>
 #include <sys/time.h>
+#include <sys/types.h>
 
 #define ANSI_COLOR_RESET   "\x1B[0m"
 #define ANSI_COLOR_RED     "\x1B[31m"
@@ -46,6 +47,7 @@ typedef enum {
 static void print_information(D_ARGS);
 static void print_indent(const int opt);
 static const char* get_prefix(const int opt);
+void dtrace_hex_dump(const u_int8_t* addr, const int len);
 
 __attribute__((unused)) static int  debug_level = L_ALL;
 
@@ -123,12 +125,50 @@ static inline const char* get_prefix(const int opt) {
 	return"NaN";
 }
 
+__attribute__((unused))
+inline void dtrace_hex_dump(const u_int8_t* addr, const int len) {
+	dtrace(D_INFO, L_RAW, "Start hex dump\n");
+	int i;
+    unsigned char buff[16] = "";
+
+    for (i = 0; i < len; i++) {
+        if ((i % 16) == 0) {
+            if (i) {
+	            dtrace(D_INFO, L_RAW, "  %s\n", buff);
+	            memset(buff, 0, sizeof(buff));
+            }
+            dtrace(D_INFO, L_RAW, "  %04x ", i);
+        }
+        dtrace(D_INFO, L_RAW, " %02x", addr[i]);
+        if ((addr[i] < 0x20) || (addr[i] > 0x7e)) {
+            buff[i % 16] = '.';
+        } else {
+            buff[i % 16] = addr[i];
+        }
+        buff[(i % 16) + 1] = '\0';
+    }
+    while ((i % 16) != 0) {
+        dtrace(D_INFO, L_RAW, "   ");
+        i++;
+    }
+
+    dtrace(D_INFO, L_RAW, "  %s\n", buff);
+    dtrace(D_INFO, L_RAW, "Stop hex dump\n");
+}
+__attribute__((unused))
+void dtrace_disable(void) { debug_level = 0; }
+__attribute__((unused))
+void dtrace_enable(void) { debug_level = L_ALL; }
+
 /**
  * Header for additional files
  */
 
 #else // __D_INIT__
 extern void dtrace(D_ARGS, const int opt, const char* format, ...);
+extern void dtrace_hex_dump(const u_int8_t* addr, const int len);
+extern void dtrace_disable(void);
+extern void dtrace_enable(void);
 #endif // __D_INIT__
 
 #endif // _MY_DEBUG_HEADER_
