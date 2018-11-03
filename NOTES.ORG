@@ -154,3 +154,11 @@
   }
 * How upgrade ssh id_rsa
   openssl pkcs8 -topk8 -v2 des3 -in id_rsa.old -out id_rsa
+* Edit audio tags
+  id3v2
+  mp3info
+* Convert vim to hex editor
+  :%!xxd
+  return: :%!xxd -r
+* Disable kerlen printk logs
+  echo 0 > /proc/sys/kernel/printk
