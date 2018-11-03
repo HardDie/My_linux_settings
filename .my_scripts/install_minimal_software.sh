@@ -8,4 +8,4 @@ PCKGS+=" xclip"
 
 ## Microcode
 PCKGS+=" intel-ucode"
-yaourt -S $PCKGS
+yay -S $PCKGS

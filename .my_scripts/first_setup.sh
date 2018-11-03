@@ -40,12 +40,10 @@ echo Setup multilib pacman
 sed -ie 's/^#\[multilib\]/\[multilib\]\nInclude = \/etc\/pacman.d\/mirrorlist/' /etc/pacman.conf
 echo Setup!
 
-## yaourt
-echo Setup yaourt
-echo >> /etc/pacman.conf
-echo '[archlinuxfr]' >> /etc/pacman.conf
-echo 'SigLevel = Never' >> /etc/pacman.conf
-echo 'Server = http://repo.archlinux.fr/$arch' >> /etc/pacman.conf
-pacman -Syy yaourt > /dev/null
-pacman -S terminus-font > /dev/null
-echo Setup!
+## yay
+echo Install yay
+cd /tmp
+git clone https://aur.archlinux.org/yay.git yay
+cd yay
+makepkg -si
+echo yay was Installed!

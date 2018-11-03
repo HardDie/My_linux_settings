@@ -3,9 +3,6 @@
 PCKGS="vlc"
 PCKGS+=" qt4"
 
-## Firefox
-PCKGS+=" firefox"
-
 ## Image view
 PCKGS+=" feh"
 
@@ -21,9 +18,6 @@ PCKGS+=" emacs"
 ## Gimp
 PCKGS+=" gimp"
 
-## Libre Office
-PCKGS+=" libreoffice-fresh"
-
 ## Keepass
 PCKGS+=" keepass"
 
@@ -31,6 +25,7 @@ PCKGS+=" keepass"
 PCKGS+=" cups"
 PCKGS+=" system-config-printer"
 PCKGS+=" brother-hl1118"
-# Start org.cups.cupsd.service
+echo "For enable printer daemon"
+echo "exec: systemctl start org.cups.cupsd.service"
 
-yaourt -S $PCKGS
+yay -S $PCKGS
