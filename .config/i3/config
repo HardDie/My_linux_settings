@@ -199,6 +199,10 @@ bar {
 # bar toggle
 bindsym $mod+m bar mode toggle
 
+# Disable borders by default
+default_border none
+default_floating_border none
+
 ##
 # Window association
 # Get info: xprop
