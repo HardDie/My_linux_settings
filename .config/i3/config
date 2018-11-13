@@ -227,6 +227,7 @@ for_window [class="VirtualBox Machine"] floating enable
 ##
 # Custom autostart
 ##
+exec --no-startup-id dunst
 exec --no-startup-id nitrogen --restore
 exec --no-startup-id compton
 exec --no-startup-id Telegram -startintray
