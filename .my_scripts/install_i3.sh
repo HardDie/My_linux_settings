@@ -1,7 +1,7 @@
 #!/bin/bash
 ## i3
-PCKGS="i3-wm"
-PCKGS+=" i3lock"
+PCKGS="i3-gaps"
+PCKGS+=" i3lock-color-git"
 PCKGS+=" i3blocks"
 
 ## xorg
