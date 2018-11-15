@@ -76,6 +76,11 @@ PCKGS+=" aria2"
 PCKGS+=" bc" # Calculator
 sudo install -Dm 0755 .data/bandwidth_ /lib/i3blocks/bandwidth_
 
+## Show wifi and ethernet link status
+PCKGS+=" iw" # Get wifi status
+sudo install -Dm 0755 .data/wifi_ /lib/i3blocks/wifi_
+sudo install -Dm 0755 .data/eth_ /lib/i3blocks/eth_
+
 ## Starting script
 sudo install -Dm 0644 .data/.xinitrx ~/.xinitrc
 

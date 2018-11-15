@@ -1,0 +1,26 @@
+#!/bin/bash
+
+if [[ -z $BLOCK_INSTANCE ]]; then
+    echo -n
+    exit 0
+fi
+IFACE=$BLOCK_INSTANCE
+
+STR=$(iw dev $IFACE link)
+if [[  $STR == 'Not connected.' ]]; then
+    echo "W: down"
+    echo
+    echo "#FF0000"
+else
+    ARR=(${STR// / })
+    SSID=${ARR[6]}
+    SIGNAL=${ARR[20]}
+
+    STR=$(ifconfig $IFACE)
+    ARR=(${STR// / })
+    IP=${ARR[5]}
+
+    echo "W: $SSID($SIGNAL dBm): $IP"
+    echo
+    echo "#00FF00"
+fi

@@ -1,0 +1,32 @@
+#!/bin/bash
+
+if [[ -z $BLOCK_INSTANCE ]]; then
+    echo -n
+#    exit 0
+fi
+IFACE=$BLOCK_INSTANCE
+IFACE=wlp1s0
+
+STR=$(ip link show $IFACE 2>/dev/null)
+
+if [[ -z $STR ]]; then
+    echo -n
+    exit 0
+fi
+
+#echo $STR
+ARR=(${STR// / })
+echo ${ARR[8]}
+if [[  ${ARR[8]} == 'DOWN' ]]; then
+    echo "E: down"
+    echo
+    echo "#FF0000"
+else    
+    STR=$(ifconfig $IFACE)
+    ARR=(${STR// / })
+    IP=${ARR[5]}
+
+    echo "E: $IP"
+    echo
+    echo "#00FF00"
+fi
