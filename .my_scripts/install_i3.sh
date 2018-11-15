@@ -82,6 +82,6 @@ sudo install -Dm 0755 .data/wifi_ /lib/i3blocks/wifi_
 sudo install -Dm 0755 .data/eth_ /lib/i3blocks/eth_
 
 ## Starting script
-sudo install -Dm 0644 .data/.xinitrx ~/.xinitrc
+sudo install -Dm 0644 .data/.xinitrc ~/.xinitrc
 
 yay -S $PCKGS
