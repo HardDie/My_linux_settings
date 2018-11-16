@@ -264,3 +264,5 @@ bindsym XF86AudioPrev exec playerctl previous
 # screenshot
 bindsym --release Print exec --no-startup-id scrot
 bindsym --release Shift+Print exec --no-startup-id scrot -u
+
+gaps inner 10
