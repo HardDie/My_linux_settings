@@ -242,7 +242,7 @@ exec --no-startup-id xrandr --output eDP-1 --off # disable laptop screen after s
 ##
 
 # lockscreen and suspend
-set $Locker i3lock -i /home/harddie/.wallpapers/lock.png -p win -e -t
+set $Locker ~/.my_scripts/.data/start_lockscreen.sh
 bindsym Ctrl+Mod1+Shift+l exec --no-startup-id $Locker
 bindsym Ctrl+Mod1+Shift+s exec --no-startup-id $Locker && systemctl suspend
 
