@@ -1,5 +1,8 @@
 #!/bin/bash
 
+killall xautolock
+xautolock -time 1 -locker "xset dpms force off"&
+
 letterEnteredColor=d23c3dff
 letterRemovedColor=d23c3dff
 passwordCorrect=00000000
@@ -17,4 +20,6 @@ i3lock \
 	--ringvercolor=$foreground --ringwrongcolor=$foreground --indpos='x+280:h-70' \
 	--radius=20 --ring-width=4 --veriftext='' --wrongtext='' \
 	--verifcolor="$foreground" --timecolor="$foreground" --datecolor="$foreground" \
-	--noinputtext='' --force-clock
+	--noinputtext='' --force-clock -n
+
+killall xautolock
