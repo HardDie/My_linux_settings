@@ -173,12 +173,15 @@ set $urgent-bg-color     #E53935
 
 # window colors
 #                       border              background         text                 indicator
-client.focused          $bg-color           $bg-color          $text-color          #00ff00
+client.focused          $bg-color           #7f848f            $text-color          #00ff00
 client.unfocused        $inactive-bg-color  $inactive-bg-color $inactive-text-color #00ff00
 client.focused_inactive $inactive-bg-color  $inactive-bg-color $inactive-text-color #00ff00
 client.urgent           $urgent-bg-color    $urgent-bg-color   $text-color          #00ff00
 
-hide_edge_borders both
+# Enable border only when have more than one window
+default_border pixel 1
+default_floating_border none
+hide_edge_borders smart
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
@@ -198,10 +201,6 @@ bar {
 
 # bar toggle
 bindsym $mod+m bar mode toggle
-
-# Disable borders by default
-default_border none
-default_floating_border none
 
 ##
 # Window association
