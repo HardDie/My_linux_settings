@@ -157,9 +157,8 @@
 * Edit audio tags
   id3v2
   mp3info
-* Convert vim to hex editor
-  :%!xxd
-  return: :%!xxd -r
+* Hex editor
+  hexer
 * Disable kerlen printk logs
   echo 0 > /proc/sys/kernel/printk
 * How to use git diff to patch file
