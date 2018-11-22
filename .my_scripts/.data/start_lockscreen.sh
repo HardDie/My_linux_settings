@@ -8,9 +8,9 @@ background=00000000
 foreground=ffffffff
 i3lock \
 	-t -i ~/.wallpapers/lockscreen.png \
-	--timepos='x+110:h-70' \
+	--timepos='x+42:h-70' \
 	--datepos='x+42:h-45' \
-	--clock --date-align 1 \
+	--clock --date-align 1 --time-align 1 \
 	--insidecolor=$background --ringcolor=$foreground --line-uses-inside \
 	--keyhlcolor=$letterEnteredColor --bshlcolor=$letterRemovedColor --separatorcolor=$background \
 	--insidevercolor=$passwordCorrect --insidewrongcolor=$passwordIncorrect \
