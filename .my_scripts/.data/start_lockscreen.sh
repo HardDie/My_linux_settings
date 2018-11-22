@@ -1,7 +1,10 @@
 #!/bin/bash
 
+# Enable autosleep
 killall xautolock
 xautolock -time 1 -locker "xset dpms force off"&
+# Disable notification on lockscreen
+killall -SIGUSR1 dunst
 
 letterEnteredColor=d23c3dff
 letterRemovedColor=d23c3dff
@@ -22,4 +25,7 @@ i3lock \
 	--verifcolor="$foreground" --timecolor="$foreground" --datecolor="$foreground" \
 	--noinputtext='' --force-clock -n
 
+# Disable autosleep
 killall xautolock
+# Enable notification
+killall -SIGUSR2 dunst
