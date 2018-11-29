@@ -24,6 +24,8 @@ do
             RES+="h "
         elif [[ $ONE == *"min"* ]]; then
             RES+="m "
+        elif [[ $ONE == *"week"* ]]; then
+            RES+="w "
         else
             # In wrong case
             RES+=" $ONE "
