@@ -1,0 +1,58 @@
+#!/bin/bash
+
+NONE="#2f343f"
+BG="#445d67"
+TEXT="#3b4549"
+
+print_good() {
+	echo -ne "<span background='$BG' foreground='$NONE'>"
+	echo -ne "\ue0b8" # Open
+	echo -ne "</span>"
+
+	echo -ne "<span background='$BG' foreground='#000000'>"
+    echo -ne "\uf0a0" # Disk
+	echo -ne "</span>"
+
+	echo -ne "<span background='$TEXT' foreground='$BG'>"
+	echo -ne "\ue0b8" # Open
+	echo -ne "</span>"
+
+	echo -ne "<span background='$TEXT' foreground='#eef6eb'>"
+	echo -ne "$1"
+	echo -ne "</span>"
+
+	echo -ne "<span background='$NONE' foreground='$TEXT'>"
+	echo -ne "\ue0b8" # Close
+	echo -ne "</span>"
+}
+
+print_bad() {
+	echo -ne "<span background='$BG' foreground='$NONE'>"
+	echo -ne "\ue0b8" # Open
+	echo -ne "</span>"
+
+	echo -ne "<span background='$BG' foreground='#000000'>"
+    echo -ne "\uf0a0" # Disk
+	echo -ne "</span>"
+
+	echo -ne "<span background='$TEXT' foreground='$BG'>"
+	echo -ne "\ue0b8" # Open
+	echo -ne "</span>"
+
+	echo -ne "<span background='$TEXT' foreground='#ff0000'>"
+	echo -ne "$1"
+	echo -ne "</span>"
+
+	echo -ne "<span background='$NONE' foreground='$TEXT'>"
+	echo -ne "\ue0b8" # Close
+	echo -ne "</span>"
+}
+
+AVAILABLE=$(df -h -P -l $HOME | awk 'NR==2 {print $4}')
+USED=$(df -h -P -l $HOME | awk 'NR==2 {print $5}' | cut -d '%' -f 1)
+
+if [[ $USED -le 10 ]]; then
+    print_bad $AVAILABLE
+else
+    print_good $AVAILABLE
+fi

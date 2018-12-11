@@ -1,0 +1,26 @@
+#!/bin/bash
+
+NONE="#2f343f"
+BG="#c77a69"
+TEXT="#8e665d"
+
+echo -ne "<span background='$BG' foreground='$NONE'>"
+echo -ne "\ue0b8" # Open
+echo -ne "</span>"
+
+echo -ne "<span background='$BG' foreground='#000000'>"
+echo -ne "\uf073" # Calendar
+echo -ne "</span>"
+
+echo -ne "<span background='$TEXT' foreground='$BG'>"
+echo -ne "\ue0b8" # Open
+echo -ne "</span>"
+
+echo -ne "<span background='$TEXT' foreground='#eef6eb'>"
+DATE=`date '+%a %d %b'`
+echo -n "$DATE"
+echo -ne "</span>"
+
+echo -ne "<span background='$NONE' foreground='$TEXT'>"
+echo -ne "\ue0b8" # Close
+echo -ne "</span>"

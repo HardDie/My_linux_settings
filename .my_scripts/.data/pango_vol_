@@ -1,0 +1,31 @@
+#!/bin/bash
+
+MUTE=`pamixer --get-mute`
+
+NONE="#2f343f"
+BG="#597262"
+TEXT="#4d504e"
+
+echo -ne "<span background='$BG' foreground='$NONE'>"
+echo -ne "\ue0b8" # Open
+echo -ne "</span>"
+
+echo -ne "<span background='$BG' foreground='#000000'>"
+echo -ne "\uf7ca" # Headphones
+echo -ne "</span>"
+
+echo -ne "<span background='$TEXT' foreground='$BG'>"
+echo -ne "\ue0b8" # Open
+echo -ne "</span>"
+
+echo -ne "<span background='$TEXT' foreground='#eef6eb'>"
+if [[ $MUTE == "true" ]]; then
+	echo -n MUTE
+else
+	echo -n `pamixer --get-volume`%
+fi
+echo -ne "</span>"
+
+echo -ne "<span background='$NONE' foreground='$TEXT'>"
+echo -ne "\ue0b8" # Close
+echo -ne "</span>"

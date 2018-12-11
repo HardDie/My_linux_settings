@@ -1,0 +1,87 @@
+#!/bin/bash
+
+NONE="#2f343f"
+BG="#6e4555"
+TEXT="#4e3c43"
+
+# SSID SIGNAL IP
+print_good() {
+	echo -ne "<span background='$BG' foreground='$NONE'>"
+	echo -ne "\ue0b8" # Open
+	echo -ne "</span>"
+
+	echo -ne "<span background='$BG' foreground='#000000'>"
+	echo -ne "\ufaa8" # Wifi good
+	echo -ne "</span>"
+
+	echo -ne "<span background='$TEXT' foreground='$BG'>"
+	echo -ne "\ue0b8" # Open
+	echo -ne "</span>"
+
+	echo -ne "<span background='$TEXT' foreground='#eef6eb'>"
+	echo -ne "$1 - $3" # IP SSID
+	echo -ne "</span>"
+
+	echo -ne "<span background='$BG' foreground='$TEXT'>"
+	echo -ne "\ue0b8" # Open
+	echo -ne "</span>"
+
+	echo -ne "<span background='$BG' foreground='#000000'>"
+	echo -ne "\uf9a1" # Wifi signal
+	echo -ne "</span>"
+
+	echo -ne "<span background='$TEXT' foreground='$BG'>"
+	echo -ne "\ue0b8" # Open
+	echo -ne "</span>"
+
+	echo -ne "<span background='$TEXT' foreground='#eef6eb'>"
+	echo -ne "$2dBm" # Signal
+	echo -ne "</span>"
+
+	echo -ne "<span background='$NONE' foreground='$TEXT'>"
+	echo -ne "\ue0b8" # Close
+	echo -ne "</span>"
+}
+
+print_bad() {
+	echo -ne "<span background='$BG' foreground='$NONE'>"
+	echo -ne "\ue0b8" # Open
+	echo -ne "</span>"
+
+	echo -ne "<span background='$BG' foreground='#000000'>"
+	echo -ne "\ufaa9" # Wifi bad
+	echo -ne "</span>"
+
+	echo -ne "<span background='$TEXT' foreground='$BG'>"
+	echo -ne "\ue0b8" # Open
+	echo -ne "</span>"
+
+	echo -ne "<span background='$TEXT' foreground='#eef6eb'>"
+	echo -ne "down"
+	echo -ne "</span>"
+
+	echo -ne "<span background='$NONE' foreground='$TEXT'>"
+	echo -ne "\ue0b8" # Close
+	echo -ne "</span>"
+}
+
+if [[ -z $BLOCK_INSTANCE ]]; then
+	print_bad
+    exit 0
+fi
+IFACE=$BLOCK_INSTANCE
+
+STR=$(iw dev $IFACE link)
+if [[  $STR == 'Not connected.' ]]; then
+	print_bad
+else
+    ARR=(${STR// / })
+    SSID=${ARR[6]}
+    SIGNAL=${ARR[20]}
+
+    STR=$(ifconfig $IFACE)
+    ARR=(${STR// / })
+    IP=${ARR[5]}
+
+	print_good $SSID $SIGNAL $IP
+fi

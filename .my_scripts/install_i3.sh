@@ -82,6 +82,19 @@ sudo install -Dm 0755 .data/wifi_ /lib/i3blocks/wifi_
 sudo install -Dm 0755 .data/eth_ /lib/i3blocks/eth_
 sudo install -Dm 0755 .data/layout_ /lib/i3blocks/layout_
 
+## Install pango widgets
+# Need install font nerd-fonts-complete
+sudo install -Dm 0755 .data/pango_bandwidth_ /lib/i3blocks/pango_bandwidth_
+sudo install -Dm 0755 .data/pango_calendar_ /lib/i3blocks/pango_calendar_
+sudo install -Dm 0755 .data/pango_disk_ /lib/i3blocks/pango_disk_
+sudo install -Dm 0755 .data/pango_eth_ /lib/i3blocks/pango_eth_
+sudo install -Dm 0755 .data/pango_layout_ /lib/i3blocks/pango_layout_
+sudo install -Dm 0755 .data/pango_load_average_ /lib/i3blocks/pango_load_average_
+sudo install -Dm 0755 .data/pango_memory_ /lib/i3blocks/pango_memory_
+sudo install -Dm 0755 .data/pango_time_ /lib/i3blocks/pango_time_
+sudo install -Dm 0755 .data/pango_vol_ /lib/i3blocks/pango_vol_
+sudo install -Dm 0755 .data/pango_wifi_ /lib/i3blocks/pango_wifi_
+
 ## Starting script
 sudo install -Dm 0644 .data/.xinitrc ~/.xinitrc
 
