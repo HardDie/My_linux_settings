@@ -80,6 +80,7 @@ sudo install -Dm 0755 .data/bandwidth_ /lib/i3blocks/bandwidth_
 PCKGS+=" iw" # Get wifi status
 sudo install -Dm 0755 .data/wifi_ /lib/i3blocks/wifi_
 sudo install -Dm 0755 .data/eth_ /lib/i3blocks/eth_
+sudo install -Dm 0755 .data/layout_ /lib/i3blocks/layout_
 
 ## Starting script
 sudo install -Dm 0644 .data/.xinitrc ~/.xinitrc
