@@ -236,9 +236,10 @@ bindsym Ctrl+Mod1+Shift+s exec --no-startup-id $Locker && systemctl suspend
 
 # media keys
 # Pulse Audio controls
-bindsym XF86AudioRaiseVolume exec --no-startup-id pamixer -i 5 #increase sound volume
-bindsym XF86AudioLowerVolume exec --no-startup-id pamixer -d 5 #decrease sound volume
-bindsym XF86AudioMute exec --no-startup-id pamixer -t # mute sound
+set $VolUpdate (pkill -SIGRTMIN+1 i3blocks)
+bindsym XF86AudioRaiseVolume exec --no-startup-id pamixer -i 5 && $VolUpdate #increase sound volume
+bindsym XF86AudioLowerVolume exec --no-startup-id pamixer -d 5 && $VolUpdate #decrease sound volume
+bindsym XF86AudioMute exec --no-startup-id pamixer -t && $VolUpdate # mute sound
 
 # Sreen brightness controls
 bindsym XF86MonBrightnessUp exec xbacklight -inc 20 # increase screen brightness
