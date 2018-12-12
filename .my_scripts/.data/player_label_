@@ -1,0 +1,45 @@
+#!/bin/sh
+
+print_artist_title() {
+	artist=$(echo $status | grep -Po '(?<=(ARTIST = )).*(?= ALBUMARTIST)')
+	title=$(echo $status | grep -Po '(?<=(TITLE = )).*(?= ALBUM)')
+	if [[ $artist != "" && $title != "" ]]; then
+		echo -n $artist - $title
+	elif [[ $artist != "" ]]; then
+		echo -n "$artist"
+	elif [[ $title != "" ]]; then
+		echo -n "$title"
+	else
+		echo -n "(Empty tags)"
+	fi
+}
+
+print_progress() {
+	progress=$(echo $status | grep "playing" | cut -d ' ' -f 3)
+	if [[ $progress != "" ]]; then
+		echo -n " $progress "
+	fi
+}
+
+print_status() {
+	paused=$(echo $status | grep paused)
+	if [[ $paused != "" ]]; then
+		echo -n " (Paused)"
+	fi
+}
+
+status=$(timeout 3 qmmp --no-start --status)
+if [[ $status != "" ]]; then
+	# Long string
+	print_artist_title
+	print_progress
+	print_status
+	echo
+
+	# Short string
+	echo
+	# Color
+	echo "#6a5acd"
+else
+	echo
+fi
