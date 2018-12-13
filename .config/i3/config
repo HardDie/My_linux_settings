@@ -203,7 +203,6 @@ assign [class="Firefox"] $wspace1
 assign [class="Termite"] $wspace2
 assign [class="Emacs"] $wspace3
 assign [class="Thunderbird"] $wspace8
-assign [class="Gajim"] $wspace9
 assign [class="Pidgin"] $wspace9
 assign [class="TelegramDesktop"] $wspace9
 for_window [class="Qmmp"] move to workspace $wspace10
