@@ -128,8 +128,8 @@ time_diff=$(( $time - ${old[0]} ))
 # calc bytes transferred, and their rate in byte/s
 rx_diff=$(( $rx - ${old[1]} ))
 tx_diff=$(( $tx - ${old[2]} ))
-rx_rate=$(( $rx_diff / $time_diff ))
-tx_rate=$(( $tx_diff / $time_diff ))
+rx_rate=$(( $rx_diff / $time_diff * 8 ))
+tx_rate=$(( $tx_diff / $time_diff * 8 ))
 
 # shift by 10 bytes to get KiB/s. If the value is larger than
 # 1024^2 = 1048576, then display MiB/s instead
