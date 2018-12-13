@@ -51,7 +51,7 @@ print_bad() {
 AVAILABLE=$(df -h -P -l $HOME | awk 'NR==2 {print $4}')
 USED=$(df -h -P -l $HOME | awk 'NR==2 {print $5}' | cut -d '%' -f 1)
 
-if [[ $USED -le 10 ]]; then
+if [[ $USED -ge 90 ]]; then
     print_bad $AVAILABLE
 else
     print_good $AVAILABLE
