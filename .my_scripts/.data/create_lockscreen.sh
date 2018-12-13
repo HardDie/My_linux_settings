@@ -10,7 +10,7 @@ update() {
 	l_dimblur="/tmp/lockscreen.png"
 
 	rectangles=" "
-	SR=$(xrandr --query | grep ' connected' | grep -o '[0-9][0-9]*x[0-9][0-9]*[^ ]*')
+	SR=$(DISPLAY=:0 xrandr --query | grep ' connected' | grep -o '[0-9][0-9]*x[0-9][0-9]*[^ ]*')
 	for RES in $SR; do
 		SRA=(${RES//[x+]/ })
 		CX=$((${SRA[2]} + 25))
@@ -41,7 +41,7 @@ update() {
 	echo 'You can find pictures on /tmp folder'
 }
 
-res=$(xrandr --query | grep ' connected' | grep -o '[0-9][0-9]*x[0-9][0-9]*')
+res=$(DISPLAY=:0 xrandr --query | grep ' connected' | grep -o '[0-9][0-9]*x[0-9][0-9]*')
 echo "Your resolution: $res"
 
 update $1
