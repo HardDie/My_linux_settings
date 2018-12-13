@@ -253,5 +253,6 @@ bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightne
 # screenshot
 bindsym --release Print exec --no-startup-id scrot
 bindsym --release Shift+Print exec --no-startup-id scrot -u
+bindsym --release Ctrl+Print exec --no-startup-id scrot -s
 
 gaps inner 10
