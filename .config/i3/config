@@ -242,9 +242,9 @@ bindsym XF86AudioMute exec --no-startup-id pamixer -t && $VolUpdate # mute sound
 
 # Player controls
 set $PlayerUpdate (pkill -SIGRTMIN+2 i3blocks)
-bindsym Ctrl+space exec --no-startup-id qmmp -t && $PlayerUpdate
-bindsym Ctrl+Prior exec --no-startup-id qmmp --previous && $PlayerUpdate
-bindsym Ctrl+Next exec --no-startup-id qmmp --next && $PlayerUpdate
+bindsym Ctrl+space exec --no-startup-id qmmp --no-start -t && $PlayerUpdate
+bindsym Ctrl+Prior exec --no-startup-id qmmp --no-start --previous && $PlayerUpdate
+bindsym Ctrl+Next exec --no-startup-id qmmp --no-start --next && $PlayerUpdate
 
 # Sreen brightness controls
 bindsym XF86MonBrightnessUp exec xbacklight -inc 20 # increase screen brightness
