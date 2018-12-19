@@ -28,17 +28,8 @@ print_artist_title() {
     echo -ne "</span>"
 
     echo -ne "<span background='$TEXT' foreground='#eef6eb'>"
-    artist=$(echo $status | grep -Po '(?<=(ARTIST = )).*(?= ALBUMARTIST)')
-    title=$(echo $status | grep -Po '(?<=(TITLE = )).*(?= ALBUM)')
-    if [[ $artist != "" && $title != "" ]]; then
-        xml_save_print "$artist - $title"
-    elif [[ $artist != "" ]]; then
-        xml_save_print "$artist"
-    elif [[ $title != "" ]]; then
-        xml_save_print "$title"
-    else
-        xml_save_print "No tags"
-    fi
+    state=$(ncmpcpp --current-song="{%a - %t}|{%t}|{%f}")
+    xml_save_print $state
     echo -ne "</span>"
 
     echo -ne "<span background='$BG' foreground='$TEXT'>"
@@ -47,21 +38,16 @@ print_artist_title() {
 }
 
 print_progress() {
-    sts=$(echo $status | grep -o -m 1 "^\[.*]")
-
     echo -ne "<span background='$BG' foreground='#000000'>"
-    case $sts in
+    case ${status[1]} in
         "[paused]"*)
             echo -ne "\uf04c" # Pause
             ;;
         "[playing]"*)
             echo -ne "\uf04b" # Play
             ;;
-        "[stopped]"*)
-            echo -ne "\uf04d" # Stop
-            ;;
         *)
-            echo -n Error
+            echo -ne "\uf04d" # Stop
             ;;
     esac
     echo -ne "</span>"
@@ -71,9 +57,11 @@ print_progress() {
     echo -ne "</span>"
 
     echo -ne "<span background='$TEXT' foreground='#eef6eb' ><tt><small>"
-    progress=$(echo $status | cut -d ' ' -f 3)
+    progress=$(echo ${status[1]} | awk '{print $3}')
     if [[ $progress != "" ]]; then
         echo -n "$progress"
+    else
+        echo -n " -/- "
     fi
     echo -ne "</small></tt></span>"
 
@@ -82,7 +70,7 @@ print_progress() {
     echo -ne "</span>"
 }
 
-status=$(timeout 3 qmmp --no-start --status)
+IFS=$'\n' status=($(mpc status))
 if [[ $status != "" ]]; then
     print_artist_title
     print_progress
