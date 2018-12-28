@@ -1,3 +1,5 @@
+## Need install: imagemagick
+
 # default blur level
 blur_level=1
 
