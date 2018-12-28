@@ -57,6 +57,9 @@ PCKGS+=" polkit"
 PCKGS+=" htop"
 PCKGS+=" unzip"
 
+## For tmux copy shortcut
+PCKGS+=" xclip"
+
 ## Change layout
 sudo install -Dm 0644 .data/00-keyboard.conf /etc/X11/xorg.conf.d/00-keyboard.conf
 
