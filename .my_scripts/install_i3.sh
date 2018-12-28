@@ -17,6 +17,9 @@ PCKGS+=" xorg-xrandr"
 ## Terminal
 PCKGS+=" termite"
 
+## Image viewer
+PCKGS+=" feh"
+
 ## Font
 PCKGS+=" ttf-font-awesome-4"
 PCKGS+=" ttf-hack"
