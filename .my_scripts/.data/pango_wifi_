@@ -79,9 +79,7 @@ else
     SSID=${ARR[6]}
     SIGNAL=${ARR[20]}
 
-    STR=$(ifconfig $IFACE)
-    ARR=(${STR// / })
-    IP=${ARR[5]}
+    IP=($(ip addr show $IFACE | grep '\binet\b' | awk '{print $2}' | cut -d '/' -f 1))
 
 	print_good $SSID $SIGNAL $IP
 fi

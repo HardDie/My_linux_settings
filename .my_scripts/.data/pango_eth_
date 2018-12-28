@@ -65,9 +65,7 @@ ARR=(${STR// / })
 if [[  ${ARR[8]} == 'DOWN' ]]; then
 	print_bad
 else
-	STR=$(ifconfig $IFACE)
-	ARR=(${STR// / })
-	IP=${ARR[5]}
+	IP=($(ip addr show $IFACE | grep '\binet\b' | awk '{print $2}' | cut -d '/' -f 1))
 
 	print_good $IP
 fi
