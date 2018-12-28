@@ -8,6 +8,9 @@ PCKGS+=" i3blocks"
 PCKGS+=" xorg-server"
 PCKGS+=" xorg-xinit"
 
+## Driver
+PCKGS+=" xf86-video-intel"
+
 ## For disable second screen
 PCKGS+=" xorg-xrandr"
 
@@ -94,6 +97,10 @@ sudo install -Dm 0755 .data/pango_memory_ /lib/i3blocks/pango_memory_
 sudo install -Dm 0755 .data/pango_time_ /lib/i3blocks/pango_time_
 sudo install -Dm 0755 .data/pango_vol_ /lib/i3blocks/pango_vol_
 sudo install -Dm 0755 .data/pango_wifi_ /lib/i3blocks/pango_wifi_
+
+## Allow start x server for users
+echo allowed_users=anybody > /etc/X11/Xwrapper.config
+echo needs_root_rigths=yes >> /etc/X11/Xwrapper.config
 
 ## Starting script
 sudo install -Dm 0644 .data/.xinitrc ~/.xinitrc
