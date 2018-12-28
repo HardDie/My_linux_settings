@@ -20,6 +20,7 @@ PCKGS+=" termite"
 ## Font
 PCKGS+=" ttf-font-awesome-4"
 PCKGS+=" ttf-hack"
+PCKGS+=" terminus-font" # font for console
 
 ## Background
 PCKGS+=" nitrogen"
