@@ -1,3 +1,0 @@
-#  ! State:        'bg',         'fg','bgalt', 'hlbg',  'hlfg'
-rofi.color-window: argb:d82f343f, #f3f4f5, 0, #2f343f, #9575cd
-rofi.color-normal: argb:d82f343f, #f3f4f5, 0, #2f343f, #9575cd
