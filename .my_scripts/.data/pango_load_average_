@@ -51,7 +51,9 @@ print_bad() {
 load="$(cut -d ' ' -f1 /proc/loadavg)"
 cpus="$(nproc)"
 
-if [[ $cpus -le load ]]; then
+cmp="$(echo "$load > $cpus" | bc -l)"
+
+if [[ $cmp -ne 0 ]]; then
 	print_bad $load
 else
 	print_good $load
