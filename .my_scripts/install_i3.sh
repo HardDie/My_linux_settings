@@ -91,6 +91,9 @@ PCKGS+=" numlockx"
 ## Download software
 PCKGS+=" aria2"
 
+## Microcode
+PCKGS+=" intel-ucode"
+
 ## Show bandwidth
 PCKGS+=" bc" # Calculator
 sudo install -Dm 0755 .data/bandwidth_ /lib/i3blocks/bandwidth_
