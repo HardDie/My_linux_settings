@@ -45,6 +45,7 @@ PCKGS+=" pulseaudio"
 PCKGS+=" pulseaudio-alsa" # For mixed sound from different applications
 PCKGS+=" pavucontrol" # GUI mixer
 PCKGS+=" pamixer" # For show volume in tray
+PCKGS+=" alsa-utils" # Volume control
 sudo install -Dm 0755 .data/vol /lib/i3blocks/vol
 
 ## Downgrader
