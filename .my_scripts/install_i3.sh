@@ -31,6 +31,9 @@ PCKGS+=" nitrogen"
 ## File manager
 PCKGS+=" pcmanfm"
 
+## Disable screen in lock mode
+PCKGS+=" xautolock"
+
 ## Program launcher
 PCKGS+=" fehlstart-git"
 
