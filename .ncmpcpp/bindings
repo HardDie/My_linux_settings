@@ -400,12 +400,12 @@ def_key "h"
 #def_key "?"
 #  find_item_backward
 #
-#def_key "."
-#  next_found_item
-#
-#def_key ","
-#  previous_found_item
-#
+def_key "n"
+  next_found_item
+
+def_key "p"
+  previous_found_item
+
 #def_key "w"
 #  toggle_find_mode
 #
@@ -469,15 +469,17 @@ def_key "h"
 #def_key "m"
 #  move_sort_order_up
 #
-#def_key "m"
+def_key "m"
+  dummy
 #  move_selected_items_up
-#
+
 #def_key "n"
 #  move_sort_order_down
 #
-#def_key "n"
+def_key "n"
+  dummy
 #  move_selected_items_down
-#
+
 #def_key "M"
 #  move_selected_items_to
 #
