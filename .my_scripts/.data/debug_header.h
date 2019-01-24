@@ -59,7 +59,7 @@ void dtrace(D_ARGS, const int opt, const char* format, ...) {
 	if (debug_file[0] == 0 || !debug_enable) {
 		return;
 	}
-	if (opt != L_RAW) { /* Skip if L_RAW */
+	if (opt != L_RAW) { // Skip if L_RAW
 		if (!(opt & debug_level)) {
 			return;
 		}
@@ -68,7 +68,7 @@ void dtrace(D_ARGS, const int opt, const char* format, ...) {
 
 	FILE* F = fopen(debug_file, "a");
 	if (F) {
-		if (opt != L_RAW) { /* Skip if L_RAW */
+		if (opt != L_RAW) { // Skip if L_RAW
 			fprintf(F, "%s", get_prefix(opt));
 		}
 		va_list a;
@@ -78,12 +78,12 @@ void dtrace(D_ARGS, const int opt, const char* format, ...) {
 		va_end(a);
 		fclose(F);
 	}
-	if (opt != L_RAW) { /* Skip if L_RAW */
+	if (opt != L_RAW) { // Skip if L_RAW
 		print_information(D_PASS_ARGS);
 	}
 }
 __attribute__((unused))
-static void print_information(D_ARGS) {
+static inline void print_information(D_ARGS) {
 	if (debug_level & L_EXTRA) {
 		struct timeval t;
 		char time[32];
@@ -95,10 +95,10 @@ static void print_information(D_ARGS) {
 	dtrace(D_INFO, L_RAW, "\n");
 }
 __attribute__((unused))
-static void print_indent(const int opt) {
+static inline void print_indent(const int opt) {
 	static int indent = 0;
 	int i;
-	if (!(debug_level & L_STRACE)) { /* If stack trace disable, not print indent */
+	if (!(debug_level & L_STRACE)) { // If stack trace disable, not print indent
 		return;
 	}
 	if(opt == S_TR_EXT || opt == S_TR_ERR) {
@@ -114,7 +114,7 @@ static void print_indent(const int opt) {
 	}
 }
 __attribute__((unused))
-static const char* get_prefix(const int opt) {
+static inline const char* get_prefix(const int opt) {
 	if (opt==S_TR_ENT) return ANSI_COLOR_GREEN   "ENT"     ANSI_COLOR_RESET;
 	if (opt==S_TR_EXT) return ANSI_COLOR_MAGENTA "EXT"     ANSI_COLOR_RESET;
 	if (opt==S_TR_ERR) return ANSI_COLOR_RED     "ERR"     ANSI_COLOR_RESET;
@@ -126,7 +126,7 @@ static const char* get_prefix(const int opt) {
 }
 
 __attribute__((unused))
-void dtrace_hex_dump(const u_int8_t* addr, const int len) {
+inline void dtrace_hex_dump(const u_int8_t* addr, const int len) {
 	dtrace(D_INFO, L_RAW, "Start hex dump\n");
 	int i;
     unsigned char buff[16] = "";
@@ -164,11 +164,11 @@ void dtrace_enable(void) { debug_level = L_ALL; }
  * Header for additional files
  */
 
-#else /* __D_INIT__ */
+#else // __D_INIT__
 extern void dtrace(D_ARGS, const int opt, const char* format, ...);
 extern void dtrace_hex_dump(const u_int8_t* addr, const int len);
 extern void dtrace_disable(void);
 extern void dtrace_enable(void);
-#endif /* __D_INIT__ */
+#endif // __D_INIT__
 
-#endif /* _MY_DEBUG_HEADER_ */
+#endif // _MY_DEBUG_HEADER_
