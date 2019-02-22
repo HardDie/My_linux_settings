@@ -25,3 +25,6 @@
 * Autocomplete emacs
   sudo apt-get install libclang-3.8-dev cmake
   M-x irony-install-server
+* Add ggtags
+  yay -S ggtags global
+  package-list-packages : gtags
