@@ -9,3 +9,25 @@ set laststatus=2
 set t_Co=256
 
 syntax on
+
+" Setup line number
+set number
+highlight LineNr term=bold cterm=NONE ctermfg=DarkGrey ctermbg=NONE
+
+" Plugin manager
+execute pathogen#infect()
+filetype plugin indent on
+
+set cscopeprg=gtags-cscope
+
+" Show tab and space
+set list
+set listchars=tab:>.,trail:.,extends:\#,nbsp:.
+
+" Add NerdTree shortcut
+map <C-o> :NERDTreeToggle<CR>
+
+" set background=dark
+" color delek
+color koehler
+" color zellner
