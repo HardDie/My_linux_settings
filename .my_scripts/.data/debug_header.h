@@ -86,11 +86,11 @@ __attribute__((unused))
 static inline void print_information(D_ARGS) {
 	if (debug_level & L_EXTRA) {
 		struct timeval t;
-		char time[32];
+		char time_[32];
 		gettimeofday(&t, NULL);
-		strftime(time, sizeof(time), "%H:%M:%S", localtime(&t.tv_sec));
+		strftime(time_, sizeof(time_), "%H:%M:%S", localtime(&t.tv_sec));
 		dtrace(D_INFO, L_RAW, " %1s[%s():%d]{%d}(%s) - %s%1s", ANSI_COLOR_YELLOW,
-		       func, line, getpid(), time, file, ANSI_COLOR_RESET);
+		       func, line, getpid(), time_, file, ANSI_COLOR_RESET);
 	}
 	dtrace(D_INFO, L_RAW, "\n");
 }
