@@ -37,5 +37,5 @@ color koehler
 
 " Setup buffer copy
 vmap y :'<,'> w! /tmp/vimtmp<CR>
-vmap x :'<,'> w! /tmp/vimtmp<CR>dd<CR>
+vmap x :'<,'> w! /tmp/vimtmp<CR>:'<,'> d<CR>
 nmap p :r /tmp/vimtmp<CR>
