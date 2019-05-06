@@ -5,6 +5,9 @@ set hlsearch
 " Always show statusline
 set laststatus=2
 
+" Show file path
+set statusline+=%F
+
 " Use 256 colours (Use this setting only if your terminal supports 256 colours)
 set t_Co=256
 
@@ -31,3 +34,8 @@ map <C-o> :NERDTreeToggle<CR>
 " color delek
 color koehler
 " color zellner
+
+" Setup buffer copy
+vmap y :'<,'> w! /tmp/vimtmp<CR>
+vmap x :'<,'> w! /tmp/vimtmp<CR>dd<CR>
+nmap p :r /tmp/vimtmp<CR>
