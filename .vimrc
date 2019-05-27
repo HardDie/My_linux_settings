@@ -39,3 +39,6 @@ color koehler
 vmap y :'<,'> w! /tmp/vimtmp<CR>
 vmap x :'<,'> w! /tmp/vimtmp<CR>:'<,'> d<CR>
 nmap p :r /tmp/vimtmp<CR>
+
+vmap <C-l> :'<,'>norm i//<CR>
+vmap <S-l> :'<,'>norm xx<CR>
