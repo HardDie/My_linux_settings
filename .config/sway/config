@@ -1,0 +1,255 @@
+##
+# Variables
+##
+
+set $mod Mod4
+
+set $wspace1 "1: "
+set $wspace2 "2: "
+set $wspace3 "3: "
+set $wspace8 "8: "
+set $wspace9 "9: "
+set $wspace10 "10: "
+
+set $bg-color            #2f343f
+set $inactive-bg-color   #2f343f
+set $text-color          #f3f4f5
+set $inactive-text-color #676E7D
+set $urgent-bg-color     #E53935
+
+set $Locker (~/.my_scripts/.data/start_lockscreen.sh&)
+set $VolUpdate (pkill -SIGRTMIN+1 i3blocks)
+set $PlayerUpdate (pkill -SIGRTMIN+2 i3blocks)
+
+
+##
+# Font
+##
+
+font pango:Cantarell 13
+
+
+##
+# Mode setup
+##
+
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
+# disable follow focus by mouse
+focus_follows_mouse no
+
+# Enable border only when have more than one window
+default_border pixel 1
+default_floating_border none
+hide_edge_borders smart
+
+gaps inner 10
+
+
+##
+# Color scheme
+##
+
+# window colors
+#                       border              background         text                 indicator
+# client.focused          $bg-color           #ff3300            $text-color          #00ff00
+# #client.focused          $bg-color           $bg-color          $text-color          #00ff00
+# client.unfocused        $inactive-bg-color  $inactive-bg-color $inactive-text-color #00ff00
+# client.focused_inactive $inactive-bg-color  $inactive-bg-color $inactive-text-color #00ff00
+# client.urgent           $urgent-bg-color    $urgent-bg-color   $text-color          #00ff00
+
+
+##
+# System shortcuts
+##
+
+# start a terminal
+bindsym Ctrl+Mod1+t exec termite
+
+# kill focused window
+bindsym Ctrl+Shift+q kill
+
+# start fehlstart (a program launcher)
+bindsym Mod1+F2 exec --no-startup-id fehlstart --one-way
+
+# Make the currently focused window a scratchpad
+bindsym $mod+Shift+minus move scratchpad
+# Show the first scratchpad window
+bindsym $mod+minus scratchpad show
+
+# change focus
+bindsym $mod+j focus left
+bindsym $mod+k focus down
+bindsym $mod+i focus up
+bindsym $mod+l focus right
+
+# move focused window
+bindsym $mod+Shift+j move left
+bindsym $mod+Shift+k move down
+bindsym $mod+Shift+i move up
+bindsym $mod+Shift+l move right
+
+# move workspace
+bindsym $mod+Ctrl+Shift+j move workspace to output left
+bindsym $mod+Ctrl+Shift+l move workspace to output right
+
+# split in horizontal orientation
+bindsym $mod+h split h
+# split in vertical orientation
+bindsym $mod+v split v
+
+# enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen toggle
+
+# change container layout (stacked, tabbed, toggle split) bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+# toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+
+# change focus between tiling / floating windows
+bindsym $mod+space focus mode_toggle
+
+# switch to workspace
+bindsym $mod+1 workspace $wspace1
+bindsym $mod+2 workspace $wspace2
+bindsym $mod+3 workspace $wspace3
+bindsym $mod+4 workspace 4
+bindsym $mod+5 workspace 5
+bindsym $mod+6 workspace 6
+bindsym $mod+7 workspace 7
+bindsym $mod+8 workspace $wspace8
+bindsym $mod+9 workspace $wspace9
+bindsym $mod+0 workspace $wspace10
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace $wspace1
+bindsym $mod+Shift+2 move container to workspace $wspace2
+bindsym $mod+Shift+3 move container to workspace $wspace3
+bindsym $mod+Shift+4 move container to workspace 4
+bindsym $mod+Shift+5 move container to workspace 5
+bindsym $mod+Shift+6 move container to workspace 6
+bindsym $mod+Shift+7 move container to workspace 7
+bindsym $mod+Shift+8 move container to workspace $wspace8
+bindsym $mod+Shift+9 move container to workspace $wspace9
+bindsym $mod+Shift+0 move container to workspace $wspace10
+
+# sway have only reload command
+bindsym $mod+Shift+r reload
+# exit i3 (logs you out of your X session)
+bindsym $mod+Shift+e exec [ $(echo -e 'No\nYes' | dmenu -i -p 'Do you really want to exit i3?') == 'Yes' ] && swaymsg exit
+
+mode "resize" {
+        bindsym j resize shrink width 10 px or 10 ppt
+        bindsym k resize grow height 10 px or 10 ppt
+        bindsym i resize shrink height 10 px or 10 ppt
+        bindsym l resize grow width 10 px or 10 ppt
+
+        bindsym Left resize shrink width 1 px or 1 ppt
+        bindsym Down resize grow height 1 px or 1 ppt
+        bindsym Up resize shrink height 1 px or 1 ppt
+        bindsym Right resize grow width 1 px or 1 ppt
+
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+bindsym $mod+r mode "resize"
+
+# bar toggle
+bindsym $mod+m bar mode toggle
+
+
+##
+# Bar
+##
+
+bar {
+    status_command i3blocks -c ~/.config/sway/i3blocks.conf
+    colors {
+        background $bg-color
+        separator #757575
+        #                  border             background         text
+        focused_workspace  $bg-color          $bg-color          $text-color
+        inactive_workspace $inactive-bg-color $inactive-bg-color $inactive-text-color
+        urgent_workspace   $urgent-bg-color   $urgent-bg-color   $text-color
+        active_workspace   $inactive-bg-color $inactive-bg-color $inactive-text-color
+    }
+    position top
+    tray_output none
+}
+
+##
+# Window association
+# Get info: xprop
+##
+assign [class="Firefox"] $wspace1
+assign [class="Waterfox"] $wspace1
+assign [class="Termite"] $wspace2
+assign [class="Emacs"] $wspace3
+assign [class="Thunderbird"] $wspace8
+assign [class="Pidgin"] $wspace9
+assign [class="TelegramDesktop"] $wspace9
+for_window [class="Qmmp"] move to workspace $wspace10
+
+for_window [class="Tor Browser"] floating enable
+for_window [class="VirtualBox Manager"] floating enable
+for_window [class="VirtualBox Machine"] floating enable
+
+
+##
+# Custom autostart
+##
+
+exec --no-startup-id mako --anchor bottom-right
+exec --no-startup-id nitrogen --restore
+exec_always --no-startup-id killall xxkb; xxkb
+
+
+##
+# Custom shortcut
+##
+
+# notification
+bindsym Ctrl+Shift+space exec --no-startup-id makoctl dismiss -a
+
+# lockscreen and suspend
+bindsym Ctrl+Mod1+Shift+l exec --no-startup-id $Locker
+bindsym Ctrl+Mod1+Shift+s exec --no-startup-id $Locker && sleep 1 && systemctl suspend
+
+# media keys
+# Pulse Audio controls
+bindsym XF86AudioRaiseVolume exec --no-startup-id pamixer -i 5 && $VolUpdate #increase sound volume
+bindsym XF86AudioLowerVolume exec --no-startup-id pamixer -d 5 && $VolUpdate #decrease sound volume
+bindsym XF86AudioMute exec --no-startup-id pamixer -t && $VolUpdate # mute sound
+
+# Player controls
+bindsym Ctrl+space exec --no-startup-id mpc toggle && $PlayerUpdate
+bindsym Ctrl+Prior exec --no-startup-id mpc prev && $PlayerUpdate
+bindsym Ctrl+Next exec --no-startup-id mpc next && $PlayerUpdate
+
+# Sreen brightness controls
+bindsym XF86MonBrightnessUp exec xbacklight -inc 20 # increase screen brightness
+bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightness
+
+# screenshot
+bindsym --release Print exec --no-startup-id grim -o ~/$(date +"%Y-%m-%d-%H-%M-%S")_screenshot.png
+# bindsym --release Shift+Print exec --no-startup-id scrot -u
+bindsym --release Ctrl+Print exec --no-startup-id grim -g "$(slurp)" -o ~/$(date +"%Y-%m-%d-%H-%M-%S")_screenshot.png
+
+
+##
+# Setup input and output
+##
+
+output "*" background /home/harddie/.wallpapers/wallpaper.png fill
+output X11-1 resolution 1920x1080 position 1920,0
+
+input * {
+    # Enable NumLock on startup
+    xkb_numlock enabled
+    xkb_layout "us,ru"
+    xkb_options "grp:caps_toggle"
+}
