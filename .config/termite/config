@@ -19,5 +19,5 @@ color14 = #34E2E2
 color15 = #EEEEEC
 
 [options]
-font = Hack 11
+font = Hack 9
 mouse_autohide = true

@@ -27,7 +27,7 @@ set $VolUpdate (pkill -SIGRTMIN+1 waybar)
 set $PlayerUpdate (pkill -SIGRTMIN+2 waybar)
 set $LangUpdate (pkill -SIGRTMIN+3 waybar)
 
-set $Font "Cantarell 13"
+set $Font "Cantarell 10"
 
 
 ##
