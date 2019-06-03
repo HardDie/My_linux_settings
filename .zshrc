@@ -120,7 +120,7 @@ setopt HIST_REDUCE_BLANKS
 # Autostart i3
 if [[ "$(tty)" == '/dev/tty1' ]]; then
 	echo "Starting i3 session..."
-	exec startx 2>/dev/null
+	exec sway 2>/dev/null
 fi
 
 # If not running interactively, do not do anything
