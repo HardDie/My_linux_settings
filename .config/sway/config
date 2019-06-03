@@ -52,7 +52,7 @@ default_border pixel 1
 default_floating_border none
 hide_edge_borders smart
 
-gaps inner 10
+gaps inner 20
 
 
 ##
@@ -224,9 +224,9 @@ bindsym --to-code Ctrl+Mod1+Shift+s exec --no-startup-id $Locker && sleep 1 && s
 
 # media keys
 # Pulse Audio controls
-bindsym --to-code XF86AudioRaiseVolume exec --no-startup-id pamixer -i 5 && $VolUpdate #increase sound volume
-bindsym --to-code XF86AudioLowerVolume exec --no-startup-id pamixer -d 5 && $VolUpdate #decrease sound volume
-bindsym --to-code XF86AudioMute exec --no-startup-id pamixer -t && $VolUpdate # mute sound
+bindsym --to-code Ctrl+F12 exec --no-startup-id pamixer -i 5 && $VolUpdate #increase sound volume
+bindsym --to-code Ctrl+F11 exec --no-startup-id pamixer -d 5 && $VolUpdate #decrease sound volume
+bindsym --to-code Ctrl+F10 exec --no-startup-id pamixer -t && $VolUpdate # mute sound
 
 # Player controls
 bindsym --to-code Ctrl+space exec --no-startup-id mpc toggle && $PlayerUpdate
@@ -251,7 +251,7 @@ bindsym --to-code ISO_Next_Group exec --no-startup-id $LangUpdate
 ##
 
 output "*" background ~/.wallpapers/wallpaper.png fill
-output X11-1 resolution 1920x1080 position 1920,0
+output X11-1 resolution 1024x600 position 1024,0
 
 input * {
     # Enable NumLock on startup
