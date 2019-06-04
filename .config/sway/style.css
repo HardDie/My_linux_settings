@@ -1,0 +1,32 @@
+* {
+    padding: 0 0;
+    border: none;
+    border-radius: 0;
+    font-family: Cantarell;
+    font-size: 17px;
+    min-height: 0;
+}
+
+window#waybar {
+    background: #2f343f;
+    color: #ffffff;
+    transition-property: background, background-color;
+    transition-duration: .5s;
+}
+
+#workspaces button {
+    padding: 0 5px;
+    background: transparent;
+    color: #6d726e;
+    border-bottom: 3px solid transparent;
+}
+
+#workspaces button.focused {
+    background: #64727D;
+    color: #ffffff;
+    border-bottom: 3px solid #ffffff;
+}
+
+#workspaces button.urgent {
+    background-color: #eb4d4b;
+}

@@ -18,8 +18,8 @@ set $inactive-text-color #676E7D
 set $urgent-bg-color     #E53935
 
 set $Locker (~/.my_scripts/.data/sway_start_lockscreen.sh&)
-set $VolUpdate (pkill -SIGRTMIN+1 i3blocks)
-set $PlayerUpdate (pkill -SIGRTMIN+2 i3blocks)
+set $VolUpdate (pkill -SIGRTMIN+1 waybar)
+set $PlayerUpdate (pkill -SIGRTMIN+2 waybar)
 
 
 ##
@@ -167,18 +167,7 @@ bindsym $mod+m bar mode toggle
 ##
 
 bar {
-    status_command i3blocks -c ~/.config/sway/i3blocks.conf
-    colors {
-        background $bg-color
-        separator #757575
-        #                  border             background         text
-        focused_workspace  $bg-color          $bg-color          $text-color
-        inactive_workspace $inactive-bg-color $inactive-bg-color $inactive-text-color
-        urgent_workspace   $urgent-bg-color   $urgent-bg-color   $text-color
-        active_workspace   $inactive-bg-color $inactive-bg-color $inactive-text-color
-    }
-    position top
-    tray_output none
+    swaybar_command waybar -c ~/.config/sway/waybar.conf -s ~/.config/sway/style.css
 }
 
 ##
