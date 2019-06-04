@@ -7,7 +7,8 @@ exec swayidle -w \
     resume 'swaymsg "output * dpms on"'&
 
 # Disable notification on lockscreen
-killall -SIGUSR1 dunst
+echo -n "invisible=1" > ~/.config/mako/config
+makoctl reload
 
 letterEnteredColor=d23c3dff
 letterRemovedColor=d23c3dff
@@ -32,4 +33,5 @@ i3lock \
 killall swayidle
 
 # Enable notification
-killall -SIGUSR2 dunst
+echo -n "invisible=0" > ~/.config/mako/config
+makoctl reload
