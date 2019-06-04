@@ -3,6 +3,21 @@
 # default blur level
 blur_level=1
 
+check_bin() {
+	which $1 > /dev/null 2>/dev/null
+	RES=$?
+	if [[ $RES -eq 1 ]]; then
+		echo "Can't find '$1' bin, try install '$2' packet"
+		exit
+	fi
+}
+
+check_bins() {
+	check_bin "xrandr" "xorg-xrandr"
+	check_bin "convert" "imagemagick"
+	check_bin "grep" "grep"
+}
+
 update() {
 	orig_wall="$1"
 	resized="/tmp/wallpaper.png"
@@ -37,11 +52,13 @@ update() {
 
 	# lockscreen backgrounds
 	convert "$dimblur" -draw "fill rgba(0, 0, 0, 0.4) $rectangles" "$l_dimblur"
-    rm $dim $dimblur
+	rm $dim $dimblur
 
 	echo 'All required changes have been applied!'
 	echo 'You can find pictures on /tmp folder'
 }
+
+check_bins
 
 res=$(DISPLAY=:0 xrandr --query | grep ' connected' | grep -o '[0-9][0-9]*x[0-9][0-9]*')
 echo "Your resolution: $res"
