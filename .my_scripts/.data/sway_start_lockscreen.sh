@@ -1,5 +1,7 @@
 #!/bin/bash
 
+MAKO=$(pidof mako)
+
 # Enable autosleep
 killall swayidle
 exec swayidle -w \
@@ -7,8 +9,10 @@ exec swayidle -w \
     resume 'swaymsg "output * dpms on"'&
 
 # Disable notification on lockscreen
-echo -n "invisible=1" > ~/.config/mako/config
-makoctl reload
+if [[ $MAKO ]]; then
+	echo -n "invisible=1" > ~/.config/mako/config
+	makoctl reload
+fi
 
 letterEnteredColor=d23c3dff
 letterRemovedColor=d23c3dff
@@ -33,5 +37,7 @@ i3lock \
 killall swayidle
 
 # Enable notification
-echo -n "invisible=0" > ~/.config/mako/config
-makoctl reload
+if [[ $MAKO ]]; then
+	echo -n "invisible=0" > ~/.config/mako/config
+	makoctl reload
+fi

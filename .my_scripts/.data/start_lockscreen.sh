@@ -1,10 +1,14 @@
 #!/bin/bash
 
+DUNST=$(pidof dunst)
+
 # Enable autosleep
 killall xautolock
 xautolock -time 1 -locker "xset dpms force off"&
 # Disable notification on lockscreen
-killall -SIGUSR1 dunst
+if [[ $DUNST ]]; then
+	killall -SIGUSR1 dunst
+fi
 
 letterEnteredColor=d23c3dff
 letterRemovedColor=d23c3dff
@@ -28,4 +32,6 @@ i3lock \
 # Disable autosleep
 killall xautolock
 # Enable notification
-killall -SIGUSR2 dunst
+if [[ $DUNST ]]; then
+	killall -SIGUSR2 dunst
+fi
