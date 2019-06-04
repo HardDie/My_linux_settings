@@ -17,7 +17,7 @@ set $text-color          #f3f4f5
 set $inactive-text-color #676E7D
 set $urgent-bg-color     #E53935
 
-set $Locker (~/.my_scripts/.data/start_lockscreen.sh&)
+set $Locker (~/.my_scripts/.data/sway_start_lockscreen.sh&)
 set $VolUpdate (pkill -SIGRTMIN+1 i3blocks)
 set $PlayerUpdate (pkill -SIGRTMIN+2 i3blocks)
 
