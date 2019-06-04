@@ -204,8 +204,6 @@ for_window [class="VirtualBox Machine"] floating enable
 ##
 
 exec --no-startup-id mako --anchor bottom-right
-exec --no-startup-id nitrogen --restore
-exec_always --no-startup-id killall xxkb; xxkb
 
 
 ##
@@ -235,9 +233,9 @@ bindsym XF86MonBrightnessUp exec xbacklight -inc 20 # increase screen brightness
 bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightness
 
 # screenshot
-bindsym --release Print exec --no-startup-id grim -o ~/$(date +"%Y-%m-%d-%H-%M-%S")_screenshot.png
+bindsym --release Print exec --no-startup-id grim ~/$(date +"%Y-%m-%d-%H-%M-%S")_screenshot.png
 # bindsym --release Shift+Print exec --no-startup-id scrot -u
-bindsym --release Ctrl+Print exec --no-startup-id grim -g "$(slurp)" -o ~/$(date +"%Y-%m-%d-%H-%M-%S")_screenshot.png
+bindsym --release Ctrl+Print exec --no-startup-id grim -g "$(slurp)" ~/$(date +"%Y-%m-%d-%H-%M-%S")_screenshot.png
 
 
 ##
