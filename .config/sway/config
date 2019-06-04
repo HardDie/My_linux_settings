@@ -255,7 +255,6 @@ output X11-1 resolution 1024x600 position 1024,0
 
 input * {
     # Enable NumLock on startup
-    xkb_numlock enabled
     xkb_layout "us,ru"
     xkb_options "grp:caps_toggle"
 }
