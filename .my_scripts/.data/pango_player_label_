@@ -28,7 +28,7 @@ print_artist_title() {
     echo -ne "</span>"
 
     echo -ne "<span background='$TEXT' foreground='#eef6eb'>"
-    state=$(ncmpcpp --current-song="{%a - %t}|{%t}|{%f}")
+    state=$(ncmpcpp --current-song="{%a - %t}|{%t}|{%f}" 2>/dev/null | cut -c 1-$LEN)
     xml_save_print $state
     echo -ne "</span>"
 
@@ -69,6 +69,8 @@ print_progress() {
     echo -ne "\ue0b8" # Close
     echo -ne "</span>"
 }
+
+LEN=70
 
 IFS=$'\n' status=($(mpc status))
 if [[ $status != "" ]]; then
