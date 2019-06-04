@@ -139,7 +139,7 @@ bindsym $mod+Shift+0 move container to workspace $wspace10
 # sway have only reload command
 bindsym $mod+Shift+r reload
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec [ $(echo -e 'No\nYes' | dmenu -i -p 'Do you really want to exit i3?') == 'Yes' ] && swaymsg exit
+bindsym $mod+Shift+e exec [ $(echo -e 'No\nYes' | dmenu -fn Cantarell:13 -nb "#2f343f" -i -p 'Do you really want to exit i3?') == 'Yes' ] && swaymsg exit
 
 mode "resize" {
         bindsym j resize shrink width 10 px or 10 ppt
