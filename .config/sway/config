@@ -70,8 +70,17 @@ bindsym Ctrl+Mod1+t exec termite
 # kill focused window
 bindsym Ctrl+Shift+q kill
 
-# start fehlstart (a program launcher)
-bindsym Mod1+F2 exec --no-startup-id fehlstart --one-way
+# start rofi (a program launcher)
+# -color-winwod "bg, frame, ?"
+# -color-normal "bg_inactive_element, inactive_text, inactive_bg, active_bg, active_text"
+# -color-active ?, -color-urgent ?
+bindsym Mod1+F2 exec --no-startup-id rofi -show run -modi run -location 1 -width 100 -lines 2 -line-margin 0 -line-padding 1 \
+-separator-style none -font $Font -disable-history -hide-scrollbar \
+-color-window "$bg-color, $bg-color, #ff0000" \
+-color-normal "$bg-color, $inactive-text-color, $bg-color, $bg-color, $text-color" \
+-color-active "#ff0000, #ff0000, #ff0000, #ff0000, #ff0000" \
+-color-urgent "#ff0000, #ff0000, #ff0000, #ff0000, #ff0000"
+
 
 # Make the currently focused window a scratchpad
 bindsym $mod+Shift+minus move scratchpad
