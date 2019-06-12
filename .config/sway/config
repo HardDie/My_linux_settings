@@ -21,12 +21,14 @@ set $Locker (~/.my_scripts/.data/sway_start_lockscreen.sh&)
 set $VolUpdate (pkill -SIGRTMIN+1 waybar)
 set $PlayerUpdate (pkill -SIGRTMIN+2 waybar)
 
+set $Font "Cantarell 13"
+
 
 ##
 # Font
 ##
 
-font pango:Cantarell 13
+font pango:$Font
 
 
 ##
