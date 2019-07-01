@@ -15,8 +15,14 @@
 # Active font(grey): 255
 
 # User commands
-uptime="#(~/.my_scripts/.data/pretty_uptime.sh)"
-status="#(~/.my_scripts/.data/tmux_status.sh #F)"
+END_S="\\\(s\\\?\\\)"
+uptime="#(uptime -p | sed 's/^...//; s/,//g; s/ week${END_S}/w/; s/ day${END_S}/d/; s/ hour${END_S}/h/; s/ minute${END_S}/m/')"
+
+# Replase:
+# '.*' -> ':'
+# '*Z' -> 'Z'
+# '-Z' -> 'Z'
+status="#(echo #F | sed 's/^*Z$\|^-Z$/Z/g; /^[Z-]$/! s/.*/:/g')"
 
 # Status update interval
 set -g status-interval 3
