@@ -96,6 +96,7 @@ source $ZSH/oh-my-zsh.sh
 
 ### MY SETTINGS ###
 export EDITOR=vim
+export WINEARCH=win32
 
 alias ll='ls -hlF'
 alias lla='ls -hAlF'

@@ -191,11 +191,14 @@ bar {
 # Window association
 # Get info: swaymsg -t get_tree
 ##
-assign [class="Firefox"] $wspace1
 assign [class="Waterfox"] $wspace1
 assign [app_id="termite"] $wspace2
-assign [class="TelegramDesktop"] $wspace9
+assign [class="xfreerdp"] $wspace3
+assign [class="Wine"] $wspace5
+assign [class="Chromium"] $wspace8
 # for_window [class="Qmmp"] move to workspace $wspace10
+
+for_window [class="xfreerdp"] floating disable
 
 for_window [app_id="gnome-calculator"] floating enable
 for_window [class="Tor Browser"] floating enable
