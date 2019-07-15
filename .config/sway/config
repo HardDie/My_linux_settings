@@ -255,8 +255,14 @@ bindsym --to-code ISO_Next_Group exec --no-startup-id $LangUpdate
 # Setup input and output
 ##
 
-output "*" background ~/.wallpapers/wallpaper.png fill
-output X11-1 resolution 1920x1080 position 1920,0
+output HDMI-A-1 {
+    background ~/.wallpapers/wallpaper_l.png fill
+    resolution 1920x1080 position 0,0
+}
+output HDMI-A-2 {
+    background ~/.wallpapers/wallpaper_r.png fill
+    resolution 1920x1080 position 1920,0
+}
 
 input * {
     # Enable NumLock on startup
