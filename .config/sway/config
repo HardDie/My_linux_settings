@@ -186,6 +186,9 @@ bindsym --to-code $mod+m exec killall -s SIGUSR1 waybar
 bar {
     swaybar_command /home/harddie/.config/sway/start_waybar.sh
 }
+bar {
+    swaybar_command /home/harddie/.config/sway/start_waybar2.sh
+}
 
 ##
 # Window association
