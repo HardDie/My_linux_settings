@@ -187,16 +187,13 @@ bar {
 
 ##
 # Window association
-# Get info: xprop
+# Get info: swaymsg -t get_tree
 ##
 assign [class="Firefox"] $wspace1
 assign [class="Waterfox"] $wspace1
-assign [class="Termite"] $wspace2
-assign [class="Emacs"] $wspace3
-assign [class="Thunderbird"] $wspace8
-assign [class="Pidgin"] $wspace9
+assign [app_id="termite"] $wspace2
 assign [class="TelegramDesktop"] $wspace9
-for_window [class="Qmmp"] move to workspace $wspace10
+# for_window [class="Qmmp"] move to workspace $wspace10
 
 for_window [class="Tor Browser"] floating enable
 for_window [class="VirtualBox Manager"] floating enable
