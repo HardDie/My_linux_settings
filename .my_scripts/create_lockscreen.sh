@@ -13,9 +13,21 @@ check_bin() {
 }
 
 check_bins() {
-	check_bin "xrandr" "xorg-xrandr"
 	check_bin "convert" "imagemagick"
 	check_bin "grep" "grep"
+
+	which "i3-msg" >/dev/null 2>/dev/null
+	if [[ $? -eq 1 ]]; then
+		which "swaymsg" >/dev/null 2>/dev/null
+		if [[ $? -eq 1 ]]; then
+			echo "Can't find i3/sway msg app"
+			exit
+		else
+			MSG="swaymsg"
+		fi
+	else
+		MSG="i3-msg"
+	fi
 }
 
 update() {
@@ -27,10 +39,10 @@ update() {
 	l_dimblur="/tmp/lockscreen.png"
 
 	rectangles=" "
-	SR=$(DISPLAY=:0 xrandr --query | grep ' connected' | grep -o '[0-9][0-9]*x[0-9][0-9]*[^ ]*')
+	SR=$res
 	for RES in $SR; do
 		SRA=(${RES//[x+]/ })
-		CX=$((${SRA[2]} + 25))
+		CX=25 # x(0) + 25
 		CY=$((${SRA[1]} - 30))
 		rectangles+="rectangle $CX,$CY $((CX+300)),$((CY-80)) "
 	done
@@ -58,9 +70,16 @@ update() {
 	echo 'You can find pictures on /tmp folder'
 }
 
+# Check image path
+if [[ $# -ne 1 || ! -f $1 || ! -r $1 ]]; then
+	echo "ERROR: Required pictire path as argument!"
+	echo "example: $0 /path/to/img.png"
+	exit
+fi
+
 check_bins
 
-res=$(DISPLAY=:0 xrandr --query | grep ' connected' | grep -o '[0-9][0-9]*x[0-9][0-9]*')
+res=$($MSG -t get_outputs | jq -r '.[] | select(.focused) | .rect | "\(.width)x\(.height)"')
 echo "Your resolution: $res"
 
 update $1
