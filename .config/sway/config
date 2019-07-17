@@ -24,6 +24,7 @@ set $urgent-bg-color     #E53935
 set $Locker (~/.my_scripts/.data/sway_start_lockscreen.sh&)
 set $VolUpdate (pkill -SIGRTMIN+1 waybar)
 set $PlayerUpdate (pkill -SIGRTMIN+2 waybar)
+set $LangUpdate (pkill -SIGRTMIN+3 waybar)
 
 set $Font "Cantarell 13"
 
@@ -237,6 +238,9 @@ bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightne
 bindsym --release Print exec --no-startup-id ~/.my_scripts/.data/sway_make_screenshot.sh
 bindsym --release Shift+Print exec --no-startup-id ~/.my_scripts/.data/sway_make_screenshot.sh -a
 bindsym --release Ctrl+Print exec --no-startup-id ~/.my_scripts/.data/sway_make_screenshot.sh -r
+
+# Layout update
+bindsym ISO_Next_Group exec --no-startup-id $LangUpdate
 
 
 ##

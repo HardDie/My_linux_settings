@@ -1,0 +1,27 @@
+#!/bin/bash
+
+NONE="#2f343f"
+BG="#8b8367"
+TEXT="#626059"
+
+echo -ne "<span background='$BG' foreground='$NONE'>"
+echo -ne "\ue0b8" # Open
+echo -ne "</span>"
+
+echo -ne "<span background='$BG' foreground='#000000'>"
+echo -ne "\ufac9" # Lang
+echo -ne "</span>"
+
+echo -ne "<span background='$TEXT' foreground='$BG'>"
+echo -ne "\ue0b8" # Open
+echo -ne "</span>"
+
+echo -ne "<span background='$TEXT' foreground='#eef6eb'>"
+VENDOR=$BLOCK_INSTANCE
+VAL=$(swaymsg -t get_inputs | jq -r ".[] | select(.type == \"keyboard\") | select(.vendor == $VENDOR).xkb_active_layout_name")
+echo -n $VAL
+echo -ne "</span>"
+
+echo -ne "<span background='$NONE' foreground='$TEXT'>"
+echo -ne "\ue0b8" # Close
+echo -ne "</span>"
