@@ -20,18 +20,13 @@ passwordCorrect=00000000
 passwordIncorrect=d23c3dff
 background=00000000
 foreground=ffffffff
-i3lock \
-	-t -i ~/.wallpapers/lockscreen.png \
-	--timepos='x+42:h-70' \
-	--datepos='x+42:h-45' \
-	--clock --date-align 1 --time-align 1 \
-	--insidecolor=$background --ringcolor=$foreground --line-uses-inside \
-	--keyhlcolor=$letterEnteredColor --bshlcolor=$letterRemovedColor --separatorcolor=$background \
-	--insidevercolor=$passwordCorrect --insidewrongcolor=$passwordIncorrect \
-	--ringvercolor=$foreground --ringwrongcolor=$foreground --indpos='x+280:h-70' \
-	--radius=20 --ring-width=4 --veriftext='' --wrongtext='' \
-	--verifcolor="$foreground" --timecolor="$foreground" --datecolor="$foreground" \
-	--noinputtext='' --force-clock -n
+swaylock -i HDMI-A-1:.wallpapers/lockscreen_l.png -i HDMI-A-2:.wallpapers/lockscreen_r.png \
+	--inside-color=$background --ring-color=$foreground --line-uses-inside \
+	--key-hl-color=$letterEnteredColor --bs-hl-color=$letterRemovedColor --separator-color=$background \
+	--inside-ver-color=$passwordCorrect --inside-wrong-color=$passwordIncorrect \
+	--ring-ver-color=$foreground --ring-wrong-color=$foreground \
+	--indicator-radius=40 --indicator-thickness=4 \
+	--text-ver-color=$foreground
 
 # Disable autosleep
 killall swayidle
