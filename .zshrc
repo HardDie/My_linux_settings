@@ -99,16 +99,9 @@ alias lsa='ls -AF'
 alias la='ls -AF'
 alias l='ls -CF'
 
-alias emx='emacsclient -c -q -nw'
-alias femx='emacs --no-desktop --name=temp_emacs'
 alias tmux='tmux -2'
 alias aria2c='aria2c --summary-interval=0'
 alias picocom='sudo picocom --escape q'
-
-alias cpr='cp -t $(tmux run-shell -b -t right "echo -n #{pane_current_path} > /tmp/tmp_path_on_pane" && sleep 0.01; cat /tmp/tmp_path_on_pane)'
-alias cpl='cp -t $(tmux run-shell -b -t left "echo -n #{pane_current_path} > /tmp/tmp_path_on_pane" && sleep 0.01; cat /tmp/tmp_path_on_pane)'
-alias cpb='cp -t $(tmux run-shell -b -t bottom "echo -n #{pane_current_path} > /tmp/tmp_path_on_pane" && sleep 0.01; cat /tmp/tmp_path_on_pane)'
-alias cpt='cp -t $(tmux run-shell -b -t top "echo -n #{pane_current_path} > /tmp/tmp_path_on_pane" && sleep 0.01; cat /tmp/tmp_path_on_pane)'
 
 unsetopt sharehistory
 
