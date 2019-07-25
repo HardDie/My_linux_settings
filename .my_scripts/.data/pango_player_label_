@@ -28,7 +28,7 @@ print_artist_title() {
     echo -ne "</span>"
 
     echo -ne "<span background='$TEXT' foreground='#eef6eb'>"
-    state=$(mpc | head -1 | rev | cut -d '/' -f 1 | rev)
+    state=$(mpc | head -1 | rev | cut -d '/' -f 1 | rev | cut -c 1-50 | iconv -c)
     xml_save_print $state
     echo -ne "</span>"
 
