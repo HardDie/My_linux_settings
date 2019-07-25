@@ -205,7 +205,7 @@ for_window [class="VirtualBox Machine"] floating enable
 # Custom autostart
 ##
 
-exec --no-startup-id mako --anchor bottom-right
+exec --no-startup-id mako --anchor bottom-right --layer overlay
 
 
 ##
