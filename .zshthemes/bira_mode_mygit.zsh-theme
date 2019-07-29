@@ -31,7 +31,7 @@ git_prompt() {
 		# Check if repo is dirty or staged
 		STATUS=$(git status --porcelain)
 		if [[ $STATUS != "" ]]; then
-			MODIFIED=$(grep -c "^.M" <<< $STATUS)
+			MODIFIED=$(grep -c "^.M\|^.D" <<< $STATUS)
 			STAGED=$(grep -c "^M\|^A\|^D\|^R" <<< $STATUS)
 			UNTRACKED=$(grep -c "^??" <<< $STATUS)
 			CONFLICTS=$(grep -c "^UU" <<< $STATUS)
