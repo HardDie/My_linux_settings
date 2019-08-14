@@ -14,6 +14,9 @@ local current_dir='%{$terminfo[bold]$fg[blue]%}%~%{$reset_color%}'
 local time='%{$fg[white]%}(%*)%{$reset_color%}'
 
 git_prompt() {
+	if [[ $NO_GIT -eq 1 ]]; then
+		return
+	fi
 	BRANCH_CHAR=$'\ue0a0' # 
 	CHANGED_PREFIX="%{$fg[red]%}%{ ✚ %G%}"
 	UNTRACKED_PREFIX="%{$fg[yellow]%}%{ …%G%}"
