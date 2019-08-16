@@ -95,6 +95,10 @@ fi
 source $ZSH/oh-my-zsh.sh
 
 ### MY SETTINGS ###
+fpath=($HOME/.zsh-completions $fpath)
+autoload -U compinit
+compinit
+
 export EDITOR=vim
 export WINEARCH=win32
 

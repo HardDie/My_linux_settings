@@ -1,0 +1,94 @@
+#compdef good
+
+typeset -A opt_args
+
+# _arguments -C \
+# 	'1:cmd:->cmds' \
+# 	'2:generators:->generator_lists' \
+# 	'*:: :->args' \
+# 	&& ret=0
+
+# _arguments -C -s -S -n \
+# 	'(- 1 *){-h, --hello}[Some hello]: :->cmds' \
+# 	'(- 1 *){-w, --world}[Some world]:good:->generator_lists' \
+
+_good() {
+	local curcontext="$curcontext" state line
+	typeset -A opt_args
+
+	_arguments -C \
+		'(- 1 *)'{-v,--version}'[display version]:NAME' \
+		'(-h|--help)'{-h,--help}'[show help]' \
+		'*--dir-[Add directory]:directory:_files -/' \
+		'1: :->cmds' \
+		'2: :->option' \
+		'3: :_path_files -/' \
+		'4: :_files' \
+		'5: :_command_names' \
+		'*::next:->next'
+
+	case "$state" in
+		(cmds)
+			local commands; commands=(
+				'--hello:Padrinos generators'
+				'--world:Some other'
+			)
+			_describe -t commands 'command' commands
+			;;
+		(option)
+			local commands; commands=(
+				'heyy:Padrinos generators'
+				'youu:Some other'
+			)
+			_describe -t commands 'command' commands
+			;;
+		(next)
+			compadd "$@" some new info
+			;;
+	esac
+}
+
+_good $@
+
+# case "$state" in
+# 	(cmds)
+# 		local commands; commands=(
+# 			'hello:Padrinos generators'
+# 			'world:Some other'
+# 		)
+# 		_describe -t commands 'command' commands && ret=0
+# 		;;
+# 	(generator_lists)
+# 		local generators; generators=(
+# 			'controller:creates a new controller'
+# 			'mailer:creates a new mailer'
+# 			'migration:creates a new migration'
+# 			'model:creates a new model'
+# 			'project:create a new Padrino app'
+# 			'plugin:add plugin to your app'
+# 		)
+# 		_describe -t generators 'generator' generators && ret=0
+# 		;;
+# 	(args)
+# 		case $line[2] in
+# 			(controller)
+# 				local contollers; controllers=(
+# 					'-d:remove all generated files'
+# 					'-n:specify the application'
+# 					'-r:specify the root'
+# 				)
+# 				_describe -t controllers 'controller' controllers && ret=0
+# 			;;
+# 			(mailer)
+# 				local mailers; mailers=(
+# 					'-a:creates a mailer for the specified subapp'
+# 					'-d:removes all generated files'
+# 					'-n:specify the application'
+# 					'-r:specify the root destination path'
+# 				)
+# 				_describe -t mailers 'mailer' mailers && ret=0
+# 			;;
+# 		esac
+# esac
+
+return 1;
