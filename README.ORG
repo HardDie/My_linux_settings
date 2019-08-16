@@ -1,30 +1,189 @@
-* How install powerline on bash, tmux and vim
-  sudo apt-get install python-pip
-  pip install --user git+git://github.com/Lokaltog/powerline
-* Install powerline for git
-  sudo pip install powerline-gitstatus
-  yaourt zsh-git-prompt
-** Install git-prompt with haskell
-   git clone https://github.com/olivierverdier/zsh-git-prompt.git
-   sudo pacman -S stack
-   stack setup
-   stack build && stack install
-   sudo cp -r src /usr/lib/zsh-git-prompt
+* Set TTL for packages
+  sudo iptables -t mangle -A POSTROUTING -o usb0 -j TTL --ttl-set 65
+* Setup NAT
+  sudo iptables -t nat -A POSTROUTING -o ppp0 -j MASQUERADE
+* Git check repo whitespace
+  git commit --allow-empty
+  # Always create a merge commit
+  git merge --no-ff
+* Good example C comments
+/**
+ * Copies the default config to startup.
+ * Reads the default config file/partition,
+ * stripping the headers and validating the md5sum,
+ * and writes it to the startup config.
+ * @param  msg  - destanation masage
+ * @retval 0 if successful.
+ * @retval 1 if the default config does not exist.
+ * @retval other in case of error.
+ */
 * How watch all include directories gcc
   gcc -xc++ -E -v -
-* Install tags for emacs
-** UBUNTU
-   sudo apt-get install exuberant-ctags
-** ARCH
-   sudo pacman -S ctags
-* Install format for emacs
-  sudo apt-get install clang-format-3.8
-  sudo ln -s /usr/bin/clang-format-3.8 /usr/bin/clang-format
-* Copy from tmux on system
-  sudo apt-get install xclip
-* Autocomplete emacs
-  sudo apt-get install libclang-3.8-dev cmake
-  M-x irony-install-server
-* Add ggtags
-  yay -S ggtags global
-  package-list-packages : gtags
+* Sites for test regular expression
+  https://www.debuggex.com/
+  https://regexper.com/
+* Mount disk on rw mode from ro mode
+  mount -o remount, rw /
+* Emacs. How enable merge conflict resolve mode
+  vc-resolve-conflicts
+* How show RAM information
+  dmidecode -t memory
+* How remove attribute
+** Install
+   yaourt mat mutagen perl-image-exiftool
+** Check
+   mat -c <file>
+** Show metadata
+   mat -d <file>
+** Delete metadata
+   mat -b <file>
+* How add fat and ntfs tools
+  pacman -S dosfstools ntfsprogs
+* How add file system for flash
+  pacman -S f2fs-tools
+* ASCIIFLOW
+  http://nightly.ascii-flow.appspot.com/#Draw
+* Service for found photo
+  snradar.azurewebsites.net
+* Emacs git blame
+  M-x vc-annotate
+* ARCH. remove all unused packages
+  pacman -Rsn $(pacman -Qqdt)
+* How setup WiFi card on promiscuous mode
+** Find your phy
+   iw phy
+** Add new interface
+   iw phy phyX interface add mon0 type monitor
+   iw dev mon0 del
+** With iw
+   iw dev wlan0 set type monitor
+   iw dev wlan0 set type managed
+** Set channel for listen
+   iw dev wlan0 set channel *channel*
+* Unprivileged power management
+  pacman -S polkit
+* Run command on every find file
+  find -name "name" -execdir command {} \;
+* Objdump
+  objdump -D file
+  addr2line -e file -a 0x(addr)
+  strip
+* Get information about interface
+  ethtool eth0
+** Setup speed interface
+   ethtool -s eth0 speed 100 autoneg off
+* Show last installed packed
+  expac --timefmt='%Y-%m-%d %T' '%l\t%n' | sort
+  expac -S -H M '%k\t%n' | sort -h
+* LVM
+** LVM setup
+*** Create physichal volume
+    pvcreate /dev/sda1 /dev/sda2
+*** Create volume group
+    vgcreate name_group /dev/sda1 /dev/sda2
+    vgdisplay
+*** Create logical volume
+    lvcreate -n name_volume -L size name_group
+    lvdisplay
+    lvextend -L +size /dev/name_group/name_volume
+*** Deactivale group
+    vgchange -a n name_group
+*** Activate group
+    vgchange -a y name_group
+*** Resize FS
+    resize2fs /dev/name_group/name_volume
+
+** Crypt setup
+*** Encrypt dev
+    cryptsetup luksFormat /dev/sda2
+*** Open
+    cryptsetup open /dev/sda2 name_crypt
+*** Edit /etc/default/grub
+    cryptdevice=/dev/sda2:name_crypt
+* How manage images
+  pacman -S imagemagic
+** Conver
+   convert image.png image.jpg
+** Resize
+   convert image.png -resize 200x100 image.png
+   -resize 200x100! # Force resize
+   -resize 200 # Only height
+   -resize x200 # Only weight
+** Rotate
+   convert image.png -rotate 90 image.png
+* GIT. Find remove string
+  git log -S <string> path/to/file
+* SSH tunnel
+  PC1 --> ( NAT ) --> WAN <-- PC2
+  ssh -f -N -R PC2_PORT:PC1_IP:PC1_PORT PC2_name@PC2_IP
+  example: ssh -f -N -R 2222:10.10.1.1:22 username@273.15.26.11
+* GIT. Remove remote branch
+** Remove remote branch from local repo
+  git branch -d -r origin/branch
+** Remove remote branch from remote repo
+  git push -d origin branch
+* GIT. Push local branch
+  git push origin [local_name]:[remote_name]
+* Sync Music between PC and phone
+  rsync -cvr --stats --progress --delete --exclude=Covers English/* Music
+* Draw gpaphs
+  pacman -S graphviz
+* Validator json
+  https://jsonlint.com/
+* Check system informationi
+  journalctl -b -p 3
+  systemctl --failed -all
+* Ubuntu package commands
+  dpkg-query -l # Print installed packages
+  dpkg-query -L packetname # Show files in packet
+  apt-cache search word # Search packets by name
+* How change console font
+  pacman -S terminus-font
+  setfont ter-v32n
+* How setup systemd boot
+  bootctl install
+  cd /boot/loader
+  vim loader.conf = {
+    default arch
+    timeout 3
+  }
+  vim entries/arch.conf = {
+    title Archlinux
+    linux /vmlinuz-linux
+    initrd /initramfs-linux.img
+    :r !blkid
+    options root=PARTUID=some_UUID rw
+  }
+* How upgrade ssh id_rsa
+  openssl pkcs8 -topk8 -v2 des3 -in id_rsa.old -out id_rsa
+* Edit audio tags
+  id3v2
+  mp3info
+* Hex editor
+  hexer
+* Disable kerlen printk logs
+  echo 0 > /proc/sys/kernel/printk
+* How to use git diff to patch file
+  git diff --no-prefix > [path file name]
+  patch -p0 < [path file name]
+
+  git diff > patch.diff
+  patch -p1 < patch.diff
+* i3 how find key name
+  xev
+  xmodmap -pke
+* Remove default gw
+  ip route del default via 192.168.1.1
+* Add route
+  ip route add 192.168.2.0/24 via 192.168.1.1 dev enp3s0
+* Count lines code
+  tokei
+* Check time loading
+  systemd-analyze blame
+* Loop device
+** Create loop device
+   losetup -fp file.img
+** Show loop devices
+   losetup -a
+** Remove loop device
+   losetup -d /dev/loop0
