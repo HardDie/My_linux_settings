@@ -106,17 +106,21 @@
    convert image.png image.jpg
 ** Resize
    convert image.png -resize 200x100 image.png
-   -resize 200x100! # Force resize
-   -resize 200 # Only height
-   -resize x200 # Only weight
+** Force resize
+   convert image.png -resize 200x100! image.png
+** Only height
+   convert image.png -resize 200 image.png
+** Only weight
+   convert image.png -resize x100 image.png
 ** Rotate
    convert image.png -rotate 90 image.png
-* GIT. Find remove string
+* GIT. Find removed string
   git log -S <string> path/to/file
 * SSH tunnel
-  PC1 --> ( NAT ) --> WAN <-- PC2
+** PC1 --> ( NAT ) --> WAN <-- PC2
   ssh -f -N -R PC2_PORT:PC1_IP:PC1_PORT PC2_name@PC2_IP
-  example: ssh -f -N -R 2222:10.10.1.1:22 username@273.15.26.11
+** Example
+  ssh -f -N -R 2222:10.10.1.1:22 username@273.15.26.11
 * GIT. Remove remote branch
 ** Remove remote branch from local repo
   git branch -d -r origin/branch
@@ -134,9 +138,12 @@
   journalctl -b -p 3
   systemctl --failed -all
 * Ubuntu package commands
-  dpkg-query -l # Print installed packages
-  dpkg-query -L packetname # Show files in packet
-  apt-cache search word # Search packets by name
+  ** Print installed packages
+  dpkg-query -l
+  ** Show files in packet
+  dpkg-query -L packetname
+  ** Search packets by name
+  apt-cache search word
 * How change console font
   pacman -S terminus-font
   setfont ter-v32n
@@ -165,12 +172,15 @@
   echo 0 > /proc/sys/kernel/printk
 * How to use git diff to patch file
   git diff --no-prefix > [path file name]
+
   patch -p0 < [path file name]
 
   git diff > patch.diff
+
   patch -p1 < patch.diff
 * i3 how find key name
   xev
+
   xmodmap -pke
 * Remove default gw
   ip route del default via 192.168.1.1
