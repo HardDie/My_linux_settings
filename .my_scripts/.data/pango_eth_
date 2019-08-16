@@ -10,7 +10,7 @@ print_good() {
 	echo -ne "</span>"
 
 	echo -ne "<span background='$BG' foreground='#000000'>"
-	echo -ne "\uf700" # Ethernet good
+	echo -ne "\uf700$1" # Ethernet good
 	echo -ne "</span>"
 
 	echo -ne "<span background='$TEXT' foreground='$BG'>"
@@ -18,7 +18,7 @@ print_good() {
 	echo -ne "</span>"
 
 	echo -ne "<span background='$TEXT' foreground='#eef6eb'>"
-	echo -ne "$1"
+	echo -ne "$2"
 	echo -ne "</span>"
 
 	echo -ne "<span background='$NONE' foreground='$TEXT'>"
@@ -67,6 +67,6 @@ if [[ ${ARR[8]} == 'DOWN' ]]; then
 else
 	IP=($(ip addr show $IFACE | grep '\binet\b' | awk '{print $2}' | cut -d '/' -f 1 | tr '\n' '/' | sed 's/\/$//'))
 
-	print_good $IP
+	print_good $IFACE $IP
 fi
 echo
