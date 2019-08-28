@@ -197,3 +197,8 @@
    losetup -a
 ** Remove loop device
    losetup -d /dev/loop0
+* Disable installing default gw and dns from DHCP
+** Open /etc/dhcpcd.conf and add to end
+** interface iface_name
+** nogateway
+** nohook resolv.conf
