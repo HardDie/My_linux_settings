@@ -183,7 +183,7 @@ bindsym $mod+m bar mode toggle
 ##
 
 bar {
-    swaybar_command waybar -c ~/.config/sway/waybar.conf -s ~/.config/sway/style.css
+    swaybar_command /home/harddie/.config/sway/start_waybar.sh
 }
 
 ##
