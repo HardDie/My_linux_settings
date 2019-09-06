@@ -183,6 +183,7 @@ bar {
         active_workspace   $inactive-bg-color $inactive-bg-color $inactive-text-color
     }
     position top
+    tray_output none
 }
 
 
