@@ -17,12 +17,12 @@ echo -ne "\ue0b8" # Open
 echo -ne "</span>"
 
 echo -ne "<span background='$TEXT' foreground='#eef6eb'>"
-VAL=$(xset -q | grep LED | cut -d ':' -f 4)
+VAL=$(xset -q | grep LED | cut -d ':' -f 4 | cut -c 7-9)
 case $VAL in
-    *"0002"*)
+    "000")
         echo -n Eng
         ;;
-    *"1002"*)
+    "100")
         echo -n Rus
         ;;
     *)
