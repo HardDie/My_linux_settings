@@ -30,7 +30,7 @@ set $PlayerUpdate (pkill -SIGRTMIN+2 i3blocks)
 # Font
 ##
 
-font pango:Cantarell 13
+font pango:Cantarell 9
 
 
 ##
