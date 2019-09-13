@@ -72,16 +72,16 @@ gaps inner 10
 ##
 
 # start a terminal
-bindsym Ctrl+Mod1+t exec termite
+bindsym --to-code Ctrl+Mod1+t exec termite
 
 # kill focused window
-bindsym Ctrl+Shift+q kill
+bindsym --to-code Ctrl+Shift+q kill
 
 # start rofi (a program launcher)
 # -color-winwod "bg, frame, ?"
 # -color-normal "bg_inactive_element, inactive_text, inactive_bg, active_bg, active_text"
 # -color-active ?, -color-urgent ?
-bindsym Mod1+F2 exec --no-startup-id rofi -show run -modi run -location 1 -width 100 -lines 2 -line-margin 0 -line-padding 1 \
+bindsym --to-code Mod1+F2 exec --no-startup-id rofi -show run -modi run -location 1 -width 100 -lines 2 -line-margin 0 -line-padding 1 \
 -separator-style none -font $Font -disable-history -hide-scrollbar \
 -color-window "$bg-color, $bg-color, #ff0000" \
 -color-normal "$bg-color, $inactive-text-color, $bg-color, $bg-color, $text-color" \
@@ -90,92 +90,92 @@ bindsym Mod1+F2 exec --no-startup-id rofi -show run -modi run -location 1 -width
 
 
 # Make the currently focused window a scratchpad
-bindsym $mod+Shift+minus move scratchpad
+bindsym --to-code $mod+Shift+minus move scratchpad
 # Show the first scratchpad window
-bindsym $mod+minus scratchpad show
+bindsym --to-code $mod+minus scratchpad show
 
 # change focus
-bindsym $mod+j focus left
-bindsym $mod+k focus down
-bindsym $mod+i focus up
-bindsym $mod+l focus right
+bindsym --to-code $mod+j focus left
+bindsym --to-code $mod+k focus down
+bindsym --to-code $mod+i focus up
+bindsym --to-code $mod+l focus right
 
 # move focused window
-bindsym $mod+Shift+j move left
-bindsym $mod+Shift+k move down
-bindsym $mod+Shift+i move up
-bindsym $mod+Shift+l move right
+bindsym --to-code $mod+Shift+j move left
+bindsym --to-code $mod+Shift+k move down
+bindsym --to-code $mod+Shift+i move up
+bindsym --to-code $mod+Shift+l move right
 
 # move workspace
-bindsym $mod+Ctrl+Shift+j move workspace to output left
-bindsym $mod+Ctrl+Shift+l move workspace to output right
+bindsym --to-code $mod+Ctrl+Shift+j move workspace to output left
+bindsym --to-code $mod+Ctrl+Shift+l move workspace to output right
 
 # split in horizontal orientation
-bindsym $mod+h split h
+bindsym --to-code $mod+h split h
 # split in vertical orientation
-bindsym $mod+v split v
+bindsym --to-code $mod+v split v
 
 # enter fullscreen mode for the focused container
-bindsym $mod+f fullscreen toggle
+bindsym --to-code $mod+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split) bindsym $mod+s layout stacking
-bindsym $mod+w layout tabbed
-bindsym $mod+e layout toggle split
+bindsym --to-code $mod+w layout tabbed
+bindsym --to-code $mod+e layout toggle split
 
 # toggle tiling / floating
-bindsym $mod+Shift+space floating toggle
+bindsym --to-code $mod+Shift+space floating toggle
 
 # change focus between tiling / floating windows
-bindsym $mod+space focus mode_toggle
+bindsym --to-code $mod+space focus mode_toggle
 
 # switch to workspace
-bindsym $mod+1 workspace $wspace1
-bindsym $mod+2 workspace $wspace2
-bindsym $mod+3 workspace $wspace3
-bindsym $mod+4 workspace $wspace4
-bindsym $mod+5 workspace $wspace5
-bindsym $mod+6 workspace $wspace6
-bindsym $mod+7 workspace $wspace7
-bindsym $mod+8 workspace $wspace8
-bindsym $mod+9 workspace $wspace9
-bindsym $mod+0 workspace $wspace10
+bindsym --to-code $mod+1 workspace $wspace1
+bindsym --to-code $mod+2 workspace $wspace2
+bindsym --to-code $mod+3 workspace $wspace3
+bindsym --to-code $mod+4 workspace $wspace4
+bindsym --to-code $mod+5 workspace $wspace5
+bindsym --to-code $mod+6 workspace $wspace6
+bindsym --to-code $mod+7 workspace $wspace7
+bindsym --to-code $mod+8 workspace $wspace8
+bindsym --to-code $mod+9 workspace $wspace9
+bindsym --to-code $mod+0 workspace $wspace10
 
 # move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace $wspace1
-bindsym $mod+Shift+2 move container to workspace $wspace2
-bindsym $mod+Shift+3 move container to workspace $wspace3
-bindsym $mod+Shift+4 move container to workspace $wspace4
-bindsym $mod+Shift+5 move container to workspace $wspace5
-bindsym $mod+Shift+6 move container to workspace $wspace6
-bindsym $mod+Shift+7 move container to workspace $wspace7
-bindsym $mod+Shift+8 move container to workspace $wspace8
-bindsym $mod+Shift+9 move container to workspace $wspace9
-bindsym $mod+Shift+0 move container to workspace $wspace10
+bindsym --to-code $mod+Shift+1 move container to workspace $wspace1
+bindsym --to-code $mod+Shift+2 move container to workspace $wspace2
+bindsym --to-code $mod+Shift+3 move container to workspace $wspace3
+bindsym --to-code $mod+Shift+4 move container to workspace $wspace4
+bindsym --to-code $mod+Shift+5 move container to workspace $wspace5
+bindsym --to-code $mod+Shift+6 move container to workspace $wspace6
+bindsym --to-code $mod+Shift+7 move container to workspace $wspace7
+bindsym --to-code $mod+Shift+8 move container to workspace $wspace8
+bindsym --to-code $mod+Shift+9 move container to workspace $wspace9
+bindsym --to-code $mod+Shift+0 move container to workspace $wspace10
 
 # sway have only reload command
-bindsym $mod+Shift+r reload
+bindsym --to-code $mod+Shift+r reload
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec [ $(echo -e 'No\nYes' | dmenu -fn Cantarell:13 -nb "#2f343f" -i -p 'Do you really want to exit i3?') == 'Yes' ] && swaymsg exit
+bindsym --to-code $mod+Shift+e exec [ $(echo -e 'No\nYes' | dmenu -fn Cantarell:13 -nb "#2f343f" -i -p 'Do you really want to exit i3?') == 'Yes' ] && swaymsg exit
 
 mode "resize" {
-        bindsym j resize shrink width 10 px or 10 ppt
-        bindsym k resize grow height 10 px or 10 ppt
-        bindsym i resize shrink height 10 px or 10 ppt
-        bindsym l resize grow width 10 px or 10 ppt
+        bindsym --to-code j resize shrink width 10 px or 10 ppt
+        bindsym --to-code k resize grow height 10 px or 10 ppt
+        bindsym --to-code i resize shrink height 10 px or 10 ppt
+        bindsym --to-code l resize grow width 10 px or 10 ppt
 
-        bindsym Left resize shrink width 1 px or 1 ppt
-        bindsym Down resize grow height 1 px or 1 ppt
-        bindsym Up resize shrink height 1 px or 1 ppt
-        bindsym Right resize grow width 1 px or 1 ppt
+        bindsym --to-code Left resize shrink width 1 px or 1 ppt
+        bindsym --to-code Down resize grow height 1 px or 1 ppt
+        bindsym --to-code Up resize shrink height 1 px or 1 ppt
+        bindsym --to-code Right resize grow width 1 px or 1 ppt
 
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
+        bindsym --to-code Return mode "default"
+        bindsym --to-code Escape mode "default"
 }
 
-bindsym $mod+r mode "resize"
+bindsym --to-code $mod+r mode "resize"
 
 # bar toggle
-bindsym $mod+m bar mode toggle
+bindsym --to-code $mod+m bar mode toggle
 
 
 ##
@@ -214,34 +214,34 @@ exec --no-startup-id mako --anchor bottom-right --layer overlay
 ##
 
 # notification
-bindsym Ctrl+Shift+space exec --no-startup-id makoctl dismiss -a
+bindsym --to-code Ctrl+Shift+space exec --no-startup-id makoctl dismiss -a
 
 # lockscreen and suspend
-bindsym Ctrl+Mod1+Shift+l exec --no-startup-id $Locker
-bindsym Ctrl+Mod1+Shift+s exec --no-startup-id $Locker && sleep 1 && systemctl suspend
+bindsym --to-code Ctrl+Mod1+Shift+l exec --no-startup-id $Locker
+bindsym --to-code Ctrl+Mod1+Shift+s exec --no-startup-id $Locker && sleep 1 && systemctl suspend
 
 # media keys
 # Pulse Audio controls
-bindsym XF86AudioRaiseVolume exec --no-startup-id pamixer -i 5 && $VolUpdate #increase sound volume
-bindsym XF86AudioLowerVolume exec --no-startup-id pamixer -d 5 && $VolUpdate #decrease sound volume
-bindsym XF86AudioMute exec --no-startup-id pamixer -t && $VolUpdate # mute sound
+bindsym --to-code XF86AudioRaiseVolume exec --no-startup-id pamixer -i 5 && $VolUpdate #increase sound volume
+bindsym --to-code XF86AudioLowerVolume exec --no-startup-id pamixer -d 5 && $VolUpdate #decrease sound volume
+bindsym --to-code XF86AudioMute exec --no-startup-id pamixer -t && $VolUpdate # mute sound
 
 # Player controls
-bindsym Ctrl+space exec --no-startup-id mpc toggle && $PlayerUpdate
-bindsym Ctrl+Prior exec --no-startup-id mpc prev && $PlayerUpdate
-bindsym Ctrl+Next exec --no-startup-id mpc next && $PlayerUpdate
+bindsym --to-code Ctrl+space exec --no-startup-id mpc toggle && $PlayerUpdate
+bindsym --to-code Ctrl+Prior exec --no-startup-id mpc prev && $PlayerUpdate
+bindsym --to-code Ctrl+Next exec --no-startup-id mpc next && $PlayerUpdate
 
 # Sreen brightness controls
-bindsym XF86MonBrightnessUp exec xbacklight -inc 20 # increase screen brightness
-bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightness
+bindsym --to-code XF86MonBrightnessUp exec xbacklight -inc 20 # increase screen brightness
+bindsym --to-code XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightness
 
 # screenshot
-bindsym --release Print exec --no-startup-id ~/.my_scripts/.data/sway_make_screenshot.sh
-bindsym --release Shift+Print exec --no-startup-id ~/.my_scripts/.data/sway_make_screenshot.sh -a
-bindsym --release Ctrl+Print exec --no-startup-id ~/.my_scripts/.data/sway_make_screenshot.sh -r
+bindsym --to-code --release Print exec --no-startup-id ~/.my_scripts/.data/sway_make_screenshot.sh
+bindsym --to-code --release Shift+Print exec --no-startup-id ~/.my_scripts/.data/sway_make_screenshot.sh -a
+bindsym --to-code --release Ctrl+Print exec --no-startup-id ~/.my_scripts/.data/sway_make_screenshot.sh -r
 
 # Layout update
-bindsym ISO_Next_Group exec --no-startup-id $LangUpdate
+bindsym --to-code ISO_Next_Group exec --no-startup-id $LangUpdate
 
 
 ##
