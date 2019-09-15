@@ -195,7 +195,7 @@
   systemd-analyze blame
 * Loop device
 ** Create loop device
-   losetup -fp file.img
+   losetup /dev/loop0 file.img
 ** Show loop devices
    losetup -a
 ** Remove loop device
