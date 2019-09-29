@@ -202,3 +202,13 @@
 ** interface iface_name
 ** nogateway
 ** nohook resolv.conf
+* Setup fail2ban
+** fail2ban/action.d/iptables-blocktype.local
+*** [Init]
+*** blocktype = DROP
+** fail2ban/jail.d/sshd.local
+*** [sshd]
+*** enabled = true
+*** maxretry = 5
+*** ignoreip = 127.0.0.1/8
+*** port = 22
