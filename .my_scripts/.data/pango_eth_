@@ -32,7 +32,7 @@ print_bad() {
 	echo -ne "</span>"
 
 	echo -ne "<span background='$BG' foreground='#000000'>"
-	echo -ne "\uf701" # Ethernet bad
+	echo -ne "\uf701$1" # Ethernet bad
 	echo -ne "</span>"
 
 	echo -ne "<span background='$TEXT' foreground='$BG'>"
@@ -49,7 +49,7 @@ print_bad() {
 }
 
 if [[ -z $BLOCK_INSTANCE ]]; then
-	print_bad
+	print_bad "None"
 	exit 0
 fi
 IFACE=$BLOCK_INSTANCE
@@ -57,13 +57,13 @@ IFACE=$BLOCK_INSTANCE
 STR=$(ip link show $IFACE 2>/dev/null)
 
 if [[ -z $STR ]]; then
-	print_bad
+	print_bad $IFACE
 	exit 0
 fi
 
 ARR=(${STR// / })
 if [[ ${ARR[8]} == 'DOWN' ]]; then
-	print_bad
+	print_bad $IFACE
 else
 	IP=($(ip addr show $IFACE | grep '\binet\b' | awk '{print $2}' | cut -d '/' -f 1 | tr '\n' '/' | sed 's/\/$//'))
 
