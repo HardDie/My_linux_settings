@@ -65,7 +65,7 @@ ARR=(${STR// / })
 if [[ ${ARR[8]} == 'DOWN' ]]; then
 	print_bad
 else
-	IP=($(ip addr show $IFACE | grep '\binet\b' | awk '{print $2}' | cut -d '/' -f 1))
+	IP=($(ip addr show $IFACE | grep '\binet\b' | awk '{print $2}' | cut -d '/' -f 1 | tr '\n' '/' | sed 's/\/$//'))
 
 	print_good $IP
 fi
