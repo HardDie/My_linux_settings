@@ -212,3 +212,7 @@
 *** maxretry = 5
 *** ignoreip = 127.0.0.1/8
 *** port = 22
+* Create tmux session in background
+** tmux new-session -d
+* Create new user
+** useradd -m -g users -G wheel username
