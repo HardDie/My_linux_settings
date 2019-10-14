@@ -303,12 +303,18 @@ def_key "h"
 #
 #def_key "p"
 #  pause
+def_key "space"
+  pause
 #
 #def_key ">"
 #  next
+def_key "right"
+  next
 #
 #def_key "<"
 #  previous
+def_key "left"
+  previous
 #
 #def_key "ctrl-h"
 #  jump_to_parent_directory
@@ -322,12 +328,12 @@ def_key "h"
 #def_key "backspace"
 #  replay_song
 #
-#def_key "f"
-#  seek_forward
-#
-#def_key "b"
-#  seek_backward
-#
+def_key ">"
+  seek_forward
+
+def_key "<"
+  seek_backward
+
 #def_key "r"
 #  toggle_repeat
 #
@@ -473,12 +479,17 @@ def_key "m"
   dummy
 #  move_selected_items_up
 
+def_key "alt-k"
+  move_selected_items_up
+
 #def_key "n"
 #  move_sort_order_down
 #
 def_key "n"
   dummy
 #  move_selected_items_down
+def_key "alt-j"
+  move_selected_items_down
 
 #def_key "M"
 #  move_selected_items_to
