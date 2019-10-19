@@ -207,6 +207,7 @@ for_window [class="VirtualBox Machine"] floating enable
 ##
 
 exec --no-startup-id mako --anchor bottom-right --layer overlay
+exec --no-startup-id ~/.my_scripts/.data/sway_independent_layouts.py
 
 
 ##
