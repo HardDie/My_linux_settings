@@ -216,3 +216,8 @@
 ** tmux new-session -d
 * Create new user
 ** useradd -m -g users -G wheel username
+* netstat
+** Get listen tcp ports
+*** netstat -plnt
+** Get listen udp ports
+*** netstat -plnu
