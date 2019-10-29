@@ -1,0 +1,12 @@
+// *       *
+//   \   /
+//     *
+//     |
+//     *
+
+digraph G {
+    Hello->dummy;
+    dummy->World;
+    dummy[shape=point width=0];
+    Test->dummy;
+}
