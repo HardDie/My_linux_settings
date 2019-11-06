@@ -5,8 +5,11 @@ set hlsearch
 " Always show statusline
 set laststatus=2
 
-" Show file path
-set statusline+=%F
+set statusline+=%F " Show file path
+set statusline+=%= " Left/Rigth separator
+set statusline+=%l/%L " Show cursor line position
+set statusline+=,%c " Show cursor column position
+
 
 " Use 256 colours (Use this setting only if your terminal supports 256 colours)
 set t_Co=256
