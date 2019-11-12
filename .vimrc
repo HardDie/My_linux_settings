@@ -88,3 +88,9 @@ endfun
 fun! Log_err()
 	r ! echo 'dtrace(D_INFO, S_TR_ERR, ""); /* DEBUG */'
 endfun
+
+fun! Find_tags()
+	" set global variable tags
+	let &tags = system("~/.vim/find_near_tags.sh")
+	" print variable: set tags?
+endfun
