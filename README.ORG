@@ -128,8 +128,11 @@
   git push -d origin branch
 * GIT. Push local branch
   git push origin [local_name]:[remote_name]
-* Sync Music between PC and phone
-  rsync -cvr --stats --progress --delete --exclude=Covers English/* Music
+* rsync
+** Sync Music between PC and phone
+   rsync -cvr --stats --progress --delete --exclude=Covers English/* Music
+** Sync by ssh
+   rsync -avz -e 'ssh -p 22' --progress IP:/path .
 * Draw gpaphs
   pacman -S graphviz
 * Validator json
