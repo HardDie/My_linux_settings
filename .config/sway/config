@@ -175,7 +175,7 @@ mode "resize" {
 bindsym --to-code $mod+r mode "resize"
 
 # bar toggle
-bindsym --to-code $mod+m bar mode toggle
+bindsym --to-code $mod+m exec killall -s SIGUSR1 waybar
 
 
 ##
