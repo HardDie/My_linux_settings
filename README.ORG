@@ -254,8 +254,6 @@
 *** maxretry = 5
 *** ignoreip = 127.0.0.1/8
 *** port = 22
-* Create tmux session in background
-** tmux new-session -d
 * Create new user
 ** useradd -m -g users -G wheel username
 
@@ -279,6 +277,12 @@
    yay -Qn
 ** Install packet as dependency
    yay -S packet --asdeps
+
+* tmux
+** Create tmux session in background
+   tmux new-session -d
+** Send command in all tmux panes
+   :setw synchronize-panes on
 
 * Disable NetworkManager checking network available
 ** edit /etc/NetworkManager/NetworkManager.conf
