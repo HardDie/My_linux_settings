@@ -279,3 +279,8 @@
    yay -Qn
 ** Install packet as dependency
    yay -S packet --asdeps
+
+* Disable NetworkManager checking network available
+** edit /etc/NetworkManager/NetworkManager.conf
+*** [connectivity]
+*** interval=0
