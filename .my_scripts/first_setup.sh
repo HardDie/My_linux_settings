@@ -39,11 +39,3 @@ echo Setup!
 echo Setup multilib pacman
 sed -ie 's/^#\[multilib\]/\[multilib\]\nInclude = \/etc\/pacman.d\/mirrorlist/' /etc/pacman.conf
 echo Setup!
-
-## yay
-echo Install yay
-cd /tmp
-git clone https://aur.archlinux.org/yay.git yay
-cd yay
-makepkg -si
-echo yay was Installed!
