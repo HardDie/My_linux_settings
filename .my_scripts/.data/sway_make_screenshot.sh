@@ -19,8 +19,13 @@ RES=$(echo -n $SHAPE | cut -d ' ' -f 2)
 DATE=$(date +"%Y-%m-%d-%H-%M-%S")
 NAME=${DATE}_${RES}_grim.png
 
+DIRECTORY="Screenshots"
+if [[ ! -d ~/$DIRECTORY ]]; then
+	mkdir ~/Screenshots
+fi
+
 if [[ -z $1 ]]; then
-	grim ~/$NAME
+	grim ~/$DIRECTORY/$NAME
 else
-	grim -g "$SHAPE" ~/$NAME
+	grim -g "$SHAPE" ~/$DIRECTORY/$NAME
 fi
