@@ -267,3 +267,15 @@
 
 * graphviz online
 ** http://dreampuf.github.io/GraphvizOnline/
+
+* Pacman
+** Show unused packets
+   yay -Qdtq
+** Show explicitly installed packets
+   yay -Qe
+** Show installed packets from AUR packets
+   yay -Qm
+** Show installed packets from repository
+   yay -Qn
+** Install packet as dependency
+   yay -S packet --asdeps
