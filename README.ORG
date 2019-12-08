@@ -1,11 +1,14 @@
 * Set TTL for packages
   sudo iptables -t mangle -A POSTROUTING -o usb0 -j TTL --ttl-set 65
+
 * Setup NAT
   sudo iptables -t nat -A POSTROUTING -o ppp0 -j MASQUERADE
+
 * Git check repo whitespace
   git commit --allow-empty
   # Always create a merge commit
   git merge --no-ff
+
 * Good example C comments
 /**
  * Copies the default config to startup.
@@ -17,17 +20,23 @@
  * @retval 1 if the default config does not exist.
  * @retval other in case of error.
  */
+
 * How watch all include directories gcc
   gcc -xc++ -E -v -
+
 * Sites for test regular expression
   https://www.debuggex.com/
   https://regexper.com/
+
 * Mount disk on rw mode from ro mode
   mount -o remount, rw /
+
 * Emacs. How enable merge conflict resolve mode
   vc-resolve-conflicts
+
 * How show RAM information
   dmidecode -t memory
+
 * How remove attribute
 ** Install
    yaourt mat mutagen perl-image-exiftool
@@ -37,18 +46,25 @@
    mat -d <file>
 ** Delete metadata
    mat -b <file>
+
 * How add fat and ntfs tools
   pacman -S dosfstools ntfsprogs
+
 * How add file system for flash
   pacman -S f2fs-tools
+
 * ASCIIFLOW
   http://nightly.ascii-flow.appspot.com/#Draw
+
 * Service for found photo
   snradar.azurewebsites.net
+
 * Emacs git blame
   M-x vc-annotate
+
 * ARCH. remove all unused packages
   pacman -Rsn $(pacman -Qqdt)
+
 * How setup WiFi card on promiscuous mode
 ** Find your phy
    iw phy
@@ -60,21 +76,27 @@
    iw dev wlan0 set type managed
 ** Set channel for listen
    iw dev wlan0 set channel *channel*
+
 * Unprivileged power management
   pacman -S polkit
+
 * Run command on every find file
   find -name "name" -execdir command {} \;
+
 * Objdump
-  objdump -D file
-  addr2line -e file -a 0x(addr)
-  strip
+** objdump -D file
+** addr2line -e file -a 0x(addr)
+** strip
+
 * Get information about interface
   ethtool eth0
 ** Setup speed interface
    ethtool -s eth0 speed 100 autoneg off
+
 * Show last installed packed
   expac --timefmt='%Y-%m-%d %T' '%l\t%n' | sort
   expac -S -H M '%k\t%n' | sort -h
+
 * LVM
 ** LVM setup
 *** Create physichal volume
@@ -100,6 +122,7 @@
     cryptsetup open /dev/sda2 name_crypt
 *** Edit /etc/default/grub
     cryptdevice=/dev/sda2:name_crypt
+
 * How manage images
   pacman -S imagemagic
 ** Conver
@@ -114,42 +137,53 @@
    convert image.png -resize x100 image.png
 ** Rotate
    convert image.png -rotate 90 image.png
+
 * GIT. Find removed string
   git log -S <string> path/to/file
+
 * SSH tunnel
 ** PC1 --> ( NAT ) --> WAN <-- PC2
   ssh -f -N -R PC2_PORT:PC1_IP:PC1_PORT PC2_name@PC2_IP
 ** Example
   ssh -f -N -R 2222:10.10.1.1:22 username@273.15.26.11
+
 * GIT. Remove remote branch
 ** Remove remote branch from local repo
-  git branch -d -r origin/branch
+   git branch -d -r origin/branch
 ** Remove remote branch from remote repo
-  git push -d origin branch
+   git push -d origin branch
+
 * GIT. Push local branch
   git push origin [local_name]:[remote_name]
+
 * rsync
 ** Sync Music between PC and phone
    rsync -cvr --stats --progress --delete --exclude=Covers English/* Music
 ** Sync by ssh
    rsync -avz -e 'ssh -p 22' --progress IP:/path .
+
 * Draw gpaphs
   pacman -S graphviz
+
 * Validator json
   https://jsonlint.com/
+
 * Check system informationi
-  journalctl -b -p 3
-  systemctl --failed -all
+** journalctl -b -p 3
+** systemctl --failed -all
+
 * Ubuntu package commands
-  ** Print installed packages
-  dpkg-query -l
-  ** Show files in packet
-  dpkg-query -L packetname
-  ** Search packets by name
-  apt-cache search word
+** Print installed packages
+   dpkg-query -l
+** Show files in packet
+   dpkg-query -L packetname
+** Search packets by name
+   apt-cache search word
+
 * How change console font
-  pacman -S terminus-font
-  setfont ter-v32n
+**  pacman -S terminus-font
+**  setfont ter-v32n
+
 * How setup systemd boot
   bootctl install
   cd /boot/loader
@@ -164,35 +198,38 @@
     :r !blkid
     options root=PARTUID=some_UUID rw
   }
+
 * How upgrade ssh id_rsa
   openssl pkcs8 -topk8 -v2 des3 -in id_rsa.old -out id_rsa
-* Edit audio tags
-  id3v2
-  mp3info
+
 * Hex editor
   hexer
+
 * Disable kerlen printk logs
   echo 0 > /proc/sys/kernel/printk
+
 * How to use git diff to patch file
-  git diff --no-prefix > [path file name]
+**  git diff --no-prefix > [path file name]
+**  patch -p0 < [path file name]
+**  git diff > patch.diff
+**  patch -p1 < patch.diff
 
-  patch -p0 < [path file name]
-
-  git diff > patch.diff
-
-  patch -p1 < patch.diff
 * i3 how find key name
-  xev
+** xev
+** xmodmap -pke
 
-  xmodmap -pke
 * Remove default gw
   ip route del default via 192.168.1.1
+
 * Add route
   ip route add 192.168.2.0/24 via 192.168.1.1 dev enp3s0
+
 * Count lines code
   tokei
+
 * Check time loading
   systemd-analyze blame
+
 * Loop device
 ** Create loop device
    losetup /dev/loop0 file.img
@@ -200,11 +237,13 @@
    losetup -a
 ** Remove loop device
    losetup -d /dev/loop0
+
 * Disable installing default gw and dns from DHCP
 ** Open /etc/dhcpcd.conf and add to end
 ** interface iface_name
 ** nogateway
 ** nohook resolv.conf
+
 * Setup fail2ban
 ** fail2ban/action.d/iptables-blocktype.local
 *** [Init]
@@ -219,6 +258,7 @@
 ** tmux new-session -d
 * Create new user
 ** useradd -m -g users -G wheel username
+
 * netstat
 ** Get listen tcp ports
 *** netstat -plnt
