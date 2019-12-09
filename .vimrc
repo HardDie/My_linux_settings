@@ -25,7 +25,7 @@ set statusline+=%8*
 set statusline+=\ %{g:currentmode[mode()]}
 set statusline+=%9*
 set statusline+=%1*\ 
-set statusline+=%F%{ReadOnly()} " Show file path
+set statusline+=%F%{ReadOnly()}%{Modified()} " Show file path
 set statusline+=\ %2*
 set statusline+=%= " Left/Rigth separator
 set statusline+=%3*
@@ -130,6 +130,13 @@ let g:currentmode={
 function! ReadOnly()
   if &readonly || !&modifiable
     return ' '
+  else
+    return ''
+endfunction
+
+function! Modified()
+  if &modified
+    return ' [+]'
   else
     return ''
 endfunction
