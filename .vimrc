@@ -111,13 +111,13 @@ let g:currentmode={
     \ 'V'      : 'VISUAL ',
     \ ''     : 'VISUAL ',
     \ 'R'      : 'REPLACE ',
+    \ 'c'      : 'NORMAL ',
     \
     \ 'no'     : 'N·Operator Pending ',
     \ 's'      : 'Select ',
     \ 'S'      : 'S·Line ',
     \ '\<C-S>' : 'S·Block ',
     \ 'Rv'     : 'V·Replace ',
-    \ 'c'      : 'Command ',
     \ 'cv'     : 'Vim Ex ',
     \ 'ce'     : 'Ex ',
     \ 'r'      : 'Prompt ',
@@ -163,7 +163,7 @@ function! FileSize()
 endfunction
 
 function! ChangeColors()
-  if (mode() =~# '\v(n)')
+  if (mode() =~# '\v(n|c)')
     exe 'hi! User8 ctermfg=22 ctermbg=118 cterm=bold'
     exe 'hi! User9 ctermfg=118 ctermbg=31 cterm=bold'
   elseif (mode() =~# '\v(i)')
