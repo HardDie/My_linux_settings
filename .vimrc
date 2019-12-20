@@ -102,7 +102,7 @@ set statusline+=%= " Left/Rigth separator
 set statusline+=%3*
 set statusline+=%y " Show filetype
 set statusline+=\ %3*\ 
-set statusline+=%{FileSize()} " Show filesize
+set statusline+=%{ShowFileSize()} " Show filesize
 set statusline+=\ %4*%5*\ 
 set statusline+=%l/%L(%p%%) " Show cursor line position
 set statusline+=\ %6*%7*\ 
@@ -147,7 +147,7 @@ function! Modified()
     return ''
 endfunction
 
-function! FileSize()
+function! ShowFileSize()
   let bytes = getfsize(expand('%:p'))
   if (bytes >= 1024)
     let kbytes = bytes / 1024
