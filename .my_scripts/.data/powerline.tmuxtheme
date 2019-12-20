@@ -18,9 +18,6 @@
 END_S="\\\(s\\\?\\\)"
 uptime="#(uptime -p | sed 's/^...//; s/,//g; s/ week${END_S}/w/; s/ day${END_S}/d/; s/ hour${END_S}/h/; s/ minute${END_S}/m/')"
 
-bat="#(cat /sys/class/power_supply/BAT0/capacity)"
-bat_stat="#(cat /sys/class/power_supply/BAT0/status)"
-
 # Replase:
 # '.*' -> ':'
 # '*Z' -> 'Z'
@@ -42,7 +39,7 @@ set -g status-left "#[fg=colour232,bg=colour7,bold] #S #[fg=colour7,bg=colour232
 # Right side of status bar
 set -g status-right-style bg="colour232",fg="colour245"
 set -g status-right-length 150
-set -g status-right "$bat_stat:$bat  $uptime #[fg=colour237,bg=colour232]#[fg=colour245,bg=colour237] %H:%M:%S #[fg=colour7,bg=colour237]#[fg=colour232,bg=colour7,bold] #H #[fg=colour245,bg=colour235,bold]"
+set -g status-right " $uptime #[fg=colour237,bg=colour232]#[fg=colour245,bg=colour237] %H:%M:%S #[fg=colour7,bg=colour237]#[fg=colour232,bg=colour7,bold] #H #[fg=colour245,bg=colour235,bold]"
 
 # Window status
 set -g window-status-format "#[fg=colour232,bg=colour232,nobold]#[fg=colour240,bg=colour232,nobold] #I$status #W #[fg=colour232,bg=colour232,nobold]"
