@@ -25,7 +25,7 @@ bat_stat="#(cat /sys/class/power_supply/BAT0/status)"
 # '.*' -> ':'
 # '*Z' -> 'Z'
 # '-Z' -> 'Z'
-status="#(echo #F | sed 's/^*Z$\|^-Z$/Z/g; /^[Z-]$/! s/.*/:/g')"
+status="#(echo \"#F\" | sed 's/^$/:/g')"
 
 # Status update interval
 set -g status-interval 3
