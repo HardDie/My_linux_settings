@@ -6,7 +6,7 @@
 
 * Git check repo whitespace
   git commit --allow-empty
-  # Always create a merge commit
+* Always create a merge commit
   git merge --no-ff
 
 * Good example C comments
@@ -90,8 +90,8 @@
 
 * Get information about interface
   ethtool eth0
-** Setup speed interface
-   ethtool -s eth0 speed 100 autoneg off
+* Setup speed interface
+  ethtool -s eth0 speed 100 autoneg off
 
 * Show last installed packed
   expac --timefmt='%Y-%m-%d %T' '%l\t%n' | sort
@@ -254,8 +254,12 @@
 *** maxretry = 5
 *** ignoreip = 127.0.0.1/8
 *** port = 22
-* Create new user
-** useradd -m -g users -G wheel username
+
+* user manipulation
+** Create new user
+   useradd -m -g users -G wheel username
+** Add user to group
+   usermod -a -G groupname username
 
 * netstat
 ** Get listen tcp ports
