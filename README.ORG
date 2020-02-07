@@ -62,9 +62,6 @@
 * Emacs git blame
   M-x vc-annotate
 
-* ARCH. remove all unused packages
-  pacman -Rsn $(pacman -Qqdt)
-
 * How setup WiFi card on promiscuous mode
 ** Find your phy
    iw phy
@@ -270,7 +267,7 @@
 * graphviz online
 ** http://dreampuf.github.io/GraphvizOnline/
 
-* Pacman
+* pacman
 ** Show unused packets
    yay -Qdtq
 ** Show explicitly installed packets
@@ -281,6 +278,8 @@
    yay -Qn
 ** Install packet as dependency
    yay -S packet --asdeps
+** How change 'Install Reason' for exist packet
+   yay -D --asdeps packet_name
 
 * tmux
 ** Create tmux session in background
