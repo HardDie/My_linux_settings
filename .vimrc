@@ -21,11 +21,15 @@ nmap p :r /tmp/vimtmp<CR>
 vmap <C-l> :'<,'>norm i//<CR>
 vmap <S-l> :'<,'>norm xx<CR>
 
+command! FindTags call Find_tags()
 fun! Find_tags()
   " set global variable tags
   let &tags = system("~/.vim/find_near_tags.sh")
   " print variable: set tags?
 endfun
+
+command! Gofmt % ! gofmt
+command! Clang % ! clang-format
 
 " ----
 " Colors setup
