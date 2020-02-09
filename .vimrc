@@ -30,6 +30,7 @@ endfun
 
 command! Gofmt % ! gofmt
 command! Clang % ! clang-format
+command! ReloadCfg so $HOME/.vimrc
 
 " ----
 " Colors setup
