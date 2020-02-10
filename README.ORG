@@ -297,3 +297,9 @@
    fc-query some.ttf or some.otf
 ** Print font symbols
    xfd -fa "SomeFontFamily"
+
+* Backup
+** Create
+   dd if=/dev/sda | gzip -c > some.img.gz
+** Restore
+   gzip -dc some.img.gz | dd of=/dev/sda
