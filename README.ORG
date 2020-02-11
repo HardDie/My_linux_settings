@@ -98,6 +98,7 @@
 ** LVM setup
 *** Create physichal volume
     pvcreate /dev/sda1 /dev/sda2
+    pvdisplay
 *** Create volume group
     vgcreate name_group /dev/sda1 /dev/sda2
     vgdisplay
@@ -343,3 +344,7 @@
    Xephyr :1 -ac -screen 640x480x8
 ** Run app
    DISPLAY=:1 app
+
+* Utils
+** NCurses Disk Usage
+   ncdu
