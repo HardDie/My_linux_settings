@@ -234,8 +234,8 @@ bindsym --to-code Ctrl+Prior exec --no-startup-id mpc prev && $PlayerUpdate
 bindsym --to-code Ctrl+Next exec --no-startup-id mpc next && $PlayerUpdate
 
 # Sreen brightness controls
-bindsym --to-code XF86MonBrightnessUp exec xbacklight -inc 20 # increase screen brightness
-bindsym --to-code XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightness
+bindsym --to-code XF86MonBrightnessUp exec brightnessctl set +20% # increase screen brightness
+bindsym --to-code XF86MonBrightnessDown exec brightnessctl set 20%- # decrease screen brightness
 
 # screenshot
 bindsym --to-code --release Print exec --no-startup-id ~/.my_scripts/.data/sway_make_screenshot.sh
