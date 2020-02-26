@@ -11,7 +11,7 @@ print_good() {
 	echo -ne "</span>"
 
 	echo -ne "<span background='$BG' foreground='#000000'>"
-	echo -ne "\ufaa8" # Wifi good
+	echo -ne "\uf1eb" # Wifi good
 	echo -ne "</span>"
 
 	echo -ne "<span background='$TEXT' foreground='$BG'>"
@@ -27,7 +27,7 @@ print_good() {
 	echo -ne "</span>"
 
 	echo -ne "<span background='$BG' foreground='#000000'>"
-	echo -ne "\uf9a1" # Wifi signal
+	echo -ne "\uf012" # Wifi signal
 	echo -ne "</span>"
 
 	echo -ne "<span background='$TEXT' foreground='$BG'>"
@@ -49,7 +49,7 @@ print_bad() {
 	echo -ne "</span>"
 
 	echo -ne "<span background='$BG' foreground='#000000'>"
-	echo -ne "\ufaa9" # Wifi bad
+	echo -ne "\uf1eb" # Wifi good
 	echo -ne "</span>"
 
 	echo -ne "<span background='$TEXT' foreground='$BG'>"
@@ -67,7 +67,7 @@ print_bad() {
 
 if [[ -z $BLOCK_INSTANCE ]]; then
 	print_bad
-    exit 0
+	exit 0
 fi
 IFACE=$BLOCK_INSTANCE
 
@@ -75,11 +75,11 @@ STR=$(iw dev $IFACE link)
 if [[  $STR == 'Not connected.' ]]; then
 	print_bad
 else
-    ARR=(${STR// / })
-    SSID=${ARR[6]}
-    SIGNAL=${ARR[20]}
+	ARR=(${STR// / })
+	SSID=${ARR[6]}
+	SIGNAL=${ARR[20]}
 
-    IP=($(ip addr show $IFACE | grep '\binet\b' | awk '{print $2}' | cut -d '/' -f 1))
+	IP=($(ip addr show $IFACE | grep '\binet\b' | awk '{print $2}' | cut -d '/' -f 1))
 
 	print_good $SSID $SIGNAL $IP
 fi

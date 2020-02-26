@@ -9,7 +9,7 @@ echo -ne "\ue0b8" # Open
 echo -ne "</span>"
 
 echo -ne "<span background='$BG' foreground='#000000'>"
-echo -ne "\uf64f" # Clock
+echo -ne "\uf017" # Clock
 echo -ne "</span>"
 
 echo -ne "<span background='$TEXT' foreground='$BG'>"

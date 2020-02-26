@@ -9,7 +9,7 @@ echo -ne "\ue0b8" # Open
 echo -ne "</span>"
 
 echo -ne "<span background='$BG' foreground='#000000'>"
-echo -ne "\ufac9" # Lang
+echo -ne "\uf1ab" # Lang
 echo -ne "</span>"
 
 echo -ne "<span background='$TEXT' foreground='$BG'>"

@@ -10,7 +10,7 @@ print_good() {
 	echo -ne "</span>"
 
 	echo -ne "<span background='$BG' foreground='#000000'>"
-	echo -ne "\uf85a" # CPU
+	echo -ne "\uf1fe" # Load
 	echo -ne "</span>"
 
 	echo -ne "<span background='$TEXT' foreground='$BG'>"
@@ -32,7 +32,7 @@ print_bad() {
 	echo -ne "</span>"
 
 	echo -ne "<span background='$BG' foreground='#000000'>"
-	echo -ne "\uf85a" # CPU
+	echo -ne "\uf1fe" # Load
 	echo -ne "</span>"
 
 	echo -ne "<span background='$TEXT' foreground='$BG'>"

@@ -11,7 +11,7 @@ echo -ne "\ue0b8" # Open
 echo -ne "</span>"
 
 echo -ne "<span background='$BG' foreground='#000000'>"
-echo -ne "\uf7ca" # Headphones
+echo -ne "\uf025" # Headphones
 echo -ne "</span>"
 
 echo -ne "<span background='$TEXT' foreground='$BG'>"
