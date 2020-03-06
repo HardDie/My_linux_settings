@@ -348,3 +348,10 @@
 * Utils
 ** NCurses Disk Usage
    ncdu
+
+* Wireshark
+** How decrypt HTTPS session
+*** Set environment var
+    SSLKEYLOGFILE=/tmp/ssl.log
+*** Setup wireshark
+    Edit -> Preferences -> Protocols -> TLS -> (Pre)-Master-Secret log filename
