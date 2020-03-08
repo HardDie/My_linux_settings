@@ -101,6 +101,7 @@
 *** Create volume group
     vgcreate name_group /dev/sda1 /dev/sda2
     vgdisplay
+    vgchange -a n name_group # Stop volume group
 *** Create logical volume
     lvcreate -n name_volume -L size name_group
     lvdisplay
