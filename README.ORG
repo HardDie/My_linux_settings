@@ -328,3 +328,7 @@
 ** Write *.auth files to UEFI in order db, KEK, PK
 ** Sign binary
    sbsign --key ISK.key --cert ISK.pem --output bootx64.efi some_image.EFI
+
+* How unpack initramfs image
+** zcat /boot/initramfs-linux.img > some.cpio
+** cpio -vid < some.cpio
