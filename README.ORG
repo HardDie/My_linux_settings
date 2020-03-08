@@ -303,3 +303,28 @@
    dd if=/dev/sda | gzip -c > some.img.gz
 ** Restore
    gzip -dc some.img.gz | dd of=/dev/sda
+
+* UEFI Security Boot
+** Generate keys
+*** PK - with password for sign binary files
+    openssl req -new -x509 -newkey rsa:2048 -sha256 -days 365 -subj "/CN=Platform Key" -keyout PK.key -out PK.pem
+*** KEK
+    openssl req -new -x509 -newkey rsa:2048 -sha256 -days 365 -subj "/CN=Key Exchange Key" -keyout KEK.key -out KEK.pem
+*** ISK
+    openssl req -new -x509 -newkey rsa:2048 -sha256 -days 365 -subj "/CN=Image Signing Key" -keyout ISK.key -out ISK.pem
+** Convert to UEFI format
+*** cert-to-efi-sig-list -g "$(uuidgen)" PK.pem PK.esl
+*** cert-to-efi-sig-list -g "$(uuidgen)" KEK.pem KEK.esl
+*** cert-to-efi-sig-list -g "$(uuidgen)" ISK.pem ISK.esl
+** Create db.esl
+   cat ISK.esl > db.esl
+** Signing
+*** PK sign by PK
+    sign-efi-sig-list -k PK.key -c PK.pem PK PK.esl PK.auth
+*** KEK sign by PK
+    sign-efi-sig-list -k PK.key -c PK.pem KEK KEK.esl KEK.auth
+*** db sign by KEK
+    sign-efi-sig-list -k KEK.key -c KEK.pem db db.esl db.auth
+** Write *.auth files to UEFI in order db, KEK, PK
+** Sign binary
+   sbsign --key ISK.key --cert ISK.pem --output bootx64.efi some_image.EFI
