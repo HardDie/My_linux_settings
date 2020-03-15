@@ -22,7 +22,7 @@ WORKDIR /home/waterfox
 
 RUN sed 's/^#//g' /etc/pacman.d/mirrorlist.pacnew > /etc/pacman.d/mirrorlist && \
 	pacman -Sy --noconfirm go git sudo fakeroot binutils make gcc && \
-	pacman -Sy --noconfirm libxt libnotify mime-types nss gtk2 gtk3 dbus-glib && \
+	pacman -Sy --noconfirm libxt libnotify mime-types nss gtk2 gtk3 dbus-glib startup-notification ffmpeg ttf-font && \
 	sudo -u waterfox sh -c "git clone https://aur.archlinux.org/yay.git /tmp/yay" && \
 	sudo -u waterfox sh -c "cd /tmp/yay && makepkg" && \
 	pacman -U --noconfirm /tmp/yay/yay-*.pkg.tar.xz && \
