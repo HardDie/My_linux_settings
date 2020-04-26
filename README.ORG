@@ -333,3 +333,7 @@
 * How unpack initramfs image
 ** zcat /boot/initramfs-linux.img > some.cpio
 ** cpio -vid < some.cpio
+
+* Linux
+** Set time
+   date +%T -s "12:34:56"
