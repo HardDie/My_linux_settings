@@ -9,7 +9,7 @@ print() {
 	echo -ne "\ue0b8" # Open
 	echo -ne "</span>"
 
-	echo -ne "<span background='$BG' foreground='#000000'>"
+	echo -ne "<span background='$BG' foreground='#000000' font_family='FontAwesome'>"
 	echo -ne "\uf2db" # RAM
 	echo -ne "</span>"
 

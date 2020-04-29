@@ -9,8 +9,8 @@ print_good() {
 	echo -ne "\ue0b8" # Open
 	echo -ne "</span>"
 
-	echo -ne "<span background='$BG' foreground='#000000'>"
-    echo -ne "\uf0a0" # Disk
+	echo -ne "<span background='$BG' foreground='#000000' font_family='FontAwesome'>"
+	echo -ne "\uf0a0" # Disk
 	echo -ne "</span>"
 
 	echo -ne "<span background='$TEXT' foreground='$BG'>"
@@ -31,8 +31,8 @@ print_bad() {
 	echo -ne "\ue0b8" # Open
 	echo -ne "</span>"
 
-	echo -ne "<span background='$BG' foreground='#000000'>"
-    echo -ne "\uf0a0" # Disk
+	echo -ne "<span background='$BG' foreground='#000000' font_family='FontAwesome'>"
+	echo -ne "\uf0a0" # Disk
 	echo -ne "</span>"
 
 	echo -ne "<span background='$TEXT' foreground='$BG'>"

@@ -17,7 +17,7 @@ print_artist_title() {
     echo -ne "\ue0b8" # Open
     echo -ne "</span>"
 
-    echo -ne "<span background='$BG' foreground='#000000'>"
+    echo -ne "<span background='$BG' foreground='#000000' font_family='FontAwesome'>"
     echo -ne "\uf886" # Music note
     echo -ne "</span>"
 
@@ -36,7 +36,7 @@ print_artist_title() {
 }
 
 print_progress() {
-    echo -ne "<span background='$BG' foreground='#000000'>"
+    echo -ne "<span background='$BG' foreground='#000000' font_family='FontAwesome'>"
     case ${status[1]} in
         "[paused]"*)
             echo -ne "\uf04c" # Pause
