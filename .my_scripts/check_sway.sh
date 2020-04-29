@@ -46,7 +46,6 @@ check_bin "bemenu"   "*"            "Choose Yes/No before exit"
 
 echo "Fonts:"
 check_pkt "powerline-fonts-git"     "Terminal and powerline font"
-check_pkt "ttf-font-awesome-4"      "App icons"
 
 echo "Sound:"
 check_bin "pulseaudio"         "*"          "Pulse server"
