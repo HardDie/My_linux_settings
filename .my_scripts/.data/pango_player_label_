@@ -1,9 +1,7 @@
 #!/bin/sh
 
 NONE="#2f343f"
-BG="#7fa286"
 BG="#597262"
-TEXT="#6d726e"
 TEXT="#4d504e"
 
 xml_save_print() {
@@ -56,14 +54,14 @@ print_progress() {
     echo -ne "\ue0b8" # Open
     echo -ne "</span>"
 
-    echo -ne "<span background='$TEXT' foreground='#eef6eb' ><tt><small>"
+    echo -ne "<span background='$TEXT' foreground='#eef6eb' ><small>"
     progress=$(echo ${status[1]} | awk '{print $3}')
     if [[ $progress != "" ]]; then
         echo -n "$progress"
     else
         echo -n " -/- "
     fi
-    echo -ne "</small></tt></span>"
+    echo -ne "</small></span>"
 
     echo -ne "<span background='$NONE' foreground='$TEXT'>"
     echo -ne "\ue0b8" # Close
