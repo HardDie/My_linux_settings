@@ -6,7 +6,7 @@
  */
 
 #define D_ARGS const char* func, int line, const char* file
-#define D_INFO __FUNCTION__, __LINE__, __FILE__
+#define D_INFO __func__, __LINE__, __FILE__
 
 #define L_ALL (L_ERROR | L_WARN | L_INFO | L_DEBUG | L_STRACE | L_EXTRA)
 typedef enum {
@@ -34,6 +34,7 @@ typedef enum {
 #include <time.h>
 #include <sys/time.h>
 #include <sys/types.h>
+#include <string.h>
 
 #define ANSI_COLOR_RESET   "\x1B[0m"
 #define ANSI_COLOR_RED     "\x1B[31m"
