@@ -337,3 +337,9 @@
 * Linux
 ** Set time
    date +%T -s "12:34:56"
+
+* How run another display server
+** Run server
+   Xephyr :1 -ac -screen 640x480x8
+** Run app
+   DISPLAY=:1 app
