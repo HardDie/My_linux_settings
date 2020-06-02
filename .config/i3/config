@@ -4,16 +4,16 @@
 
 set $mod Mod4
 
-set $wspace1 "1: "
-set $wspace2 "2: "
-set $wspace3 "3: "
-set $wspace4 "4"
-set $wspace5 "5"
-set $wspace6 "6"
-set $wspace7 "7"
-set $wspace8 "8: "
-set $wspace9 "9: "
-set $wspace10 "10: "
+set $wspace1  "1: <span font_family='FontAwesome'></span>"
+set $wspace2  "2: <span font_family='FontAwesome'></span>"
+set $wspace3  "3: <span font_family='FontAwesome'></span>"
+set $wspace4  "4"
+set $wspace5  "5"
+set $wspace6  "6"
+set $wspace7  "7"
+set $wspace8  "8: <span font_family='FontAwesome'></span>"
+set $wspace9  "9: <span font_family='FontAwesome'></span>"
+set $wspace10 "10: <span font_family='FontAwesome'></span>"
 
 set $bg-color 	         #2f343f
 set $inactive-bg-color   #2f343f
