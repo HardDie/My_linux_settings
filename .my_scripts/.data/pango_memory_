@@ -30,3 +30,4 @@ MEM_FREE=$(cat /proc/meminfo | grep MemFree | awk '{print $2}')
 MEM_BUFFERS=$(cat /proc/meminfo | grep Buffers | awk '{print $2}')
 MEM_CACHED=$(cat /proc/meminfo | grep '^Cached' | awk '{print $2}')
 print $(echo "scale=1; ($MEM_FREE + $MEM_BUFFERS + $MEM_CACHED)/1024/1024" | bc)
+echo

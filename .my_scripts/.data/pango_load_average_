@@ -58,3 +58,4 @@ if [[ $cmp -ne 0 ]]; then
 else
 	print_good $load
 fi
+echo

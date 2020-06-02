@@ -69,3 +69,4 @@ else
 
 	print_good $IP
 fi
+echo

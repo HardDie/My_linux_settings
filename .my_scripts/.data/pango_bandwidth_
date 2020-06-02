@@ -149,3 +149,4 @@ if [[ "$tx_rate" -gt 1048576 ]]; then
 else
   print_output `echo -n "${tx_kib}"`K
 fi
+echo

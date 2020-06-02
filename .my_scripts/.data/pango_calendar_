@@ -24,3 +24,4 @@ echo -ne "</span>"
 echo -ne "<span background='$NONE' foreground='$TEXT'>"
 echo -ne "\ue0b8" # Close
 echo -ne "</span>"
+echo

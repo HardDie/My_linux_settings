@@ -56,3 +56,4 @@ if [[ $USED -ge 90 ]]; then
 else
     print_good $AVAILABLE
 fi
+echo
