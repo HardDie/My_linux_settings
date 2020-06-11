@@ -2,15 +2,17 @@
 #
 # waterfox() {
 # 	docker run --rm -d \
-# 		-v $HOME/.config/waterfox:/home/waterfox \
+# 		--memory 2048m \
+# 		--oom-kill-disable \
+# 		--cpus=1 \
 # 		--net host \
-# 		--device /dev/snd \
-# 		--device /dev/dri \
 # 		-v /dev/shm:/dev/shm \
-# 		-e DISPLAY=unix$DISPLAY \
+# 		-v $HOME/.config/waterfox:/home/waterfox \
+# 		-e DISPLAY=unix${DISPLAY} \
 # 		-e XDG_RUNTIME_DIR=/tmp \
 # 		-e WAYLAND_DISPLAY=$WAYLAND_DISPLAY \
 # 		-v $XDG_RUNTIME_DIR/$WAYLAND_DISPLAY:/tmp/$WAYLAND_DISPLAY \
+# 		-v $XDG_RUNTIME_DIR/pulse:/tmp/pulse \
 # 		--name waterfox \
 # 		my/waterfox
 # }
@@ -35,6 +37,7 @@ RUN sed 's/^#//g' /etc/pacman.d/mirrorlist.pacnew > /etc/pacman.d/mirrorlist && 
 	pacman -Rsn --noconfirm go git sudo fakeroot binutils make gcc yay && \
 	rm -rf /var/lib/pacman/sync/*
 
+RUN chown waterfox:users /tmp
 USER waterfox
 
 ENTRYPOINT [ "waterfox-current" ]
