@@ -3,6 +3,8 @@
 # nginx() {
 # 	docker run -d \
 # 		--memory 512m \
+# 		--oom-kill-disable \
+# 		--cpus=1 \
 # 		--net host \
 # 		-v $HOME/.config/nginx:/app:ro \
 # 		--name nginx \
