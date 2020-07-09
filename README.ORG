@@ -259,6 +259,8 @@
    useradd -m -g users -G wheel username
 ** Add user to group
    usermod -a -G groupname username
+** List active groups
+   groups
 
 * netstat
 ** Get listen tcp ports
@@ -359,3 +361,9 @@
 * Rename
 ** Change extensions
    rename png jpeg *.png
+
+* Bash scripts
+** Force varible declaration before access
+   set -u
+** Make any failure in piped commands be reflected in the exit code
+   set -o pipefail
