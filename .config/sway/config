@@ -233,6 +233,10 @@ bindsym --to-code Ctrl+space exec --no-startup-id mpc toggle && $PlayerUpdate
 bindsym --to-code Ctrl+Prior exec --no-startup-id mpc prev && $PlayerUpdate
 bindsym --to-code Ctrl+Next exec --no-startup-id mpc next && $PlayerUpdate
 
+bindsym --to-code XF86AudioPlay exec --no-startup-id mpc toggle && $PlayerUpdate
+bindsym --to-code XF86AudioPrev exec --no-startup-id mpc prev && $PlayerUpdate
+bindsym --to-code XF86AudioNext exec --no-startup-id mpc next && $PlayerUpdate
+
 # Sreen brightness controls
 # Add user to 'video' group
 bindsym --to-code XF86MonBrightnessUp exec brightnessctl set +20% # increase screen brightness
