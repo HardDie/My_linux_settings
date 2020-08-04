@@ -355,3 +355,7 @@
     SSLKEYLOGFILE=/tmp/ssl.log
 *** Setup wireshark
     Edit -> Preferences -> Protocols -> TLS -> (Pre)-Master-Secret log filename
+
+* Rename
+** Change extensions
+   rename png jpeg *.png
