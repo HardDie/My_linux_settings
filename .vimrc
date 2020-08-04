@@ -2,6 +2,9 @@ set t_Co=256
 set incsearch
 set hlsearch
 
+" Display max width column
+set colorcolumn=81
+
 " Setup line number
 set number
 
