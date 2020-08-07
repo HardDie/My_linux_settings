@@ -124,6 +124,9 @@ fi
 if [[ -z $TMUX && -z $SSH_CONNECTION ]]; then
     echo -n 'Start tmux? [Y/n]: ';
     read answer;
+    if [[ $answer == "a" || $answer == "A" ]]; then
+        exec tmux -2 attach
+    fi
     if [[ $answer != "n" && $answer != "N" ]]; then
         [[ $- != *i* ]] && return
         [[ -z "$TMUX" ]] && exec tmux -2
