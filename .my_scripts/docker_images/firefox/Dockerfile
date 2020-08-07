@@ -23,9 +23,13 @@
 FROM archlinux:latest
 
 RUN sed 's/^#//g' /etc/pacman.d/mirrorlist.pacnew > /etc/pacman.d/mirrorlist && \
-	pacman -Syyu --noconfirm firefox && \
+	pacman -Syyu --noconfirm firefox git make && \
+	git clone https://github.com/girst/LegacyFox-mirror-of-git.gir.st /tmp/patch && \
+	make -C /tmp/patch install && \
+	pacman -Rsn --noconfirm git make && \
 	pacman -Scc --noconfirm && \
-	rm -rf /var/lib/pacman/sync/*
+	rm -rf /var/lib/pacman/sync/* && \
+	rm -rf /var/cache/pacman/pkg/*
 
 RUN useradd -u 1000 -r -s /bin/false -m -g users -G audio firefox
 RUN chown firefox:users /tmp
