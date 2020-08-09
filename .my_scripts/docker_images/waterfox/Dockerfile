@@ -35,7 +35,8 @@ RUN sed 's/^#//g' /etc/pacman.d/mirrorlist.pacnew > /etc/pacman.d/mirrorlist && 
 	rm -rf /home/waterfox/.cache/ && \
 	pacman -Scc --noconfirm && \
 	pacman -Rsn --noconfirm go git sudo fakeroot binutils make gcc yay && \
-	rm -rf /var/lib/pacman/sync/*
+	rm -rf /var/lib/pacman/sync/* && \
+	rm -rf /var/cache/pacman/pkg/*
 
 RUN chown waterfox:users /tmp
 USER waterfox
