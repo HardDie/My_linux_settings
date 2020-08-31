@@ -12,6 +12,9 @@ set number
 set list
 set listchars=tab:>.,trail:.,extends:\#,nbsp:.
 
+" Set tab as 4 spaces
+set tabstop=4
+
 " Human autocomplete mode
 set wildmode=longest,list
 set wildignorecase
