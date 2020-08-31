@@ -155,6 +155,12 @@
 * GIT. Push local branch
   git push origin [local_name]:[remote_name]
 
+* GIT
+** Assemble patches
+   git format-patch CURRENT_COMMIT_HASH -o /some/folder
+** Apply patches
+   git am --ignore-whitespace --3way --keep-non-patch *.patch
+
 * rsync
 ** Sync Music between PC and phone
    rsync -cvr --stats --progress --delete --exclude=Covers English/* Music
