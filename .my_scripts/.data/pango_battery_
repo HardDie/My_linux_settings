@@ -7,6 +7,8 @@ TEXT="#4d504e"
 BAT=$(cat /sys/class/power_supply/BAT0/capacity)
 STATUS=$(cat /sys/class/power_supply/BAT0/status)
 
+NOTIFY_FLAG=/tmp/.my_low_battery_notification
+
 echo -ne "<span background='$BG' foreground='$NONE'>"
 echo -ne "\ue0b8" # Open
 echo -ne "</span>"
@@ -14,6 +16,11 @@ echo -ne "</span>"
 echo -ne "<span background='$BG' foreground='#000000' font_family='FontAwesome'>"
 if [[ $STATUS == "Charging" ]]; then
 	echo -ne "\uf0e7 " # Light
+
+	# Remove flag if start charging
+	if [[ -e $NOTIFY_FLAG ]]; then
+		rm $NOTIFY_FLAG
+	fi
 fi
 
 if [[ $BAT -gt 75 && $BAT -le 100 ]]; then
@@ -26,7 +33,16 @@ elif [[ $BAT -gt 10 && $BAT -le 25 ]]; then
 	echo -ne "\uf243" # 25
 elif [[ $BAT -ge 0 && $BAT -le 10 ]]; then
 	echo -ne "\uf244" # 25
+
+	# If battery is not charging and low lever send notification
+	if [[ $STATUS != "Charging" ]]; then
+		if [[ ! -e $NOTIFY_FLAG ]]; then
+			touch $NOTIFY_FLAG
+			notify-send "Battery Low" "$BAT% charge remaining"
+		fi
+	fi
 fi
+
 echo -ne "</span>"
 
 echo -ne "<span background='$TEXT' foreground='$BG'>"
