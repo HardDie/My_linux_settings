@@ -348,6 +348,8 @@
 * Linux
 ** Set time
    date +%T -s "12:34:56"
+** Get CPU cache size
+   getconf -a | grep CACHE
 
 * How run another display server
 ** Run server
