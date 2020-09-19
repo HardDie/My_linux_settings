@@ -224,9 +224,9 @@ bindsym --to-code Ctrl+Mod1+Shift+s exec --no-startup-id $Locker && sleep 1 && s
 
 # media keys
 # Pulse Audio controls
-bindsym --to-code XF86AudioRaiseVolume exec --no-startup-id pamixer -i 5 && $VolUpdate #increase sound volume
-bindsym --to-code XF86AudioLowerVolume exec --no-startup-id pamixer -d 5 && $VolUpdate #decrease sound volume
-bindsym --to-code XF86AudioMute exec --no-startup-id pamixer -t && $VolUpdate # mute sound
+bindsym --to-code Ctrl+F3 exec --no-startup-id pamixer -i 5 && $VolUpdate #increase sound volume
+bindsym --to-code Ctrl+F2 exec --no-startup-id pamixer -d 5 && $VolUpdate #decrease sound volume
+bindsym --to-code Ctrl+F1 exec --no-startup-id pamixer -t && $VolUpdate # mute sound
 
 # Player controls
 bindsym --to-code Ctrl+space exec --no-startup-id mpc toggle && $PlayerUpdate
@@ -243,9 +243,9 @@ bindsym --to-code XF86MonBrightnessUp exec brightnessctl set +20% # increase scr
 bindsym --to-code XF86MonBrightnessDown exec brightnessctl set 20%- # decrease screen brightness
 
 # screenshot
-bindsym --to-code --release Print exec --no-startup-id ~/.my_scripts/.data/sway_make_screenshot.sh
-bindsym --to-code --release Shift+Print exec --no-startup-id ~/.my_scripts/.data/sway_make_screenshot.sh -a
-bindsym --to-code --release Ctrl+Print exec --no-startup-id ~/.my_scripts/.data/sway_make_screenshot.sh -r
+bindsym --to-code --release F12 exec --no-startup-id ~/.my_scripts/.data/sway_make_screenshot.sh
+bindsym --to-code --release Shift+F12 exec --no-startup-id ~/.my_scripts/.data/sway_make_screenshot.sh -a
+bindsym --to-code --release Ctrl+F12 EXec --no-startup-id ~/.my_scripts/.data/sway_make_screenshot.sh -r
 
 # Layout update
 bindsym --to-code ISO_Next_Group exec --no-startup-id $LangUpdate
