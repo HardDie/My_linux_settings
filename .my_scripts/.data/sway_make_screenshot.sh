@@ -26,6 +26,8 @@ fi
 
 if [[ -z $1 ]]; then
 	grim ~/$DIRECTORY/$NAME
+	notify-send "Screenshot" "Image $NAME was created!"
 else
 	grim -g "$SHAPE" ~/$DIRECTORY/$NAME
+	notify-send "Screenshot" "Image $NAME was created!"
 fi
