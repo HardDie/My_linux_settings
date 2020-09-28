@@ -184,6 +184,8 @@
    dpkg-query -L packetname
 ** Search packets by name
    apt-cache search word
+** How to check which package own file
+   dpkg-query -S /bin/bash
 * Ubuntu check version
   lsb_release -a
 
@@ -381,3 +383,8 @@
 * Hacks
 ** Remove lines from test1 because they are in test2:
    grep -vxFf test2 test1
+
+* Docker
+** Disconnect container from network
+   docker network disconnect -f <network> <container>
+   docker network disconnect -f bridge build
