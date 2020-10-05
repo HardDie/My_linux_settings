@@ -352,6 +352,8 @@
 * Utils
 ** NCurses Disk Usage
    ncdu
+** Convert djvu to pdf (djvulibre)
+   ddjvu -format=pdf in.djvu out.pdf
 
 * Wireshark
 ** How decrypt HTTPS session
