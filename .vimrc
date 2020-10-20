@@ -16,6 +16,9 @@ set listchars=tab:>.,trail:.,extends:\#,nbsp:.
 set wildmode=longest,list
 set wildignorecase
 
+" Tab size 4 spaces
+set tabstop=4
+
 " Setup buffer copy
 vmap y :'<,'> w! /tmp/vimtmp<CR>
 vmap x :'<,'> w! /tmp/vimtmp<CR>:'<,'> d<CR>
