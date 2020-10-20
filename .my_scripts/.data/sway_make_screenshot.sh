@@ -9,6 +9,10 @@ elif [[ $1 == "-a" ]]; then
 elif [[ $1 == "-r" ]]; then
 	# With argument "-r" make screenshot for selected shape
 	SHAPE=$(slurp)
+	if [[ $? == 1 ]]; then
+		# Do not show notification if screen shot was discard
+		exit
+	fi
 else
 	# Error situation
 	echo ERROR
