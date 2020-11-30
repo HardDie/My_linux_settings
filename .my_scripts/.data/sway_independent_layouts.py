@@ -23,9 +23,10 @@ def on_window_focus(ipc, event):
     # Restore layout of the newly focused window
     if event.container.id in windows:
         for (input_id, layout_index) in windows[event.container.id].items():
-            if layout_index != layouts[input_id]:
-                ipc.command("input \"{}\" xkb_switch_layout {}".format(
-                    input_id, layout_index))
+            if input_id in layouts:
+                if layout_index != layouts[input_id]:
+                    ipc.command("input \"{}\" xkb_switch_layout {}".format(
+                        input_id, layout_index))
 
     prev_focused = event.container.id
 
