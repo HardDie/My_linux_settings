@@ -1,6 +1,0 @@
-# -*- mode: snippet -*-
-# name: log_in
-# contributor: HardDie
-# key: log_in
-# --
-dtrace(D_INFO, S_TR_ENT, ""); /* DEBUG */

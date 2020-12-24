@@ -1,6 +1,0 @@
-# -*- mode: snippet -*-
-# name: log_out
-# contributor: HardDie
-# key: log_out
-# --
-dtrace(D_INFO, S_TR_EXT, ""); /* DEBUG */

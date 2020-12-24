@@ -1,6 +1,0 @@
-# -*- mode: snippet -*-
-# name: dprint
-# contributor: HardDie
-# key: dprint
-# --
-dtrace(D_INFO, L_DEBUG, "${Debug text}"); /* DEBUG */

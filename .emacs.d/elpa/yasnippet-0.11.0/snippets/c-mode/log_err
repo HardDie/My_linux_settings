@@ -1,6 +1,0 @@
-# -*- mode: snippet -*-
-# name: log_err
-# contributor: HardDie
-# key: log_err
-# --
-dtrace(D_INFO, S_TR_ERR, ""); /* DEBUG */

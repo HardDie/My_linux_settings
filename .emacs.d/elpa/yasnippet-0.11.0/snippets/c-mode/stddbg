@@ -1,7 +1,0 @@
-# -*- mode: snippet -*-
-# name: stddbg
-# contributor: HardDie
-# key: stddbg
-# --
-#define __D_INIT__
-#include "/home/debug_header.h" /* DEBUG */
