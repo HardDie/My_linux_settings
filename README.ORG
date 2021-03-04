@@ -1,14 +1,3 @@
-* Set TTL for packages
-  sudo iptables -t mangle -A POSTROUTING -o usb0 -j TTL --ttl-set 65
-
-* Setup NAT
-  sudo iptables -t nat -A POSTROUTING -o ppp0 -j MASQUERADE
-
-* Git check repo whitespace
-  git commit --allow-empty
-* Always create a merge commit
-  git merge --no-ff
-
 * Good example C comments
 /**
  * Copies the default config to startup.
@@ -21,21 +10,12 @@
  * @retval other in case of error.
  */
 
-* How watch all include directories gcc
-  gcc -xc++ -E -v -
-
 * Sites for test regular expression
   https://www.debuggex.com/
   https://regexper.com/
 
-* Mount disk on rw mode from ro mode
-  mount -o remount, rw /
-
 * Emacs. How enable merge conflict resolve mode
   vc-resolve-conflicts
-
-* How show RAM information
-  dmidecode -t memory
 
 * How remove attribute
 ** Install
@@ -94,51 +74,9 @@
   expac --timefmt='%Y-%m-%d %T' '%l\t%n' | sort
   expac -S -H M '%k\t%n' | sort -h
 
-* LVM
-** LVM setup
-*** Create physichal volume
-    pvcreate /dev/sda1 /dev/sda2
-    pvdisplay
-*** Create volume group
-    vgcreate name_group /dev/sda1 /dev/sda2
-    vgdisplay
-    vgchange -a n name_group # Stop volume group
-*** Create logical volume
-    lvcreate -n name_volume -L size name_group
-    lvdisplay
-    lvextend -L +size /dev/name_group/name_volume
-*** Deactivale group
-    vgchange -a n name_group
-*** Activate group
-    vgchange -a y name_group
-*** Resize FS
-    resize2fs /dev/name_group/name_volume
-
 ** Crypt setup
-*** Encrypt dev
-    cryptsetup luksFormat /dev/sda2
-*** Open
-    cryptsetup open /dev/sda2 name_crypt
 *** Edit /etc/default/grub
     cryptdevice=/dev/sda2:name_crypt
-
-* How manage images
-  pacman -S imagemagic
-** Conver
-   convert image.png image.jpg
-** Resize
-   convert image.png -resize 200x100 image.png
-** Force resize
-   convert image.png -resize 200x100! image.png
-** Only height
-   convert image.png -resize 200 image.png
-** Only weight
-   convert image.png -resize x100 image.png
-** Rotate
-   convert image.png -rotate 90 image.png
-
-* GIT. Find removed string
-  git log -S <string> path/to/file
 
 * SSH tunnel
 ** PC1 --> ( NAT ) --> WAN <-- PC2
@@ -146,44 +84,11 @@
 ** Example
   ssh -f -N -R 2222:10.10.1.1:22 username@273.15.26.11
 
-* GIT. Remove remote branch
-** Remove remote branch from local repo
-   git branch -d -r origin/branch
-** Remove remote branch from remote repo
-   git push -d origin branch
-
-* GIT. Push local branch
-  git push origin [local_name]:[remote_name]
-
-* rsync
-** Sync Music between PC and phone
-   rsync -cvr --stats --progress --delete --exclude=Covers English/* Music
-** Sync by ssh
-   rsync -avz -e 'ssh -p 22' --progress IP:/path .
-
 * Draw gpaphs
   pacman -S graphviz
 
 * Validator json
   https://jsonlint.com/
-
-* Check system informationi
-** journalctl -b -p 3
-** systemctl --failed -all
-
-* Ubuntu package commands
-** Print installed packages
-   dpkg-query -l
-** Show files in packet
-   dpkg-query -L packetname
-** Search packets by name
-   apt-cache search word
-* Ubuntu check version
-  lsb_release -a
-
-* How change console font
-**  pacman -S terminus-font
-**  setfont ter-v32n
 
 * How setup systemd boot
   bootctl install
@@ -228,17 +133,6 @@
 * Count lines code
   tokei
 
-* Check time loading
-  systemd-analyze blame
-
-* Loop device
-** Create loop device
-   losetup /dev/loop0 file.img
-** Show loop devices
-   losetup -a
-** Remove loop device
-   losetup -d /dev/loop0
-
 * Disable installing default gw and dns from DHCP
 ** Open /etc/dhcpcd.conf and add to end
 ** interface iface_name
@@ -256,14 +150,6 @@
 *** ignoreip = 127.0.0.1/8
 *** port = 22
 
-* user manipulation
-** Create new user
-   useradd -m -g users -G wheel username
-** Add user to group
-   usermod -a -G groupname username
-** List active groups
-   groups
-
 * netstat
 ** Get listen tcp ports
 *** netstat -plnt
@@ -272,20 +158,6 @@
 
 * graphviz online
 ** http://dreampuf.github.io/GraphvizOnline/
-
-* pacman
-** Show unused packets
-   yay -Qdtq
-** Show explicitly installed packets
-   yay -Qe
-** Show installed packets from AUR packets
-   yay -Qm
-** Show installed packets from repository
-   yay -Qn
-** Install packet as dependency
-   yay -S packet --asdeps
-** How change 'Install Reason' for exist packet
-   yay -D --asdeps packet_name
 
 * tmux
 ** Create tmux session in background
