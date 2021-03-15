@@ -35,7 +35,7 @@ print_good() {
 	echo -ne "</span>"
 
 	echo -ne "<span background='$TEXT' foreground='#eef6eb'>"
-	echo -ne "$2dBm" # Signal
+	echo -ne "$2" # Signal
 	echo -ne "</span>"
 
 	echo -ne "<span background='$NONE' foreground='$TEXT'>"
@@ -75,12 +75,9 @@ STR=$(iw dev $IFACE link)
 if [[  $STR == 'Not connected.' ]]; then
 	print_bad
 else
-	ARR=(${STR// / })
-	SSID=${ARR[6]}
-	SIGNAL=${ARR[20]}
-
+	ARR=(${STR// /})
+	SSID=$(echo ${ARR[1]} | cut -d ':' -f 2)
+	SIGNAL=$(echo ${ARR[5]} | cut -d ':' -f 2)
 	IP=($(ip addr show $IFACE | grep '\binet\b' | awk '{print $2}' | cut -d '/' -f 1))
-
 	print_good $SSID $SIGNAL $IP
 fi
-echo
