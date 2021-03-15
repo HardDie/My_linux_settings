@@ -14,9 +14,6 @@
   https://www.debuggex.com/
   https://regexper.com/
 
-* Emacs. How enable merge conflict resolve mode
-  vc-resolve-conflicts
-
 * How remove attribute
 ** Install
    yaourt mat mutagen perl-image-exiftool
@@ -38,9 +35,6 @@
 
 * Service for found photo
   snradar.azurewebsites.net
-
-* Emacs git blame
-  M-x vc-annotate
 
 * How setup WiFi card on promiscuous mode
 ** Find your phy
@@ -70,10 +64,6 @@
 * Setup speed interface
   ethtool -s eth0 speed 100 autoneg off
 
-* Show last installed packed
-  expac --timefmt='%Y-%m-%d %T' '%l\t%n' | sort
-  expac -S -H M '%k\t%n' | sort -h
-
 ** Crypt setup
 *** Edit /etc/default/grub
     cryptdevice=/dev/sda2:name_crypt
@@ -89,21 +79,6 @@
 
 * Validator json
   https://jsonlint.com/
-
-* How setup systemd boot
-  bootctl install
-  cd /boot/loader
-  vim loader.conf = {
-    default arch
-    timeout 3
-  }
-  vim entries/arch.conf = {
-    title Archlinux
-    linux /vmlinuz-linux
-    initrd /initramfs-linux.img
-    :r !blkid
-    options root=PARTUID=some_UUID rw
-  }
 
 * How upgrade ssh id_rsa
   openssl pkcs8 -topk8 -v2 des3 -in id_rsa.old -out id_rsa
@@ -150,20 +125,8 @@
 *** ignoreip = 127.0.0.1/8
 *** port = 22
 
-* netstat
-** Get listen tcp ports
-*** netstat -plnt
-** Get listen udp ports
-*** netstat -plnu
-
 * graphviz online
 ** http://dreampuf.github.io/GraphvizOnline/
-
-* tmux
-** Create tmux session in background
-   tmux new-session -d
-** Send command in all tmux panes
-   :setw synchronize-panes on
 
 * Disable NetworkManager checking network available
 ** edit /etc/NetworkManager/NetworkManager.conf
@@ -176,44 +139,9 @@
 ** Print font symbols
    xfd -fa "SomeFontFamily"
 
-* Backup
-** Create
-   dd if=/dev/sda | gzip -c > some.img.gz
-** Restore
-   gzip -dc some.img.gz | dd of=/dev/sda
-
-* UEFI Security Boot
-** Generate keys
-*** PK - with password for sign binary files
-    openssl req -new -x509 -newkey rsa:2048 -sha256 -days 365 -subj "/CN=Platform Key" -keyout PK.key -out PK.pem
-*** KEK
-    openssl req -new -x509 -newkey rsa:2048 -sha256 -days 365 -subj "/CN=Key Exchange Key" -keyout KEK.key -out KEK.pem
-*** ISK
-    openssl req -new -x509 -newkey rsa:2048 -sha256 -days 365 -subj "/CN=Image Signing Key" -keyout ISK.key -out ISK.pem
-** Convert to UEFI format
-*** cert-to-efi-sig-list -g "$(uuidgen)" PK.pem PK.esl
-*** cert-to-efi-sig-list -g "$(uuidgen)" KEK.pem KEK.esl
-*** cert-to-efi-sig-list -g "$(uuidgen)" ISK.pem ISK.esl
-** Create db.esl
-   cat ISK.esl > db.esl
-** Signing
-*** PK sign by PK
-    sign-efi-sig-list -k PK.key -c PK.pem PK PK.esl PK.auth
-*** KEK sign by PK
-    sign-efi-sig-list -k PK.key -c PK.pem KEK KEK.esl KEK.auth
-*** db sign by KEK
-    sign-efi-sig-list -k KEK.key -c KEK.pem db db.esl db.auth
-** Write *.auth files to UEFI in order db, KEK, PK
-** Sign binary
-   sbsign --key ISK.key --cert ISK.pem --output bootx64.efi some_image.EFI
-
 * How unpack initramfs image
 ** zcat /boot/initramfs-linux.img > some.cpio
 ** cpio -vid < some.cpio
-
-* Linux
-** Set time
-   date +%T -s "12:34:56"
 
 * How run another display server
 ** Run server
@@ -233,17 +161,3 @@
     SSLKEYLOGFILE=/tmp/ssl.log
 *** Setup wireshark
     Edit -> Preferences -> Protocols -> TLS -> (Pre)-Master-Secret log filename
-
-* Rename
-** Change extensions
-   rename png jpeg *.png
-
-* Bash scripts
-** Force varible declaration before access
-   set -u
-** Make any failure in piped commands be reflected in the exit code
-   set -o pipefail
-
-* Hacks
-** Remove lines from test1 because they are in test2:
-   grep -vxFf test2 test1
