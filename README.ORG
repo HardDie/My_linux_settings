@@ -59,11 +59,6 @@
 ** addr2line -e file -a 0x(addr)
 ** strip
 
-* Get information about interface
-  ethtool eth0
-* Setup speed interface
-  ethtool -s eth0 speed 100 autoneg off
-
 ** Crypt setup
 *** Edit /etc/default/grub
     cryptdevice=/dev/sda2:name_crypt
@@ -88,12 +83,6 @@
 
 * Disable kerlen printk logs
   echo 0 > /proc/sys/kernel/printk
-
-* How to use git diff to patch file
-**  git diff --no-prefix > [path file name]
-**  patch -p0 < [path file name]
-**  git diff > patch.diff
-**  patch -p1 < patch.diff
 
 * i3 how find key name
 ** xev
