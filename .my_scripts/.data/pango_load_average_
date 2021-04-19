@@ -1,51 +1,18 @@
 #!/bin/bash
 
-NONE="#2f343f"
-BG="#445d67"
-TEXT="#3b4549"
+FIRST_COLOR="#445d67"
+SECOND_COLOR="#3b4549"
+GOOD_TEXT_COLOR="#eef6eb"
+BAD_TEXT_COLOR="#ff0000"
 
 print_good() {
-	echo -ne "<span background='$BG' foreground='$NONE'>"
-	echo -ne "\ue0b8" # Open
-	echo -ne "</span>"
-
-	echo -ne "<span background='$BG' foreground='#000000' font_family='FontAwesome'>"
-	echo -ne "\uf1fe" # Load
-	echo -ne "</span>"
-
-	echo -ne "<span background='$TEXT' foreground='$BG'>"
-	echo -ne "\ue0b8" # Open
-	echo -ne "</span>"
-
-	echo -ne "<span background='$TEXT' foreground='#eef6eb'>"
-	echo -ne "$1"
-	echo -ne "</span>"
-
-	echo -ne "<span background='$NONE' foreground='$TEXT'>"
-	echo -ne "\ue0b8" # Close
-	echo -ne "</span>"
+	$HOME/.my_scripts/.data/binary/bracet/bin/bracet "" "$1" "$FIRST_COLOR" \
+		"$SECOND_COLOR" "$GOOD_TEXT_COLOR"
 }
 
 print_bad() {
-	echo -ne "<span background='$BG' foreground='$NONE'>"
-	echo -ne "\ue0b8" # Open
-	echo -ne "</span>"
-
-	echo -ne "<span background='$BG' foreground='#000000' font_family='FontAwesome'>"
-	echo -ne "\uf1fe" # Load
-	echo -ne "</span>"
-
-	echo -ne "<span background='$TEXT' foreground='$BG'>"
-	echo -ne "\ue0b8" # Open
-	echo -ne "</span>"
-
-	echo -ne "<span background='$TEXT' foreground='#ff0000'>"
-	echo -ne "$1"
-	echo -ne "</span>"
-
-	echo -ne "<span background='$NONE' foreground='$TEXT'>"
-	echo -ne "\ue0b8" # Close
-	echo -ne "</span>"
+	$HOME/.my_scripts/.data/binary/bracet/bin/bracet "" "$1" "$FIRST_COLOR" \
+		"$SECOND_COLOR" "$BAD_TEXT_COLOR"
 }
 
 load="$(cut -d ' ' -f1 /proc/loadavg)"

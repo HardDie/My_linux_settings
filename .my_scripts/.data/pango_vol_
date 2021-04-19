@@ -1,32 +1,14 @@
 #!/bin/bash
 
-MUTE=`pamixer --get-mute`
+FIRST_COLOR="#597262"
+SECOND_COLOR="#4d504e"
+TEXT_COLOR="#eef6eb"
 
-NONE="#2f343f"
-BG="#597262"
-TEXT="#4d504e"
-
-echo -ne "<span background='$BG' foreground='$NONE'>"
-echo -ne "\ue0b8" # Open
-echo -ne "</span>"
-
-echo -ne "<span background='$BG' foreground='#000000' font_family='FontAwesome'>"
-echo -ne "\uf025" # Headphones
-echo -ne "</span>"
-
-echo -ne "<span background='$TEXT' foreground='$BG'>"
-echo -ne "\ue0b8" # Open
-echo -ne "</span>"
-
-echo -ne "<span background='$TEXT' foreground='#eef6eb'>"
-if [[ $MUTE == "true" ]]; then
-	echo -n MUTE
+if [[ `pamixer --get-mute` == "true" ]]; then
+	$HOME/.my_scripts/.data/binary/bracet/bin/bracet "" "MUTE" \
+		"$FIRST_COLOR" "$SECOND_COLOR" "$TEXT_COLOR"
 else
-	echo -n `pamixer --get-volume`%
+	$HOME/.my_scripts/.data/binary/bracet/bin/bracet "" "`pamixer --get-volume`%"\
+		"$FIRST_COLOR" "$SECOND_COLOR" "$TEXT_COLOR"
 fi
-echo -ne "</span>"
-
-echo -ne "<span background='$NONE' foreground='$TEXT'>"
-echo -ne "\ue0b8" # Close
-echo -ne "</span>"
 echo
