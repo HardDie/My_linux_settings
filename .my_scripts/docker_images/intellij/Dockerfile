@@ -32,7 +32,7 @@ RUN sed 's/^#//g' /etc/pacman.d/mirrorlist.pacnew > /etc/pacman.d/mirrorlist && 
 	pacman -U --noconfirm /tmp/intellij-idea-ultimate-edition/intellij-idea-ultimate-edition-*.pkg.tar.* && \
 	rm -rf /tmp/yay /tmp/intellij-idea-ultimate-edition && \
 	rm -rf /home/goland/.cache/ && \
-	pacman -Rsn --noconfirm sudo fakeroot make gettext yay && \
+	pacman -Rsn --noconfirm sudo fakeroot make yay && \
 	pacman -Scc --noconfirm && \
 	rm -rf /var/lib/pacman/sync/* && \
 	rm -rf /var/cache/pacman/pkg/*
