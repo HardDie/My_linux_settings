@@ -1,0 +1,105 @@
+#!/bin/bash
+# Copyright (C) 2012 Stefan Breunig <stefan+measure-net-speed@mathphys.fsk.uni-heidelberg.de>
+# Copyright (C) 2014 kaueraal
+# Copyright (C) 2015 Thiago Perrotta <perrotta dot thiago at poli dot ufrj dot br>
+
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+# Use the provided interface, otherwise the device used for the default route.
+NONE="#2f343f"
+BG="#6e4555"
+TEXT="#4e3c43"
+
+print_error() {
+    echo -ne "<span background='$BG' foreground='$NONE'>"
+    echo -ne "\ue0b8" # Open
+    echo -ne "</span>"
+
+    echo -ne "<span background='$BG' foreground='#000000' font_family='FontAwesome'>"
+    echo -ne '\uf063' # Incoming
+    echo -ne '\uf062' # Incoming
+    echo -ne "</span>"
+
+    echo -ne "<span background='$TEXT' foreground='$BG'>"
+    echo -ne "\ue0b8" # Open
+    echo -ne "</span>"
+
+    echo -ne "<span background='$TEXT' foreground='#eef6eb'>"
+    echo -n "$1 down"
+    echo -ne "</span>"
+
+    echo -ne "<span background='$NONE' foreground='$TEXT'>"
+    echo -ne "\ue0b8" # Open
+    echo -ne "</span>"
+}
+
+print_input() {
+    echo -ne "<span background='$BG' foreground='$NONE'>"
+    echo -ne "\ue0b8" # Open
+    echo -ne "</span>"
+
+    echo -ne "<span background='$BG' foreground='#000000' font_family='FontAwesome'>"
+    echo -ne '\uf063' # Incoming
+    echo -ne "</span>"
+
+    echo -ne "<span background='$TEXT' foreground='$BG'>"
+    echo -ne "\ue0b8" # Open
+    echo -ne "</span>"
+
+    echo -ne "<span background='$TEXT' foreground='#eef6eb'>"
+    echo -n "$1"
+    echo -ne "</span>"
+
+    echo -ne "<span background='$BG' foreground='$TEXT'>"
+    echo -ne "\ue0b8" # Open
+    echo -ne "</span>"
+}
+
+print_output() {
+    echo -ne "<span background='$BG' foreground='#000000' font_family='FontAwesome'>"
+    echo -ne '\uf062' # Outgoing
+    echo -ne "</span>"
+
+    echo -ne "<span background='$TEXT' foreground='$BG'>"
+    echo -ne "\ue0b8" # Open
+    echo -ne "</span>"
+
+    echo -ne "<span background='$TEXT' foreground='#eef6eb'>"
+    echo -n "$1"
+    echo -ne "</span>"
+
+    echo -ne "<span background='$NONE' foreground='$TEXT'>"
+    echo -ne "\ue0b8" # Open
+    echo -ne "</span>"
+}
+
+if [[ -n $BLOCK_INSTANCE ]]; then
+  INTERFACE=$BLOCK_INSTANCE
+else
+  INTERFACE=$(ip route | awk '/^default/ { print $5 ; exit }')
+fi
+
+# Issue #36 compliant.
+if ! [ -e "/sys/class/net/${INTERFACE}/operstate" ] || ! [ "`cat /sys/class/net/${INTERFACE}/operstate`" = "up" ]
+then
+    print_error
+    exit 0
+fi
+
+rx=$(cat /sys/class/net/${INTERFACE}/statistics/rx_bytes | numfmt --to iec --format "%8.2f")
+tx=$(cat /sys/class/net/${INTERFACE}/statistics/tx_bytes | numfmt --to iec --format "%8.2f")
+
+print_input $rx
+print_output $tx
+echo
