@@ -191,9 +191,10 @@ bar {
 # Window association
 # Get info: swaymsg -t get_tree
 ##
-assign [class="Firefox"] $wspace1
-assign [class="Waterfox"] $wspace1
+assign [class="waterfox-current"] $wspace1
 assign [app_id="termite"] $wspace2
+assign [class="jetbrains-idea"] $wspace3
+assign [class="firefox"] $wspace8
 assign [class="TelegramDesktop"] $wspace9
 # for_window [class="Qmmp"] move to workspace $wspace10
 
