@@ -9,7 +9,7 @@ MEM_BUFFERS=$(cat /proc/meminfo | grep Buffers | awk '{print $2}')
 MEM_CACHED=$(cat /proc/meminfo | grep '^Cached' | awk '{print $2}')
 VAL=$(echo "scale=1; ($MEM_FREE + $MEM_BUFFERS + $MEM_CACHED)/1024/1024" | bc)
 
-$HOME/.my_scripts/.data/binary/bracet/bin/bracet "" "$VAL" "$FIRST_COLOR" \
+$HOME/.my_scripts/.data/binary/bracet/bin/bracet "" "${VAL}G" "$FIRST_COLOR" \
 	"$SECOND_COLOR" "$TEXT_COLOR"
 
 echo
