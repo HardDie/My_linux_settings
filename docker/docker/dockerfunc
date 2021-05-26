@@ -105,3 +105,9 @@ nginx () {
 		-v $HOME/.config/nginx:/app:ro \
 		--name nginx my/nginx
 }
+
+archlinux() {
+	docker run --rm -it \
+		--detach-keys="ctrl-@" \
+		--name archlinux archlinux
+}

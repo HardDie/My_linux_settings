@@ -137,3 +137,6 @@ if [[ -z $TMUX && -z $SSH_CONNECTION ]]; then
         [[ -z "$TMUX" ]] && exec tmux -2
     fi
 fi
+
+# Added docker calls
+source .config/docker/dockerfunc
