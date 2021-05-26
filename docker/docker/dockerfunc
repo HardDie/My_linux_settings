@@ -1,0 +1,107 @@
+# Util func
+del_stopped () {
+	local name=$1
+	local state
+	state=$(docker inspect --format "{{.State.Running}}" "$name" 2>/dev/null)
+	if [[ $state == "false" ]]
+	then
+		docker rm "$name"
+	fi
+}
+
+# Call funcs
+postgres () {
+	docker run --rm -d \
+		-e POSTGRES_DB=catalog \
+		-e POSTGRES_USER=catalog \
+		-e POSTGRES_PASSWORD=catalog \
+		-v $HOME/.config/postgres:/var/lib/postgresql/data \
+		--network host \
+		--name postgres postgres
+}
+
+firefox () {
+	mkdir -p /tmp/firefox_tmp
+	docker run --rm -d \
+		--memory 4096m \
+		--cpus=2 \
+		--net host \
+		--device /dev/dri \
+		-v /dev/shm:/dev/shm \
+		-v /tmp/firefox_tmp:/home/firefox/Downloads \
+		-e DISPLAY=unix$DISPLAY \
+		-e XDG_RUNTIME_DIR=/tmp \
+		-e WAYLAND_DISPLAY=$WAYLAND_DISPLAY \
+		-v $XDG_RUNTIME_DIR/$WAYLAND_DISPLAY:/tmp/$WAYLAND_DISPLAY \
+		-v $XDG_RUNTIME_DIR/pulse:/tmp/pulse:ro \
+		--name firefox my/firefox $@
+}
+
+waterfox () {
+	docker run --rm -d \
+		--memory 4096m \
+		--cpus=2 \
+		--net host \
+		-v /dev/shm:/dev/shm \
+		-v $HOME/.config/waterfox:/home/waterfox \
+		-e DISPLAY=unix${DISPLAY} \
+		-e XDG_RUNTIME_DIR=/tmp \
+		-e WAYLAND_DISPLAY=$WAYLAND_DISPLAY \
+		-v $XDG_RUNTIME_DIR/$WAYLAND_DISPLAY:/tmp/$WAYLAND_DISPLAY \
+		-v $XDG_RUNTIME_DIR/pulse:/tmp/pulse \
+		--name waterfox my/waterfox
+}
+
+telegram () {
+	mkdir -p /tmp/telegram_tmp
+	docker run --rm -d \
+		--memory 1024m \
+		--cpus=1 \
+		--net host \
+		-v /dev/shm:/dev/shm \
+		-v /tmp/telegram_tmp:/home/telegram/Downloads \
+		-e DISPLAY=unix$DISPLAY \
+		-e XDG_RUNTIME_DIR=/tmp \
+		-e WAYLAND_DISPLAY=$WAYLAND_DISPLAY \
+		-v $XDG_RUNTIME_DIR/$WAYLAND_DISPLAY:/tmp/$WAYLAND_DISPLAY \
+		-v $XDG_RUNTIME_DIR/pulse:/tmp/pulse \
+		-v $XDG_RUNTIME_DIR/bus:/tmp/bus \
+		-v $HOME/.config/telegram:/home/telegram/.local/share \
+		-v /etc/localtime:/etc/localtime:ro \
+		--name telegram my/telegram
+}
+
+intellij () {
+	docker run --rm -d \
+		--net host \
+		-v /dev/shm:/dev/shm \
+		-v $HOME/.config/goland:/home/goland \
+		-v $HOME/go:/home/goland/go \
+		-v $HOME/.ideavimrc:/home/goland/.ideavimrc:ro \
+		-e _JAVA_AWT_WM_NONREPARENTING=1 \
+		-e DISPLAY=unix$DISPLAY \
+		-e XDG_RUNTIME_DIR=/tmp \
+		-e WAYLAND_DISPLAY=$WAYLAND_DISPLAY \
+		-v $XDG_RUNTIME_DIR/$WAYLAND_DISPLAY:/tmp/$WAYLAND_DISPLAY \
+		--name intellij my/intellij
+}
+
+mpd () {
+	del_stopped mpd
+	docker run --rm -d \
+		--net host \
+		-v $HOME/Music:/home/mympd/Music:ro \
+		-v $HOME/.config/mpd:/home/mympd/database \
+		-e XDG_RUNTIME_DIR=/tmp \
+		-v $XDG_RUNTIME_DIR/pulse:/tmp/pulse \
+		--name mpd my/mpd
+}
+
+nginx () {
+	docker run --rm -d \
+		--memory 512m \
+		--cpus=1 \
+		--net host \
+		-v $HOME/.config/nginx:/app:ro \
+		--name nginx my/nginx
+}

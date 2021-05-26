@@ -13,3 +13,4 @@ stow --dotfiles -t "$HOME/.config" i3
 stow --dotfiles -t "$HOME/.config" oh-my-zsh
 stow --dotfiles -t "$HOME/.config" dunst
 stow --dotfiles -t "$HOME/.config" sway
+stow --dotfiles -t "$HOME/.config" docker
