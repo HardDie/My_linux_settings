@@ -1,0 +1,3 @@
+[submodule "my_scripts/dot-my_scripts/.tldr"]
+	path = my_scripts/dot-my_scripts/.tldr
+	url = https://github.com/HardDie/tldrPages.git
