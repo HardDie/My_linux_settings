@@ -139,4 +139,4 @@ if [[ -z $TMUX && -z $SSH_CONNECTION ]]; then
 fi
 
 # Added docker calls
-source .config/docker/dockerfunc
+source $HOME/.config/docker/dockerfunc
