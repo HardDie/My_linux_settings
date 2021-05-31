@@ -52,6 +52,21 @@ waterfox () {
 		--name waterfox my/waterfox
 }
 
+waterfoxg3 () {
+	docker run --rm -d \
+		--memory 4096m \
+		--cpus=2 \
+		--net host \
+		-v /dev/shm:/dev/shm \
+		-v $HOME/.config/waterfoxg3:/home/waterfox \
+		-e DISPLAY=unix${DISPLAY} \
+		-e XDG_RUNTIME_DIR=/tmp \
+		-e WAYLAND_DISPLAY=$WAYLAND_DISPLAY \
+		-v $XDG_RUNTIME_DIR/$WAYLAND_DISPLAY:/tmp/$WAYLAND_DISPLAY \
+		-v $XDG_RUNTIME_DIR/pulse:/tmp/pulse \
+		--name waterfoxg3 my/waterfoxg3
+}
+
 telegram () {
 	mkdir -p /tmp/telegram_tmp
 	docker run --rm -d \
