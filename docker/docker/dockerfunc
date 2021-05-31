@@ -126,3 +126,12 @@ archlinux() {
 		--detach-keys="ctrl-@" \
 		--name archlinux archlinux
 }
+
+nvimide () {
+	docker run --rm -it \
+		--detach-keys="ctrl-@" \
+		-v $HOME/Projects/go:/projects \
+		-v $HOME/go:/home/vim-go/go \
+		-v $HOME/My_linux_settings/vim/dot-vimrc:/home/vim-go/.vimrc:ro \
+		--name nvimide my/nvimide
+}
