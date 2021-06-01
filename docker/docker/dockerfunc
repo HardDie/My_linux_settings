@@ -133,5 +133,9 @@ nvimide () {
 		-v $HOME/Projects/go:/projects \
 		-v $HOME/go:/home/vim-go/go \
 		-v $HOME/My_linux_settings/vim/dot-vimrc:/home/vim-go/.vimrc:ro \
+		-v $HOME/My_linux_settings/zsh/dot-zshrc:/home/vim-go/.zshrc:ro \
+		-v $HOME/My_linux_settings/tmux/dot-tmux.conf:/home/vim-go/.tmux.conf:ro \
+		-v $HOME/My_linux_settings/tmux-theme/tmux:/home/vim-go/.config/tmux:ro \
+		-v $HOME/My_linux_settings/oh-my-zsh/zsh:/home/vim-go/.config/zsh:ro \
 		--name nvimide my/nvimide
 }

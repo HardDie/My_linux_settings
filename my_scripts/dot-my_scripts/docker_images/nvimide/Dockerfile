@@ -1,9 +1,9 @@
 FROM archlinux:latest
 
-RUN pacman --cachedir /tmp -Sy --noconfirm neovim git go gcc && \
+RUN pacman --cachedir /tmp -Sy --noconfirm neovim git go gcc tmux zsh && \
 	rm -rf /tmp/*
 
-RUN useradd -u 1000 -r -s /bin/bash -m -g users vim-go
+RUN useradd -u 1000 -r -s /usr/bin/zsh -m -g users vim-go
 WORKDIR /home/vim-go
 USER vim-go
 
@@ -22,4 +22,4 @@ RUN echo -e "echo 'At first start run: \
 nvim +GoUpdateBinaries +qall && go get github.com/cweill/gotests/...'\n\
 export PATH=/home/vim-go/go/bin:$PATH" >> /home/vim-go/.bashrc
 
-ENTRYPOINT [ "bash" ]
+ENTRYPOINT [ "zsh" ]
