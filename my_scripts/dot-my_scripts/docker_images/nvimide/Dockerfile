@@ -14,7 +14,7 @@ RUN sh -c 'curl -fLo /home/vim-go/.local/share/nvim/site/autoload/plug.vim --cre
 # Create nvim config
 COPY --chown=vim-go:users init.vim /home/vim-go/.config/nvim/init.vim
 
-# Install vim-go, gotests-vim
+# Install vim-go, gotests-vim, nerdtree
 RUN nvim +PlugInstall +qall
 
 # Info

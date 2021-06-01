@@ -18,6 +18,7 @@ set wildignorecase
 
 " Tab size 4 spaces
 set tabstop=4
+set shiftwidth=4
 
 " Setup buffer copy
 vmap y :'<,'> w! /tmp/vimtmp<CR>

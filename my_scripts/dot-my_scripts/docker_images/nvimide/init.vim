@@ -7,6 +7,7 @@ Plug 'preservim/nerdtree'
 call plug#end()
 
 source ~/.vimrc
+
 filetype plugin indent on
 set autowrite
 
@@ -30,4 +31,4 @@ let g:go_auto_type_info = 1
 " Call autocomplete after dot
 au filetype go inoremap <buffer> . .<C-x><C-o>
 
-nnoremap <F12> :NERDTreeToggle<CR>
+nnoremap <F10> :NERDTreeToggle<CR>
