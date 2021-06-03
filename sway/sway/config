@@ -191,6 +191,7 @@ bar {
 # Get info: swaymsg -t get_tree
 ##
 assign [class="waterfox-current"] $wspace1
+assign [class="Waterfox"] $wspace1
 assign [app_id="termite"] $wspace2
 assign [class="jetbrains-idea"] $wspace3
 assign [class="firefox"] $wspace8
