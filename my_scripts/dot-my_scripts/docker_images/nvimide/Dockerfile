@@ -1,3 +1,5 @@
+# docker build -t my/nvimide .
+
 FROM archlinux:latest
 
 RUN pacman --cachedir /tmp -Sy --noconfirm neovim git go gcc tmux zsh && \
@@ -16,7 +18,8 @@ RUN mkdir -p /home/vim-go/.vim/plugged && \
 	cd /home/vim-go/.vim/plugged && \
 	git clone https://github.com/fatih/vim-go && \
 	git clone https://github.com/buoto/gotests-vim && \
-	git clone https://github.com/preservim/nerdtree
+	git clone https://github.com/preservim/nerdtree && \
+	git clone https://github.com/tpope/vim-commentary
 
 # Create nvim config
 COPY --chown=vim-go:users init.vim /home/vim-go/.config/nvim/init.vim

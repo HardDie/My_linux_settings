@@ -3,6 +3,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'fatih/vim-go'
 Plug 'buoto/gotests-vim'
 Plug 'preservim/nerdtree'
+Plug 'tpope/vim-commentary'
 
 call plug#end()
 
@@ -32,3 +33,4 @@ let g:go_auto_type_info = 1
 au filetype go inoremap <buffer> . .<C-x><C-o>
 
 nnoremap <F10> :NERDTreeToggle<CR>
+map  :Commentary<CR>
