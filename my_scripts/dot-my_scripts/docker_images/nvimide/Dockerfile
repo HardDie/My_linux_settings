@@ -5,6 +5,9 @@ FROM archlinux:latest
 RUN pacman --cachedir /tmp -Sy --noconfirm neovim git go gcc tmux zsh && \
 	rm -rf /tmp/*
 
+# Create symlink
+RUN cd /bin && ln -s nvim vim
+
 RUN useradd -u 1000 -r -s /usr/bin/zsh -m -g users vim-go
 WORKDIR /home/vim-go
 USER vim-go

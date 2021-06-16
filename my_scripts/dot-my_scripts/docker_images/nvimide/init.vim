@@ -34,3 +34,6 @@ au filetype go inoremap <buffer> . .<C-x><C-o>
 
 nnoremap <F10> :NERDTreeToggle<CR>
 map  :Commentary<CR>
+
+" Set comment string for sql requests
+autocmd FileType sql setlocal commentstring=--\ %s
