@@ -4,6 +4,7 @@ Plug 'fatih/vim-go'
 Plug 'buoto/gotests-vim'
 Plug 'preservim/nerdtree'
 Plug 'tpope/vim-commentary'
+Plug 'airblade/vim-gitgutter'
 
 call plug#end()
 
@@ -37,3 +38,6 @@ map  :Commentary<CR>
 
 " Set comment string for sql requests
 autocmd FileType sql setlocal commentstring=--\ %s
+
+" Set timeout for git diff update
+set updatetime=100

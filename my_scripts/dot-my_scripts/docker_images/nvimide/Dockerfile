@@ -3,10 +3,8 @@
 FROM archlinux:latest
 
 RUN pacman --cachedir /tmp -Sy --noconfirm neovim git go gcc tmux zsh && \
+	cd /bin && ln -s nvim vim && \
 	rm -rf /tmp/*
-
-# Create symlink
-RUN cd /bin && ln -s nvim vim
 
 RUN useradd -u 1000 -r -s /usr/bin/zsh -m -g users vim-go
 WORKDIR /home/vim-go
@@ -22,7 +20,8 @@ RUN mkdir -p /home/vim-go/.vim/plugged && \
 	git clone https://github.com/fatih/vim-go && \
 	git clone https://github.com/buoto/gotests-vim && \
 	git clone https://github.com/preservim/nerdtree && \
-	git clone https://github.com/tpope/vim-commentary
+	git clone https://github.com/tpope/vim-commentary && \
+	git clone https://github.com/airblade/vim-gitgutter
 
 # Create nvim config
 COPY --chown=vim-go:users init.vim /home/vim-go/.config/nvim/init.vim
