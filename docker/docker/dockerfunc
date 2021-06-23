@@ -139,3 +139,16 @@ nvimide () {
 		-v $HOME/My_linux_settings/oh-my-zsh/zsh:/home/vim-go/.config/zsh:ro \
 		--name nvimide my/nvimide
 }
+
+steam () {
+	docker run --rm -d \
+		--device /dev/dri \
+		--net host \
+		-v /dev/shm:/dev/shm \
+		-v /tmp/.X11-unix:/tmp/.X11-unix \
+		-e DISPLAY=unix$DISPLAY \
+		-e XDG_RUNTIME_DIR=/tmp \
+		-v $XDG_RUNTIME_DIR/pulse:/tmp/pulse \
+		-v $HOME/.config/isolated_env/steam:/home/steam \
+		--name steam my/steam
+}
