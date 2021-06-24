@@ -126,7 +126,9 @@ RUN echo 'pref("toolkit.telemetry.archive.enabled", false);' >> /usr/lib/firefox
 	echo 'pref("browser.newtabpage.activity-stream.telemetry.ping.endpoint", "");' >> /usr/lib/firefox/browser/defaults/preferences/firefox-branding.js && \
 	echo 'pref("browser.newtabpage.activity-stream.tippyTop.service.endpoint", "");' >> /usr/lib/firefox/browser/defaults/preferences/firefox-branding.js && \
 	echo 'pref("browser.newtabpage.activity-stream.topSitesRows", 3);' >> /usr/lib/firefox/browser/defaults/preferences/firefox-branding.js && \
-	echo 'pref("browser.newtabpage.enhanced", true);' >> /usr/lib/firefox/browser/defaults/preferences/firefox-branding.js
+	echo 'pref("browser.newtabpage.enhanced", true);' >> /usr/lib/firefox/browser/defaults/preferences/firefox-branding.js && \
+	echo 'pref("extensions.pocket.enabled", false);' >> /usr/lib/firefox/browser/defaults/preferences/firefox-branding.js && \
+	echo 'pref("browser.newtabpage.activity-stream.feeds.section.topstories", false);' >> /usr/lib/firefox/browser/defaults/preferences/firefox-branding.js
 
 RUN useradd -u 1000 -r -s /bin/false -m -g users -G audio firefox
 RUN chown firefox:users /tmp
