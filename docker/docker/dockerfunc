@@ -81,7 +81,7 @@ telegram () {
 		-v $XDG_RUNTIME_DIR/$WAYLAND_DISPLAY:/tmp/$WAYLAND_DISPLAY \
 		-v $XDG_RUNTIME_DIR/pulse:/tmp/pulse \
 		-v $XDG_RUNTIME_DIR/bus:/tmp/bus \
-		-v $HOME/.config/telegram:/home/telegram/.local/share \
+		-v $HOME/.config/isolated_env/telegram:/home/telegram/.local/share \
 		-v /etc/localtime:/etc/localtime:ro \
 		--name telegram my/telegram
 }
@@ -106,7 +106,7 @@ mpd () {
 	docker run --rm -d \
 		--net host \
 		-v $HOME/Music:/home/mympd/Music:ro \
-		-v $HOME/.config/mpd:/home/mympd/database \
+		-v $HOME/.config/isolated_env/mpd:/home/mympd/database \
 		-e XDG_RUNTIME_DIR=/tmp \
 		-v $XDG_RUNTIME_DIR/pulse:/tmp/pulse \
 		--name mpd my/mpd
