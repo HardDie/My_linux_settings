@@ -117,11 +117,6 @@
 * graphviz online
 ** http://dreampuf.github.io/GraphvizOnline/
 
-* Disable NetworkManager checking network available
-** edit /etc/NetworkManager/NetworkManager.conf
-*** [connectivity]
-*** interval=0
-
 * Show font symbols
 ** Print font family
    fc-query some.ttf or some.otf
