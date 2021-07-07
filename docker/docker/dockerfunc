@@ -151,3 +151,15 @@ discord() {
 		-v $HOME/.config/isolated_env/discord:/home/discord \
 		--name discord my/discord
 }
+
+vscode() {
+	docker run --rm -d \
+		--net host \
+		-v /dev/shm:/dev/shm \
+		-e DISPLAY=unix$DISPLAY \
+		-e XDG_RUNTIME_DIR=/tmp \
+		-e WAYLAND_DISPLAY=$WAYLAND_DISPLAY \
+		-v $XDG_RUNTIME_DIR/$WAYLAND_DISPLAY:/tmp/$WAYLAND_DISPLAY \
+		-v $HOME/.config/isolated_env/vscode:/home/vscode \
+		--name vscode my/vscode
+}
