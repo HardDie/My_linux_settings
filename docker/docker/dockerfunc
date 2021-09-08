@@ -112,6 +112,31 @@ archlinux() {
 		--name archlinux archlinux
 }
 
+archlinux_wayland() {
+	docker run --rm -it \
+		--detach-keys="ctrl-@" \
+		--net host \
+		-v /tmp/mytmp:/tmp/mytmp \
+		-v /dev/shm:/dev/shm \
+		-e DISPLAY=unix$DISPLAY \
+		-e XDG_RUNTIME_DIR=/tmp \
+		-e WAYLAND_DISPLAY=$WAYLAND_DISPLAY \
+		-v $XDG_RUNTIME_DIR/$WAYLAND_DISPLAY:/tmp/$WAYLAND_DISPLAY \
+		-v $XDG_RUNTIME_DIR/pulse:/tmp/pulse \
+		--name archlinux_wayland archlinux
+}
+archlinux_x11() {
+	docker run --rm -it \
+		--detach-keys="ctrl-@" \
+		--net host \
+		-v /dev/shm:/dev/shm \
+		-v /tmp/.X11-unix:/tmp/.X11-unix \
+		-e DISPLAY=unix$DISPLAY \
+		-e XDG_RUNTIME_DIR=/tmp \
+		-v $XDG_RUNTIME_DIR/pulse:/tmp/pulse \
+		--name archlinux_x11 archlinux
+}
+
 nvimide () {
 	docker run --rm -it \
 		--detach-keys="ctrl-@" \
