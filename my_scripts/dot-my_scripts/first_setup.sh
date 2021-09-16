@@ -39,3 +39,13 @@ echo Setup!
 echo Setup multilib pacman
 sed -ie 's/^#\[multilib\]/\[multilib\]\nInclude = \/etc\/pacman.d\/mirrorlist/' /etc/pacman.conf
 echo Setup!
+
+## Update DB
+echo Update pacman cache
+pacman -Syy --noconfirm
+echo Updated!
+
+## Install console font
+echo Installing console font
+pacman -S --noconfirm terminus-font
+echo Installed!
