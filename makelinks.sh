@@ -8,6 +8,7 @@ stow --dotfiles -t "$HOME" fonts
 stow --dotfiles -t "$HOME" ncmpcpp
 stow --dotfiles -t "$HOME" my_scripts
 
+mkdir -p "$HOME/.config"
 stow --dotfiles -t "$HOME/.config" termite
 stow --dotfiles -t "$HOME/.config" i3
 stow --dotfiles -t "$HOME/.config" oh-my-zsh
