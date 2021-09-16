@@ -75,9 +75,8 @@ intellij () {
 	docker run --rm -d \
 		--net host \
 		-v /dev/shm:/dev/shm \
-		-v $HOME/.config/goland:/home/goland \
+		-v $HOME/.config/isolated_env/intellij:/home/goland \
 		-v $HOME/go:/home/goland/go \
-		-v $HOME/.ideavimrc:/home/goland/.ideavimrc:ro \
 		-e _JAVA_AWT_WM_NONREPARENTING=1 \
 		-e DISPLAY=unix$DISPLAY \
 		-e XDG_RUNTIME_DIR=/tmp \
