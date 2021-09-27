@@ -6,6 +6,6 @@ TEXT_COLOR="#eef6eb"
 
 VENDOR=$BLOCK_INSTANCE
 VAL=$(swaymsg -t get_inputs | jq -r "[.[] | select(.type == \"keyboard\") | select(.vendor == $VENDOR)][0].xkb_active_layout_name")
-$HOME/.my_scripts/.data/binary/bracet/bin/bracet "" "$VAL" "$FIRST_COLOR" \
-	"$SECOND_COLOR" "$TEXT_COLOR"
+$HOME/.my_scripts/.data/binary/bracet/bin/bracet "" "$VAL" \
+	"$FIRST_COLOR" "$SECOND_COLOR" "$TEXT_COLOR"
 echo
