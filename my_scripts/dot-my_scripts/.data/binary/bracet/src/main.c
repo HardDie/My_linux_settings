@@ -54,9 +54,10 @@ void two(char** argv) {
 int main(__attribute__((unused)) int argc, char** argv) {
 	if (argc == 6) {
 		single(argv);
-	}
-	if (argc == 8) {
+	} else if (argc == 8) {
 		two(argv);
+	} else {
+		printf("bracet: Wrong format\n");
 	}
 	return 0;
 }
