@@ -42,6 +42,7 @@ check_bin "wl-copy"  "wl-clipboard" "Copy text to clipboard"
 check_bin "waybar"   "*"            "Top bar"
 check_bin "rofi"     "*"            "Application launcher"
 check_bin "swaylock" "*"            "Lockscreen"
+check_pkt "bemenu-wayland"          "Backend for bemenu app"
 check_bin "bemenu"   "*"            "Choose Yes/No before exit"
 
 echo "Fonts:"
