@@ -156,7 +156,7 @@ bindsym --to-code $mod+Shift+0 move container to workspace $wspace10
 # sway have only reload command
 bindsym --to-code $mod+Shift+r reload
 # exit sway (logs you out of your X session)
-bindsym --to-code $mod+Shift+e exec [ $(echo -e 'No\nYes' | BEMENU_BACKEND=wayland bemenu -fn Cantarell:13 --nb "$bg-color" --tb "$bg-color" --fb "$bg-color" --hb "#005577" --tf "$text-color" --hf "$text-color" -i -p 'Do you really want to exit i3?') == 'Yes' ] && swaymsg exit
+bindsym --to-code $mod+Shift+e exec [ $(echo -e 'No\nYes' | BEMENU_BACKEND=wayland bemenu -fn Cantarell:13 --nb "$bg-color" --tb "$bg-color" --fb "$bg-color" --hb "#005577" --tf "$text-color" --hf "$text-color" -i -p 'Do you really want to exit Sway?') == 'Yes' ] && swaymsg exit
 
 mode "resize" {
         bindsym --to-code j resize shrink width 10 px or 10 ppt
