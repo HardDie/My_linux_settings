@@ -255,6 +255,7 @@ bindsym --to-code ISO_Next_Group exec --no-startup-id $LangUpdate
 
 ##
 # Setup input and output
+# Get info: swaymsg -t get_outputs
 ##
 
 output "*" background ~/.wallpapers/wallpaper.png fill
