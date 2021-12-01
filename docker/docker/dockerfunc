@@ -104,7 +104,7 @@ nginx () {
 		--memory 512m \
 		--cpus=1 \
 		--net host \
-		-v $HOME/.config/nginx:/app:ro \
+		-v $HOME/.config/isolated_env/nginx:/app:ro \
 		--name nginx my/nginx
 }
 
