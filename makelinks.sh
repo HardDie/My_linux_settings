@@ -10,6 +10,7 @@ stow --dotfiles -t "$HOME" my_scripts
 
 mkdir -p "$HOME/.config"
 stow --dotfiles -t "$HOME/.config" termite
+stow --dotfiles -t "$HOME/.config" alacritty
 stow --dotfiles -t "$HOME/.config" i3
 stow --dotfiles -t "$HOME/.config" oh-my-zsh
 stow --dotfiles -t "$HOME/.config" dunst

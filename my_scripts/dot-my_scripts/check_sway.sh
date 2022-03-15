@@ -66,7 +66,7 @@ check_bin "iw"           "*"     "Command-line wireless utility"
 check_bin "pamixer"      "*"     "Command-line volume controller"
 check_pkt "python-i3ipc"         "Library for independent layout script"
 check_pkt "brightnessctl"        "Control display backlight"
-check_pkt "termite"              "Terminal"
+check_pkt "alacritty"            "Terminal"
 
 if [[ $LIST ]]; then
 	echo "Use:"

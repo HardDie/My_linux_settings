@@ -73,7 +73,7 @@ gaps inner 10
 ##
 
 # start a terminal
-bindsym --to-code Ctrl+Mod1+t exec termite
+bindsym --to-code Ctrl+Mod1+t exec alacritty
 
 # kill focused window
 bindsym --to-code Ctrl+Shift+q kill
@@ -194,6 +194,7 @@ bar {
 assign [class="waterfox-current"] $wspace1
 assign [class="Waterfox"] $wspace1
 assign [app_id="termite"] $wspace2
+assign [app_id="Alacritty"] $wspace2
 assign [class="jetbrains-idea"] $wspace3
 assign [class="firefox"] $wspace8
 assign [class="TelegramDesktop"] $wspace9
