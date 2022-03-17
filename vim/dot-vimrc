@@ -20,10 +20,14 @@ set wildignorecase
 set tabstop=4
 set shiftwidth=4
 
+function CopyToClipboard() range
+  echo system('echo -n '.shellescape(join(getline(a:firstline, a:lastline), "\n")).'| wl-copy')
+endfunction
+
 " Setup buffer copy
-vnoremap y :w! /tmp/vimtmp<CR>
-vnoremap x :w! /tmp/vimtmp<CR>:'<,'> d<CR>
-nnoremap p :r /tmp/vimtmp<CR>
+vnoremap y :call CopyToClipboard()<CR>
+vnoremap x :call CopyToClipboard()<CR>:'<,'> d<CR>
+nnoremap p :r !wl-paste<CR>
 
 vmap <C-l> :'<,'>norm i//<CR>
 vmap <S-l> :'<,'>norm xx<CR>
