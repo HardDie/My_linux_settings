@@ -1,28 +1,7 @@
 # docker build -t my/firefox .
-#
-# firefox() {
-# 	mkdir /tmp/firefox_tmp
-#
-# 	docker run --rm -d \
-# 		--memory 2048m \
-# 		--oom-kill-disable \
-# 		--cpus=1 \
-# 		--net host \
-# 		--device /dev/dri \
-# 		-v /tmp/firefox_tmp:/home/firefox/Downloads \
-# 		-v /dev/shm:/dev/shm \
-# 		-e DISPLAY=unix$DISPLAY \
-# 		-e XDG_RUNTIME_DIR=/tmp \
-# 		-e WAYLAND_DISPLAY=$WAYLAND_DISPLAY \
-# 		-v $XDG_RUNTIME_DIR/$WAYLAND_DISPLAY:/tmp/$WAYLAND_DISPLAY \
-# 		-v $XDG_RUNTIME_DIR/pulse:/tmp/pulse \
-# 		--name firefox \
-# 		my/firefox "$@"
-# }
-
 FROM archlinux:latest
 
-RUN pacman --cachedir /tmp -Syyu --noconfirm firefox git make && \
+RUN pacman --cachedir /tmp -Syyu --noconfirm git make mesa firefox && \
 	git clone https://github.com/girst/LegacyFox-mirror-of-git.gir.st /tmp/patch && \
 	make -C /tmp/patch install && \
 	pacman --cachedir /tmp -Rsn --noconfirm git make && \
@@ -130,7 +109,23 @@ RUN echo 'pref("toolkit.telemetry.archive.enabled", false);' >> /usr/lib/firefox
 	echo 'pref("extensions.pocket.enabled", false);' >> /usr/lib/firefox/browser/defaults/preferences/firefox-branding.js && \
 	echo 'pref("browser.newtabpage.activity-stream.feeds.section.topstories", false);' >> /usr/lib/firefox/browser/defaults/preferences/firefox-branding.js
 
-RUN useradd -u 1000 -r -s /bin/false -m -g users -G audio firefox
+# Disable auto requests
+RUN echo 'pref("extensions.blocklist.enabled", false);' >> /usr/lib/firefox/browser/defaults/preferences/firefox-branding.js && \
+	echo 'pref("browser.safebrowsing.downloads.remote.enabled", false);' >> /usr/lib/firefox/browser/defaults/preferences/firefox-branding.js && \
+	echo 'pref("network.prefetch-next", false);' >> /usr/lib/firefox/browser/defaults/preferences/firefox-branding.js && \
+	echo 'pref("network.dns.disablePrefetch", false);' >> /usr/lib/firefox/browser/defaults/preferences/firefox-branding.js && \
+	echo 'pref("browser.newtabpage.activity-stream.feeds.asrouterfeed", false);' >> /usr/lib/firefox/browser/defaults/preferences/firefox-branding.js && \
+	echo 'pref("messaging-system.rsexperimentloader.enabled", false);' >> /usr/lib/firefox/browser/defaults/preferences/firefox-branding.js && \
+	echo 'pref("app.normandy.optoutstudies.enabled", false);' >> /usr/lib/firefox/browser/defaults/preferences/firefox-branding.js && \
+	echo 'pref("app.normandy.enable", false);' >> /usr/lib/firefox/browser/defaults/preferences/firefox-branding.js && \
+	echo 'pref("extensions.getAddons.cache.enabled", false);' >> /usr/lib/firefox/browser/defaults/preferences/firefox-branding.js && \
+	echo 'pref("app.normandy.enabled", false);' >> /usr/lib/firefox/browser/defaults/preferences/firefox-branding.js && \
+	echo 'pref("network.captive-portal-service.enabled", false);' >> /usr/lib/firefox/browser/defaults/preferences/firefox-branding.js && \
+	echo 'pref("network.connectivity-service.enabled", false);' >> /usr/lib/firefox/browser/defaults/preferences/firefox-branding.js && \
+	echo 'pref("browser.urlbar.suggest.topsites", false);' >> /usr/lib/firefox/browser/defaults/preferences/firefox-branding.js && \
+	echo 'pref("browser.newtabpage.activity-stream.default.sites", "");' >> /usr/lib/firefox/browser/defaults/preferences/firefox-branding.js
+
+RUN useradd -s /bin/false -m -g users firefox
 RUN chown firefox:users /tmp
 WORKDIR /home/firefox
 USER firefox
