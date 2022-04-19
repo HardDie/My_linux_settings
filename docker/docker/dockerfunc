@@ -24,9 +24,6 @@ firefox () {
 	mkdir -p /tmp/firefox_tmp
 	docker run --rm -d \
 		--pid host \
-		--group-add render \
-		--group-add video \
-		--group-add audio \
 		--memory 4096m \
 		--cpus=2 \
 		--net host \
