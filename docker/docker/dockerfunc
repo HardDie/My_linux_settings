@@ -169,7 +169,6 @@ steam () {
 
 discord() {
 	docker run --rm -d \
-		--detach-keys="ctrl-@" \
 		--net host \
 		-v /dev/shm:/dev/shm \
 		-e DISPLAY=unix$DISPLAY \

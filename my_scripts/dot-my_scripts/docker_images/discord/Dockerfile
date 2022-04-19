@@ -2,11 +2,10 @@
 
 FROM archlinux:latest
 
-RUN useradd -u 1000 -r -s /bin/false -m -g users -G audio discord
+RUN useradd -s /bin/false -m -g users discord
 WORKDIR /home/discord
 
-RUN sed 's/^#//g' /etc/pacman.d/mirrorlist.pacnew > /etc/pacman.d/mirrorlist && \
-	pacman --cachedir /tmp -Sy --noconfirm discord && \
+RUN pacman --cachedir /tmp -Sy --noconfirm discord libpulse alsa-lib && \
 	pacman -Scc --noconfirm && \
 	rm -rf /tmp/*
 
