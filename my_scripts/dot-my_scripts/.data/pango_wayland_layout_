@@ -5,7 +5,16 @@ SECOND_COLOR="#626059"
 TEXT_COLOR="#eef6eb"
 
 VENDOR=$BLOCK_INSTANCE
+if [[ ${VENDOR} == "" ]]; then
+	echo "BLOCK_INSTANCE must be set!"
+	exit 0
+fi
+
 VAL=$(swaymsg -t get_inputs | jq -r "[.[] | select(.type == \"keyboard\") | select(.vendor == $VENDOR)][0].xkb_active_layout_name")
+CAPS=$(cat /sys/class/leds/*::capslock/brightness | grep 1)
+if [[ ${CAPS} != "" ]]; then
+	VAL+=" CAPS"
+fi
 $HOME/.my_scripts/.data/binary/bracet/bin/bracet "" "$VAL" \
 	"$FIRST_COLOR" "$SECOND_COLOR" "$TEXT_COLOR"
 echo
