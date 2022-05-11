@@ -196,3 +196,10 @@ vscode() {
 		-v $HOME/.config/isolated_env/vscode:/home/vscode \
 		--name vscode my/vscode
 }
+
+json-server() {
+	docker run --rm -d \
+		--net host \
+		-v /tmp/mytmp/db.json:/home/user/db.json \
+		--name json-server my/json-server
+}
