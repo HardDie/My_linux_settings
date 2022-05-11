@@ -1,7 +1,7 @@
 # docker build -t my/firefox .
-FROM archlinux:latest
+FROM my/base
 
-RUN pacman --cachedir /tmp -Syyu --noconfirm git make mesa firefox && \
+RUN pacman --cachedir /tmp -Sy --noconfirm git make firefox && \
 	git clone https://github.com/girst/LegacyFox-mirror-of-git.gir.st /tmp/patch && \
 	make -C /tmp/patch install && \
 	pacman --cachedir /tmp -Rsn --noconfirm git make && \
@@ -125,9 +125,8 @@ RUN echo 'pref("extensions.blocklist.enabled", false);' >> /usr/lib/firefox/brow
 	echo 'pref("browser.urlbar.suggest.topsites", false);' >> /usr/lib/firefox/browser/defaults/preferences/firefox-branding.js && \
 	echo 'pref("browser.newtabpage.activity-stream.default.sites", "");' >> /usr/lib/firefox/browser/defaults/preferences/firefox-branding.js
 
-RUN useradd -s /bin/false -m -g users firefox
-RUN chown firefox:users /tmp
-WORKDIR /home/firefox
-USER firefox
+RUN chown user:users /tmp
+WORKDIR /home/user
+USER user
 
 ENTRYPOINT [ "firefox" ]

@@ -44,19 +44,19 @@ firefox () {
 #		-v /dev/video0:/dev/video0 --privileged \
 }
 
-waterfoxg3 () {
+waterfox () {
 	docker run --rm -d \
 		--memory 4096m \
 		--cpus=2 \
 		--net host \
 		-v /dev/shm:/dev/shm \
-		-v $HOME/.config/isolated_env/waterfoxg3:/home/waterfox \
+		-v $HOME/.config/isolated_env/waterfoxg3:/home/user \
 		-e DISPLAY=unix${DISPLAY} \
 		-e XDG_RUNTIME_DIR=/tmp \
 		-e WAYLAND_DISPLAY=$WAYLAND_DISPLAY \
 		-v $XDG_RUNTIME_DIR/$WAYLAND_DISPLAY:/tmp/$WAYLAND_DISPLAY \
 		-v $XDG_RUNTIME_DIR/pulse:/tmp/pulse \
-		--name waterfoxg3 my/waterfoxg3
+		--name waterfox my/waterfox
 }
 
 telegram () {
@@ -82,8 +82,8 @@ intellij () {
 	docker run --rm -d \
 		--net host \
 		-v /dev/shm:/dev/shm \
-		-v $HOME/.config/isolated_env/intellij:/home/goland \
-		-v $HOME/go:/home/goland/go \
+		-v $HOME/.config/isolated_env/intellij:/home/user \
+		-v $HOME/go:/home/user/go \
 		-e _JAVA_AWT_WM_NONREPARENTING=1 \
 		-e DISPLAY=unix$DISPLAY \
 		-e XDG_RUNTIME_DIR=/tmp \

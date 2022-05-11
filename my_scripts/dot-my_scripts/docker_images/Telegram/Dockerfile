@@ -21,16 +21,14 @@
 # 		my/telegram
 # }
 
-FROM archlinux:latest
+FROM my/base
 
-RUN pacman -Sy --noconfirm telegram-desktop icu && \
-	pacman -Scc --noconfirm && \
-	rm -rf /var/lib/pacman/sync/* && \
-	rm -rf /var/cache/pacman/pkg/*
+RUN pacman --cachedir /tmp -Sy --noconfirm telegram-desktop icu && \
+	pacman --cachedir /tmp -Scc --noconfirm && \
+	rm -rf /tmp/*
 
-RUN useradd -u 1000 -r -s /bin/false -m -g users telegram
-RUN chown telegram:users /tmp
-WORKDIR /home/telegram
-USER telegram
+RUN chown user:users /tmp
+WORKDIR /home/user
+USER user
 
 ENTRYPOINT [ "telegram-desktop" ]
