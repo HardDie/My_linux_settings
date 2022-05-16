@@ -29,7 +29,7 @@ firefox () {
 		--net host \
 		--device /dev/dri \
 		-v /dev/shm:/dev/shm \
-		-v /tmp/firefox_tmp:/home/firefox/Downloads \
+		-v /tmp/firefox_tmp:/home/user/Downloads \
 		-e DISPLAY=unix$DISPLAY \
 		-e XDG_RUNTIME_DIR=/tmp \
 		-e WAYLAND_DISPLAY=$WAYLAND_DISPLAY \
@@ -62,15 +62,16 @@ telegram () {
 		--memory 1024m \
 		--cpus=1 \
 		--net host \
+		--device /dev/dri \
 		-v /dev/shm:/dev/shm \
-		-v /tmp/telegram_tmp:/home/telegram/Downloads \
+		-v /tmp/telegram_tmp:/home/user/Downloads \
 		-e DISPLAY=unix$DISPLAY \
 		-e XDG_RUNTIME_DIR=/tmp \
 		-e WAYLAND_DISPLAY=$WAYLAND_DISPLAY \
 		-v $XDG_RUNTIME_DIR/$WAYLAND_DISPLAY:/tmp/$WAYLAND_DISPLAY \
 		-v $XDG_RUNTIME_DIR/pulse:/tmp/pulse \
 		-v $XDG_RUNTIME_DIR/bus:/tmp/bus \
-		-v $HOME/.config/isolated_env/telegram:/home/telegram/.local/share \
+		-v $HOME/.config/isolated_env/telegram:/home/user/.local/share \
 		-v /etc/localtime:/etc/localtime:ro \
 		--name telegram my/telegram
 }
