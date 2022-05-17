@@ -1,0 +1,44 @@
+//
+//
+// swagger:parameters Request$NAME$
+type Request$NAME$ struct {
+	// In: body
+	Body struct {
+	}
+}
+
+// 
+//
+// swagger:response Response$NAME$
+type Response$NAME$ struct {
+	// In: body
+	Body struct {
+		// Сообщение
+		// Required: true
+		Message string `json:"message"`
+		// 
+		// Required: true
+		Data interface{} `json:"data"`
+	}
+}
+
+// swagger:route GET /v1/route Category Request$NAME$
+//
+// short
+//
+// long
+//
+//    Consumes:
+//    - application/json
+//
+//     Produces:
+//     - application/json
+//
+//     Schemes: https
+//
+//     Responses:
+//       200: Response$NAME$
+//   default: ResponseError
+func $NAME$Handler(w http.ResponseWriter, r *http.Request) {
+}
+$END$
