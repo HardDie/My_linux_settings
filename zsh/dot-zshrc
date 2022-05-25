@@ -86,7 +86,6 @@ plugins=(zsh-syntax-highlighting)
 
 # Preparation
 mkdir -p /tmp/mytmp
-touch -f /tmp/vimtmp
 
 ZSH_CACHE_DIR=$HOME/.cache/oh-my-zsh
 if [[ ! -d $ZSH_CACHE_DIR ]]; then
