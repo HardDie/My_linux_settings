@@ -1,30 +1,18 @@
 # docker build -t my/mpd .
-#
-# mpd() {
-# 	docker run --rm -d \
-# 		--net host \
-# 		-v $HOME/Music:/home/mympd/Music:ro \
-# 		-v $HOME/.config/mpd:/home/mympd/database \
-# 		-e XDG_RUNTIME_DIR=/tmp \
-# 		-v $XDG_RUNTIME_DIR/pulse:/tmp/pulse \
-# 		--name mpd \
-# 		my/mpd
-# }
 
 FROM archlinux:latest
 
-RUN pacman -Sy --noconfirm mpd && \
-	yes | pacman -Scc && \
-	yes | pacman -Rsn pacman && \
-	rm -rf /var/lib/pacman/sync/*
+RUN pacman --cachedir /tmp -Sy --noconfirm mpd && \
+	pacman --cachedir /tmp -Scc --noconfirm && \
+	rm -rf /tmp/*
 
-RUN useradd -u 1000 -r -s /bin/false -m -g users mympd
-RUN chown mympd:users /tmp
+RUN useradd -r -s /bin/false -m -g users user
+RUN chown user:users /tmp
 
-WORKDIR /home/mympd
-USER mympd
-RUN mkdir -p /home/mympd/database
-COPY mpd.conf /home/mympd/mpd.conf
+WORKDIR /home/user
+USER user
+RUN mkdir -p /home/user/database
+COPY mpd.conf /home/user/mpd.conf
 
 ENTRYPOINT [ "mpd" ]
-CMD [ "--no-daemon", "/home/mympd/mpd.conf" ]
+CMD [ "--no-daemon", "/home/user/mpd.conf" ]
