@@ -1,16 +1,13 @@
 # docker build -t my/vscode .
 
-FROM archlinux:latest
+FROM my/base
 
-RUN useradd -u 1000 -r -s /bin/false -m -g users vscode
-WORKDIR /home/vscode
-
-RUN pacman --cachedir /tmp -Syyu --noconfirm code && \
+RUN pacman --cachedir /tmp -Sy --noconfirm code && \
 	pacman --cachedir /tmp -Scc --noconfirm && \
 	rm -rf /tmp/*
 
-RUN chown vscode:users /tmp
-USER vscode
+RUN chown user:users /tmp
+USER user
 
 ENTRYPOINT [ "code" ]
-CMD [ "-w" ]
+CMD [ "-w", "--no-sandbox", "-r" ]
