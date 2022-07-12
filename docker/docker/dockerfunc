@@ -116,6 +116,13 @@ archlinux() {
 		--name archlinux archlinux
 }
 
+vue() {
+	docker run --rm -it \
+		--net host \
+		--detach-keys="ctrl-@" \
+		--name vue my/vue
+}
+
 archlinux_wayland() {
 	docker run --rm -it \
 		--detach-keys="ctrl-@" \
