@@ -9,5 +9,6 @@ RUN pacman --cachedir /tmp -Sy --noconfirm npm gcc-libs && \
 	rm -rf /tmp/*
 
 USER user
+WORKDIR /home/user
 
 ENTRYPOINT [ "bash" ]
