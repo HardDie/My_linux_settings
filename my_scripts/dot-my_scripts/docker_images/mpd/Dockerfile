@@ -1,4 +1,4 @@
-# docker build -t my/mpd .
+# docker build --build-arg UID=$(id -u) --build-arg GID=$(id -g) -t my/mpd .
 
 FROM archlinux:latest
 
@@ -6,7 +6,11 @@ RUN pacman --cachedir /tmp -Sy --noconfirm mpd && \
 	pacman --cachedir /tmp -Scc --noconfirm && \
 	rm -rf /tmp/*
 
-RUN useradd -r -s /bin/false -m -g users user
+# id -u
+ARG UID=1000
+# id -g
+ARG GID=984
+RUN useradd -r -s /bin/false -m -u $UID -g $GID -g users user
 RUN chown user:users /tmp
 
 WORKDIR /home/user
