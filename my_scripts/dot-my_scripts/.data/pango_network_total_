@@ -97,8 +97,14 @@ then
     exit 0
 fi
 
-rx=$(cat /sys/class/net/${INTERFACE}/statistics/rx_bytes | numfmt --to iec --format "%8.2f")
-tx=$(cat /sys/class/net/${INTERFACE}/statistics/tx_bytes | numfmt --to iec --format "%8.2f")
+rxsrc=$(cat /sys/class/net/${INTERFACE}/statistics/rx_bytes)
+txsrc=$(cat /sys/class/net/${INTERFACE}/statistics/tx_bytes)
+
+rxreset=$(cat /tmp/network_rx_reset 2>/dev/null || echo 0)
+txreset=$(cat /tmp/network_tx_reset 2>/dev/null || echo 0)
+
+rx=$(echo ${rxsrc} - ${rxreset} | bc | numfmt --to iec --format "%8.2f")
+tx=$(echo ${txsrc} - ${txreset} | bc | numfmt --to iec --format "%8.2f")
 
 print_input $rx
 print_output $tx
