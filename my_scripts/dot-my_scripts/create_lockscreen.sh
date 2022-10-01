@@ -60,11 +60,10 @@ update() {
 		-resize "$blur_shrink%" \
 		-define "filter:sigma=$blur_sigma" \
 		-resize "$res^" -gravity center -extent "$res" \
-		"$dimblur"
+		"$l_dimblur"
 
 	# lockscreen backgrounds
-	convert "$dimblur" -draw "fill rgba(0, 0, 0, 0.4) $rectangles" "$l_dimblur"
-	rm $dim $dimblur
+	rm $dim
 
 	echo 'All required changes have been applied!'
 	echo 'You can find pictures on /tmp folder'
