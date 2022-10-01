@@ -41,6 +41,25 @@ firefox () {
 #		-v /dev/video0:/dev/video0 --privileged \
 }
 
+firefox_bare () {
+	mkdir -p /tmp/firefox_bare_tmp
+	docker run --rm -d \
+		--pid host \
+		--memory 4096m \
+		--cpus=2 \
+		--net host \
+		--device /dev/dri \
+		-v /dev/video0:/dev/video0 --privileged \
+		-v /dev/shm:/dev/shm \
+		-v /tmp/firefox_bare_tmp:/home/user/Downloads \
+		-e DISPLAY=unix$DISPLAY \
+		-e XDG_RUNTIME_DIR=/tmp \
+		-e WAYLAND_DISPLAY=$WAYLAND_DISPLAY \
+		-v $XDG_RUNTIME_DIR/$WAYLAND_DISPLAY:/tmp/$WAYLAND_DISPLAY \
+		-v $XDG_RUNTIME_DIR/pulse:/tmp/pulse \
+		--name firefox_bare my/firefox_bare $@
+}
+
 waterfox () {
 	docker run --rm -d \
 		--memory 4096m \
