@@ -51,9 +51,6 @@
 * Unprivileged power management
   pacman -S polkit
 
-* Run command on every find file
-  find -name "name" -execdir command {} \;
-
 * Objdump
 ** objdump -D file
 ** addr2line -e file -a 0x(addr)
@@ -62,12 +59,6 @@
 ** Crypt setup
 *** Edit /etc/default/grub
     cryptdevice=/dev/sda2:name_crypt
-
-* SSH tunnel
-** PC1 --> ( NAT ) --> WAN <-- PC2
-  ssh -f -N -R PC2_PORT:PC1_IP:PC1_PORT PC2_name@PC2_IP
-** Example
-  ssh -f -N -R 2222:10.10.1.1:22 username@273.15.26.11
 
 * Draw gpaphs
   pacman -S graphviz
@@ -87,12 +78,6 @@
 * i3 how find key name
 ** xev
 ** xmodmap -pke
-
-* Remove default gw
-  ip route del default via 192.168.1.1
-
-* Add route
-  ip route add 192.168.2.0/24 via 192.168.1.1 dev enp3s0
 
 * Count lines code
   tokei
@@ -145,3 +130,6 @@
     SSLKEYLOGFILE=/tmp/ssl.log
 *** Setup wireshark
     Edit -> Preferences -> Protocols -> TLS -> (Pre)-Master-Secret log filename
+
+* Markdown online editor
+** https://stackedit.io/app#
