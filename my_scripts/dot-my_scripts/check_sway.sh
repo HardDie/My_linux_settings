@@ -1,3 +1,5 @@
+set -u
+
 RED="\033[0;31m"
 GRN="\033[0;32m"
 BLU="\033[0;36m"
@@ -72,4 +74,12 @@ check_bin "notify-send"  "libnotify" "Command-line notify utility"
 if [[ $LIST ]]; then
 	echo "Use:"
 	echo "yay -S$LIST"
+	echo
+
+	echo -n "Do you want to install the required applications? [y/N]: "
+	CONFIRM=""
+	read CONFIRM
+	if [[ $CONFIRM == 'y' || $CONFIRM == 'Y' ]]; then
+		yay -S $LIST
+	fi
 fi
