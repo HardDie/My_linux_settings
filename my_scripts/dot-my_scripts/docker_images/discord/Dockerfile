@@ -1,16 +1,13 @@
 # docker build -t my/discord .
 
-FROM archlinux:latest
-
-RUN useradd -s /bin/false -m -g users discord
-WORKDIR /home/discord
+FROM my/base
 
 RUN pacman --cachedir /tmp -Sy --noconfirm discord libpulse alsa-lib && \
 	pacman -Scc --noconfirm && \
 	rm -rf /tmp/*
 
-RUN chown discord:users /tmp
-USER discord
+RUN chown user:users /tmp
+USER user
 
 ENTRYPOINT [ "discord" ]
 CMD [ "--no-sandbox" ]
