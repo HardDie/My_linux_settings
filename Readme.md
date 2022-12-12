@@ -15,10 +15,12 @@ Change directory to ~/My_linux_settings
 ```bash
 $ cd ~/My_linux_settings
 ```
+### Create links
 Creating symbolic links for all configuration files. After running this command you should see many symbolic links in the home directory and in the .config directory
 ```
 $ ./makelinks.sh
 ```
+### Initial system setup
 Change directory to ~/.my_scripts
 ```bash
 $ cd ~/.my_scripts
@@ -33,14 +35,17 @@ To configure your newly installed linux, run the first_setup.sh script. It will 
 ```
 # ./first_setup.sh
 ```
+### yay
 Install the **yay** app
 ```bash
 $ ./install_yay.sh
 ```
+### sway
 Install the necessary applications for the **sway** environment
 ```bash
 $ ./check_sway.sh
 ```
+### Status bar setup
 The last thing you must do is to compile some applications:
 - application for drawing information blocks in the status bar ( C )
 - applications to keep track of an independent keyboard layout for each application on the system ( go )
