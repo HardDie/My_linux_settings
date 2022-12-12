@@ -4,7 +4,7 @@ FROM archlinux:latest
 
 RUN useradd -m -g users user
 
-RUN pacman --cachedir /tmp -Syyu --noconfirm npm gcc-libs yarn && \
+RUN pacman --cachedir /tmp -Syyu --noconfirm npm gcc-libs yarn make && \
 	pacman --cachedir /tmp -Scc --noconfirm && \
 	rm -rf /tmp/*
 
