@@ -5,7 +5,7 @@ If the line starts with #, you must execute this command as root, if with $, the
 2) Install basic system
 3) Chroot to installed linux
 4) Create a user
-5) Clone the repository to the created user's home directory
+5) Clone the repository to the created user's home directory (*you can use any other path and folder name, but in the example we will use the default name and home directory*)
 ```bash
 $ git clone https://github.com/HardDie/My_linux_settings ~/My_linux_settings --recursive
 ```
