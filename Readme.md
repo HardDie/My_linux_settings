@@ -48,3 +48,23 @@ The last thing you must do is to compile some applications:
 $ cd ~/.my_scripts/.data/binary
 $ make
 ```
+## Additional configuration
+### Wallpaper
+If you don't have your own image for the wallpaper, you can use the default wallpaper.
+```bash
+$ mkdir ~/.wallpapers
+$ cp /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png ~/.wallpapers/wallpaper.png
+```
+Or if you have a different screen size, you can see a list of all available wallpapers
+```bash
+$ yay -Ql sway | grep '.png'
+```
+### Status bar
+Currently swaybar has one problem, the path to the startup script must be full, the relative path does not work.
+You must change the path in ~/.config/sway/config in the bar section to your username.
+This section looks like this:
+```
+bar {
+    swaybar_command /home/harddie/.config/sway/start_waybar.sh
+}
+```
