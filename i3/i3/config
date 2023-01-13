@@ -68,7 +68,7 @@ client.urgent           $urgent-bg-color    $urgent-bg-color   $text-color      
 ##
 
 # start a terminal
-bindsym Ctrl+Mod1+t exec termite
+bindsym Ctrl+Mod1+t exec alacritty
 
 # kill focused window
 bindsym Ctrl+Shift+q kill
@@ -144,7 +144,7 @@ bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec [ $(echo -e 'No\nYes' | dmenu -i -p 'Do you really want to exit i3?') == 'Yes' ] && i3-msg exit
+bindsym $mod+Shift+e exec [ $(echo -e 'No\nYes' | BEMENU_BACKEND=x11 bemenu -fn Cantarell:13 --nb "$bg-color" --tb "$bg-color" --fb "$bg-color" --hb "#005577" --tf "$text-color" --hf "$text-color" -i -p 'Do you really want to exit i3?') == 'Yes' ] && i3-msg exit
 
 mode "resize" {
         bindsym j resize shrink width 10 px or 10 ppt

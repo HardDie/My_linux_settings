@@ -22,12 +22,14 @@ set shiftwidth=4
 
 function CopyToClipboard() range
   echo system('echo -nE '.shellescape(join(getline(a:firstline, a:lastline), "\n")).'| wl-copy')
+  "echo system('echo -nE '.shellescape(join(getline(a:firstline, a:lastline), "\n")).'| xclip')
 endfunction
 
 " Setup buffer copy
 vnoremap y :call CopyToClipboard()<CR>
 vnoremap x :call CopyToClipboard()<CR>:'<,'> d<CR>
 nnoremap p :r !wl-paste<CR>
+"nnoremap p :r !xclip -o<CR>
 
 vmap <C-l> :'<,'>norm i//<CR>
 vmap <S-l> :'<,'>norm xx<CR>

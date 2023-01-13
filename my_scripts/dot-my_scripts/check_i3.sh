@@ -34,18 +34,22 @@ check_pkt() {
 }
 
 echo "i3:"
-check_bin "i3-gaps"           "*"            "i3 tiling window manager"
+check_bin "i3"                "i3-wm"        "i3 tiling window manager"
 check_bin "i3blocks"          "*"            "Top bar"
 check_bin "i3lock-color-git"  "*"            "Lockscreen"
+check_bin "dunst"             "*"            "Notification server"
+check_bin "nitrogen"          "*"            "Wallpaper"
+check_pkt "bemenu-x11"                       "Backend for bemenu app"
+check_bin "bemenu"            "*"            "Choose Yes/No before exit"
 
 echo "xorg:"
-check_bin "xorg-server"     "*"            "X server"
-check_bin "xorg-xinit"      "*"            "X server initialization"
-check_bin "xorg-xrandr"     "*"            "For setup multiple screen"
+check_bin "Xorg"            "xorg-server"  "X server"
+check_bin "startx"          "xorg-xinit"   "X server initialization"
+check_bin "xrandr"          "xorg-xrandr"  "For setup multiple screen"
 check_bin "xautolock"       "*"            "Disable screen in lock mode"
-check_bin "compton"         "*"            "To support transparency"
+check_bin "picom"           "*"            "To support transparency"
 check_bin "scrot"           "*"            "Screenshots"
-check_bin "polkit"          "*"            "For power functions"
+check_pkt "polkit"                         "For power functions"
 check_bin "xclip"           "*"            "Copy text to clipboard"
 
 echo "Fonts:"
@@ -58,9 +62,6 @@ check_bin "pavucontrol"        "*"          "GUI mixer"
 check_bin "pamixer"            "*"          "For show volume in tray"
 check_bin "alsamixer"          "alsa-utils" "Console volume control"
 check_bin "mpc"                "*"          "Display current song in tray"
-
-#echo "Legacy:"
-#check_bin "Xwayland" "xorg-server-xwayland" "Start X server"
 
 echo "Tools:"
 check_bin "jq"           "*"         "Command-line JSON parser"
