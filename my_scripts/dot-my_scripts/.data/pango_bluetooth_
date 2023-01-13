@@ -1,0 +1,30 @@
+#!/bin/bash
+
+FIRST_COLOR="#6e4555"
+SECOND_COLOR="#4e3c43"
+TEXT_COLOR="#eef6eb"
+
+print_disabled() {
+	$HOME/.my_scripts/.data/binary/bracet/bin/bracet "" "down" "$FIRST_COLOR" \
+		"$SECOND_COLOR" "$TEXT_COLOR"
+}
+
+print_enabled() {
+	$HOME/.my_scripts/.data/binary/bracet/bin/bracet "" "Con: $1" "$FIRST_COLOR" \
+		"$SECOND_COLOR" "$TEXT_COLOR"
+}
+
+# Check if bluetooth installed
+RES=$(which bluetoothctl 2>/dev/null)
+if [[ $RES == "" ]]; then
+	exit 0
+fi
+
+STATUS=$(bluetoothctl show | grep Powered | cut -d ' ' -f 2)
+if [[ ${STATUS} -ne 'yes' ]]; then
+	print_disabled
+	exit 0
+fi
+
+COUNT=$(bluetoothctl info | grep Device | wc -l)
+print_enabled ${COUNT}
