@@ -59,7 +59,7 @@ check_bin "alsamixer"          "alsa-utils" "Console volume control"
 check_bin "mpc"                "*"          "Display current song in tray"
 
 echo "Legacy:"
-check_bin "Xwayland" "xorg-server-xwayland" "Start X server"
+check_bin "Xwayland" "xorg-xwayland" "Start X server"
 
 echo "Tools:"
 check_bin "jq"           "*"         "Command-line JSON parser"
