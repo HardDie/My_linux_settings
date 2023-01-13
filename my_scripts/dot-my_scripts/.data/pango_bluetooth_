@@ -21,7 +21,7 @@ if [[ $RES == "" ]]; then
 fi
 
 STATUS=$(bluetoothctl show | grep Powered | cut -d ' ' -f 2)
-if [[ ${STATUS} -ne 'yes' ]]; then
+if [[ ${STATUS} != "yes" ]]; then
 	print_disabled
 	exit 0
 fi
