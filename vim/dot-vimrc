@@ -21,7 +21,7 @@ set tabstop=4
 set shiftwidth=4
 
 function CopyToClipboard() range
-  echo system('echo -n '.shellescape(join(getline(a:firstline, a:lastline), "\n")).'| wl-copy')
+  echo system('echo -nE '.shellescape(join(getline(a:firstline, a:lastline), "\n")).'| wl-copy')
 endfunction
 
 " Setup buffer copy
