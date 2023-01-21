@@ -73,8 +73,9 @@ bindsym Ctrl+Mod1+t exec alacritty
 # kill focused window
 bindsym Ctrl+Shift+q kill
 
-# start fehstart (a program launcher)
-bindsym Mod1+F2 exec --no-startup-id fehlstart --one-way
+# start rofi (a program launcher)
+bindsym Mod1+F2 exec --no-startup-id rofi -show run -modi run -location 1 -width 50 -lines 2 -line-margin 0 -line-padding 1 \
+-separator-style none -font $Font -disable-history -hide-scrollbar 
 
 # Make the currently focused window a scratchpad
 bindsym $mod+Shift+minus move scratchpad
@@ -143,8 +144,11 @@ bindsym $mod+Shift+0 move container to workspace $wspace10
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
-# exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec [ $(echo -e 'No\nYes' | BEMENU_BACKEND=x11 bemenu -fn Cantarell:13 --nb "$bg-color" --tb "$bg-color" --fb "$bg-color" --hb "#005577" --tf "$text-color" --hf "$text-color" -i -p 'Do you really want to exit i3?') == 'Yes' ] && i3-msg exit
+# power menu and exit i3 (logs you out of your X session)
+bindsym $mod+Shift+e exec "bash -c 'f () { res=$(rofi -dmenu -location 1 -width 50 -lines 2 -line-margin 0 -line-padding 1 \
+< <(echo -en \\"poweroff\nlogout\nrestart\nhibernate\\")); case $res in poweroff) systemctl poweroff;; logout) i3-msg exit;; \
+restart) sudo systemctl reboot;; hibernate) systemctl hibernate;; esac; }; f;'"
+
 
 mode "resize" {
         bindsym j resize shrink width 10 px or 10 ppt
