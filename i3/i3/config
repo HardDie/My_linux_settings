@@ -147,7 +147,7 @@ bindsym $mod+Shift+r restart
 # power menu and exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "bash -c 'f () { res=$(rofi -dmenu -location 1 -width 50 -lines 2 -line-margin 0 -line-padding 1 \
 < <(echo -en \\"poweroff\nlogout\nrestart\nhibernate\\")); case $res in poweroff) systemctl poweroff;; logout) i3-msg exit;; \
-restart) sudo systemctl reboot;; hibernate) systemctl hibernate;; esac; }; f;'"
+restart) systemctl reboot;; hibernate) systemctl hibernate;; esac; }; f;'"
 
 
 mode "resize" {
