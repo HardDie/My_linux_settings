@@ -26,5 +26,5 @@ if [[ ${STATUS} != "yes" ]]; then
 	exit 0
 fi
 
-COUNT=$(bluetoothctl info | grep Device | wc -l)
+COUNT=$(bluetoothctl info | grep 'Connected: yes' | wc -l)
 print_enabled ${COUNT}
