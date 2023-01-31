@@ -78,7 +78,9 @@ fi
 
 check_bins
 
-res=$($MSG -t get_outputs | jq -r '.[] | select(.focused) | .rect | "\(.width)x\(.height)"')
+USERID=$(id -u)
+SOCK=$(ls /run/user/${USERID}/sway-ipc.*.sock)
+res=$(SWAYSOCK=${SOCK} $MSG -t get_outputs | jq -r '.[] | select(.focused) | .rect | "\(.width)x\(.height)"')
 echo "Your resolution: $res"
 
 update $1
