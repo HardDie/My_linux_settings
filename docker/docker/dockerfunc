@@ -204,7 +204,7 @@ discord() {
 		-v $XDG_RUNTIME_DIR/$WAYLAND_DISPLAY:/tmp/$WAYLAND_DISPLAY \
 		-v $XDG_RUNTIME_DIR/pulse:/tmp/pulse \
 		-v /etc/localtime:/etc/localtime:ro \
-		-v $HOME/.config/isolated_env/discord:/home/discord \
+		-v $HOME/.config/isolated_env/discord:/home/user \
 		--name discord my/discord
 }
 
