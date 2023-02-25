@@ -185,6 +185,7 @@ steam () {
 	docker run --rm -d \
 		--device /dev/dri \
 		--net host \
+		-v /etc/machine-id:/etc/machine-id:ro \
 		-v /dev/shm:/dev/shm \
 		-v /tmp/.X11-unix:/tmp/.X11-unix \
 		-e DISPLAY=unix$DISPLAY \
