@@ -80,7 +80,7 @@ telegram () {
 	docker run --rm -d \
 		--memory 1024m \
 		--cpus=1 \
-		--net host \
+		--net bridge \
 		--device /dev/dri \
 		-v /dev/shm:/dev/shm \
 		-v /tmp/telegram_tmp:/home/user/Downloads \
