@@ -112,11 +112,12 @@ intellij () {
 mpd () {
 	del_stopped mpd
 	docker run --rm -d \
-		--net host \
+		--net bridge \
 		-v $HOME/Music:/home/user/Music:ro \
 		-v $HOME/.config/isolated_env/mpd:/home/user/database \
 		-e XDG_RUNTIME_DIR=/tmp \
 		-v $XDG_RUNTIME_DIR/pulse:/tmp/pulse \
+		-p 6600:6600 \
 		--name mpd my/mpd
 }
 
