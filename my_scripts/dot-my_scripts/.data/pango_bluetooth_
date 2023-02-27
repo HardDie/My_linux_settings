@@ -20,6 +20,12 @@ if [[ $RES == "" ]]; then
 	exit 0
 fi
 
+SYSTEMD_STATUS=$(systemctl is-active bluetooth.service)
+if [[ ${SYSTEMD_STATUS} != "active" ]]; then
+	print_disabled
+	exit 0
+fi
+
 STATUS=$(bluetoothctl show | grep Powered | cut -d ' ' -f 2)
 if [[ ${STATUS} != "yes" ]]; then
 	print_disabled
