@@ -49,7 +49,6 @@ firefox_bare () {
 		--cpus=2 \
 		--net host \
 		--device /dev/dri \
-		-v /dev/video0:/dev/video0 --privileged \
 		-v /dev/shm:/dev/shm \
 		-v /tmp/firefox_bare_tmp:/home/user/Downloads \
 		-e DISPLAY=unix$DISPLAY \
@@ -58,6 +57,9 @@ firefox_bare () {
 		-v $XDG_RUNTIME_DIR/$WAYLAND_DISPLAY:/tmp/$WAYLAND_DISPLAY \
 		-v $XDG_RUNTIME_DIR/pulse:/tmp/pulse \
 		--name firefox_bare my/firefox_bare $@
+
+# For web camera access
+#		-v /dev/video0:/dev/video0 --privileged \
 }
 
 chromium () {
@@ -204,6 +206,7 @@ steam () {
 	docker run --rm -d \
 		--device /dev/dri \
 		--net host \
+		-v /tmp/mytmp:/tmp/mytmp \
 		-v /etc/machine-id:/etc/machine-id:ro \
 		-v /dev/shm:/dev/shm \
 		-v /tmp/.X11-unix:/tmp/.X11-unix \
@@ -216,6 +219,8 @@ steam () {
 
 discord() {
 	docker run --rm -d \
+		--memory 1024m \
+		--cpus=1 \
 		--net host \
 		-v /dev/shm:/dev/shm \
 		-e DISPLAY=unix$DISPLAY \
