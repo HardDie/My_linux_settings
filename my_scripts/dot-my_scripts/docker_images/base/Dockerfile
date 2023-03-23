@@ -2,8 +2,11 @@
 
 FROM archlinux:latest
 
-# Update packages and install common packages
-RUN pacman --cachedir /tmp -Syyu --noconfirm gtk2 gtk3 mesa qt6-base && \
+# Update packages
+RUN pacman --cachedir /tmp -Syyu --noconfirm
+
+# Install common packages
+RUN pacman --cachedir /tmp -S --noconfirm gtk2 gtk3 mesa qt6-base && \
 	pacman --cachedir /tmp -Scc --noconfirm && \
 	rm -rf /tmp/*
 
