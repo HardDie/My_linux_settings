@@ -1,4 +1,5 @@
 # docker build -t my/firefox .
+
 FROM my/base
 
 RUN pacman --cachedir /tmp -Sy --noconfirm git make firefox && \

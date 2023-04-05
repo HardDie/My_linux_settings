@@ -1,4 +1,5 @@
 # docker build -t my/firefox_bare .
+
 FROM my/base
 
 RUN pacman --cachedir /tmp -Sy --noconfirm firefox && \

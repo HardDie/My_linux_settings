@@ -1,4 +1,5 @@
 # docker build -t my/chromium .
+
 FROM my/base
 
 RUN pacman --cachedir /tmp -Sy --noconfirm chromium && \

@@ -80,6 +80,25 @@ chromium () {
 #		-v /dev/video0:/dev/video0 --privileged \
 }
 
+chromium_clean () {
+	mkdir -p /tmp/chromium_tmp
+	docker run --rm -d \
+		--pid host \
+		--net host \
+		--device /dev/dri \
+		-v /dev/shm:/dev/shm \
+		-v /tmp/chromium_tmp:/home/user/Downloads \
+		-e DISPLAY=unix$DISPLAY \
+		-e XDG_RUNTIME_DIR=/tmp \
+		-e WAYLAND_DISPLAY=$WAYLAND_DISPLAY \
+		-v $XDG_RUNTIME_DIR/$WAYLAND_DISPLAY:/tmp/$WAYLAND_DISPLAY \
+		-v $XDG_RUNTIME_DIR/pulse:/tmp/pulse \
+		--name chromium my/chromium $@
+
+# For web camera access
+#		-v /dev/video0:/dev/video0 --privileged \
+}
+
 waterfox () {
 	docker run --rm -d \
 		--memory 4096m \
@@ -93,6 +112,9 @@ waterfox () {
 		-v $XDG_RUNTIME_DIR/$WAYLAND_DISPLAY:/tmp/$WAYLAND_DISPLAY \
 		-v $XDG_RUNTIME_DIR/pulse:/tmp/pulse \
 		--name waterfox my/waterfox
+
+# For web camera access
+#		-v /dev/video0:/dev/video0 --privileged \
 }
 
 telegram () {
@@ -113,6 +135,9 @@ telegram () {
 		-v $HOME/.config/isolated_env/telegram:/home/user/.local/share \
 		-v /etc/localtime:/etc/localtime:ro \
 		--name telegram my/telegram
+
+# For web camera access
+#		-v /dev/video0:/dev/video0 --privileged \
 }
 
 intellij () {
