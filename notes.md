@@ -133,3 +133,7 @@
 
 * Markdown online editor
 ** https://stackedit.io/app#
+
+* Validate server SSL/TLS
+** https://www.geocerts.com/ssl-checker
+** https://www.ssllabs.com/ssltest/analyze.html
