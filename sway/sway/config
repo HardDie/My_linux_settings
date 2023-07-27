@@ -262,14 +262,16 @@ bindsym --to-code ISO_Next_Group exec --no-startup-id $LangUpdate
 output "*" background ~/.wallpapers/wallpaper.png fill
 output X11-1 resolution 1920x1080 position 1920,0
 
-input * {
-    # Enable NumLock on startup
-    xkb_numlock enabled
-    xkb_layout "us,ru"
-    xkb_options "grp:caps_toggle"
-
+input type:touchpad {
     # Enable if you use touchpad
     #tap enabled
     #natural_scroll enabled
     #dwt enable
+}
+
+input type:keyboard {
+    # Enable NumLock on startup
+    xkb_numlock enabled
+    xkb_layout "us,ru"
+    xkb_options "grp:caps_toggle"
 }
