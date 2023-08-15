@@ -1,8 +1,10 @@
 # docker build -t my/firefox .
 
-FROM my/base
+FROM my/firefox_bare
 
-RUN pacman --cachedir /tmp -Sy --noconfirm git make firefox && \
+USER root
+
+RUN pacman --cachedir /tmp -Sy --noconfirm git make && \
 	git clone https://github.com/girst/LegacyFox-mirror-of-git.gir.st /tmp/patch && \
 	make -C /tmp/patch install && \
 	pacman --cachedir /tmp -Rsn --noconfirm git make && \
