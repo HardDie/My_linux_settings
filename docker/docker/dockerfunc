@@ -30,7 +30,7 @@ firefox () {
 		--device /dev/dri \
 		-v /dev/shm:/dev/shm \
 		-v /tmp/firefox_tmp:/home/user/Downloads \
-		-e DISPLAY=unix$DISPLAY \
+		-e DISPLAY=$DISPLAY \
 		-e XDG_RUNTIME_DIR=/tmp \
 		-e WAYLAND_DISPLAY=$WAYLAND_DISPLAY \
 		-v $XDG_RUNTIME_DIR/$WAYLAND_DISPLAY:/tmp/$WAYLAND_DISPLAY \
@@ -51,7 +51,7 @@ firefox_bare () {
 		--device /dev/dri \
 		-v /dev/shm:/dev/shm \
 		-v /tmp/firefox_bare_tmp:/home/user/Downloads \
-		-e DISPLAY=unix$DISPLAY \
+		-e DISPLAY=$DISPLAY \
 		-e XDG_RUNTIME_DIR=/tmp \
 		-e WAYLAND_DISPLAY=$WAYLAND_DISPLAY \
 		-v $XDG_RUNTIME_DIR/$WAYLAND_DISPLAY:/tmp/$WAYLAND_DISPLAY \
@@ -93,7 +93,7 @@ chromium_clean () {
 		-e WAYLAND_DISPLAY=$WAYLAND_DISPLAY \
 		-v $XDG_RUNTIME_DIR/$WAYLAND_DISPLAY:/tmp/$WAYLAND_DISPLAY \
 		-v $XDG_RUNTIME_DIR/pulse:/tmp/pulse \
-		--name chromium my/chromium $@
+		--name chromium_clean my/chromium $@
 
 # For web camera access
 #		-v /dev/video0:/dev/video0 --privileged \
@@ -106,7 +106,7 @@ waterfox () {
 		--net host \
 		-v /dev/shm:/dev/shm \
 		-v $HOME/.config/isolated_env/waterfox:/home/user \
-		-e DISPLAY=unix${DISPLAY} \
+		-e DISPLAY=${DISPLAY} \
 		-e XDG_RUNTIME_DIR=/tmp \
 		-e WAYLAND_DISPLAY=$WAYLAND_DISPLAY \
 		-v $XDG_RUNTIME_DIR/$WAYLAND_DISPLAY:/tmp/$WAYLAND_DISPLAY \
@@ -147,7 +147,7 @@ intellij () {
 		-v $HOME/.config/isolated_env/intellij:/home/user \
 		-v $HOME/go:/home/user/go \
 		-e _JAVA_AWT_WM_NONREPARENTING=1 \
-		-e DISPLAY=unix$DISPLAY \
+		-e DISPLAY=$DISPLAY \
 		-e XDG_RUNTIME_DIR=/tmp \
 		-e WAYLAND_DISPLAY=$WAYLAND_DISPLAY \
 		-v $XDG_RUNTIME_DIR/$WAYLAND_DISPLAY:/tmp/$WAYLAND_DISPLAY \
@@ -235,7 +235,7 @@ steam () {
 		-v /etc/machine-id:/etc/machine-id:ro \
 		-v /dev/shm:/dev/shm \
 		-v /tmp/.X11-unix:/tmp/.X11-unix \
-		-e DISPLAY=unix$DISPLAY \
+		-e DISPLAY=$DISPLAY \
 		-e XDG_RUNTIME_DIR=/tmp \
 		-v $XDG_RUNTIME_DIR/pulse:/tmp/pulse \
 		-v $HOME/.config/isolated_env/steam:/home/user \
@@ -248,7 +248,7 @@ discord() {
 		--cpus=1 \
 		--net host \
 		-v /dev/shm:/dev/shm \
-		-e DISPLAY=unix$DISPLAY \
+		-e DISPLAY=$DISPLAY \
 		-e XDG_RUNTIME_DIR=/tmp \
 		-e WAYLAND_DISPLAY=$WAYLAND_DISPLAY \
 		-v $XDG_RUNTIME_DIR/$WAYLAND_DISPLAY:/tmp/$WAYLAND_DISPLAY \

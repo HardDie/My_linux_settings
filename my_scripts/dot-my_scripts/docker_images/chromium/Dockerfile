@@ -11,4 +11,4 @@ WORKDIR /home/user
 USER user
 
 ENTRYPOINT [ "chromium" ]
-CMD [ "--no-sandbox" ]
+CMD [ "--no-sandbox", "--ozone-platform=wayland" ]

@@ -10,4 +10,4 @@ RUN chown user:users /tmp
 USER user
 
 ENTRYPOINT [ "discord" ]
-CMD [ "--no-sandbox" ]
+CMD [ "--no-sandbox", "--ozone-platform=wayland" ]
