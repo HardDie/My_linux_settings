@@ -18,7 +18,7 @@ build() {
 		docker image tag $IMAGE_NAME $IMAGE_NAME:old
 	fi
 	cd $NAME
-	docker build -t $IMAGE_NAME .
+	docker build -t $IMAGE_NAME . --no-cache
 	cd ..
 	echo "${NAME} was successfully build!"
 }

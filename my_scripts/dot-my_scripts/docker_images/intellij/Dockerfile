@@ -2,8 +2,8 @@
 
 # Build intellij packet
 FROM my/base AS intellij-build
-RUN pacman --cachedir /tmp -Sy --noconfirm git sudo fakeroot binutils make gcc gettext && \
-	sudo -u user sh -c "cd /tmp && git clone https://aur.archlinux.org/intellij-idea-ultimate-edition.git intellij && cd intellij && makepkg"
+RUN pacman --cachedir /tmp -Sy --noconfirm git sudo fakeroot binutils make gcc gettext debugedit
+RUN sudo -u user sh -c "cd /tmp && git clone https://aur.archlinux.org/intellij-idea-ultimate-edition.git intellij && cd intellij && makepkg"
 
 # Install intellij and environment
 FROM my/base AS my_intellij
@@ -13,12 +13,12 @@ RUN pacman --cachedir /tmp -U --noconfirm /tmp/*.pkg.tar.* && \
 	rm -rf /tmp/*
 
 # Install dependency
-RUN pacman --cachedir /tmp -Sy --noconfirm git go && \
+RUN pacman --cachedir /tmp -Sy --noconfirm git go graphviz && \
 	pacman --cachedir /tmp -Scc --noconfirm && \
 	rm -rf /tmp/*
 
 RUN chown user:users /tmp
+RUN usermod --shell /bin/bash user
 USER user
 
 ENTRYPOINT [ "intellij-idea-ultimate-edition" ]
-
