@@ -21,15 +21,23 @@ set tabstop=4
 set shiftwidth=4
 
 function CopyToClipboard() range
+  " wayland
   echo system('echo -nE '.shellescape(join(getline(a:firstline, a:lastline), "\n")).'| wl-copy')
+  " xorg
   "echo system('echo -nE '.shellescape(join(getline(a:firstline, a:lastline), "\n")).'| xclip')
+  " mac
+  "echo system('echo -nE '.shellescape(join(getline(a:firstline, a:lastline), "\n")).'| pbcopy')
 endfunction
 
 " Setup buffer copy
 vnoremap y :call CopyToClipboard()<CR>
-vnoremap x :call CopyToClipboard()<CR>:'<,'> d<CR>
+noremap x :call CopyToClipboard()<CR>:'<,'> d<CR>
+" wayland
 nnoremap p :r !wl-paste<CR>
+" xorg
 "nnoremap p :r !xclip -o<CR>
+" mac
+"nnoremap p :r !pbpaste -o<CR>
 
 vmap <C-l> :'<,'>norm i//<CR>
 vmap <S-l> :'<,'>norm xx<CR>
