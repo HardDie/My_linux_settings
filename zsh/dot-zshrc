@@ -98,10 +98,6 @@ source $ZSH/oh-my-zsh.sh
 export EDITOR=vim
 export TERM=xterm-256color
 
-alias cpu_performance="sudo sh -c 'echo performance | tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor'"
-alias cpu_powersave="sudo sh -c 'echo powersave | tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor'"
-alias cpu_check="cat /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor"
-
 alias ll='ls -hlF'
 alias lla='ls -hAlF'
 alias lsa='ls -AF'
@@ -110,7 +106,6 @@ alias l='ls -CF'
 
 alias tmux='tmux -2'
 alias aria2c='aria2c --summary-interval=0'
-alias picocom='sudo picocom --escape q'
 
 unsetopt sharehistory
 
