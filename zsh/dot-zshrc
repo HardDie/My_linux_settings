@@ -110,7 +110,8 @@ alias la='ls -AF'
 alias l='ls -CF'
 
 alias tmux='tmux -2'
-alias aria2c='aria2c --summary-interval=0'
+alias aria2c='aria2c --summary-interval=0 --continue'
+alias yt-dlp='yt-dlp --retries infinite'
 
 unsetopt sharehistory
 
