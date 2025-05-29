@@ -13,6 +13,7 @@ stow --dotfiles -t "$HOME" vim
 stow --dotfiles -t "$HOME" zsh
 stow --dotfiles -t "$HOME" tmux
 stow --dotfiles -t "$HOME" git
+stow --dotfiles -t "$HOME" clang-format
 stow --dotfiles -t "$HOME" my_scripts
 
 mkdir -p "$HOME/.config"
