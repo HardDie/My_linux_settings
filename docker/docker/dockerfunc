@@ -80,6 +80,28 @@ chromium () {
 #		-v /dev/video0:/dev/video0 --privileged \
 }
 
+yab () {
+	docker run --rm -d \
+		--pid host \
+		--net host \
+		--device /dev/dri \
+		-v /dev/shm:/dev/shm \
+		-v /tmp/mytmp:/tmp/mytmp \
+		-v $HOME/.config/isolated_env/yab:/home/user \
+		-e DISPLAY=unix$DISPLAY \
+		-e XDG_RUNTIME_DIR=/tmp \
+		-e WAYLAND_DISPLAY=$WAYLAND_DISPLAY \
+		-v $XDG_RUNTIME_DIR/$WAYLAND_DISPLAY:/tmp/$WAYLAND_DISPLAY \
+		-v $XDG_RUNTIME_DIR/pulse:/tmp/pulse \
+		-v /etc/localtime:/etc/localtime:ro \
+		-v /dev/video0:/dev/video0 --privileged \
+		-v /dev/video4:/dev/video4 \
+		--name yab my/yandex-browser $@
+
+# For web camera access
+#		-v /dev/video0:/dev/video0 --privileged \
+}
+
 chromium_clean () {
 	mkdir -p /tmp/chromium_tmp
 	docker run --rm -d \
