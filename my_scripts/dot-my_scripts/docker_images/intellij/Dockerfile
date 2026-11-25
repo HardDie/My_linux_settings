@@ -17,6 +17,9 @@ RUN pacman --cachedir /tmp -Sy --noconfirm git go graphviz && \
 	pacman --cachedir /tmp -Scc --noconfirm && \
 	rm -rf /tmp/*
 
+# Install hack
+RUN echo '-javaagent:/home/user/hack/ja-netfilter.jar=jetbrains' >> /opt/intellij-idea-ultimate-edition/bin/idea64.vmoptions
+
 RUN chown user:users /tmp
 RUN usermod --shell /bin/bash user
 USER user
