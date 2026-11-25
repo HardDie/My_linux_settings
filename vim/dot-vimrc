@@ -20,24 +20,52 @@ set wildignorecase
 set tabstop=4
 set shiftwidth=4
 
+let s:is_mac = has('mac') || has('macunix')
+let s:is_wayland = !empty($WAYLAND_DISPLAY) && executable('wl-copy')
+let s:is_x11 = !empty($DISPLAY) && executable('xclip')
+
 function CopyToClipboard() range
-  " wayland
-  echo system('echo -nE '.shellescape(join(getline(a:firstline, a:lastline), "\n")).'| wl-copy')
-  " xorg
-  "echo system('echo -nE '.shellescape(join(getline(a:firstline, a:lastline), "\n")).'| xclip')
-  " mac
-  "echo system('echo -nE '.shellescape(join(getline(a:firstline, a:lastline), "\n")).'| pbcopy')
+  let l:text = shellescape(join(getline(a:firstline, a:lastline), "\n"))
+
+  if s:is_mac
+    let l:cmd = 'echo -nE ' . l:text . ' | pbcopy'
+  elseif s:is_wayland
+    let l:cmd = 'echo -nE ' . l:text . ' | wl-copy'
+  elseif s:is_x11
+    let l:cmd = 'echo -nE ' . l:text . ' | xclip -selection clipboard'
+  else
+    echomsg 'No supported clipboard utility found'
+    return
+  endif
+
+  call system(l:cmd)
 endfunction
 
-" Setup buffer copy
+function! PasteFromClipboard()
+  if s:is_mac
+    let l:cmd = 'pbpaste'
+  elseif s:is_wayland
+    let l:cmd = 'wl-paste'
+  elseif s:is_x11
+    let l:cmd = 'xclip -o -selection clipboard'
+  else
+    echomsg 'No supported clipboard utility found'
+    return
+  endif
+
+  let l:content = system(l:cmd)
+  if v:shell_error != 0
+    echomsg 'Clipboard paste failed'
+    return
+  endif
+
+  put =l:content
+endfunction
+
+" Setup buffer copy/paste
 vnoremap y :call CopyToClipboard()<CR>
 noremap x :call CopyToClipboard()<CR>:'<,'> d<CR>
-" wayland
-nnoremap p :r !wl-paste<CR>
-" xorg
-"nnoremap p :r !xclip -o<CR>
-" mac
-"nnoremap p :r !pbpaste -o<CR>
+nnoremap <silent> p :call PasteFromClipboard()<CR>
 
 vmap <C-l> :'<,'>norm i//<CR>
 vmap <S-l> :'<,'>norm xx<CR>
