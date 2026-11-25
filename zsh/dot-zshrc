@@ -1,3 +1,8 @@
+is_darwin=0
+if [[ "$(uname -s)" == "Darwin" ]]; then
+	is_darwin=1
+fi
+
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 export PATH=$PATH:$HOME/go/bin
@@ -115,9 +120,11 @@ setopt HIST_IGNORE_SPACE
 setopt HIST_REDUCE_BLANKS
 
 # Autostart i3
-if [[ "$(tty)" == '/dev/tty1' ]]; then
-	echo "Starting sway session..."
-	exec sway 2>/dev/null
+if (( !is_darwin )); then
+	if [[ "$(tty)" == '/dev/tty1' ]]; then
+		echo "Starting sway session..."
+		exec sway 2>/dev/null
+	fi
 fi
 
 # If not running interactively, do not do anything
@@ -137,4 +144,6 @@ if [[ -z $TMUX && \
 fi
 
 # Added docker calls
-source $HOME/.config/docker/dockerfunc
+if (( !is_darwin )); then
+	source $HOME/.config/docker/dockerfunc
+fi
